@@ -17,8 +17,8 @@
   - Latest available
 - Allocated Storage
   - 50 GB
-- Multi-AZ
-  - No
+- High Availability
+  - Dev or test workload (Single-AZ)
 - Publicly Accessible
   - Yes
 - Network
