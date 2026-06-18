@@ -6,3 +6,9 @@
   - AmazonS3FullAccess
   - AWSGlueServiceRole
   - SecretsManagerReadWrite
+
+# Purpose
+
+- Read PostgreSQL credentials
+- Write JSON files to S3
+- Write CloudWatch logs
