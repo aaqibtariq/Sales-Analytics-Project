@@ -7,6 +7,24 @@
   - AWSGlueServiceRole
   - SecretsManagerReadWrite
 
+ # Trusted entities
+
+ ```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "glue.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
+
+````
+
 # Purpose
 
 - Read PostgreSQL credentials
