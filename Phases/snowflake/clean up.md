@@ -94,5 +94,23 @@ Generate MD5
 MERGE into Silver
 
 ```
+# Important requirments
 
+```
+Important Data Property Each daily data refresh contains:
+● All lead activities for a lead is updated daily with new activities appended to the json. Example: Flatten the lead activity data to see the change per activity_at for a single activity id as seen above.
+● Meaning: same activity will appear on multiple days.
+● This introduces duplicates in the lead activities → pipeline must deduplicate per lead. Every source table contains:
+● Stringified data within JSON_OBJECT contains: Single quotes (') enclosing properties and values instead of standard double quotes (").
+● Data Processing Requirements 4.1 Deduplication & Cleansing Logic Each daily batch contains historical activities, leading to potential duplicates.
+● The data also contains malformed JSON strings that must be repaired before parsing. Required approach:
+● Data Repair: Implement a custom UDF to repair malformed strings, neutralize messy text fields (like descriptions or notes), and escape apostrophes prior to JSON parsing.
+● Deep Unwrapping: Dynamically unwrap nested arrays (raw_data, data) to access the base activity objects.
+● Change Data Capture (CDC): Identify duplicates and track historical changes using an MD5_HASH generated from concatenating key row attributes (e.g., lead_id, activity_at, status_change, etc.).
+● Upserts: Use MERGE INTO statements to insert new records and update existing ones only when the MD5_HASHchanges, utilizing INSERT_DATE and UPDATE_DATE for auditability.
+● Identify duplicates using: lead_id + activity_id
+● Keep the latest activity record using: activity_at (activity timestamp)
+● Use upserts (insert new, update existing) into warehouse tables.
+
+```
 
