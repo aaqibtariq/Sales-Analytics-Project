@@ -58,4 +58,33 @@ DESC INTEGRATION SALES_ANALYTICS_S3_INT;
 
 STORAGE_AWS_IAM_USER_ARN
 STORAGE_AWS_EXTERNAL_ID
+
+Update the IAM role Trust Relationship
+```
+
+# Test connection
+
+```
+
+USE DATABASE SALES_ANALYTICS_DB;
+USE SCHEMA BRONZE;
+
+
+CREATE OR REPLACE STAGE SALES_ANALYTICS_RAW_STAGE
+URL = 's3://sales-analytics-raw-aqib-test/'
+STORAGE_INTEGRATION = SALES_ANALYTICS_S3_INT
+FILE_FORMAT = JSON_FF;
+
+Now test:
+
+LIST @SALES_ANALYTICS_RAW_STAGE;
+
+You should see folders/files like:
+
+close_crm_users_raw/
+custom_activities_raw/
+lead_activities_raw/
+leads_raw/
+_control/
+
 ```
