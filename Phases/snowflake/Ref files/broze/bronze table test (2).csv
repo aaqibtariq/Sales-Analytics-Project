@@ -1,0 +1,5 @@
+file,status,rows_parsed,rows_loaded,error_limit,errors_seen,first_error,first_error_line,first_error_character,first_error_column_name
+s3://sales-analytics-raw-aqib-test/custom_activities_raw/load_type=incremental/load_date=2026-06-25/custom_activities_raw_20260625_161350_part_00001.json,LOADED,3,3,3,0,,,,
+s3://sales-analytics-raw-aqib-test/custom_activities_raw/load_type=incremental/load_date=2026-06-22/custom_activities_raw_20260622_161825_part_00001.json,LOADED,5,5,5,0,,,,
+s3://sales-analytics-raw-aqib-test/custom_activities_raw/load_type=incremental/load_date=2026-06-18/custom_activities_raw_20260618_184321_part_00001.json,LOADED,5,5,5,0,,,,
+s3://sales-analytics-raw-aqib-test/custom_activities_raw/load_type=full/load_date=2026-06-14/custom_activities_raw_20260614_200504_part_00001.json,LOADED,30,30,30,0,,,,
