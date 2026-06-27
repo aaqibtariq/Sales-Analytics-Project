@@ -88,3 +88,5 @@ leads_raw/
 _control/
 
 ```
+
+https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/snowflake/Ref%20files/test%20connection
