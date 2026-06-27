@@ -496,3 +496,7 @@ def main():
 main()
 
 ```
+
+https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/AWS/Ref%20Files/S3
+
+https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/AWS/Ref%20Files/AWS%20glue
