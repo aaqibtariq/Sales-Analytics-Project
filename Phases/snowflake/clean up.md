@@ -279,4 +279,36 @@ TRY_PARSE_JSON(...)
 
 successfully.
 
+However...
+
+After looking more closely at your requirement document, I do NOT think this simple UDF is enough.
+
+Your requirement specifically says:
+
+"neutralize messy text fields (like descriptions or notes), and escape apostrophes prior to JSON parsing."
+
+That tells me the JSON contains text like:
+
+John's Lead
+
+If we blindly replace every ' with ", it becomes:
+
+John"s Lead
+
+which actually corrupts the data.
+
+Instead of immediately creating a UDF, I recommend we first inspect the actual malformed JSON from your Bronze table.
+
+For example:
+
+SELECT
+    JSON_OBJECT:raw_data:JSON_OBJECT::STRING
+FROM BRONZE.LEAD_ACTIVITIES_RAW
+LIMIT 5;
+
+Let's look at real examples from your data first. Then we'll design a UDF that repairs exactly the issues your dataset has (single quotes, apostrophes in descriptions, None values, etc.), rather than using a generic replacement that could damage valid text.
+
+That approach is safer, aligns better with the requirement, and is much closer to how this would be implemented in a production pipeline.
+
+
 ```
