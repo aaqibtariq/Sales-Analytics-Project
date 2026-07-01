@@ -1,0 +1,441 @@
+JSON_OBJECT,INSERT_DATE
+"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-05-30T20:45:07.628000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_dPkezwxGdDoPTb6e1QAvQvqA3mR3Eq7E6xXgybupDFi"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-05-30T20:45:07.628000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-05-30T20:45:07.628000+00:00"",
+  ""date_updated"": ""2026-05-30T20:45:09.579000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_SFByA1PnRySr77hnsw91VFDNAf7OyXfevEGkpJebLP0"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Sat, 30 May 2026 20:45:08 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_5a1f952@masked.com"",
+        ""name"": ""user_0c3d01cc5b20f94522515f0443750b1a""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_5a1f952@masked.com"",
+        ""name"": ""user_0c3d01cc5b20f94522515f0443750b1a""
+      }
+    ],
+    ""subject"": ""thought this might help"",
+    ""to"": [
+      {
+        ""email"": ""user_f02e32b@masked.com"",
+        ""name"": ""user_ea26b0075d29530c636d6791bb5d73f4""
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_8lRQj5iONeFOA8NdFd7TTzSQZ2PHSpkE4HbKFjUFJAx"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_98x3oZGXDZxyULiMbwbhyB1aZqK2t4LppaiQcm9uiCt"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_7e42d6fa55ec07bcac5bbd88dd802c7f"",
+  ""sequence_id"": ""seq_2tHhqOTayns2u1gu1VbVzn"",
+  ""sequence_name"": ""New Opt-In- SMS Sequence #5 VERSION 2 - Segment 1: Never Booked a Setter Call (+Emails +free resources)"",
+  ""sequence_subscription_id"": ""sub_0FC7tGhMHpuvrHtaNSAToE"",
+  ""status"": ""sent"",
+  ""subject"": ""user_822fccfbcb05cdc5caf14be95e52a68f"",
+  ""template_id"": ""tmpl_0d7gnClZK8ziIqCHl2zGlJrgaL4JJVnzgZIJUA9kv4y"",
+  ""template_name"": ""Segment 1: NBASC- Email #1 – Day 3"",
+  ""thread_id"": ""acti_OMUNn23uBX8L93cduTuHOMaSEPVvBBL6JkURZBn1OfP"",
+  ""to"": [
+    ""user_b94f2a6@masked.com""
+  ],
+  ""updated_by"": ""user_nDycH3d5wn1pmMAhkC8dq4O7E2zExikgamMxXh8FztV"",
+  ""updated_by_name"": ""user_0c3d01cc5b20f94522515f0443750b1a"",
+  ""user_id"": ""user_nDycH3d5wn1pmMAhkC8dq4O7E2zExikgamMxXh8FztV"",
+  ""user_name"": ""user_0c3d01cc5b20f94522515f0443750b1a"",
+  ""users"": []
+}",2026-06-06 11:01:26.809
+"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-05-28T21:13:52.979000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_WD4SLjXPw2CWklu7Q4LWJBULRNfdgju9W2RooU3tNBa"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-05-28T21:12:25.852000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-05-28T21:13:52.979000+00:00"",
+  ""date_updated"": ""2026-05-28T21:13:56.336000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_jM9xdg6t2kdXYJrMYVcPgmnNr2VyxK0Hsau9AyEaZcw"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Thu, 28 May 2026 21:13:53 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_7c45466@masked.com"",
+        ""name"": ""user_d71fd42f0d973ea716507bc8a081287e""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_7c45466@masked.com"",
+        ""name"": ""user_d71fd42f0d973ea716507bc8a081287e""
+      }
+    ],
+    ""subject"": ""something real-world you can dive into this week"",
+    ""to"": [
+      {
+        ""email"": ""user_8ef87fc@masked.com"",
+        ""name"": ""user_b6ca2a9208bca22a96e1d5e6e71d666b""
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_QyTjMdf0CZWwiomgQDzLNPkSOqG3WRcL2JsKOO8HqyC"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_ZD8QWCJfCfNgrTaDeSxePMc0KZA9zWTot9CamHb87UJ"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_5327695d4ec5199833e17a2fa9fd5567"",
+  ""sequence_id"": ""seq_5bHPRi5hvIbVb7RMBXfHUE"",
+  ""sequence_name"": ""New Opt-In- SMS Sequence #6 - Segment 2: Booked Setter, No Show (SMS + Value email) - Full Transitioner (Oct 2025)"",
+  ""sequence_subscription_id"": ""sub_34Kq2qCnFbWj9FX8Ic04Tv"",
+  ""status"": ""sent"",
+  ""subject"": ""user_8030a19509f67fc968506cdc55652ba8"",
+  ""template_id"": ""tmpl_8i3mFTwKyQYqDpqQjDXYimDEZZ9IdFmZw3eiu0brkJz"",
+  ""template_name"": ""Segment 1: NBASC - Email #7 – Wait 31 days"",
+  ""thread_id"": ""acti_0qSsYVlQZdRJK4ZUQxTrVnJ7Zge4ZQHWA2ycUOUcaCh"",
+  ""to"": [
+    ""user_47aa966@masked.com""
+  ],
+  ""updated_by"": ""user_mrokNuNoTE6Z44kv7DzHfPrePPQFLe2tMKwJKaY4urL"",
+  ""updated_by_name"": ""user_d71fd42f0d973ea716507bc8a081287e"",
+  ""user_id"": ""user_mrokNuNoTE6Z44kv7DzHfPrePPQFLe2tMKwJKaY4urL"",
+  ""user_name"": ""user_d71fd42f0d973ea716507bc8a081287e"",
+  ""users"": []
+}",2026-06-06 11:01:26.809
+"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-05-21T23:57:27.439000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_WD4SLjXPw2CWklu7Q4LWJBULRNfdgju9W2RooU3tNBa"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-05-21T23:56:21.739000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-05-21T23:57:27.439000+00:00"",
+  ""date_updated"": ""2026-05-21T23:57:28.797000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_jM9xdg6t2kdXYJrMYVcPgmnNr2VyxK0Hsau9AyEaZcw"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Thu, 21 May 2026 23:57:27 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_7c45466@masked.com"",
+        ""name"": ""user_d71fd42f0d973ea716507bc8a081287e""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_7c45466@masked.com"",
+        ""name"": ""user_d71fd42f0d973ea716507bc8a081287e""
+      }
+    ],
+    ""subject"": ""want to build something for your resume this weekend?"",
+    ""to"": [
+      {
+        ""email"": ""user_8ef87fc@masked.com"",
+        ""name"": ""user_b6ca2a9208bca22a96e1d5e6e71d666b""
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_4Xqs7yWvPSiudDigbVhpqDaLK0n0udDgzjZnyEtWJjm"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_ZD8QWCJfCfNgrTaDeSxePMc0KZA9zWTot9CamHb87UJ"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_5327695d4ec5199833e17a2fa9fd5567"",
+  ""sequence_id"": ""seq_5bHPRi5hvIbVb7RMBXfHUE"",
+  ""sequence_name"": ""New Opt-In- SMS Sequence #6 - Segment 2: Booked Setter, No Show (SMS + Value email) - Full Transitioner (Oct 2025)"",
+  ""sequence_subscription_id"": ""sub_34Kq2qCnFbWj9FX8Ic04Tv"",
+  ""status"": ""sent"",
+  ""subject"": ""user_073aeba57506056953cd19267e76e6e1"",
+  ""template_id"": ""tmpl_i45kbx56WSSIuoZbM9Od6J98nEU9XJwwpSVD1D4YI9x"",
+  ""template_name"": ""Segment 1: NBASC - Email #10 – Wait 7 days"",
+  ""thread_id"": ""acti_8DQdJR6hDbAk0iDKoDaVEqAFMQAGvTU6j5qmkSzsev3"",
+  ""to"": [
+    ""user_47aa966@masked.com""
+  ],
+  ""updated_by"": ""user_mrokNuNoTE6Z44kv7DzHfPrePPQFLe2tMKwJKaY4urL"",
+  ""updated_by_name"": ""user_d71fd42f0d973ea716507bc8a081287e"",
+  ""user_id"": ""user_mrokNuNoTE6Z44kv7DzHfPrePPQFLe2tMKwJKaY4urL"",
+  ""user_name"": ""user_d71fd42f0d973ea716507bc8a081287e"",
+  ""users"": []
+}",2026-06-06 11:01:26.809
+"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-05-11T20:57:14.362000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_WD4SLjXPw2CWklu7Q4LWJBULRNfdgju9W2RooU3tNBa"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-05-11T20:57:14.362000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-05-11T20:57:14.362000+00:00"",
+  ""date_updated"": ""2026-05-11T20:57:18.763000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_jM9xdg6t2kdXYJrMYVcPgmnNr2VyxK0Hsau9AyEaZcw"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Mon, 11 May 2026 20:57:15 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_7c45466@masked.com"",
+        ""name"": ""user_d71fd42f0d973ea716507bc8a081287e""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_7c45466@masked.com"",
+        ""name"": ""user_d71fd42f0d973ea716507bc8a081287e""
+      }
+    ],
+    ""subject"": ""this one’s short, free, and worth it"",
+    ""to"": [
+      {
+        ""email"": ""user_8ef87fc@masked.com"",
+        ""name"": ""user_b6ca2a9208bca22a96e1d5e6e71d666b""
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_i9NQJ76NMurtoAXQwcD8jJzyQsRSSO5nNZPHyvdxS3x"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_ZD8QWCJfCfNgrTaDeSxePMc0KZA9zWTot9CamHb87UJ"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_5327695d4ec5199833e17a2fa9fd5567"",
+  ""sequence_id"": ""seq_5bHPRi5hvIbVb7RMBXfHUE"",
+  ""sequence_name"": ""New Opt-In- SMS Sequence #6 - Segment 2: Booked Setter, No Show (SMS + Value email) - Full Transitioner (Oct 2025)"",
+  ""sequence_subscription_id"": ""sub_34Kq2qCnFbWj9FX8Ic04Tv"",
+  ""status"": ""sent"",
+  ""subject"": ""user_a895ff66ace4f43f27dd4e89dc2e0880"",
+  ""template_id"": ""tmpl_3GDdybjK98nynGg7SFqrfgYTcW8qm1Gby5b1nN5SfMw"",
+  ""template_name"": ""Segment 1: NBASC - Email #11 – Day 78"",
+  ""thread_id"": ""acti_bCqghOPqs3QSIn5wC7ttqxHSXq1Z6KjIOkbj7h49z04"",
+  ""to"": [
+    ""user_47aa966@masked.com""
+  ],
+  ""updated_by"": ""user_mrokNuNoTE6Z44kv7DzHfPrePPQFLe2tMKwJKaY4urL"",
+  ""updated_by_name"": ""user_d71fd42f0d973ea716507bc8a081287e"",
+  ""user_id"": ""user_mrokNuNoTE6Z44kv7DzHfPrePPQFLe2tMKwJKaY4urL"",
+  ""user_name"": ""user_d71fd42f0d973ea716507bc8a081287e"",
+  ""users"": []
+}",2026-06-06 11:01:26.809
+"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-05-08T00:37:37.568000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_WD4SLjXPw2CWklu7Q4LWJBULRNfdgju9W2RooU3tNBa"",
+  ""created_by"": ""user_bIvwEVqazwdp4VFjtJRdOOthSsvx4ylfkNLqmbMWkma"",
+  ""created_by_name"": ""user_3005b347129d801dc8c687e3bbcef2bb"",
+  ""date_created"": ""2026-05-08T00:37:21.711000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-05-08T00:37:37.568000+00:00"",
+  ""date_updated"": ""2026-05-08T00:37:39.274000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_0GxBhhaSAo1JruvTLUOOLNpnQ7tSDHj9Ou6Tp5DCV9Z"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Fri, 08 May 2026 00:37:38 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_9a95a63@masked.com"",
+        ""name"": ""user_e003a8c4f7d7c9d03a9859b7d3a5a2dd""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_9a95a63@masked.com"",
+        ""name"": ""user_e003a8c4f7d7c9d03a9859b7d3a5a2dd""
+      }
+    ],
+    ""subject"": ""Jerry's story: High school teacher > Tech"",
+    ""to"": [
+      {
+        ""email"": ""user_8ef87fc@masked.com"",
+        ""name"": """"
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_8WiZaGEDCzsN1oSrwhMVUKO0xFAkZ16Jl5YHSFQ371H"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_ZD8QWCJfCfNgrTaDeSxePMc0KZA9zWTot9CamHb87UJ"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_73a0602594607b6bf74865b65b14a8ea"",
+  ""sequence_id"": null,
+  ""sequence_name"": null,
+  ""sequence_subscription_id"": null,
+  ""status"": ""sent"",
+  ""subject"": ""user_ad8b0afce86bd466ce9e80c0649d2a4c"",
+  ""template_id"": ""tmpl_JdR6bzm55hxjxq5pANZh4xPZqvj6gHgFycUTRWpFtgc"",
+  ""template_name"": ""PJ FT Confidence"",
+  ""thread_id"": ""acti_5A81hprj14oZ5pctdYY0kzYb80KLa0ep2tJA3DcVJ3A"",
+  ""to"": [
+    ""user_8ef87fc@masked.com""
+  ],
+  ""updated_by"": ""user_bIvwEVqazwdp4VFjtJRdOOthSsvx4ylfkNLqmbMWkma"",
+  ""updated_by_name"": ""user_3005b347129d801dc8c687e3bbcef2bb"",
+  ""user_id"": ""user_bIvwEVqazwdp4VFjtJRdOOthSsvx4ylfkNLqmbMWkma"",
+  ""user_name"": ""user_3005b347129d801dc8c687e3bbcef2bb"",
+  ""users"": []
+}",2026-06-06 11:01:26.809
