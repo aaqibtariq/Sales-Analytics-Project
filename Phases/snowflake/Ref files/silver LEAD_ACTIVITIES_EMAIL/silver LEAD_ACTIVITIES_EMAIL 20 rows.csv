@@ -1,0 +1,2493 @@
+LEAD_ID,ACTIVITY_AT,ATTACHMENTS_JSON,BODY_TEXT,DATE_CREATED,DATE_UPDATED,DIRECTION,ENVELOPE_JSON,SENDER_JSON,ACTIVITY_ID,OPENS_JSON,SENDER,STATUS,SUBJECT,JSON_PAYLOAD,USER_ID,USER_NAME,TEMPLATE_ID,TEMPLATE_NAME,DATE_SENT,HAS_REPLY,INSERT_DATE,UPDATE_DATE,MD5_HASH
+lead_fatNlZDVBwS6286QHwrJTffEOkTBlr1aAVMLoC513UP,2026-05-21 21:18:29.445,[],,2026-05-21 20:47:06.690,2026-05-21 21:18:31.322,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Thu, 21 May 2026 21:18:30 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_563c362@masked.com"",
+      ""name"": ""user_2761ec18281ab0e68fe03ee8e82dbbbc""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_563c362@masked.com"",
+      ""name"": ""user_2761ec18281ab0e68fe03ee8e82dbbbc""
+    }
+  ],
+  ""subject"": ""The math on staying in your current role another 12 months"",
+  ""to"": [
+    {
+      ""email"": ""user_dac2980@masked.com"",
+      ""name"": ""user_f556fa1587ac944cc2aaeef97bbc136a""
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_563c362@masked.com"",
+    ""name"": ""user_2761ec18281ab0e68fe03ee8e82dbbbc""
+  }
+]",acti_cNqoMDL8ZJZwpT0nv6hldOAXxJ53YKk1ZP9987je8N2,[],user_94160a38787d474a7465df763c3a4fbd,sent,user_ec21a73710efe7e3336499b24eadd545,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-05-21T21:18:29.445000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_e1U2QJTDHZopYw8DSOnJIP8MChZICpDVNURED7l3DHa"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-05-21T20:47:06.690000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-05-21T21:18:29.445000+00:00"",
+  ""date_updated"": ""2026-05-21T21:18:31.322000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_seVbTwPzfe8ZxIVx0CccoigO54aQzFNaqosISR3iDZn"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Thu, 21 May 2026 21:18:30 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_563c362@masked.com"",
+        ""name"": ""user_2761ec18281ab0e68fe03ee8e82dbbbc""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_563c362@masked.com"",
+        ""name"": ""user_2761ec18281ab0e68fe03ee8e82dbbbc""
+      }
+    ],
+    ""subject"": ""The math on staying in your current role another 12 months"",
+    ""to"": [
+      {
+        ""email"": ""user_dac2980@masked.com"",
+        ""name"": ""user_f556fa1587ac944cc2aaeef97bbc136a""
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_cNqoMDL8ZJZwpT0nv6hldOAXxJ53YKk1ZP9987je8N2"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_fatNlZDVBwS6286QHwrJTffEOkTBlr1aAVMLoC513UP"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_94160a38787d474a7465df763c3a4fbd"",
+  ""sequence_id"": ""seq_3KwdhfM5qWDbgylAZ6SkZh"",
+  ""sequence_name"": ""May 2026 - Memorial Day Promo Blast"",
+  ""sequence_subscription_id"": ""sub_2IsKVo9avF3g95uomZ0Taf"",
+  ""status"": ""sent"",
+  ""subject"": ""user_ec21a73710efe7e3336499b24eadd545"",
+  ""template_id"": ""tmpl_sL5v8CdnTYlqWCwDPxMiF77yBrDMWGqJSfpNi4iO1Xa"",
+  ""template_name"": ""Email 1: (Ice breaker)"",
+  ""thread_id"": ""acti_Ti8hQ4D9eVSR1EGy3NMhKbAUaJx9XNFpHu5dWkvCyOx"",
+  ""to"": [
+    ""user_b9d0369@masked.com""
+  ],
+  ""updated_by"": ""user_PoK4TyrqUWKkteWCxRUqSTCqtHqgHFk19K3IMC6D6WR"",
+  ""updated_by_name"": ""user_2761ec18281ab0e68fe03ee8e82dbbbc"",
+  ""user_id"": ""user_PoK4TyrqUWKkteWCxRUqSTCqtHqgHFk19K3IMC6D6WR"",
+  ""user_name"": ""user_2761ec18281ab0e68fe03ee8e82dbbbc"",
+  ""users"": []
+}",user_PoK4TyrqUWKkteWCxRUqSTCqtHqgHFk19K3IMC6D6WR,user_2761ec18281ab0e68fe03ee8e82dbbbc,tmpl_sL5v8CdnTYlqWCwDPxMiF77yBrDMWGqJSfpNi4iO1Xa,Email 1: (Ice breaker),2026-05-21 21:18:29.445,FALSE,2026-06-03 11:01:30.577,2026-07-01 12:30:18.206,f3f2e67e10ea293334d83c2acb87f117
+lead_Cf9Upava4pos1VAk23IBBlzQWZmbHVkv4uHOM01K1h9,2026-04-27 15:30:41.621,[],,2026-04-27 15:29:17.818,2026-04-28 04:28:08.218,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Mon, 27 Apr 2026 15:30:42 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_cd8f2b7@masked.com"",
+      ""name"": ""user_9f309f1c22a7d83f36ad6815eba6632c""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_cd8f2b7@masked.com"",
+      ""name"": ""user_9f309f1c22a7d83f36ad6815eba6632c""
+    }
+  ],
+  ""subject"": ""Have you seen this?"",
+  ""to"": [
+    {
+      ""email"": ""user_fad3472@masked.com"",
+      ""name"": ""user_b69fe04c9dc1f0bdf60d680ddff6697e""
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_cd8f2b7@masked.com"",
+    ""name"": ""user_9f309f1c22a7d83f36ad6815eba6632c""
+  }
+]",acti_Na6rzr31DOI5J3bFaAuC78gSCB1AUxGvAKjPKi2Xr4c,[],user_1877686fba1f96a803efa925f29b1271,sent,user_3ef4c1ca9beabbbabd2027c9e59b07ea,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-04-27T15:30:41.621000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_YXvC7lR0PZpZG8Eq5da9ri7dZiusr27Eb3Ph0nCdCLg"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-04-27T15:29:17.818000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-04-27T15:30:41.621000+00:00"",
+  ""date_updated"": ""2026-04-28T04:28:08.218000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_HKo8ChWKbIGa4iD5CUrYqya4p6AbvPJGuXLBpCuplva"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Mon, 27 Apr 2026 15:30:42 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_cd8f2b7@masked.com"",
+        ""name"": ""user_9f309f1c22a7d83f36ad6815eba6632c""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_cd8f2b7@masked.com"",
+        ""name"": ""user_9f309f1c22a7d83f36ad6815eba6632c""
+      }
+    ],
+    ""subject"": ""Have you seen this?"",
+    ""to"": [
+      {
+        ""email"": ""user_fad3472@masked.com"",
+        ""name"": ""user_b69fe04c9dc1f0bdf60d680ddff6697e""
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_Na6rzr31DOI5J3bFaAuC78gSCB1AUxGvAKjPKi2Xr4c"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_Cf9Upava4pos1VAk23IBBlzQWZmbHVkv4uHOM01K1h9"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_1877686fba1f96a803efa925f29b1271"",
+  ""sequence_id"": ""seq_1U3Clpu2cjPUOsKvpzdu9p"",
+  ""sequence_name"": ""April 2026 Aly Social Proof Nurture Blast"",
+  ""sequence_subscription_id"": ""sub_5tX05EQKifeqC8tMdkxoWp"",
+  ""status"": ""sent"",
+  ""subject"": ""user_3ef4c1ca9beabbbabd2027c9e59b07ea"",
+  ""template_id"": ""tmpl_oi1QxlcpWcFbOcjJUVNMNXsxCAfZViTlUwkm95Gs3qq"",
+  ""template_name"": ""OliAli ReActiv Day 3 EMAIL"",
+  ""thread_id"": ""acti_lVwujkBBWRN4u4UnN25OgEszn0Xrcm5GXJHQrzlrqDG"",
+  ""to"": [
+    ""user_5efe0f8@masked.com""
+  ],
+  ""updated_by"": ""user_K832YXZSkywK6kBUpWLah4ZrZlSgOxecw2jjsvdrYNa"",
+  ""updated_by_name"": ""user_6b819bca77a690f65279b48dd406d9e8"",
+  ""user_id"": ""user_K832YXZSkywK6kBUpWLah4ZrZlSgOxecw2jjsvdrYNa"",
+  ""user_name"": ""user_6b819bca77a690f65279b48dd406d9e8"",
+  ""users"": []
+}",user_K832YXZSkywK6kBUpWLah4ZrZlSgOxecw2jjsvdrYNa,user_6b819bca77a690f65279b48dd406d9e8,tmpl_oi1QxlcpWcFbOcjJUVNMNXsxCAfZViTlUwkm95Gs3qq,OliAli ReActiv Day 3 EMAIL,2026-04-27 15:30:41.621,FALSE,2026-05-16 11:01:25.650,2026-07-01 12:30:18.206,09a7d73489fdcbe8390e2c335a79ae4a
+lead_ye1WjbR4iSFC4sTUxRzlr1MPjNotQzqR2rP3xzMXfIX,2026-06-18 12:45:56.354,[],,2026-06-17 22:16:35.310,2026-06-18 12:45:58.473,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Thu, 18 Jun 2026 12:45:57 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_208f498@masked.com"",
+      ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_208f498@masked.com"",
+      ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+    }
+  ],
+  ""subject"": ""Final numbers before June 1st"",
+  ""to"": [
+    {
+      ""email"": ""user_75ff174@masked.com"",
+      ""name"": ""user_4d75801613a728a7a437c17d5cf43490""
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_208f498@masked.com"",
+    ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+  }
+]",acti_gVN3KMidKTlegch551GULA3QCsCy4q9fLXGlJHBavAJ,[],user_dd583758b68aa20561fed6404cde8ff6,sent,user_1a92dfeabbd9a85a97ee9e16f60e07c1,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-06-18T12:45:56.354000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_GUXHMZQy1thlkieX61le6uCOyjpePQUFtAQgDSznL34"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-06-17T22:16:35.310000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-06-18T12:45:56.354000+00:00"",
+  ""date_updated"": ""2026-06-18T12:45:58.473000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_3qx8wqD4ktDGFWBzWpgERlVz4snCwdjRBnlmhj2UFRa"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Thu, 18 Jun 2026 12:45:57 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_208f498@masked.com"",
+        ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_208f498@masked.com"",
+        ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+      }
+    ],
+    ""subject"": ""Final numbers before June 1st"",
+    ""to"": [
+      {
+        ""email"": ""user_75ff174@masked.com"",
+        ""name"": ""user_4d75801613a728a7a437c17d5cf43490""
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_gVN3KMidKTlegch551GULA3QCsCy4q9fLXGlJHBavAJ"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_ye1WjbR4iSFC4sTUxRzlr1MPjNotQzqR2rP3xzMXfIX"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_dd583758b68aa20561fed6404cde8ff6"",
+  ""sequence_id"": ""seq_3us1eE81GHJ3SRsQpPuUSd"",
+  ""sequence_name"": ""Josh Astle Tweak- DONT USE- June 2026 - Promo Blast"",
+  ""sequence_subscription_id"": ""sub_0YrM88o4oT70bfY6OOIRX6"",
+  ""status"": ""sent"",
+  ""subject"": ""user_1a92dfeabbd9a85a97ee9e16f60e07c1"",
+  ""template_id"": ""tmpl_4gswSwX7edrfEyA2tyRFiGym1DovfDvA5l1EReEmeJi"",
+  ""template_name"": ""Email 3: (Wrap up) June 2026"",
+  ""thread_id"": ""acti_OUBzqQH78d3QX25jxJ10DVZhU0Nn9ce183ZJWL3fTHN"",
+  ""to"": [
+    ""user_315cdd3@masked.com""
+  ],
+  ""updated_by"": ""user_IpN6a8NkhneDdypH3husgkeSXhltskfJQSjBOhqNxjS"",
+  ""updated_by_name"": ""user_5718e0bcf6c3b8f43f8f935959f9d2bc"",
+  ""user_id"": ""user_IpN6a8NkhneDdypH3husgkeSXhltskfJQSjBOhqNxjS"",
+  ""user_name"": ""user_5718e0bcf6c3b8f43f8f935959f9d2bc"",
+  ""users"": []
+}",user_IpN6a8NkhneDdypH3husgkeSXhltskfJQSjBOhqNxjS,user_5718e0bcf6c3b8f43f8f935959f9d2bc,tmpl_4gswSwX7edrfEyA2tyRFiGym1DovfDvA5l1EReEmeJi,Email 3: (Wrap up) June 2026,2026-06-18 12:45:56.354,FALSE,2026-06-25 11:01:29.790,2026-07-01 12:30:18.206,93bbc61ef5e4b914969b8718f2930774
+lead_HVvZ7Hvz6PMMMEGY7D2HNKXKZfMeaTfOzsKeWHmP2Ib,2026-06-13 17:04:04.207,[],,2026-06-13 17:03:45.083,2026-06-14 09:01:11.770,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Sat, 13 Jun 2026 17:04:04 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_82b18b1@masked.com"",
+      ""name"": ""user_817abeea5bd6d085d196bcba689e663a""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_82b18b1@masked.com"",
+      ""name"": ""user_817abeea5bd6d085d196bcba689e663a""
+    }
+  ],
+  ""subject"": ""Hopping on zoom?"",
+  ""to"": [
+    {
+      ""email"": ""user_6ab5940@masked.com"",
+      ""name"": """"
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_82b18b1@masked.com"",
+    ""name"": ""user_817abeea5bd6d085d196bcba689e663a""
+  }
+]",acti_ukl6XkA2skPli1nzDTyNc9mBJi5UmSZ9csHGFA55bpk,[],user_f0a87ba192847c6f818f246224164f36,sent,user_d56f7720b7e0a8518fa90baff2c9a905,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-06-13T17:04:04.207000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_C651U8dGyn4dLGbb6oJo2qOjLSerJEnHfoLTY2rOmw5"",
+  ""created_by"": ""user_ZoVyFeAqULsKcg8CpxkK23O4r4I12YZjJXDorCO3099"",
+  ""created_by_name"": ""user_817abeea5bd6d085d196bcba689e663a"",
+  ""date_created"": ""2026-06-13T17:03:45.083000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-06-13T17:04:04.207000+00:00"",
+  ""date_updated"": ""2026-06-14T09:01:11.770000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_op9Rk2lwPKDAMVK8EuvyXeyLw4w1nMcaajw6o3rTv1B"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Sat, 13 Jun 2026 17:04:04 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_82b18b1@masked.com"",
+        ""name"": ""user_817abeea5bd6d085d196bcba689e663a""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_82b18b1@masked.com"",
+        ""name"": ""user_817abeea5bd6d085d196bcba689e663a""
+      }
+    ],
+    ""subject"": ""Hopping on zoom?"",
+    ""to"": [
+      {
+        ""email"": ""user_6ab5940@masked.com"",
+        ""name"": """"
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_ukl6XkA2skPli1nzDTyNc9mBJi5UmSZ9csHGFA55bpk"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_HVvZ7Hvz6PMMMEGY7D2HNKXKZfMeaTfOzsKeWHmP2Ib"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_f0a87ba192847c6f818f246224164f36"",
+  ""sequence_id"": null,
+  ""sequence_name"": null,
+  ""sequence_subscription_id"": null,
+  ""status"": ""sent"",
+  ""subject"": ""user_d56f7720b7e0a8518fa90baff2c9a905"",
+  ""template_id"": ""tmpl_tttlkn6d8YJ1UT1zmeQA0wDs97uyWI076tXCWnkdItg"",
+  ""template_name"": ""chor - zoom"",
+  ""thread_id"": ""acti_pTZQL8mCjV6KERgvcqC3WeiDqDUBWVZuAbE8BfeS5pb"",
+  ""to"": [
+    ""user_6ab5940@masked.com""
+  ],
+  ""updated_by"": ""user_ZoVyFeAqULsKcg8CpxkK23O4r4I12YZjJXDorCO3099"",
+  ""updated_by_name"": ""user_817abeea5bd6d085d196bcba689e663a"",
+  ""user_id"": ""user_ZoVyFeAqULsKcg8CpxkK23O4r4I12YZjJXDorCO3099"",
+  ""user_name"": ""user_817abeea5bd6d085d196bcba689e663a"",
+  ""users"": []
+}",user_ZoVyFeAqULsKcg8CpxkK23O4r4I12YZjJXDorCO3099,user_817abeea5bd6d085d196bcba689e663a,tmpl_tttlkn6d8YJ1UT1zmeQA0wDs97uyWI076tXCWnkdItg,chor - zoom,2026-06-13 17:04:04.207,FALSE,2026-06-25 11:01:29.790,2026-07-01 12:30:18.206,db15463e02b0ae5e19153c63d1f732a5
+lead_dpKjdCuX1vOEoXBMdIFJTYTdFmnAk3sChDQQL5SMZRC,2026-05-26 23:29:00.293,[],,2026-05-26 23:28:07.701,2026-05-26 23:29:01.733,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Tue, 26 May 2026 23:29:00 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_208f498@masked.com"",
+      ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_208f498@masked.com"",
+      ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+    }
+  ],
+  ""subject"": ""What would a 55% increase look like for you?"",
+  ""to"": [
+    {
+      ""email"": ""user_e39fb6c@masked.com"",
+      ""name"": ""user_e4d3b264f4c78d25a207e3532f5d96ed""
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_208f498@masked.com"",
+    ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+  }
+]",acti_yRVWOm34naqqhTBMY7zvNouKz8YN44ykdQeoGluFkcQ,[],user_dd583758b68aa20561fed6404cde8ff6,sent,user_a4a1b85c74e8ff64804ad61910c0856b,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-05-26T23:29:00.293000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_lfeWiKji0OsQkRWYYYYkn826LPlaaIwLfo4YfijOzpK"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-05-26T23:28:07.701000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-05-26T23:29:00.293000+00:00"",
+  ""date_updated"": ""2026-05-26T23:29:01.733000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_3qx8wqD4ktDGFWBzWpgERlVz4snCwdjRBnlmhj2UFRa"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Tue, 26 May 2026 23:29:00 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_208f498@masked.com"",
+        ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_208f498@masked.com"",
+        ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+      }
+    ],
+    ""subject"": ""What would a 55% increase look like for you?"",
+    ""to"": [
+      {
+        ""email"": ""user_e39fb6c@masked.com"",
+        ""name"": ""user_e4d3b264f4c78d25a207e3532f5d96ed""
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_yRVWOm34naqqhTBMY7zvNouKz8YN44ykdQeoGluFkcQ"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_dpKjdCuX1vOEoXBMdIFJTYTdFmnAk3sChDQQL5SMZRC"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_dd583758b68aa20561fed6404cde8ff6"",
+  ""sequence_id"": ""seq_3KwdhfM5qWDbgylAZ6SkZh"",
+  ""sequence_name"": ""May 2026 - Memorial Day Promo Blast"",
+  ""sequence_subscription_id"": ""sub_6FjSspR7fWBW5WXchaFVsq"",
+  ""status"": ""sent"",
+  ""subject"": ""user_a4a1b85c74e8ff64804ad61910c0856b"",
+  ""template_id"": ""tmpl_JJPR95MzxJRlOgluLORKN88JsvThU40ndI1Y2gU3Ex5"",
+  ""template_name"": ""Email 2: (Offer reveal)"",
+  ""thread_id"": ""acti_SfoKGAQF3GUZtwJZBhQyo5bsDnBECwIjkZiZFRQdHrX"",
+  ""to"": [
+    ""user_2fd926b@masked.com""
+  ],
+  ""updated_by"": ""user_IpN6a8NkhneDdypH3husgkeSXhltskfJQSjBOhqNxjS"",
+  ""updated_by_name"": ""user_5718e0bcf6c3b8f43f8f935959f9d2bc"",
+  ""user_id"": ""user_IpN6a8NkhneDdypH3husgkeSXhltskfJQSjBOhqNxjS"",
+  ""user_name"": ""user_5718e0bcf6c3b8f43f8f935959f9d2bc"",
+  ""users"": []
+}",user_IpN6a8NkhneDdypH3husgkeSXhltskfJQSjBOhqNxjS,user_5718e0bcf6c3b8f43f8f935959f9d2bc,tmpl_JJPR95MzxJRlOgluLORKN88JsvThU40ndI1Y2gU3Ex5,Email 2: (Offer reveal),2026-05-26 23:29:00.293,FALSE,2026-06-03 11:01:30.577,2026-07-01 12:30:18.206,c83006bc5651cfe25e6fae44ee5c0d93
+lead_3bmwGydJHBwiUGeEipcRYvcBVZx0uXR2NylIkqQ0MJm,2026-04-01 12:05:57.244,[],,2026-04-01 12:05:43.182,2026-05-19 14:03:35.845,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Wed, 01 Apr 2026 12:05:57 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_792a5da@masked.com"",
+      ""name"": ""user_ece7c9193b6816d57c3f997181c7c99c""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_792a5da@masked.com"",
+      ""name"": ""user_ece7c9193b6816d57c3f997181c7c99c""
+    }
+  ],
+  ""subject"": ""Regain access to your Slack channel"",
+  ""to"": [
+    {
+      ""email"": ""user_92ad35e@masked.com"",
+      ""name"": """"
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_792a5da@masked.com"",
+    ""name"": ""user_ece7c9193b6816d57c3f997181c7c99c""
+  }
+]",acti_yCwg5h5DpC7j1KHn241Wd5YSRuisr6YadQ6VGckY24Z,[],user_4df69577c3a3ab5f18abc6c8fc974d93,sent,user_6aa510f058fefc72efcc095e980cfcc2,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-04-01T12:05:57.244000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_GqP02kfn9GajOlZM9iTglYauOfOBtk9Arvq58GwQ6o5"",
+  ""created_by"": ""user_EeokSIzCxIuhq995J9ztFiqTH8ImGnd8XQD7JHxxhTe"",
+  ""created_by_name"": ""user_ece7c9193b6816d57c3f997181c7c99c"",
+  ""date_created"": ""2026-04-01T12:05:43.182000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-04-01T12:05:57.244000+00:00"",
+  ""date_updated"": ""2026-05-19T14:03:35.845000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_EG488g2hM0t6FjT4UGdpVWuZLRYOnmXWNTk08itXMDz"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Wed, 01 Apr 2026 12:05:57 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_792a5da@masked.com"",
+        ""name"": ""user_ece7c9193b6816d57c3f997181c7c99c""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_792a5da@masked.com"",
+        ""name"": ""user_ece7c9193b6816d57c3f997181c7c99c""
+      }
+    ],
+    ""subject"": ""Regain access to your Slack channel"",
+    ""to"": [
+      {
+        ""email"": ""user_92ad35e@masked.com"",
+        ""name"": """"
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": true,
+  ""id"": ""acti_yCwg5h5DpC7j1KHn241Wd5YSRuisr6YadQ6VGckY24Z"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_3bmwGydJHBwiUGeEipcRYvcBVZx0uXR2NylIkqQ0MJm"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_4df69577c3a3ab5f18abc6c8fc974d93"",
+  ""sequence_id"": null,
+  ""sequence_name"": null,
+  ""sequence_subscription_id"": null,
+  ""status"": ""sent"",
+  ""subject"": ""user_6aa510f058fefc72efcc095e980cfcc2"",
+  ""template_id"": ""tmpl_68dFXhN7JdrqWlsqp7ziczWjWOgGj7SzsmAGd0JwTdo"",
+  ""template_name"": ""Reinvite to Slack"",
+  ""thread_id"": ""acti_3ZihvK3lrxCznYpEY2JXhxDK4mgFtxtOyHudD3jnurU"",
+  ""to"": [
+    ""user_92ad35e@masked.com""
+  ],
+  ""updated_by"": ""user_EeokSIzCxIuhq995J9ztFiqTH8ImGnd8XQD7JHxxhTe"",
+  ""updated_by_name"": ""user_ece7c9193b6816d57c3f997181c7c99c"",
+  ""user_id"": ""user_EeokSIzCxIuhq995J9ztFiqTH8ImGnd8XQD7JHxxhTe"",
+  ""user_name"": ""user_ece7c9193b6816d57c3f997181c7c99c"",
+  ""users"": []
+}",user_EeokSIzCxIuhq995J9ztFiqTH8ImGnd8XQD7JHxxhTe,user_ece7c9193b6816d57c3f997181c7c99c,tmpl_68dFXhN7JdrqWlsqp7ziczWjWOgGj7SzsmAGd0JwTdo,Reinvite to Slack,2026-04-01 12:05:57.244,TRUE,2026-05-31 11:01:12.599,2026-07-01 12:30:18.206,6f40516ae2e8b123db95145a4f3e505b
+lead_LFqSeIEYsHySaiFe5sOCSEsfNHGzSH5VVzrYnyFhg30,2026-04-28 22:28:46.263,[],,2026-04-28 22:28:46.263,2026-04-28 22:28:50.010,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Tue, 28 Apr 2026 22:28:47 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_203ed10@masked.com"",
+      ""name"": ""user_15b5943e59ca209dad261abaa4017958""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_203ed10@masked.com"",
+      ""name"": ""user_15b5943e59ca209dad261abaa4017958""
+    }
+  ],
+  ""subject"": ""Have you seen this?"",
+  ""to"": [
+    {
+      ""email"": ""user_d6d6a4a@masked.com"",
+      ""name"": ""user_38bd5c3df18e99264a4bfbd1265e2fa8""
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_203ed10@masked.com"",
+    ""name"": ""user_15b5943e59ca209dad261abaa4017958""
+  }
+]",acti_pWopTOiM8mBUf8cWa3g2UtaDMuOrroKrGgaC0nPhGYA,[],user_75d0933d4bc9f4ad31a7ea83fc59f5a0,sent,user_3ef4c1ca9beabbbabd2027c9e59b07ea,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-04-28T22:28:46.263000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_lp263mH7Ksx6E2nFrNoQCpXcjH0aL9YqbU7OQxOkxI5"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-04-28T22:28:46.263000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-04-28T22:28:46.263000+00:00"",
+  ""date_updated"": ""2026-04-28T22:28:50.010000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_NyNPTeqHwQse2kocRlscvGYYfQxrxAEGKxeOds7UUX1"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Tue, 28 Apr 2026 22:28:47 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_203ed10@masked.com"",
+        ""name"": ""user_15b5943e59ca209dad261abaa4017958""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_203ed10@masked.com"",
+        ""name"": ""user_15b5943e59ca209dad261abaa4017958""
+      }
+    ],
+    ""subject"": ""Have you seen this?"",
+    ""to"": [
+      {
+        ""email"": ""user_d6d6a4a@masked.com"",
+        ""name"": ""user_38bd5c3df18e99264a4bfbd1265e2fa8""
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_pWopTOiM8mBUf8cWa3g2UtaDMuOrroKrGgaC0nPhGYA"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_LFqSeIEYsHySaiFe5sOCSEsfNHGzSH5VVzrYnyFhg30"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_75d0933d4bc9f4ad31a7ea83fc59f5a0"",
+  ""sequence_id"": ""seq_1U3Clpu2cjPUOsKvpzdu9p"",
+  ""sequence_name"": ""April 2026 Aly Social Proof Nurture Blast"",
+  ""sequence_subscription_id"": ""sub_6lnAxGSequeAkCFsR3ynnv"",
+  ""status"": ""sent"",
+  ""subject"": ""user_3ef4c1ca9beabbbabd2027c9e59b07ea"",
+  ""template_id"": ""tmpl_oi1QxlcpWcFbOcjJUVNMNXsxCAfZViTlUwkm95Gs3qq"",
+  ""template_name"": ""OliAli ReActiv Day 3 EMAIL"",
+  ""thread_id"": ""acti_hiK9wlsvmlJs7cwoKJQeqG9IH7L44IjSkPimb04IGHz"",
+  ""to"": [
+    ""user_717e8fd@masked.com""
+  ],
+  ""updated_by"": ""user_dPKOz1w9oIu3SRXjsOkMFDOHrXz96nyD6CvPCLdId1c"",
+  ""updated_by_name"": ""user_15b5943e59ca209dad261abaa4017958"",
+  ""user_id"": ""user_dPKOz1w9oIu3SRXjsOkMFDOHrXz96nyD6CvPCLdId1c"",
+  ""user_name"": ""user_15b5943e59ca209dad261abaa4017958"",
+  ""users"": []
+}",user_dPKOz1w9oIu3SRXjsOkMFDOHrXz96nyD6CvPCLdId1c,user_15b5943e59ca209dad261abaa4017958,tmpl_oi1QxlcpWcFbOcjJUVNMNXsxCAfZViTlUwkm95Gs3qq,OliAli ReActiv Day 3 EMAIL,2026-04-28 22:28:46.263,FALSE,2026-06-02 11:01:18.299,2026-07-01 12:30:18.206,23653668841eaf50f6af434d222bac84
+lead_qNw0SEbl4iRqLUhwoXBsADns56AxaJDCGZafzwh9ycT,2026-04-14 21:49:02.389,[],,2026-04-14 21:48:27.957,2026-04-14 21:49:04.037,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Tue, 14 Apr 2026 21:49:03 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_c08210b@masked.com"",
+      ""name"": ""user_ecd96ad9c7c63a8a744bc4d9bf326d9a""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_c08210b@masked.com"",
+      ""name"": ""user_ecd96ad9c7c63a8a744bc4d9bf326d9a""
+    }
+  ],
+  ""subject"": ""Azure + Databricks in 1 hour (Free training)"",
+  ""to"": [
+    {
+      ""email"": ""user_2810b18@masked.com"",
+      ""name"": ""user_e394525d3c08410607e449d7a19239f6""
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_c08210b@masked.com"",
+    ""name"": ""user_ecd96ad9c7c63a8a744bc4d9bf326d9a""
+  }
+]",acti_xIjZvLhJw2TBWju1vVXdDOfBwqOkF2StSfZ1djlKppp,[],user_e9577b4bb7b3d4d004724c13015b776e,sent,user_73654fd1db8ba905ab4f34a029021bba,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-04-14T21:49:02.389000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_CCtaqRQM6tAcYQCYwbQ6YFxqOUowG5lIybUNYhK8X0E"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-04-14T21:48:27.957000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-04-14T21:49:02.389000+00:00"",
+  ""date_updated"": ""2026-04-14T21:49:04.037000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_xbyztOWYiVOK4NjZP8ek6BUD10dJxvrI9RDuijIKBUK"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Tue, 14 Apr 2026 21:49:03 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_c08210b@masked.com"",
+        ""name"": ""user_ecd96ad9c7c63a8a744bc4d9bf326d9a""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_c08210b@masked.com"",
+        ""name"": ""user_ecd96ad9c7c63a8a744bc4d9bf326d9a""
+      }
+    ],
+    ""subject"": ""Azure + Databricks in 1 hour (Free training)"",
+    ""to"": [
+      {
+        ""email"": ""user_2810b18@masked.com"",
+        ""name"": ""user_e394525d3c08410607e449d7a19239f6""
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_xIjZvLhJw2TBWju1vVXdDOfBwqOkF2StSfZ1djlKppp"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_qNw0SEbl4iRqLUhwoXBsADns56AxaJDCGZafzwh9ycT"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_e9577b4bb7b3d4d004724c13015b776e"",
+  ""sequence_id"": ""seq_2tHhqOTayns2u1gu1VbVzn"",
+  ""sequence_name"": ""New Opt-In- SMS Sequence #5 VERSION 2 - Segment 1: Never Booked a Setter Call (+Emails +free resources)"",
+  ""sequence_subscription_id"": ""sub_3dLQ9puJ8foIDkNKMvSt4s"",
+  ""status"": ""sent"",
+  ""subject"": ""user_73654fd1db8ba905ab4f34a029021bba"",
+  ""template_id"": ""tmpl_e1FTTAhMcmDW3Li1tQu0pKQDQmQQxl9Qzcwl9Ftp1Wx"",
+  ""template_name"": ""Segment 1: NBASC - Email #5 – Day 23"",
+  ""thread_id"": ""acti_40Z9BWtmThZND36DQBNVcHswziA0KkeRC5JAmsmM3CV"",
+  ""to"": [
+    ""user_b89f78a@masked.com""
+  ],
+  ""updated_by"": ""user_1x5aaG5n9Tk5VE42qtmbInArqpssoifWhf6MQz8MLYM"",
+  ""updated_by_name"": ""user_75613a3d80a70bc160355cc67df557d0"",
+  ""user_id"": ""user_1x5aaG5n9Tk5VE42qtmbInArqpssoifWhf6MQz8MLYM"",
+  ""user_name"": ""user_75613a3d80a70bc160355cc67df557d0"",
+  ""users"": []
+}",user_1x5aaG5n9Tk5VE42qtmbInArqpssoifWhf6MQz8MLYM,user_75613a3d80a70bc160355cc67df557d0,tmpl_e1FTTAhMcmDW3Li1tQu0pKQDQmQQxl9Qzcwl9Ftp1Wx,Segment 1: NBASC - Email #5 – Day 23,2026-04-14 21:49:02.389,FALSE,2026-06-11 11:01:25.920,2026-07-01 12:30:18.206,e92037d9ecb738e1a4d23d837fe9f14b
+lead_Kk6ni2aZVWQS12eD00sp9HhckMIrp9DCe94giOv06VQ,2026-03-19 20:17:17.189,[],,2026-03-18 18:22:37.089,2026-03-19 20:17:18.390,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Thu, 19 Mar 2026 20:17:17 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_4211f7b@masked.com"",
+      ""name"": ""user_33dda8805a572eff1aa3cc37c9a67c3c""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_4211f7b@masked.com"",
+      ""name"": ""user_33dda8805a572eff1aa3cc37c9a67c3c""
+    }
+  ],
+  ""subject"": ""Thank you for your feedback, here is how you helped us | DE Academy"",
+  ""to"": [
+    {
+      ""email"": ""user_5e7a365@masked.com"",
+      ""name"": ""user_e1677c0c3e909663ca4152834cb2cd3f""
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_4211f7b@masked.com"",
+    ""name"": ""user_33dda8805a572eff1aa3cc37c9a67c3c""
+  }
+]",acti_rdjQ1oEvUFSGAYk34Cdio3Qqbe6An9eUc6E42lMxshC,[],user_cb9215087207334857238260c74da2a9,sent,user_6222e15e72fd7d029ab559cc5efee69a,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-03-19T20:17:17.189000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_PyGElXWKcyIXiMGwaFloTosB3xMd7KUbB9FBGEe21aM"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-03-18T18:22:37.089000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-03-19T20:17:17.189000+00:00"",
+  ""date_updated"": ""2026-03-19T20:17:18.390000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_BsMWibHIcvRMw0ZmDedMQYObFblIA1ugjI2UZQYM4vs"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Thu, 19 Mar 2026 20:17:17 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_4211f7b@masked.com"",
+        ""name"": ""user_33dda8805a572eff1aa3cc37c9a67c3c""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_4211f7b@masked.com"",
+        ""name"": ""user_33dda8805a572eff1aa3cc37c9a67c3c""
+      }
+    ],
+    ""subject"": ""Thank you for your feedback, here is how you helped us | DE Academy"",
+    ""to"": [
+      {
+        ""email"": ""user_5e7a365@masked.com"",
+        ""name"": ""user_e1677c0c3e909663ca4152834cb2cd3f""
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_rdjQ1oEvUFSGAYk34Cdio3Qqbe6An9eUc6E42lMxshC"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_Kk6ni2aZVWQS12eD00sp9HhckMIrp9DCe94giOv06VQ"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_cb9215087207334857238260c74da2a9"",
+  ""sequence_id"": ""seq_5bxH3Y8bxywX12fXK1V3qf"",
+  ""sequence_name"": ""Feedback thanks and follow-up"",
+  ""sequence_subscription_id"": ""sub_5aXYMBJ1mUJexynlKQIElN"",
+  ""status"": ""sent"",
+  ""subject"": ""user_6222e15e72fd7d029ab559cc5efee69a"",
+  ""template_id"": ""tmpl_qReMTlaIfjhIbIVQnB8hBzd54qPVj23upEiMh7wvr9k"",
+  ""template_name"": ""Feedback Thanks March 2026"",
+  ""thread_id"": ""acti_XmR6yzI2gAHkn8abcQSEswqhLS9clnpo8phIb65CUoj"",
+  ""to"": [
+    ""user_4a5dc73@masked.com""
+  ],
+  ""updated_by"": ""user_5VrmS9AdRpauDy7ZQBjzAfoROLJVzO0ZEsXf0u3RvD5"",
+  ""updated_by_name"": ""user_33dda8805a572eff1aa3cc37c9a67c3c"",
+  ""user_id"": ""user_5VrmS9AdRpauDy7ZQBjzAfoROLJVzO0ZEsXf0u3RvD5"",
+  ""user_name"": ""user_33dda8805a572eff1aa3cc37c9a67c3c"",
+  ""users"": []
+}",user_5VrmS9AdRpauDy7ZQBjzAfoROLJVzO0ZEsXf0u3RvD5,user_33dda8805a572eff1aa3cc37c9a67c3c,tmpl_qReMTlaIfjhIbIVQnB8hBzd54qPVj23upEiMh7wvr9k,Feedback Thanks March 2026,2026-03-19 20:17:17.189,FALSE,2026-05-18 11:01:17.513,2026-07-01 12:30:18.206,09747e1b75351cd2377e44a07d05023f
+lead_M4sGiCJuxHIEtXYmgjDxy3yGwDUT81hCf95evawJkKb,2026-06-02 23:49:56.626,[],,2026-06-02 23:49:35.572,2026-06-02 23:49:57.990,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Tue, 02 Jun 2026 23:49:57 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_b84448a@masked.com"",
+      ""name"": ""user_a8a96f94add8fe418f964354350842d5""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_b84448a@masked.com"",
+      ""name"": ""user_a8a96f94add8fe418f964354350842d5""
+    }
+  ],
+  ""subject"": ""most viewed training on Snowflake (free)"",
+  ""to"": [
+    {
+      ""email"": ""user_047bca4@masked.com"",
+      ""name"": ""user_5fa494d4e60e1e6a7e4180965d8b7a4b""
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_b84448a@masked.com"",
+    ""name"": ""user_a8a96f94add8fe418f964354350842d5""
+  }
+]",acti_vzkuhGcV4FQWtZOUby88SNVaYG4YKVyvJ3DE4R0KMtP,[],user_305b6a6eb741b9b32e7ed9efc8fe6b5e,sent,user_8069c5b361c5c9c748573fefffcb2622,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-06-02T23:49:56.626000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_G6kyzllqlAm3fqCLfeSamafTjdRmWlenjqBtkmfKenZ"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-06-02T23:49:35.572000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-06-02T23:49:56.626000+00:00"",
+  ""date_updated"": ""2026-06-02T23:49:57.990000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_8Eq1awR1sPJsm0Scdo9PVQrailX4rGlnlnnd8PPspjC"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Tue, 02 Jun 2026 23:49:57 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_b84448a@masked.com"",
+        ""name"": ""user_a8a96f94add8fe418f964354350842d5""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_b84448a@masked.com"",
+        ""name"": ""user_a8a96f94add8fe418f964354350842d5""
+      }
+    ],
+    ""subject"": ""most viewed training on Snowflake (free)"",
+    ""to"": [
+      {
+        ""email"": ""user_047bca4@masked.com"",
+        ""name"": ""user_5fa494d4e60e1e6a7e4180965d8b7a4b""
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_vzkuhGcV4FQWtZOUby88SNVaYG4YKVyvJ3DE4R0KMtP"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_M4sGiCJuxHIEtXYmgjDxy3yGwDUT81hCf95evawJkKb"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_305b6a6eb741b9b32e7ed9efc8fe6b5e"",
+  ""sequence_id"": ""seq_2tHhqOTayns2u1gu1VbVzn"",
+  ""sequence_name"": ""New Opt-In- SMS Sequence #5 VERSION 2 - Segment 1: Never Booked a Setter Call (+Emails +free resources)"",
+  ""sequence_subscription_id"": ""sub_5I4IHcnGdyErQRp7L1wOzG"",
+  ""status"": ""sent"",
+  ""subject"": ""user_8069c5b361c5c9c748573fefffcb2622"",
+  ""template_id"": ""tmpl_pysseb8jReits6phEuEpZPU5WsIBLJZksi1TsA41fxp"",
+  ""template_name"": ""Segment 1: NBASC - Email #3 – Day 11"",
+  ""thread_id"": ""acti_crOBGhTxOXgLij0VBkcIQpjq9i8duYyi634CxfTFPI8"",
+  ""to"": [
+    ""user_c936fd7@masked.com""
+  ],
+  ""updated_by"": ""user_eB6Y3KqgZ0MR4J6ql9IjqavTM8QDUyFY6zrrH4leArT"",
+  ""updated_by_name"": ""user_a8a96f94add8fe418f964354350842d5"",
+  ""user_id"": ""user_eB6Y3KqgZ0MR4J6ql9IjqavTM8QDUyFY6zrrH4leArT"",
+  ""user_name"": ""user_a8a96f94add8fe418f964354350842d5"",
+  ""users"": []
+}",user_eB6Y3KqgZ0MR4J6ql9IjqavTM8QDUyFY6zrrH4leArT,user_a8a96f94add8fe418f964354350842d5,tmpl_pysseb8jReits6phEuEpZPU5WsIBLJZksi1TsA41fxp,Segment 1: NBASC - Email #3 – Day 11,2026-06-02 23:49:56.626,FALSE,2026-06-25 11:01:29.790,2026-07-01 12:30:18.206,934ecd9b54a3e3c1f1c9f64115bc2cd7
+lead_H5Rzl1IEU3t0gQjfjtRL34W6q370WdjpE9cu1AHCoDo,2026-05-24 23:28:01.496,[],,2026-05-24 23:26:43.684,2026-05-24 23:28:05.645,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Sun, 24 May 2026 23:28:02 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_c08210b@masked.com"",
+      ""name"": ""user_ecd96ad9c7c63a8a744bc4d9bf326d9a""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_c08210b@masked.com"",
+      ""name"": ""user_ecd96ad9c7c63a8a744bc4d9bf326d9a""
+    }
+  ],
+  ""subject"": ""Should I close this out?"",
+  ""to"": [
+    {
+      ""email"": ""user_e1dabbb@masked.com"",
+      ""name"": ""user_594a9a9b16ddc681f4551b5ac51008d2""
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_c08210b@masked.com"",
+    ""name"": ""user_ecd96ad9c7c63a8a744bc4d9bf326d9a""
+  }
+]",acti_UnZ9Um0CBEh2zH5kmVMfW4Ks0xvSuOqNJfi4nPtPdTi,[],user_e9577b4bb7b3d4d004724c13015b776e,sent,user_22d4b9d8190da1694f01007c4e208d4b,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-05-24T23:28:01.496000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_87e1aB3r9G3n9kStJy9d0DRpokzaYdx6vVzWkFow6NN"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-05-24T23:26:43.684000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-05-24T23:28:01.496000+00:00"",
+  ""date_updated"": ""2026-05-24T23:28:05.645000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_xbyztOWYiVOK4NjZP8ek6BUD10dJxvrI9RDuijIKBUK"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Sun, 24 May 2026 23:28:02 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_c08210b@masked.com"",
+        ""name"": ""user_ecd96ad9c7c63a8a744bc4d9bf326d9a""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_c08210b@masked.com"",
+        ""name"": ""user_ecd96ad9c7c63a8a744bc4d9bf326d9a""
+      }
+    ],
+    ""subject"": ""Should I close this out?"",
+    ""to"": [
+      {
+        ""email"": ""user_e1dabbb@masked.com"",
+        ""name"": ""user_594a9a9b16ddc681f4551b5ac51008d2""
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_UnZ9Um0CBEh2zH5kmVMfW4Ks0xvSuOqNJfi4nPtPdTi"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_H5Rzl1IEU3t0gQjfjtRL34W6q370WdjpE9cu1AHCoDo"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_e9577b4bb7b3d4d004724c13015b776e"",
+  ""sequence_id"": ""seq_4ERIAZ5L6xFkNfCAklDyFz"",
+  ""sequence_name"": ""May 2026 Setter Blast"",
+  ""sequence_subscription_id"": ""sub_7V2xn1ez6bAVEafoAurtQz"",
+  ""status"": ""sent"",
+  ""subject"": ""user_22d4b9d8190da1694f01007c4e208d4b"",
+  ""template_id"": ""tmpl_JIQTDnqoypZDKxQJACMetBHMxw92lrANwfKlhLFFuXQ"",
+  ""template_name"": ""May 2026 Setter Blast Day 6"",
+  ""thread_id"": ""acti_jwgGnOgRx8NQ1a92n8sAxAf8hQbeEyD5RUJovm6Ia02"",
+  ""to"": [
+    ""user_c88cc36@masked.com""
+  ],
+  ""updated_by"": ""user_1x5aaG5n9Tk5VE42qtmbInArqpssoifWhf6MQz8MLYM"",
+  ""updated_by_name"": ""user_75613a3d80a70bc160355cc67df557d0"",
+  ""user_id"": ""user_1x5aaG5n9Tk5VE42qtmbInArqpssoifWhf6MQz8MLYM"",
+  ""user_name"": ""user_75613a3d80a70bc160355cc67df557d0"",
+  ""users"": []
+}",user_1x5aaG5n9Tk5VE42qtmbInArqpssoifWhf6MQz8MLYM,user_75613a3d80a70bc160355cc67df557d0,tmpl_JIQTDnqoypZDKxQJACMetBHMxw92lrANwfKlhLFFuXQ,May 2026 Setter Blast Day 6,2026-05-24 23:28:01.496,FALSE,2026-05-28 11:01:27.464,2026-07-01 12:30:18.206,1643bb8a7da8ec8fca951e2d422638cf
+lead_sNDZ2nh1oVc54VWgzFdhmeSSsjwrKyMJkqHEkavCLpf,2026-04-20 22:28:57.102,[],,2026-04-20 21:58:53.812,2026-04-20 22:28:58.423,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Mon, 20 Apr 2026 22:28:57 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_2e4961e@masked.com"",
+      ""name"": ""user_02b1d95a7bee3863a76dbcdb7c23be5d""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_2e4961e@masked.com"",
+      ""name"": ""user_02b1d95a7bee3863a76dbcdb7c23be5d""
+    }
+  ],
+  ""subject"": ""quick one Smitha"",
+  ""to"": [
+    {
+      ""email"": ""user_1fe6aa4@masked.com"",
+      ""name"": """"
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_2e4961e@masked.com"",
+    ""name"": ""user_02b1d95a7bee3863a76dbcdb7c23be5d""
+  }
+]",acti_KUc6cJnKl5gb2lcuAOSatL4pPhsbxOZfcSvQX66QLMa,[],user_75ce403597dbbbd0c07e7667d177ef07,sent,user_23b986e2fe8f0bf7b1376a7226280890,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-04-20T22:28:57.102000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_wrQcs79rT7lA8EgcYjYXFesyFsGIWPSfbCcCi5mfXY9"",
+  ""created_by"": ""user_Kjvgs2c3jJuGJo7bMEzCfCZ69G8C4T767bX3alwVSH3"",
+  ""created_by_name"": ""user_02b1d95a7bee3863a76dbcdb7c23be5d"",
+  ""date_created"": ""2026-04-20T21:58:53.812000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-04-20T22:28:57.102000+00:00"",
+  ""date_updated"": ""2026-04-20T22:28:58.423000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_tEhoUUaJd5xBZ4Pi248Vks1FOXtK2ifHIDTdQOzFAAq"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Mon, 20 Apr 2026 22:28:57 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_2e4961e@masked.com"",
+        ""name"": ""user_02b1d95a7bee3863a76dbcdb7c23be5d""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_2e4961e@masked.com"",
+        ""name"": ""user_02b1d95a7bee3863a76dbcdb7c23be5d""
+      }
+    ],
+    ""subject"": ""quick one Smitha"",
+    ""to"": [
+      {
+        ""email"": ""user_1fe6aa4@masked.com"",
+        ""name"": """"
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_KUc6cJnKl5gb2lcuAOSatL4pPhsbxOZfcSvQX66QLMa"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_sNDZ2nh1oVc54VWgzFdhmeSSsjwrKyMJkqHEkavCLpf"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_75ce403597dbbbd0c07e7667d177ef07"",
+  ""sequence_id"": null,
+  ""sequence_name"": null,
+  ""sequence_subscription_id"": null,
+  ""status"": ""sent"",
+  ""subject"": ""user_23b986e2fe8f0bf7b1376a7226280890"",
+  ""template_id"": null,
+  ""template_name"": null,
+  ""thread_id"": ""acti_AjzVDlgpfd1daYOVEUrq5U3fXu1bm3eiKgkg94J3whl"",
+  ""to"": [
+    ""user_1fe6aa4@masked.com""
+  ],
+  ""updated_by"": ""user_Kjvgs2c3jJuGJo7bMEzCfCZ69G8C4T767bX3alwVSH3"",
+  ""updated_by_name"": ""user_02b1d95a7bee3863a76dbcdb7c23be5d"",
+  ""user_id"": ""user_Kjvgs2c3jJuGJo7bMEzCfCZ69G8C4T767bX3alwVSH3"",
+  ""user_name"": ""user_02b1d95a7bee3863a76dbcdb7c23be5d"",
+  ""users"": []
+}",user_Kjvgs2c3jJuGJo7bMEzCfCZ69G8C4T767bX3alwVSH3,user_02b1d95a7bee3863a76dbcdb7c23be5d,,,2026-04-20 22:28:57.102,FALSE,2026-05-27 11:01:20.032,2026-07-01 12:30:18.206,8c0cf978f4ed9e927fa5569d57b88f9d
+lead_iZGkbtNi390GbuSFTtPSIXrFUJIi3HWniroQIQzTqpw,2026-04-23 01:00:28.000,[],,2026-04-23 01:00:28.000,2026-04-23 01:01:02.274,incoming,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Thu, 23 Apr 2026 01:00:28 +0000 (UTC)"",
+  ""from"": [
+    {
+      ""email"": ""user_d0dc265@masked.com"",
+      ""name"": ""user_d834c26c004bd650c25586a525eebeb7""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [
+    {
+      ""email"": ""user_ac2fe45@masked.com"",
+      ""name"": """"
+    }
+  ],
+  ""sender"": [
+    {
+      ""email"": ""user_d0dc265@masked.com"",
+      ""name"": ""user_d834c26c004bd650c25586a525eebeb7""
+    }
+  ],
+  ""subject"": ""Pooja reconfirmed attendance for Data Engineer Academy Breakthrough Session on 23 April 2026"",
+  ""to"": [
+    {
+      ""email"": ""user_82b18b1@masked.com"",
+      ""name"": """"
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_d0dc265@masked.com"",
+    ""name"": ""user_d834c26c004bd650c25586a525eebeb7""
+  }
+]",acti_s9tqsjypS40rlTVQLD50K1rpu36levNalJB81JYN9n1,[],user_3e9eae9d3de9db0647d640687369d8b2,inbox,user_3ec790ac3dd5dc4abd02067782bd95e0,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-04-23T01:00:28+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_aIl8tjj0yXo1pFaP6pozldoTBoNYQKLewrzxKxVDDQu"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-04-23T01:00:28+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": null,
+  ""date_updated"": ""2026-04-23T01:01:02.274000+00:00"",
+  ""direction"": ""incoming"",
+  ""email_account_id"": ""emailacct_op9Rk2lwPKDAMVK8EuvyXeyLw4w1nMcaajw6o3rTv1B"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Thu, 23 Apr 2026 01:00:28 +0000 (UTC)"",
+    ""from"": [
+      {
+        ""email"": ""user_d0dc265@masked.com"",
+        ""name"": ""user_d834c26c004bd650c25586a525eebeb7""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [
+      {
+        ""email"": ""user_ac2fe45@masked.com"",
+        ""name"": """"
+      }
+    ],
+    ""sender"": [
+      {
+        ""email"": ""user_d0dc265@masked.com"",
+        ""name"": ""user_d834c26c004bd650c25586a525eebeb7""
+      }
+    ],
+    ""subject"": ""Pooja reconfirmed attendance for Data Engineer Academy Breakthrough Session on 23 April 2026"",
+    ""to"": [
+      {
+        ""email"": ""user_82b18b1@masked.com"",
+        ""name"": """"
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_s9tqsjypS40rlTVQLD50K1rpu36levNalJB81JYN9n1"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_iZGkbtNi390GbuSFTtPSIXrFUJIi3HWniroQIQzTqpw"",
+  ""message_ids"": [
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_3e9eae9d3de9db0647d640687369d8b2"",
+  ""sequence_id"": null,
+  ""sequence_name"": null,
+  ""sequence_subscription_id"": null,
+  ""status"": ""inbox"",
+  ""subject"": ""user_3ec790ac3dd5dc4abd02067782bd95e0"",
+  ""template_id"": null,
+  ""template_name"": null,
+  ""thread_id"": ""acti_tAjIUjjrrSetMHVgJvkITDqvclyMRfXLYoQ9VnsxL4q"",
+  ""to"": [
+    ""user_82b18b1@masked.com""
+  ],
+  ""updated_by"": null,
+  ""updated_by_name"": null,
+  ""user_id"": ""user_ZoVyFeAqULsKcg8CpxkK23O4r4I12YZjJXDorCO3099"",
+  ""user_name"": ""user_817abeea5bd6d085d196bcba689e663a"",
+  ""users"": []
+}",user_ZoVyFeAqULsKcg8CpxkK23O4r4I12YZjJXDorCO3099,user_817abeea5bd6d085d196bcba689e663a,,,,FALSE,2026-06-21 11:01:17.106,2026-07-01 12:30:18.206,985c6a1b1139c5e0d97c9da20c245d31
+lead_NRNlq22RatBEk4yTsuD8UDBtxbaz690HTZkxtoPrtHm,2026-06-09 23:52:22.793,"[
+  {
+    ""content_id"": ""58b9-2934-6efa"",
+    ""content_type"": ""image/png"",
+    ""filename"": ""image.png"",
+    ""inline_only"": true,
+    ""size"": 127236,
+    ""thumbnail_url"": ""https://app.close.com/go/file/persisted/orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD/activity.email/acti_VhsrAbV626dun5cxY6icWwzgLeKVkaRxqyfu1R7Fiu7/1bn3w8PQt9AYowOgzihM9C/image.png/thumbnail/"",
+    ""url"": ""https://app.close.com/go/file/persisted/orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD/activity.email/acti_VhsrAbV626dun5cxY6icWwzgLeKVkaRxqyfu1R7Fiu7/1bn3w8PQt9AYowOgzihM9C/image.png/""
+  }
+]",,2026-06-09 23:51:24.551,2026-06-09 23:52:26.205,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Tue, 09 Jun 2026 23:52:23 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_88d1860@masked.com"",
+      ""name"": ""user_32a33383a503111c070dc2a0eb60bec6""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_88d1860@masked.com"",
+      ""name"": ""user_32a33383a503111c070dc2a0eb60bec6""
+    }
+  ],
+  ""subject"": ""This is what happens when you trust the process."",
+  ""to"": [
+    {
+      ""email"": ""user_f4fa0f5@masked.com"",
+      ""name"": """"
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_88d1860@masked.com"",
+    ""name"": ""user_32a33383a503111c070dc2a0eb60bec6""
+  }
+]",acti_VhsrAbV626dun5cxY6icWwzgLeKVkaRxqyfu1R7Fiu7,[],user_3853e2def1a3f7c87f45e96218648807,sent,user_e4df66f16b83bd6cf8f40d7d04b1f2b2,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-06-09T23:52:22.793000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [
+    {
+      ""content_id"": ""58b9-2934-6efa"",
+      ""content_type"": ""image/png"",
+      ""filename"": ""image.png"",
+      ""inline_only"": true,
+      ""size"": 127236,
+      ""thumbnail_url"": ""https://app.close.com/go/file/persisted/orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD/activity.email/acti_VhsrAbV626dun5cxY6icWwzgLeKVkaRxqyfu1R7Fiu7/1bn3w8PQt9AYowOgzihM9C/image.png/thumbnail/"",
+      ""url"": ""https://app.close.com/go/file/persisted/orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD/activity.email/acti_VhsrAbV626dun5cxY6icWwzgLeKVkaRxqyfu1R7Fiu7/1bn3w8PQt9AYowOgzihM9C/image.png/""
+    }
+  ],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": ""bulkemail_iSaan30bWtb6Yuo5AgnBqBJyiUdcOoul3SNhg1jDZgR"",
+  ""cc"": [],
+  ""contact_id"": ""cont_Kptkanr6iuceUj2N4t8CeLHe4qRclUhUCLCIn90Lv8I"",
+  ""created_by"": ""user_dvIiSWcGaEUwdQTi3Fbj4kWXdu6rZRsakybH2zcVMti"",
+  ""created_by_name"": ""user_32a33383a503111c070dc2a0eb60bec6"",
+  ""date_created"": ""2026-06-09T23:51:24.551000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-06-09T23:52:22.793000+00:00"",
+  ""date_updated"": ""2026-06-09T23:52:26.205000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_VxyDFiRIJivzgukikYtd5SXyjq8gXHuqGtXJ53gMDgt"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Tue, 09 Jun 2026 23:52:23 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_88d1860@masked.com"",
+        ""name"": ""user_32a33383a503111c070dc2a0eb60bec6""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_88d1860@masked.com"",
+        ""name"": ""user_32a33383a503111c070dc2a0eb60bec6""
+      }
+    ],
+    ""subject"": ""This is what happens when you trust the process."",
+    ""to"": [
+      {
+        ""email"": ""user_f4fa0f5@masked.com"",
+        ""name"": """"
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_VhsrAbV626dun5cxY6icWwzgLeKVkaRxqyfu1R7Fiu7"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_NRNlq22RatBEk4yTsuD8UDBtxbaz690HTZkxtoPrtHm"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_3853e2def1a3f7c87f45e96218648807"",
+  ""sequence_id"": null,
+  ""sequence_name"": null,
+  ""sequence_subscription_id"": null,
+  ""status"": ""sent"",
+  ""subject"": ""user_e4df66f16b83bd6cf8f40d7d04b1f2b2"",
+  ""template_id"": ""tmpl_hKuFgGiRx6ltCG28jqmL9QzMJyVqlbeoGSv2NuO99Dq"",
+  ""template_name"": ""AAA - JE - Trust the process"",
+  ""thread_id"": ""acti_QB6X54112xQ5TZNr3qNHKgJ6sDtX2MQMjhLu4XdBplZ"",
+  ""to"": [
+    ""user_f4fa0f5@masked.com""
+  ],
+  ""updated_by"": ""user_dvIiSWcGaEUwdQTi3Fbj4kWXdu6rZRsakybH2zcVMti"",
+  ""updated_by_name"": ""user_32a33383a503111c070dc2a0eb60bec6"",
+  ""user_id"": ""user_dvIiSWcGaEUwdQTi3Fbj4kWXdu6rZRsakybH2zcVMti"",
+  ""user_name"": ""user_32a33383a503111c070dc2a0eb60bec6"",
+  ""users"": []
+}",user_dvIiSWcGaEUwdQTi3Fbj4kWXdu6rZRsakybH2zcVMti,user_32a33383a503111c070dc2a0eb60bec6,tmpl_hKuFgGiRx6ltCG28jqmL9QzMJyVqlbeoGSv2NuO99Dq,AAA - JE - Trust the process,2026-06-09 23:52:22.793,FALSE,2026-06-10 11:01:34.760,2026-07-01 12:30:18.206,c3619ec12f8e9049ea0874d0b0a136a7
+lead_Wbot88Fde1EVNK8ZC5sUK61bZEBXSQdGtzGVvKXPjaX,2026-06-01 13:17:53.208,[],,2026-06-01 13:17:38.224,2026-06-01 13:17:54.327,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Mon, 01 Jun 2026 13:17:53 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_203ed10@masked.com"",
+      ""name"": ""user_15b5943e59ca209dad261abaa4017958""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_203ed10@masked.com"",
+      ""name"": ""user_15b5943e59ca209dad261abaa4017958""
+    }
+  ],
+  ""subject"": ""Data Engineer Academy"",
+  ""to"": [
+    {
+      ""email"": ""user_637c566@masked.com"",
+      ""name"": """"
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_203ed10@masked.com"",
+    ""name"": ""user_15b5943e59ca209dad261abaa4017958""
+  }
+]",acti_tBqXlBQ4N8Eq6wkdpBPNreIg7op8UaBDcQXPUCdPq7n,[],user_75d0933d4bc9f4ad31a7ea83fc59f5a0,sent,user_cd031f5cad5465de5982f70f97ebbef1,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-06-01T13:17:53.208000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_ZLTrYd3V6zvPp0Lfl5e3MYyx27EhnJN952WQ94KhzbN"",
+  ""created_by"": ""user_dPKOz1w9oIu3SRXjsOkMFDOHrXz96nyD6CvPCLdId1c"",
+  ""created_by_name"": ""user_15b5943e59ca209dad261abaa4017958"",
+  ""date_created"": ""2026-06-01T13:17:38.224000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-06-01T13:17:53.208000+00:00"",
+  ""date_updated"": ""2026-06-01T13:17:54.327000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_NyNPTeqHwQse2kocRlscvGYYfQxrxAEGKxeOds7UUX1"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Mon, 01 Jun 2026 13:17:53 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_203ed10@masked.com"",
+        ""name"": ""user_15b5943e59ca209dad261abaa4017958""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_203ed10@masked.com"",
+        ""name"": ""user_15b5943e59ca209dad261abaa4017958""
+      }
+    ],
+    ""subject"": ""Data Engineer Academy"",
+    ""to"": [
+      {
+        ""email"": ""user_637c566@masked.com"",
+        ""name"": """"
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_tBqXlBQ4N8Eq6wkdpBPNreIg7op8UaBDcQXPUCdPq7n"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_Wbot88Fde1EVNK8ZC5sUK61bZEBXSQdGtzGVvKXPjaX"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_75d0933d4bc9f4ad31a7ea83fc59f5a0"",
+  ""sequence_id"": null,
+  ""sequence_name"": null,
+  ""sequence_subscription_id"": null,
+  ""status"": ""sent"",
+  ""subject"": ""user_cd031f5cad5465de5982f70f97ebbef1"",
+  ""template_id"": ""tmpl_0EBcgDSENmd47F7f6G9A3gNP0QJrFWitDhADYu81Wkk"",
+  ""template_name"": ""Niko Booking Link"",
+  ""thread_id"": ""acti_xvBGl6AhBnDxCuMtWJi2z9b6CXKUTcp5OMeracXaYiZ"",
+  ""to"": [
+    ""user_637c566@masked.com""
+  ],
+  ""updated_by"": ""user_dPKOz1w9oIu3SRXjsOkMFDOHrXz96nyD6CvPCLdId1c"",
+  ""updated_by_name"": ""user_15b5943e59ca209dad261abaa4017958"",
+  ""user_id"": ""user_dPKOz1w9oIu3SRXjsOkMFDOHrXz96nyD6CvPCLdId1c"",
+  ""user_name"": ""user_15b5943e59ca209dad261abaa4017958"",
+  ""users"": []
+}",user_dPKOz1w9oIu3SRXjsOkMFDOHrXz96nyD6CvPCLdId1c,user_15b5943e59ca209dad261abaa4017958,tmpl_0EBcgDSENmd47F7f6G9A3gNP0QJrFWitDhADYu81Wkk,Niko Booking Link,2026-06-01 13:17:53.208,FALSE,2026-06-25 11:01:29.790,2026-07-01 12:30:18.206,56b64fe69204014f6a30ed8d0159f215
+lead_4Xe8idfbdayKDVP1OHJOGTM53Bm1Bua0ZIKKHsNp743,2026-06-11 15:00:03.849,[],,2026-06-05 00:03:47.900,2026-06-11 15:04:50.460,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Thu, 11 Jun 2026 15:00:04 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_208f498@masked.com"",
+      ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_208f498@masked.com"",
+      ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+    }
+  ],
+  ""subject"": ""SQL at senior level — what they actually test"",
+  ""to"": [
+    {
+      ""email"": ""user_94ffe51@masked.com"",
+      ""name"": """"
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_208f498@masked.com"",
+    ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+  }
+]",acti_9iXNpfW6ecTnCUECqTqOJw7lJA12iWYBD86T5j7gIKy,[],user_dd583758b68aa20561fed6404cde8ff6,sent,user_c33fb0239870191d221c9dff5d42f8d9,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-06-11T15:00:03.849000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_sXXJb1fuaq0a261sBdoifF4rToJsUSFNI6hHEtHTs5n"",
+  ""created_by"": ""user_IpN6a8NkhneDdypH3husgkeSXhltskfJQSjBOhqNxjS"",
+  ""created_by_name"": ""user_5718e0bcf6c3b8f43f8f935959f9d2bc"",
+  ""date_created"": ""2026-06-05T00:03:47.900000+00:00"",
+  ""date_scheduled"": ""2026-06-11T15:00:00+00:00"",
+  ""date_sent"": ""2026-06-11T15:00:03.849000+00:00"",
+  ""date_updated"": ""2026-06-11T15:04:50.460000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_3qx8wqD4ktDGFWBzWpgERlVz4snCwdjRBnlmhj2UFRa"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Thu, 11 Jun 2026 15:00:04 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_208f498@masked.com"",
+        ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_208f498@masked.com"",
+        ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+      }
+    ],
+    ""subject"": ""SQL at senior level — what they actually test"",
+    ""to"": [
+      {
+        ""email"": ""user_94ffe51@masked.com"",
+        ""name"": """"
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_9iXNpfW6ecTnCUECqTqOJw7lJA12iWYBD86T5j7gIKy"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_4Xe8idfbdayKDVP1OHJOGTM53Bm1Bua0ZIKKHsNp743"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_dd583758b68aa20561fed6404cde8ff6"",
+  ""sequence_id"": null,
+  ""sequence_name"": null,
+  ""sequence_subscription_id"": null,
+  ""status"": ""sent"",
+  ""subject"": ""user_c33fb0239870191d221c9dff5d42f8d9"",
+  ""template_id"": null,
+  ""template_name"": null,
+  ""thread_id"": ""acti_bZcw91V3W6pfJKYGWRovQQF3SsbSpu20Q5uvgXuZHyv"",
+  ""to"": [
+    ""user_94ffe51@masked.com""
+  ],
+  ""updated_by"": ""user_IpN6a8NkhneDdypH3husgkeSXhltskfJQSjBOhqNxjS"",
+  ""updated_by_name"": ""user_5718e0bcf6c3b8f43f8f935959f9d2bc"",
+  ""user_id"": ""user_IpN6a8NkhneDdypH3husgkeSXhltskfJQSjBOhqNxjS"",
+  ""user_name"": ""user_5718e0bcf6c3b8f43f8f935959f9d2bc"",
+  ""users"": []
+}",user_IpN6a8NkhneDdypH3husgkeSXhltskfJQSjBOhqNxjS,user_5718e0bcf6c3b8f43f8f935959f9d2bc,,,2026-06-11 15:00:03.849,FALSE,2026-06-25 11:01:29.790,2026-07-01 12:30:18.206,488249e33abeb8896b5e9e0f6761380d
+lead_Ty2P6q3d4D0iqiPxXltKBO6tmvGgkwCMlYosfohwbzm,2026-04-16 21:51:31.232,[],,2026-04-16 21:51:03.989,2026-04-18 14:41:17.586,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Thu, 16 Apr 2026 21:51:31 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_a63bb7b@masked.com"",
+      ""name"": ""user_ac56fe8a078a7e65ae584b5b838beb31""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_a63bb7b@masked.com"",
+      ""name"": ""user_ac56fe8a078a7e65ae584b5b838beb31""
+    }
+  ],
+  ""subject"": ""Resources for Angela - Data Engineer Academy"",
+  ""to"": [
+    {
+      ""email"": ""user_38030b1@masked.com"",
+      ""name"": """"
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_a63bb7b@masked.com"",
+    ""name"": ""user_ac56fe8a078a7e65ae584b5b838beb31""
+  }
+]",acti_mOZ5VAffu8VyY30QGIREcQyFQQRODpLZriH22HoL1e6,[],user_2c0462e3616819f65fb78342c673cd13,sent,user_19b59bcf38ef5405fd277e8a0a1af523,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-04-16T21:51:31.232000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_Z4TdhRGjZf1QRqeg7SCdwEedxfSbT5k5sc2W26fPqC1"",
+  ""created_by"": ""user_vjLf4dWq7WflulgOLEjwROWnGkx7djZiT9lgpEAcTyg"",
+  ""created_by_name"": ""user_ac56fe8a078a7e65ae584b5b838beb31"",
+  ""date_created"": ""2026-04-16T21:51:03.989000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-04-16T21:51:31.232000+00:00"",
+  ""date_updated"": ""2026-04-18T14:41:17.586000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_rN0NbrwAIfigqzvjtOKgyzyfc187WDdrUkJRcH07iYr"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Thu, 16 Apr 2026 21:51:31 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_a63bb7b@masked.com"",
+        ""name"": ""user_ac56fe8a078a7e65ae584b5b838beb31""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_a63bb7b@masked.com"",
+        ""name"": ""user_ac56fe8a078a7e65ae584b5b838beb31""
+      }
+    ],
+    ""subject"": ""Resources for Angela - Data Engineer Academy"",
+    ""to"": [
+      {
+        ""email"": ""user_38030b1@masked.com"",
+        ""name"": """"
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_mOZ5VAffu8VyY30QGIREcQyFQQRODpLZriH22HoL1e6"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_Ty2P6q3d4D0iqiPxXltKBO6tmvGgkwCMlYosfohwbzm"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_2c0462e3616819f65fb78342c673cd13"",
+  ""sequence_id"": null,
+  ""sequence_name"": null,
+  ""sequence_subscription_id"": null,
+  ""status"": ""sent"",
+  ""subject"": ""user_19b59bcf38ef5405fd277e8a0a1af523"",
+  ""template_id"": ""tmpl_lU7OgLPdt6WNvuT7N7UuyoR4RpJEIM6WcMbqFLoLq6y"",
+  ""template_name"": ""Full transitioner resources"",
+  ""thread_id"": ""acti_GYcC2sSv4COTMqwnhpu0ADSPJ05J7AEQ2CD3dBJrVWQ"",
+  ""to"": [
+    ""user_38030b1@masked.com""
+  ],
+  ""updated_by"": ""user_vjLf4dWq7WflulgOLEjwROWnGkx7djZiT9lgpEAcTyg"",
+  ""updated_by_name"": ""user_ac56fe8a078a7e65ae584b5b838beb31"",
+  ""user_id"": ""user_vjLf4dWq7WflulgOLEjwROWnGkx7djZiT9lgpEAcTyg"",
+  ""user_name"": ""user_ac56fe8a078a7e65ae584b5b838beb31"",
+  ""users"": []
+}",user_vjLf4dWq7WflulgOLEjwROWnGkx7djZiT9lgpEAcTyg,user_ac56fe8a078a7e65ae584b5b838beb31,tmpl_lU7OgLPdt6WNvuT7N7UuyoR4RpJEIM6WcMbqFLoLq6y,Full transitioner resources,2026-04-16 21:51:31.232,FALSE,2026-06-05 11:01:31.500,2026-07-01 12:30:18.206,8ba3674567531d1cf47458572acb7920
+lead_ozxVTgEZAG2IJqRqlP7pNbmWvfhfzRcZFnH4zb8zNkk,2026-04-02 21:09:57.000,"[
+  {
+    ""content_id"": null,
+    ""content_type"": ""text/calendar"",
+    ""filename"": ""file.ics"",
+    ""inline_only"": false,
+    ""size"": 1814,
+    ""url"": ""https://app.close.com/go/file/persisted/orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD/activity.email/acti_FHYQrdPI358lTRwjbUQg1jiDrIjaPDoIoLWiw3trBOT/0EUTZmrCzAKXBRQLOtCiFL/file.ics/""
+  },
+  {
+    ""content_id"": null,
+    ""content_type"": ""application/ics"",
+    ""filename"": ""invite.ics"",
+    ""inline_only"": false,
+    ""size"": 1814,
+    ""url"": ""https://app.close.com/go/file/persisted/orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD/activity.email/acti_FHYQrdPI358lTRwjbUQg1jiDrIjaPDoIoLWiw3trBOT/17G2NOUK6Zym2RI34YXKyw/invite.ics/""
+  }
+]",,2026-04-02 21:09:57.000,2026-04-02 21:10:34.812,incoming,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Thu, 02 Apr 2026 21:09:57 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_2373c0e@masked.com"",
+      ""name"": ""user_37c3cc590824fc2f29d8b2ba7631966c""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": true,
+  ""message_id"": """",
+  ""reply_to"": [
+    {
+      ""email"": ""user_d27675a@masked.com"",
+      ""name"": ""user_c9b44fec69ede64196c79497eff23cb8""
+    }
+  ],
+  ""sender"": [
+    {
+      ""email"": ""user_2373c0e@masked.com"",
+      ""name"": ""user_37c3cc590824fc2f29d8b2ba7631966c""
+    }
+  ],
+  ""subject"": ""Accepted: Corey Taylor and Abigail Nolasco @ Mon Apr 6, 2026 12pm - 1pm (AST) (abigail@dataengineeracademy.com)"",
+  ""to"": [
+    {
+      ""email"": ""user_82b18b1@masked.com"",
+      ""name"": """"
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_2373c0e@masked.com"",
+    ""name"": ""user_37c3cc590824fc2f29d8b2ba7631966c""
+  }
+]",acti_FHYQrdPI358lTRwjbUQg1jiDrIjaPDoIoLWiw3trBOT,[],user_d78d95047f9fc90c3a1516ab8057973a,inbox,user_f78d9e57389ca11b5d80cb606dced085,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-04-02T21:09:57+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [
+    {
+      ""content_id"": null,
+      ""content_type"": ""text/calendar"",
+      ""filename"": ""file.ics"",
+      ""inline_only"": false,
+      ""size"": 1814,
+      ""url"": ""https://app.close.com/go/file/persisted/orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD/activity.email/acti_FHYQrdPI358lTRwjbUQg1jiDrIjaPDoIoLWiw3trBOT/0EUTZmrCzAKXBRQLOtCiFL/file.ics/""
+    },
+    {
+      ""content_id"": null,
+      ""content_type"": ""application/ics"",
+      ""filename"": ""invite.ics"",
+      ""inline_only"": false,
+      ""size"": 1814,
+      ""url"": ""https://app.close.com/go/file/persisted/orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD/activity.email/acti_FHYQrdPI358lTRwjbUQg1jiDrIjaPDoIoLWiw3trBOT/17G2NOUK6Zym2RI34YXKyw/invite.ics/""
+    }
+  ],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_aEJGfJ0aghXeMAxTroiqSqxz3ZrnO2apnREZ25popfj"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-04-02T21:09:57+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": null,
+  ""date_updated"": ""2026-04-02T21:10:34.812000+00:00"",
+  ""direction"": ""incoming"",
+  ""email_account_id"": ""emailacct_op9Rk2lwPKDAMVK8EuvyXeyLw4w1nMcaajw6o3rTv1B"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Thu, 02 Apr 2026 21:09:57 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_2373c0e@masked.com"",
+        ""name"": ""user_37c3cc590824fc2f29d8b2ba7631966c""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": true,
+    ""message_id"": """",
+    ""reply_to"": [
+      {
+        ""email"": ""user_d27675a@masked.com"",
+        ""name"": ""user_c9b44fec69ede64196c79497eff23cb8""
+      }
+    ],
+    ""sender"": [
+      {
+        ""email"": ""user_2373c0e@masked.com"",
+        ""name"": ""user_37c3cc590824fc2f29d8b2ba7631966c""
+      }
+    ],
+    ""subject"": ""Accepted: Corey Taylor and Abigail Nolasco @ Mon Apr 6, 2026 12pm - 1pm (AST) (abigail@dataengineeracademy.com)"",
+    ""to"": [
+      {
+        ""email"": ""user_82b18b1@masked.com"",
+        ""name"": """"
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_FHYQrdPI358lTRwjbUQg1jiDrIjaPDoIoLWiw3trBOT"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_ozxVTgEZAG2IJqRqlP7pNbmWvfhfzRcZFnH4zb8zNkk"",
+  ""message_ids"": [
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_d78d95047f9fc90c3a1516ab8057973a"",
+  ""sequence_id"": null,
+  ""sequence_name"": null,
+  ""sequence_subscription_id"": null,
+  ""status"": ""inbox"",
+  ""subject"": ""user_f78d9e57389ca11b5d80cb606dced085"",
+  ""template_id"": null,
+  ""template_name"": null,
+  ""thread_id"": ""acti_H5E3B6M8UPGnZUe8V3Tngz3e3PRo86Tp2zO3HCyir0A"",
+  ""to"": [
+    ""user_82b18b1@masked.com""
+  ],
+  ""updated_by"": null,
+  ""updated_by_name"": null,
+  ""user_id"": ""user_ZoVyFeAqULsKcg8CpxkK23O4r4I12YZjJXDorCO3099"",
+  ""user_name"": ""user_817abeea5bd6d085d196bcba689e663a"",
+  ""users"": []
+}",user_ZoVyFeAqULsKcg8CpxkK23O4r4I12YZjJXDorCO3099,user_817abeea5bd6d085d196bcba689e663a,,,,FALSE,2026-05-28 11:01:27.464,2026-07-01 12:30:18.206,b9ff8240fca01467ab4fbe64194d83b7
+lead_wR8cr9MIQZ9Ky0G83p71JcNILyiMd2f3JvW1SKE46ak,2026-05-20 02:02:05.475,"[
+  {
+    ""content_id"": ""34a6-0bab-dedc"",
+    ""content_type"": ""image/png"",
+    ""filename"": ""bree.PNG"",
+    ""inline_only"": true,
+    ""size"": 95464,
+    ""thumbnail_url"": ""https://app.close.com/go/file/persisted/orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD/activity.email/acti_kLXSPmHsTFL9SWlWWujWV9zeWLAWyMepXdyUpl2Wjap/2IgBZc5rJx5J0IrJdZbsxo/bree.PNG/thumbnail/"",
+    ""url"": ""https://app.close.com/go/file/persisted/orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD/activity.email/acti_kLXSPmHsTFL9SWlWWujWV9zeWLAWyMepXdyUpl2Wjap/2IgBZc5rJx5J0IrJdZbsxo/bree.PNG/""
+  }
+]",,2026-05-20 01:59:02.942,2026-05-20 02:02:09.705,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Wed, 20 May 2026 02:02:06 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_208f498@masked.com"",
+      ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_208f498@masked.com"",
+      ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+    }
+  ],
+  ""subject"": ""This could be you"",
+  ""to"": [
+    {
+      ""email"": ""user_22132d7@masked.com"",
+      ""name"": ""user_fd206da555932dda61553c4d7461652c""
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_208f498@masked.com"",
+    ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+  }
+]",acti_kLXSPmHsTFL9SWlWWujWV9zeWLAWyMepXdyUpl2Wjap,[],user_dd583758b68aa20561fed6404cde8ff6,sent,user_db13c706680bf427497e9ab4b2a46b31,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-05-20T02:02:05.475000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [
+    {
+      ""content_id"": ""34a6-0bab-dedc"",
+      ""content_type"": ""image/png"",
+      ""filename"": ""bree.PNG"",
+      ""inline_only"": true,
+      ""size"": 95464,
+      ""thumbnail_url"": ""https://app.close.com/go/file/persisted/orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD/activity.email/acti_kLXSPmHsTFL9SWlWWujWV9zeWLAWyMepXdyUpl2Wjap/2IgBZc5rJx5J0IrJdZbsxo/bree.PNG/thumbnail/"",
+      ""url"": ""https://app.close.com/go/file/persisted/orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD/activity.email/acti_kLXSPmHsTFL9SWlWWujWV9zeWLAWyMepXdyUpl2Wjap/2IgBZc5rJx5J0IrJdZbsxo/bree.PNG/""
+    }
+  ],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_x9Dd538s6gC2EpmJatTjkyu9skQ4crjDCBvMVOmSyAd"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-05-20T01:59:02.942000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-05-20T02:02:05.475000+00:00"",
+  ""date_updated"": ""2026-05-20T02:02:09.705000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_3qx8wqD4ktDGFWBzWpgERlVz4snCwdjRBnlmhj2UFRa"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Wed, 20 May 2026 02:02:06 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_208f498@masked.com"",
+        ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_208f498@masked.com"",
+        ""name"": ""user_80f5d1967953a9aaa3a6c53fe5849acd""
+      }
+    ],
+    ""subject"": ""This could be you"",
+    ""to"": [
+      {
+        ""email"": ""user_22132d7@masked.com"",
+        ""name"": ""user_fd206da555932dda61553c4d7461652c""
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_kLXSPmHsTFL9SWlWWujWV9zeWLAWyMepXdyUpl2Wjap"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_wR8cr9MIQZ9Ky0G83p71JcNILyiMd2f3JvW1SKE46ak"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_dd583758b68aa20561fed6404cde8ff6"",
+  ""sequence_id"": ""seq_1U3Clpu2cjPUOsKvpzdu9p"",
+  ""sequence_name"": ""April 2026 Aly Social Proof Nurture Blast"",
+  ""sequence_subscription_id"": ""sub_2fLfdi9KaXlri4wVdsuVDX"",
+  ""status"": ""sent"",
+  ""subject"": ""user_db13c706680bf427497e9ab4b2a46b31"",
+  ""template_id"": ""tmpl_GoAgeTfPMBDYZKc1ram4b6HkLZG42ASTVIaj5CiUOro"",
+  ""template_name"": ""OliAli ReActiv Day 6 EMAIL"",
+  ""thread_id"": ""acti_Bk1BlKclnWkSS3d1eJPrwGJwbRAoGDLU4iILJOzO73V"",
+  ""to"": [
+    ""user_804bb11@masked.com""
+  ],
+  ""updated_by"": ""user_IpN6a8NkhneDdypH3husgkeSXhltskfJQSjBOhqNxjS"",
+  ""updated_by_name"": ""user_5718e0bcf6c3b8f43f8f935959f9d2bc"",
+  ""user_id"": ""user_IpN6a8NkhneDdypH3husgkeSXhltskfJQSjBOhqNxjS"",
+  ""user_name"": ""user_5718e0bcf6c3b8f43f8f935959f9d2bc"",
+  ""users"": []
+}",user_IpN6a8NkhneDdypH3husgkeSXhltskfJQSjBOhqNxjS,user_5718e0bcf6c3b8f43f8f935959f9d2bc,tmpl_GoAgeTfPMBDYZKc1ram4b6HkLZG42ASTVIaj5CiUOro,OliAli ReActiv Day 6 EMAIL,2026-05-20 02:02:05.475,FALSE,2026-06-10 11:01:34.760,2026-07-01 12:30:18.206,898b6744d445f00fbb882c0f374bed16
+lead_LtciWMvVcM3ECoDzj6oZw87Z65WatusiaKbDUq8nfqb,2026-04-26 02:36:27.024,[],,2026-04-26 02:36:27.024,2026-04-26 02:36:28.804,outgoing,"{
+  ""bcc"": [],
+  ""cc"": [],
+  ""date"": ""Sun, 26 Apr 2026 02:36:27 +0000"",
+  ""from"": [
+    {
+      ""email"": ""user_7c45466@masked.com"",
+      ""name"": ""user_d71fd42f0d973ea716507bc8a081287e""
+    }
+  ],
+  ""in_reply_to"": null,
+  ""is_autoreply"": false,
+  ""message_id"": """",
+  ""reply_to"": [],
+  ""sender"": [
+    {
+      ""email"": ""user_7c45466@masked.com"",
+      ""name"": ""user_d71fd42f0d973ea716507bc8a081287e""
+    }
+  ],
+  ""subject"": ""System Design made simple (free ebook)"",
+  ""to"": [
+    {
+      ""email"": ""user_f5e9013@masked.com"",
+      ""name"": ""user_6b5493a7d5f264289bed336fffd23bc5""
+    }
+  ]
+}","[
+  {
+    ""email"": ""user_7c45466@masked.com"",
+    ""name"": ""user_d71fd42f0d973ea716507bc8a081287e""
+  }
+]",acti_vFOQbxjGmxtE65j9vcrGayPVMU3jKWclNweLWAYBiBy,[],user_5327695d4ec5199833e17a2fa9fd5567,sent,user_f544a8d8c27e4ddcecfdbb19ccce8347,"{
+  ""_type"": ""Email"",
+  ""activity_at"": ""2026-04-26T02:36:27.024000+00:00"",
+  ""agent_action_reason"": null,
+  ""agent_config_id"": null,
+  ""ai_draft"": null,
+  ""attachments"": [],
+  ""bcc"": [],
+  ""body_html"": null,
+  ""body_html_quoted"": null,
+  ""body_preview"": null,
+  ""body_text"": null,
+  ""body_text_quoted"": null,
+  ""bulk_email_action_id"": null,
+  ""cc"": [],
+  ""contact_id"": ""cont_bGgqLuai6kRq59NTtsmPbxJG00iGnv45N8UEvDUkrah"",
+  ""created_by"": null,
+  ""created_by_name"": null,
+  ""date_created"": ""2026-04-26T02:36:27.024000+00:00"",
+  ""date_scheduled"": null,
+  ""date_sent"": ""2026-04-26T02:36:27.024000+00:00"",
+  ""date_updated"": ""2026-04-26T02:36:28.804000+00:00"",
+  ""direction"": ""outgoing"",
+  ""email_account_id"": ""emailacct_jM9xdg6t2kdXYJrMYVcPgmnNr2VyxK0Hsau9AyEaZcw"",
+  ""envelope"": {
+    ""bcc"": [],
+    ""cc"": [],
+    ""date"": ""Sun, 26 Apr 2026 02:36:27 +0000"",
+    ""from"": [
+      {
+        ""email"": ""user_7c45466@masked.com"",
+        ""name"": ""user_d71fd42f0d973ea716507bc8a081287e""
+      }
+    ],
+    ""in_reply_to"": null,
+    ""is_autoreply"": false,
+    ""message_id"": """",
+    ""reply_to"": [],
+    ""sender"": [
+      {
+        ""email"": ""user_7c45466@masked.com"",
+        ""name"": ""user_d71fd42f0d973ea716507bc8a081287e""
+      }
+    ],
+    ""subject"": ""System Design made simple (free ebook)"",
+    ""to"": [
+      {
+        ""email"": ""user_f5e9013@masked.com"",
+        ""name"": ""user_6b5493a7d5f264289bed336fffd23bc5""
+      }
+    ]
+  },
+  ""followup_sequence_add_cc_bcc"": false,
+  ""followup_sequence_delay"": null,
+  ""followup_sequence_id"": null,
+  ""has_reply"": false,
+  ""id"": ""acti_vFOQbxjGmxtE65j9vcrGayPVMU3jKWclNweLWAYBiBy"",
+  ""in_reply_to_id"": null,
+  ""lead_id"": ""lead_LtciWMvVcM3ECoDzj6oZw87Z65WatusiaKbDUq8nfqb"",
+  ""message_ids"": [
+    """",
+    """"
+  ],
+  ""need_smtp_credentials"": false,
+  ""opens"": [],
+  ""opens_summary"": null,
+  ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+  ""references"": [],
+  ""send_as_id"": null,
+  ""send_attempts"": [],
+  ""sender"": ""user_5327695d4ec5199833e17a2fa9fd5567"",
+  ""sequence_id"": ""seq_2B9BurnZzaDMtNyDCcOmi8"",
+  ""sequence_name"": ""New Opt-In- SMS Sequence #6 - Segment 2: Booked Setter, No Show (SMS + Value email) - Advanced (Oct 2025)"",
+  ""sequence_subscription_id"": ""sub_6qMJHNVovuAjIUNmTp2h74"",
+  ""status"": ""sent"",
+  ""subject"": ""user_f544a8d8c27e4ddcecfdbb19ccce8347"",
+  ""template_id"": ""tmpl_aBoJWPvi5nm158Bh2Ow17IidvYBzM3cVXExr3cSYV1x"",
+  ""template_name"": ""Segment 1: NBASC- Email #13 (NEW)"",
+  ""thread_id"": ""acti_xig6Lqct3lZdl0aDUF8S1sTXS5WXd6i2fOWM39efWNa"",
+  ""to"": [
+    ""user_ec36b72@masked.com""
+  ],
+  ""updated_by"": ""user_mrokNuNoTE6Z44kv7DzHfPrePPQFLe2tMKwJKaY4urL"",
+  ""updated_by_name"": ""user_d71fd42f0d973ea716507bc8a081287e"",
+  ""user_id"": ""user_mrokNuNoTE6Z44kv7DzHfPrePPQFLe2tMKwJKaY4urL"",
+  ""user_name"": ""user_d71fd42f0d973ea716507bc8a081287e"",
+  ""users"": []
+}",user_mrokNuNoTE6Z44kv7DzHfPrePPQFLe2tMKwJKaY4urL,user_d71fd42f0d973ea716507bc8a081287e,tmpl_aBoJWPvi5nm158Bh2Ow17IidvYBzM3cVXExr3cSYV1x,Segment 1: NBASC- Email #13 (NEW),2026-04-26 02:36:27.024,FALSE,2026-06-19 11:01:27.401,2026-07-01 12:30:18.206,b1e1297f8dee5b39b03628d43f424b98
