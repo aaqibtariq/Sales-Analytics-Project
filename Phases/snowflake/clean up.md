@@ -191,4 +191,16 @@ Deduplication (lead_id + activity_id)
 Latest record selection using activity_at
 MERGE-based upserts with INSERT_DATE and UPDATE_DATE for auditability.
 
+Why do we need a UDF?
+
+Your requirement document says:
+
+"Stringified data within JSON_OBJECT contains single quotes (') instead of standard double quotes (")."
+
+It also says:
+
+"Implement a custom UDF to repair malformed strings, neutralize messy text fields (like descriptions or notes), and escape apostrophes prior to JSON parsing."
+
+So Snowflake cannot parse your JSON directly because it isn't valid JSON.
+
 ```
