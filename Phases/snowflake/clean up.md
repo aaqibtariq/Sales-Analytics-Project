@@ -204,3 +204,79 @@ It also says:
 So Snowflake cannot parse your JSON directly because it isn't valid JSON.
 
 ```
+
+# Steps
+
+```
+Step 1
+
+Suppose Bronze contains this string:
+
+{'id':'123',
+ 'email':'john@test.com',
+ 'status':None}
+
+Notice:
+
+Single quotes ❌
+Python None ❌
+
+This is not valid JSON.
+
+Step 2
+
+This part
+
+REPLACE(input_string, '''', '"')
+
+changes
+
+{'id':'123'}
+
+into
+
+{"id":"123"}
+
+which is valid JSON.
+
+Step 3
+
+This part
+
+REGEXP_REPLACE(...,'None|none','null')
+
+changes
+
+"status":None
+
+into
+
+"status":null
+
+which JSON understands.
+
+Result
+
+Input
+
+{'id':'123',
+'email':'john@test.com',
+'status':None}
+
+↓
+
+Output
+
+{
+"id":"123",
+"email":"john@test.com",
+"status":null
+}
+
+Now Snowflake can execute
+
+TRY_PARSE_JSON(...)
+
+successfully.
+
+```
