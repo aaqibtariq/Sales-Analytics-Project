@@ -114,3 +114,81 @@ Important Data Property Each daily data refresh contains:
 
 ```
 
+# Current Architecture
+
+```
+
+PostgreSQL
+        │
+        ▼
+AWS Glue Python Shell
+        │
+Chunk Processing
+        │
+        ▼
+S3 Raw JSON
+        │
+        ▼
+Snowflake External Stage
+        │
+        ▼
+Bronze Tables
+
+```
+
+# Next phase
+
+```
+
+
+
+Now we begin the core engineering portion of the project.
+
+Silver Layer
+
+Pipeline
+
+Bronze
+
+↓
+
+Repair malformed JSON
+
+↓
+
+Parse JSON
+
+↓
+
+Deep Unwrap
+
+↓
+
+Flatten arrays
+
+↓
+
+Generate MD5_HASH
+
+↓
+
+Deduplicate
+
+↓
+
+MERGE
+
+↓
+
+Silver Processed Tables
+
+This will implement the exact business requirements:
+
+Custom JSON repair UDF
+Deep unwrapping (raw_data → JSON_OBJECT → data[])
+CDC using MD5_HASH
+Deduplication (lead_id + activity_id)
+Latest record selection using activity_at
+MERGE-based upserts with INSERT_DATE and UPDATE_DATE for auditability.
+
+```
