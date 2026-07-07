@@ -194,3 +194,264 @@ LEADS_ACTIVITIES_SUMMARY_TRANSIENT
 CLOSE_CRM_USERS_PROCESSED
 
 ```
+
+# Notes
+
+```
+What happened?
+
+Initially, we assumed that all Bronze tables had the same JSON structure because LEAD_ACTIVITIES_RAW worked with this path:
+
+r.JSON_OBJECT:raw_data:data
+
+So we reused the same logic for CLOSE_CRM_USERS_RAW.
+
+Our original query was essentially:
+
+FROM BRONZE.CLOSE_CRM_USERS_RAW r,
+LATERAL FLATTEN(
+    INPUT => r.JSON_OBJECT:raw_data:data
+) user_obj
+
+Result:
+
+0 rows
+
+The MERGE therefore showed:
+
+Rows inserted: 0
+Rows updated: 0
+Why?
+
+Because the JSON structure was different.
+
+LEAD_ACTIVITIES_RAW
+
+JSON_OBJECT
+    │
+    └── raw_data
+            │
+            └── data[]
+
+But CLOSE_CRM_USERS_RAW was:
+
+JSON_OBJECT
+    │
+    └── raw_data
+            │
+            └── JSON_OBJECT   ← String
+                    │
+                    └── data[]
+
+Notice the extra layer:
+
+JSON_OBJECT
+
+inside raw_data.
+
+So this path:
+
+raw_data:data
+
+didn't exist.
+
+How did we debug it?
+
+Instead of guessing, we inspected the data.
+
+Step 1
+
+We looked at the raw object.
+
+SELECT JSON_OBJECT
+FROM BRONZE.CLOSE_CRM_USERS_RAW;
+Step 2
+
+We checked the keys.
+
+OBJECT_KEYS(JSON_OBJECT)
+Step 3
+
+We checked the nested object.
+
+That's when we noticed something like:
+
+raw_data
+    │
+    ├── INSERT_DATE
+    └── JSON_OBJECT
+
+That was the clue.
+
+Step 4
+
+We realized
+
+JSON_OBJECT
+
+was not a JSON object.
+
+It was actually
+
+STRING
+
+containing JSON.
+
+Example
+
+"{ 'data':[ ... ] }"
+Step 5
+
+Snowflake cannot flatten a string.
+
+We first had to convert it into JSON.
+
+We used
+
+TRY_PARSE_JSON(...)
+Step 6
+
+Because the string contained
+
+'
+
+instead of
+
+"
+
+we repaired it first.
+
+REPLACE(..., '''', '"')
+
+Then
+
+TRY_PARSE_JSON(...)
+Final path
+
+Instead of
+
+r.JSON_OBJECT:raw_data:data
+
+we used
+
+TRY_PARSE_JSON(
+    REPLACE(
+        r.JSON_OBJECT:raw_data:JSON_OBJECT::STRING,
+        '''',
+        '"'
+    )
+):data
+
+Now Snowflake saw a real JSON array.
+
+Why did TRY_PARSE_JSON return NULL but COUNT(*) returned 8,600?
+
+This confused us at first.
+
+When we ran:
+
+SELECT
+TRY_PARSE_JSON(...)
+LIMIT 5;
+
+we saw
+
+NULL
+NULL
+NULL
+NULL
+NULL
+
+We thought parsing wasn't working.
+
+But then
+
+SELECT COUNT(*)
+...
+
+returned
+
+8600
+Why?
+
+Because
+
+LIMIT 5
+
+only showed the first five Bronze records.
+
+Those happened to contain empty or malformed values.
+
+The rest of the table contained valid JSON.
+
+So
+
+First 5
+
+NULL
+
+does NOT mean
+
+Entire table = NULL
+
+This is a common mistake people make when debugging.
+
+Why did the final table only have 100 rows?
+
+Because
+
+8600
+
+was
+
+historical snapshots
+
+The requirement says:
+
+Daily refresh contains historical records.
+
+The same user appears over multiple days.
+
+Example
+
+User A
+Day 1
+
+User A
+Day 2
+
+User A
+Day 3
+
+After
+
+ROW_NUMBER()
+
+PARTITION BY USER_ID
+
+we keep
+
+Latest version
+
+Result
+
+100 unique CRM users
+This is exactly CDC
+8600 raw records
+
+↓
+
+MD5_HASH
+
+↓
+
+ROW_NUMBER()
+
+↓
+
+MERGE
+
+↓
+
+100 current users
+```
