@@ -1,1 +1,52 @@
+# create table
 
+```
+
+
+CREATE OR REPLACE TABLE SILVER.CUSTOM_ACTIVITIES_TRANSIENT AS
+SELECT
+    JSON_OBJECT,
+    INSERT_DATE
+FROM BRONZE.CUSTOM_ACTIVITIES_RAW;
+
+```
+
+# load data
+
+```
+INSERT INTO SILVER.CUSTOM_ACTIVITIES_TRANSIENT
+SELECT
+    JSON_OBJECT,
+    INSERT_DATE
+FROM BRONZE.CUSTOM_ACTIVITIES_RAW;
+
+```
+
+# validate 
+
+```
+
+SELECT COUNT(*)
+FROM SILVER.CUSTOM_ACTIVITIES_TRANSIENT;
+SELECT
+    JSON_OBJECT:raw_data:JSON_OBJECT:data[0]:id::STRING AS SAMPLE_ID,
+    JSON_OBJECT:raw_data:JSON_OBJECT:data[0]:name::STRING AS SAMPLE_NAME
+FROM SILVER.CUSTOM_ACTIVITIES_TRANSIENT
+LIMIT 5;
+
+
+validation returned:
+
+SAMPLE_ID	SAMPLE_NAME
+actitype_0swZKvY0rLQngJj3Nxgo39	0) Pipeline Update
+
+That means:
+
+Bronze is correct.
+ CUSTOM_ACTIVITIES_TRANSIENT is correct.
+ raw_data.JSON_OBJECT.data[] is being parsed successfully.
+ We can now build the final Silver table exactly as your SME designed it.
+
+
+
+```
