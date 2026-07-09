@@ -1,0 +1,81 @@
+LEAD_ID,ACTIVITY_ID,CUSTOM_ACTIVITY,WRAPPED_ACTIVITIES
+lead_f7G6SHz7d7K6rqcqmC4hyzlh7jdAEfCLq6U4RApAbnm,acti_Z7eopC6ShHuEFyopF48Y1NDGEUXX7ZRtHNfdKwYgX0i,3) Triage Call,"{
+  ""ATTENDEES"": null,
+  ""CREATED_BY_NAME"": ""user_d71fd42f0d973ea716507bc8a081287e"",
+  ""CREATED_BY_USER"": ""user_mrokNuNoTE6Z44kv7DzHfPrePPQFLe2tMKwJKaY4urL"",
+  ""CUSTOM_ACTIVITY_ID"": ""actitype_38341SWOKRkRHHAqWEqSJu"",
+  ""DATE_CREATED"": ""2026-05-27 23:04:51.267"",
+  ""DATE_UPDATED"": ""2026-05-27 23:05:00.693"",
+  ""MEETING_END_AT"": null,
+  ""MEETING_STARTS_AT"": null,
+  ""MEETING_STATUS"": null,
+  ""STATUS_CHANGE"": ""published"",
+  ""TEXT"": null,
+  ""TYPE"": ""CustomActivity"",
+  ""UPDATED_BY_NAME"": ""user_d71fd42f0d973ea716507bc8a081287e"",
+  ""UPDATED_BY_USER"": ""user_mrokNuNoTE6Z44kv7DzHfPrePPQFLe2tMKwJKaY4urL""
+}"
+lead_f7rTaMbLlWAMf0RyQWpoGhfYx5jeA8Iaw7sDSll0rFy,acti_HKJ16YQPe0M0HDPTkJfWdMbflNVMbQQTvMpwT8GxAlV,3) Triage Call,"{
+  ""ATTENDEES"": null,
+  ""CREATED_BY_NAME"": ""user_1ec50a87f6c9e385025e009b58100e6f"",
+  ""CREATED_BY_USER"": ""user_T7WuGoDnkZ2v5PVzlKT4g60rcN82JTCvlU7ydK2yYGa"",
+  ""CUSTOM_ACTIVITY_ID"": ""actitype_38341SWOKRkRHHAqWEqSJu"",
+  ""DATE_CREATED"": ""2026-06-07 17:44:12.822"",
+  ""DATE_UPDATED"": ""2026-06-07 17:44:46.936"",
+  ""MEETING_END_AT"": null,
+  ""MEETING_STARTS_AT"": null,
+  ""MEETING_STATUS"": null,
+  ""STATUS_CHANGE"": ""published"",
+  ""TEXT"": null,
+  ""TYPE"": ""CustomActivity"",
+  ""UPDATED_BY_NAME"": ""user_1ec50a87f6c9e385025e009b58100e6f"",
+  ""UPDATED_BY_USER"": ""user_T7WuGoDnkZ2v5PVzlKT4g60rcN82JTCvlU7ydK2yYGa""
+}"
+lead_f81VDjNtnm6DmAOxT2fB4O2swleCknVJvKyKotCZNFY,acti_8Z9iWyzcmWLn0nGz7YqF4J22oDmMPJclBxwVF6zJ2JA,3) Triage Call,"{
+  ""ATTENDEES"": null,
+  ""CREATED_BY_NAME"": ""user_e3c43c22e7f8f1802c89cf46498f92d0"",
+  ""CREATED_BY_USER"": ""user_hWYnuvufrouzVM485rd8PbRMC7atuu60oW2LuQluV9l"",
+  ""CUSTOM_ACTIVITY_ID"": ""actitype_38341SWOKRkRHHAqWEqSJu"",
+  ""DATE_CREATED"": ""2026-06-01 15:58:50.127"",
+  ""DATE_UPDATED"": ""2026-06-01 16:15:39.648"",
+  ""MEETING_END_AT"": null,
+  ""MEETING_STARTS_AT"": null,
+  ""MEETING_STATUS"": null,
+  ""STATUS_CHANGE"": ""published"",
+  ""TEXT"": null,
+  ""TYPE"": ""CustomActivity"",
+  ""UPDATED_BY_NAME"": ""user_e3c43c22e7f8f1802c89cf46498f92d0"",
+  ""UPDATED_BY_USER"": ""user_hWYnuvufrouzVM485rd8PbRMC7atuu60oW2LuQluV9l""
+}"
+lead_f81VDjNtnm6DmAOxT2fB4O2swleCknVJvKyKotCZNFY,acti_wXXGX54rv1F3XDCOuFHURXS4Na4LH4UzGLqDePlipfF,3) Triage Call,"{
+  ""ATTENDEES"": null,
+  ""CREATED_BY_NAME"": ""user_8cd22d8068318c61d442dcb2092ad3b3"",
+  ""CREATED_BY_USER"": ""user_myWLFsY6kfsuqKjDVYzbN4qquUkpAJBnQB7l6znEzL0"",
+  ""CUSTOM_ACTIVITY_ID"": ""actitype_38341SWOKRkRHHAqWEqSJu"",
+  ""DATE_CREATED"": ""2026-06-01 16:06:49.520"",
+  ""DATE_UPDATED"": ""2026-06-01 16:07:05.768"",
+  ""MEETING_END_AT"": null,
+  ""MEETING_STARTS_AT"": null,
+  ""MEETING_STATUS"": null,
+  ""STATUS_CHANGE"": ""published"",
+  ""TEXT"": null,
+  ""TYPE"": ""CustomActivity"",
+  ""UPDATED_BY_NAME"": ""user_8cd22d8068318c61d442dcb2092ad3b3"",
+  ""UPDATED_BY_USER"": ""user_myWLFsY6kfsuqKjDVYzbN4qquUkpAJBnQB7l6znEzL0""
+}"
+lead_f88sq59qQ7ezo640m5sIPdnwM0FJQQWWsGp7fDFlDzn,acti_1Bn6CQfffjqrzPoVeT6YX2HMTwSmftI4EQiShOt4FKF,3) Triage Call,"{
+  ""ATTENDEES"": null,
+  ""CREATED_BY_NAME"": ""user_4a7afae8558035b472388a48786373fb"",
+  ""CREATED_BY_USER"": ""user_fgkwC2PT4UGqc1MsWfEioweuVdBQGJHK0VdczqaFuTu"",
+  ""CUSTOM_ACTIVITY_ID"": ""actitype_38341SWOKRkRHHAqWEqSJu"",
+  ""DATE_CREATED"": ""2026-04-24 17:13:57.361"",
+  ""DATE_UPDATED"": ""2026-04-24 17:14:08.380"",
+  ""MEETING_END_AT"": null,
+  ""MEETING_STARTS_AT"": null,
+  ""MEETING_STATUS"": null,
+  ""STATUS_CHANGE"": ""published"",
+  ""TEXT"": null,
+  ""TYPE"": ""CustomActivity"",
+  ""UPDATED_BY_NAME"": ""user_4a7afae8558035b472388a48786373fb"",
+  ""UPDATED_BY_USER"": ""user_fgkwC2PT4UGqc1MsWfEioweuVdBQGJHK0VdczqaFuTu""
+}"
