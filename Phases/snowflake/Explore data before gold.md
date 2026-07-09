@@ -792,3 +792,17 @@ Enhance the existing Silver transformation rather than changing the SME architec
 Revalidate until the extracted outcomes matched the documented business process.
 
 ```
+
+```
+
+Confirmed:
+
+LEADS_ACTIVITIES_SUMMARY row count = 1,063,628
+Duplicate LEAD_ID + ACTIVITY_ID = 0
+Triage outcomes populated, including 1. Strategy Call Scheduled = 1,125
+Strategy outcomes populated, including 6. Sale = 106, 7. Lost = 96, 1. Follow Up = 1,843
+
+Silver is ready.
+
+
+```
