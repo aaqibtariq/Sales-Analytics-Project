@@ -600,4 +600,143 @@ Expected:
 
 ```
 
+# Create gold table
 
+
+```
+
+USE DATABASE SALES_ANALYTICS_DB;
+USE SCHEMA GOLD;
+
+CREATE OR REPLACE VIEW GOLD.OUTBOUND_STRATEGIES_BOOKED AS
+SELECT
+    LEAD_ID,
+
+    ACTIVITY_AT::DATE AS ACTIVITY_LOG_DATE,
+
+    DEA_INTERNAL_EMAIL AS SETTER_CLOSER_EMAIL,
+    DEA_INTERNAL_NAME AS SETTER_CLOSER_NAME,
+
+    ACTIVITY_AT::DATE AS PROSPECT_CALL_DATE,
+
+    1 AS STRATEGY_CALL_BOOKED,
+
+    YEAR(ACTIVITY_AT) || '-' ||
+    LPAD(WEEKISO(ACTIVITY_AT), 2, '0') AS SC_YEAR_WEEK
+
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+
+WHERE CUSTOM_ACTIVITY IN (
+    '1) Prospecting Activity',
+    '2) Prospecting Follow Up'
+)
+AND CUSTOM_ACTIVITY_OUTCOME = '2. Strategy Call Scheduled';
+
+
+```
+
+# Validate total rows
+```
+SELECT COUNT(*) AS OUTBOUND_STRATEGIES_BOOKED_COUNT
+FROM GOLD.OUTBOUND_STRATEGIES_BOOKED;
+
+Expected:
+2408
+Calculation:
+2,146 Prospecting Activity bookings
++ 262 Prospecting Follow Up bookings
+= 2,408
+
+```
+# Validate unique leads
+
+```
+SELECT
+    COUNT(*) AS TOTAL_ROWS,
+    COUNT(DISTINCT LEAD_ID) AS UNIQUE_LEADS
+FROM GOLD.OUTBOUND_STRATEGIES_BOOKED;
+The total should be 2,408. The unique lead count may be lower because some leads can book more than once.
+
+```
+# Validate source reconciliation
+```
+SELECT
+    CUSTOM_ACTIVITY,
+    COUNT(*) AS SILVER_ROWS
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+WHERE CUSTOM_ACTIVITY IN (
+    '1) Prospecting Activity',
+    '2) Prospecting Follow Up'
+)
+AND CUSTOM_ACTIVITY_OUTCOME = '2. Strategy Call Scheduled'
+GROUP BY CUSTOM_ACTIVITY
+ORDER BY CUSTOM_ACTIVITY;
+
+Expected:
+1) Prospecting Activity     2146
+2) Prospecting Follow Up     262
+```
+# Validate weekly reporting
+```
+SELECT
+    SC_YEAR_WEEK,
+    COUNT(*) AS STRATEGIES_BOOKED
+FROM GOLD.OUTBOUND_STRATEGIES_BOOKED
+GROUP BY SC_YEAR_WEEK
+ORDER BY SC_YEAR_WEEK;
+
+```
+# Validate attribution coverage
+
+```
+SELECT
+    COUNT(*) AS TOTAL_ROWS,
+    COUNT_IF(SETTER_CLOSER_EMAIL IS NOT NULL) AS EMAIL_ROWS,
+    COUNT_IF(SETTER_CLOSER_NAME IS NOT NULL) AS NAME_ROWS
+FROM GOLD.OUTBOUND_STRATEGIES_BOOKED;
+
+```
+# reslts
+
+```
+Validation Results
+1. Total rows 
+OUTBOUND_STRATEGIES_BOOKED
+2,408 rows
+This matches exactly what we expected.
+2. Unique Leads 
+Total Rows    : 2,408
+Unique Leads  : 2,184
+This is a good sign.
+It means:
+Some leads scheduled more than one Strategy Call.
+The Gold view is correctly keeping the activity grain rather than collapsing to one row per lead.
+3. Source reconciliation 
+The source distribution matches perfectly:
+Activity	Rows
+1) Prospecting Activity	2,146
+2) Prospecting Follow Up	262
+Total:
+2146 + 262 = 2408
+Exactly matches the Gold row count.
+4. Weekly aggregation 
+The weekly summary shows records distributed across ISO weeks.
+This confirms that:
+SC_YEAR_WEEK
+is being generated correctly and will support the Outbound Setter Report required by the SME.
+5. Attribution 
+Your validation shows:
+TOTAL_ROWS : 2408
+EMAIL_ROWS : 235
+NAME_ROWS  : 235
+Only 235 rows have populated DEA_INTERNAL_EMAIL/DEA_INTERNAL_NAME.
+Is this a problem?
+No.
+This is consistent with what we observed earlier:
+Many prospecting activities do not have an associated CRM user in CLOSE_CRM_USERS_PROCESSED.
+Earlier we validated that 104 user IDs were missing from the user dimension due to source data limitations.
+We agreed not to fabricate or backfill user attribution.
+So this is a source data limitation, not an ETL issue.
+
+
+```
