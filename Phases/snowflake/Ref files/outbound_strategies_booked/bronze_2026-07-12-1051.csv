@@ -1,0 +1,649 @@
+CUSTOM_ACTIVITY_NAME,FIELD_ID,FIELD_NAME,FIELD_TYPE,FIELD_DEFINITION
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+1) Prospecting Activity,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"
+2) Prospecting Follow Up,cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra,Prospecting Call Outcome,choices,"{
+  ""accepts_multiple_values"": false,
+  ""always_visible"": false,
+  ""back_reference_is_visible"": null,
+  ""converting_to_type"": null,
+  ""description"": """",
+  ""editable_with_roles"": [],
+  ""enrichment_enabled"": true,
+  ""enrichment_options"": {
+    ""guidance"": null
+  },
+  ""id"": ""cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"",
+  ""is_shared"": true,
+  ""name"": ""Prospecting Call Outcome"",
+  ""referenced_custom_type_id"": null,
+  ""required"": true,
+  ""type"": ""choices""
+}"

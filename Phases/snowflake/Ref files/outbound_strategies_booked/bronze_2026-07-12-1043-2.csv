@@ -1,0 +1,7 @@
+ROOT_KEYS
+"[
+  ""glue_cleaned_at"",
+  ""glue_cleaned_flag"",
+  ""insert_date"",
+  ""raw_data""
+]"
