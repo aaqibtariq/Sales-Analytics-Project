@@ -1,0 +1,12 @@
+CUSTOM_ACTIVITY_OUTCOME,TRIAGE_ATTENDANCE_CLASS,TOTAL_ROWS
+6. No Show,NOT_TAKEN,1391
+1. Strategy Call Scheduled,TAKEN,1125
+2. Unqualified,TAKEN,387
+3. Follow Up < 10 Days,TAKEN,180
+7. Reschedule,NOT_TAKEN,96
+10. Not Interested,TAKEN,94
+8. Cancel,NOT_TAKEN,93
+5. Long Term Follow Up,TAKEN,37
+4. Follow Up < 1 Month,TAKEN,34
+9. Inaccurate Prospect,TAKEN,21
+,MISSING_OUTCOME,5
