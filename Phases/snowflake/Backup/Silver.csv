@@ -1,0 +1,348 @@
+"GET_DDL(
+    'SCHEMA',
+    'SALES_ANALYTICS_DB.SILVER',
+    TRUE
+)"
+"create or replace schema SALES_ANALYTICS_DB.SILVER;
+
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.CLOSE_CRM_USERS_PROCESSED (
+	USER_ID VARCHAR(16777216),
+	EMAIL VARCHAR(16777216),
+	FIRST_NAME VARCHAR(16777216),
+	LAST_NAME VARCHAR(16777216),
+	MD5_HASH VARCHAR(16777216),
+	DATE_CREATED TIMESTAMP_NTZ(9),
+	DATE_UPDATED TIMESTAMP_NTZ(9),
+	INSERT_DATE TIMESTAMP_NTZ(9),
+	UPDATE_DATE TIMESTAMP_NTZ(9)
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.CUSTOM_ACTIVITIES (
+	CUSTOM_ACTIVITY_ID VARCHAR(16777216),
+	CUSTOM_ACTIVITY_NAME VARCHAR(16777216),
+	CUSTOM_ACTIVITY_OUTCOME_ID VARCHAR(16777216),
+	CUSTOM_ACTIVITY_OUTCOME_NAME VARCHAR(16777216),
+	MD5_HASH VARCHAR(16777216),
+	INSERT_DATE TIMESTAMP_NTZ(9),
+	UPDATE_DATE TIMESTAMP_NTZ(9)
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.CUSTOM_ACTIVITIES_ALL_LEADS_DETAILS (
+	LEAD_ID VARCHAR(16777216),
+	ACTIVITY_ID VARCHAR(16777216),
+	ACTIVITY_AT TIMESTAMP_NTZ(9),
+	WRAPPED_ACTIVITIES VARIANT,
+	INSERT_DATE TIMESTAMP_NTZ(9),
+	UPDATE_DATE TIMESTAMP_NTZ(9),
+	MD5_HASH VARCHAR(16777216)
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.CUSTOM_ACTIVITIES_TRANSIENT (
+	JSON_OBJECT VARIANT,
+	INSERT_DATE TIMESTAMP_NTZ(9)
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY (
+	ACTIVITY_ID VARCHAR(16777216),
+	LEAD_ID VARCHAR(16777216),
+	CONTACT_ID VARCHAR(16777216),
+	USER_ID VARCHAR(16777216),
+	TYPE VARCHAR(16777216),
+	TEXT VARCHAR(16777216),
+	STATUS_CHANGE VARCHAR(16777216),
+	CREATED_BY_NAME VARCHAR(16777216),
+	UPDATED_BY_NAME VARCHAR(16777216),
+	ATTENDEES VARIANT,
+	CUSTOM_ACTIVITY_ID VARCHAR(16777216),
+	MEETING_STARTS_AT TIMESTAMP_NTZ(9),
+	MEETING_END_AT TIMESTAMP_NTZ(9),
+	MEETING_STATUS VARCHAR(16777216),
+	ACTIVITY_AT TIMESTAMP_NTZ(9),
+	DATE_CREATED TIMESTAMP_NTZ(9),
+	DATE_UPDATED TIMESTAMP_NTZ(9),
+	CREATED_BY_USER VARCHAR(16777216),
+	UPDATED_BY_USER VARCHAR(16777216),
+	INSERT_DATE TIMESTAMP_NTZ(9),
+	UPDATE_DATE TIMESTAMP_NTZ(9),
+	WRAPPED_ACTIVITIES VARIANT,
+	CUSTOM_ACTIVITY VARCHAR(16777216),
+	CUSTOM_ACTIVITY_OUTCOME_NAME VARCHAR(16777216),
+	CUSTOM_ACTIVITY_OUTCOME VARCHAR(16777216),
+	DEA_INTERNAL_NAME VARCHAR(16777216),
+	DEA_INTERNAL_EMAIL VARCHAR(16777216),
+	SETTER_USER_ID VARCHAR(16777216),
+	SETTER_EMAIL VARCHAR(16777216),
+	SETTER_NAME VARCHAR(16777216),
+	CLOSER_USER_ID VARCHAR(16777216),
+	CLOSER_EMAIL VARCHAR(16777216),
+	CLOSER_NAME VARCHAR(16777216),
+	OFFER_PRESENTED VARCHAR(16777216),
+	PROGRAM VARCHAR(16777216),
+	CONTRACT_VALUE VARCHAR(16777216),
+	CASH_COLLECTED VARCHAR(16777216),
+	OBJECTIONS_FACED VARCHAR(16777216),
+	DATE_OF_SALE DATE
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY_TRANSIENT (
+	ACTIVITY_ID VARCHAR(16777216),
+	LEAD_ID VARCHAR(16777216),
+	CONTACT_ID VARCHAR(16777216),
+	USER_ID VARCHAR(16777216),
+	TYPE VARCHAR(16777216),
+	TEXT VARCHAR(16777216),
+	STATUS_CHANGE VARCHAR(16777216),
+	CREATED_BY_NAME VARCHAR(16777216),
+	UPDATED_BY_NAME VARCHAR(16777216),
+	ATTENDEES VARIANT,
+	CUSTOM_ACTIVITY_ID VARCHAR(16777216),
+	MEETING_STARTS_AT TIMESTAMP_NTZ(9),
+	MEETING_END_AT TIMESTAMP_NTZ(9),
+	MEETING_STATUS VARCHAR(16777216),
+	ACTIVITY_AT TIMESTAMP_NTZ(9),
+	DATE_CREATED TIMESTAMP_NTZ(9),
+	DATE_UPDATED TIMESTAMP_NTZ(9),
+	CREATED_BY_USER VARCHAR(16777216),
+	UPDATED_BY_USER VARCHAR(16777216),
+	INSERT_DATE TIMESTAMP_NTZ(9),
+	UPDATE_DATE TIMESTAMP_NTZ(9),
+	MD5_HASH VARCHAR(16777216)
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_EMAIL (
+	LEAD_ID VARCHAR(16777216),
+	ACTIVITY_AT TIMESTAMP_NTZ(9),
+	ATTACHMENTS_JSON VARIANT,
+	BODY_TEXT VARCHAR(16777216),
+	DATE_CREATED TIMESTAMP_NTZ(9),
+	DATE_UPDATED TIMESTAMP_NTZ(9),
+	DIRECTION VARCHAR(16777216),
+	ENVELOPE_JSON VARIANT,
+	SENDER_JSON VARIANT,
+	ACTIVITY_ID VARCHAR(16777216),
+	OPENS_JSON VARIANT,
+	SENDER VARCHAR(16777216),
+	STATUS VARCHAR(16777216),
+	SUBJECT VARCHAR(16777216),
+	JSON_PAYLOAD VARIANT,
+	USER_ID VARCHAR(16777216),
+	USER_NAME VARCHAR(16777216),
+	TEMPLATE_ID VARCHAR(16777216),
+	TEMPLATE_NAME VARCHAR(16777216),
+	DATE_SENT TIMESTAMP_NTZ(9),
+	HAS_REPLY BOOLEAN,
+	INSERT_DATE TIMESTAMP_NTZ(9),
+	UPDATE_DATE TIMESTAMP_NTZ(9),
+	MD5_HASH VARCHAR(16777216)
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_PROCESSED (
+	ACTIVITY_ID VARCHAR(16777216),
+	LEAD_ID VARCHAR(16777216),
+	CONTACT_ID VARCHAR(16777216),
+	USER_ID VARCHAR(16777216),
+	TYPE VARCHAR(16777216),
+	TEXT VARCHAR(16777216),
+	STATUS_CHANGE VARCHAR(16777216),
+	CREATED_BY_NAME VARCHAR(16777216),
+	UPDATED_BY_NAME VARCHAR(16777216),
+	ATTENDEES VARIANT,
+	CUSTOM_ACTIVITY_ID VARCHAR(16777216),
+	MEETING_STARTS_AT TIMESTAMP_NTZ(9),
+	MEETING_END_AT TIMESTAMP_NTZ(9),
+	MEETING_STATUS VARCHAR(16777216),
+	ACTIVITY_AT TIMESTAMP_NTZ(9),
+	DATE_CREATED TIMESTAMP_NTZ(9),
+	DATE_UPDATED TIMESTAMP_NTZ(9),
+	CREATED_BY_USER VARCHAR(16777216),
+	UPDATED_BY_USER VARCHAR(16777216),
+	INSERT_DATE TIMESTAMP_NTZ(9),
+	UPDATE_DATE TIMESTAMP_NTZ(9),
+	MD5_HASH VARCHAR(16777216)
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_PROCESSED_TRANSIENT (
+	JSON_OBJECT VARIANT,
+	INSERT_DATE TIMESTAMP_NTZ(9)
+);
+CREATE OR REPLACE FUNCTION SALES_ANALYTICS_DB.SILVER.DEBUG_REPAIR_PYTHON_JSON(""INPUT_STRING"" VARCHAR)
+RETURNS VARCHAR
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.10'
+HANDLER = 'debug_repair'
+AS '
+import ast
+import json
+import re
+
+def debug_repair(input_string):
+    if input_string is None:
+        return ''INPUT IS NULL''
+
+    s = input_string.strip()
+
+    try:
+        s = re.sub(r''\\bfalse\\b'', ''False'', s)
+        s = re.sub(r''\\btrue\\b'', ''True'', s)
+        s = re.sub(r''\\bnull\\b'', ''None'', s)
+
+        obj = ast.literal_eval(s)
+        return ''SUCCESS''
+
+    except Exception as e:
+        return str(type(e)) + '' | '' + str(e)[:500]
+';
+CREATE OR REPLACE FUNCTION SALES_ANALYTICS_DB.SILVER.EXTRACT_CUSTOM_ACTIVITY_MAPPINGS(""INPUT_STRING"" VARCHAR)
+RETURNS VARCHAR
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.10'
+HANDLER = 'extract'
+AS '
+import re
+import json
+
+def extract(input_string):
+    if input_string is None:
+        return json.dumps([])
+
+    s = input_string
+    results = []
+
+    blocks = re.split(r""\\{\\s*''api_create_only''\\s*:"", s)
+
+    for block in blocks:
+        if ""actitype_"" not in block:
+            continue
+
+        activity_id_match = re.search(r""''id''\\s*:\\s*''(actitype_[^'']+)''"", block)
+        activity_name_match = re.search(r""''name''\\s*:\\s*''(.*?)''\\s*,\\s*''organization_id''"", block, re.DOTALL)
+
+        if not activity_id_match or not activity_name_match:
+            continue
+
+        activity_id = activity_id_match.group(1)
+        activity_name = activity_name_match.group(1)
+
+        field_matches = re.findall(
+            r""''id''\\s*:\\s*''(cf_[^'']+)''.*?''name''\\s*:\\s*''(.*?)''\\s*,\\s*''referenced_custom_type_id''"",
+            block,
+            re.DOTALL
+        )
+
+        for field_id, field_name in field_matches:
+            results.append({
+                ""CUSTOM_ACTIVITY_ID"": activity_id,
+                ""CUSTOM_ACTIVITY_NAME"": activity_name,
+                ""CUSTOM_ACTIVITY_OUTCOME_ID"": field_id,
+                ""CUSTOM_ACTIVITY_OUTCOME_NAME"": field_name
+            })
+
+    return json.dumps(results)
+';
+CREATE OR REPLACE FUNCTION SALES_ANALYTICS_DB.SILVER.EXTRACT_CUSTOM_ACTIVITY_MAPPINGS_V2(""INPUT_STRING"" VARCHAR)
+RETURNS VARCHAR
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.10'
+HANDLER = 'extract'
+AS '
+import re
+import json
+
+def extract(input_string):
+    if input_string is None:
+        return json.dumps([])
+
+    s = input_string
+    results = []
+
+    activity_pattern = re.compile(
+        r""''id''\\s*:\\s*''(actitype_[^'']+)''\\s*,\\s*''is_archived''.*?''name''\\s*:\\s*''([^'']+)''"",
+        re.DOTALL
+    )
+
+    field_pattern = re.compile(
+        r""''id''\\s*:\\s*''(cf_[^'']+)''\\s*,\\s*''is_shared''.*?''name''\\s*:\\s*''([^'']+)''"",
+        re.DOTALL
+    )
+
+    activity_matches = list(activity_pattern.finditer(s))
+
+    for i, activity_match in enumerate(activity_matches):
+        activity_id = activity_match.group(1)
+        activity_name = activity_match.group(2)
+
+        start = activity_match.start()
+        end = activity_matches[i + 1].start() if i + 1 < len(activity_matches) else len(s)
+        block = s[start:end]
+
+        for field_match in field_pattern.finditer(block):
+            field_id = field_match.group(1)
+            field_name = field_match.group(2)
+
+            results.append({
+                ""CUSTOM_ACTIVITY_ID"": activity_id,
+                ""CUSTOM_ACTIVITY_NAME"": activity_name,
+                ""CUSTOM_ACTIVITY_OUTCOME_ID"": field_id,
+                ""CUSTOM_ACTIVITY_OUTCOME_NAME"": field_name
+            })
+
+    return json.dumps(results)
+';
+CREATE OR REPLACE FUNCTION SALES_ANALYTICS_DB.SILVER.REPAIR_CUSTOM_ACTIVITY_JSON(""INPUT_STRING"" VARCHAR)
+RETURNS VARCHAR
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.10'
+HANDLER = 'repair'
+AS '
+import re
+
+def repair(input_string):
+    if input_string is None:
+        return None
+
+    s = input_string
+
+    # Remove description fields because they contain unescaped apostrophes
+    s = re.sub(r"",\\s*''description''\\s*:\\s*''.*?''\\s*,"", "","", s)
+    s = re.sub(r""''description''\\s*:\\s*''.*?''\\s*,"", """", s)
+    s = re.sub(r"",\\s*''description''\\s*:\\s*null"", """", s)
+
+    # Convert remaining Python-style JSON to valid JSON
+    s = s.replace(""''"", ''""'')
+    s = s.replace(""False"", ""false"")
+    s = s.replace(""True"", ""true"")
+    s = s.replace(""None"", ""null"")
+
+    return s
+';
+CREATE OR REPLACE FUNCTION SALES_ANALYTICS_DB.SILVER.REPAIR_JSON_STRING(""INPUT_STRING"" VARCHAR)
+RETURNS VARCHAR
+LANGUAGE SQL
+AS '
+    REGEXP_REPLACE(
+        REPLACE(input_string, '''''''', ''""''),
+        ''None|none'',
+        ''null''
+    )
+';
+CREATE OR REPLACE FUNCTION SALES_ANALYTICS_DB.SILVER.REPAIR_PYTHON_JSON(""INPUT_STRING"" VARCHAR)
+RETURNS VARCHAR
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.10'
+HANDLER = 'repair'
+AS '
+import ast
+import json
+import re
+
+def repair(input_string):
+    if input_string is None:
+        return None
+
+    s = input_string.strip()
+
+    try:
+        # Convert JSON-style booleans/null into Python literals
+        s = re.sub(r''\\bfalse\\b'', ''False'', s)
+        s = re.sub(r''\\btrue\\b'', ''True'', s)
+        s = re.sub(r''\\bnull\\b'', ''None'', s)
+        s = re.sub(r''\\bNone\\b'', ''None'', s)
+
+        obj = ast.literal_eval(s)
+        return json.dumps(obj)
+
+    except Exception:
+        return None
+';"

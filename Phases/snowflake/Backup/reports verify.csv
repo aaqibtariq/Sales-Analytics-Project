@@ -1,0 +1,5 @@
+name,size,md5,last_modified
+s3://sales-analytics-raw-aqib-test/snowflake_backup/reports/closer_report.csv.gz,1059,97c543151f46b3a482bfb63d451e3d7b,"Fri, 24 Jul 2026 21:43:41 GMT"
+s3://sales-analytics-raw-aqib-test/snowflake_backup/reports/inbound_setter_report.csv.gz,3323,145f93dcc5211f54c3f6aba7d06c000d,"Fri, 24 Jul 2026 21:43:39 GMT"
+s3://sales-analytics-raw-aqib-test/snowflake_backup/reports/objections_faced_report.csv.gz,8165,281f10ae57f5c97b443cc39454d2d368,"Fri, 24 Jul 2026 21:43:43 GMT"
+s3://sales-analytics-raw-aqib-test/snowflake_backup/reports/outbound_setter_report.csv.gz,4384,6d0aecd24d1d1a6c45f1bcc292d9b574,"Fri, 24 Jul 2026 21:43:40 GMT"

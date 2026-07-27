@@ -1,0 +1,1506 @@
+"GET_DDL(
+    'DATABASE',
+    'SALES_ANALYTICS_DB',
+    TRUE
+)"
+"create or replace database SALES_ANALYTICS_DB;
+
+create or replace schema SALES_ANALYTICS_DB.BRONZE;
+
+create or replace TABLE SALES_ANALYTICS_DB.BRONZE.CLOSE_CRM_USERS_RAW (
+	JSON_OBJECT VARIANT,
+	INSERT_DATE TIMESTAMP_NTZ(9)
+);
+create or replace TABLE SALES_ANALYTICS_DB.BRONZE.CUSTOM_ACTIVITIES_RAW (
+	JSON_OBJECT VARIANT,
+	INSERT_DATE TIMESTAMP_NTZ(9)
+);
+create or replace TABLE SALES_ANALYTICS_DB.BRONZE.LEADS_RAW (
+	JSON_OBJECT VARIANT,
+	INSERT_DATE TIMESTAMP_NTZ(9)
+);
+create or replace TABLE SALES_ANALYTICS_DB.BRONZE.LEAD_ACTIVITIES_RAW (
+	JSON_OBJECT VARIANT,
+	INSERT_DATE TIMESTAMP_NTZ(9)
+);
+CREATE OR REPLACE FILE FORMAT SALES_ANALYTICS_DB.BRONZE.JSON_FF
+	TYPE = JSON
+	NULL_IF = ()
+;
+CREATE OR REPLACE FILE FORMAT SALES_ANALYTICS_DB.BRONZE.JSON_FILE_FORMAT
+	TYPE = JSON
+	NULL_IF = ()
+;
+create or replace schema SALES_ANALYTICS_DB.EXPORTS;
+
+create or replace schema SALES_ANALYTICS_DB.GOLD;
+
+create or replace view SALES_ANALYTICS_DB.GOLD.ALL_STRATEGIES_DETAILS(
+	LEAD_ID,
+	ACTIVITY_LOG_DATE,
+	CUSTOM_ACTIVITY,
+	STATUS,
+	CLOSER_EMAIL,
+	CLOSER_NAME,
+	STRATEGY_CALL_OUTCOME,
+	DATE_OF_STRATEGY_CALL,
+	OFFER_PRESENTED,
+	SETTER,
+	SETTER_NAME
+) as
+SELECT
+    LEAD_ID,
+
+    ACTIVITY_AT::DATE AS ACTIVITY_LOG_DATE,
+
+    CUSTOM_ACTIVITY,
+
+    -- CRM record status, such as published or draft
+    STATUS_CHANGE AS STATUS,
+
+    CLOSER_EMAIL,
+    CLOSER_NAME,
+
+    -- Populated for Strategy Calls;
+    -- naturally NULL for Strategy Call Follow Ups
+    CUSTOM_ACTIVITY_OUTCOME AS STRATEGY_CALL_OUTCOME,
+
+    ACTIVITY_AT::DATE AS DATE_OF_STRATEGY_CALL,
+
+    OFFER_PRESENTED,
+
+    -- SME model uses SETTER plus SETTER_NAME.
+    -- SETTER is represented by the setter's email.
+    SETTER_EMAIL AS SETTER,
+    SETTER_NAME
+
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+WHERE CUSTOM_ACTIVITY IN (
+    '5) Strategy Call',
+    '6) Strategy Call Follow Up'
+);
+create or replace view SALES_ANALYTICS_DB.GOLD.CLOSER_REPORT(
+	CLOSER_NAME,
+	CALL_YEAR_MONTH,
+	CALL_BOOKED,
+	ADMIN_CANCEL,
+	CANCEL_NURTURE,
+	CANCEL_NOT_INTEREST,
+	TOTAL_CANCEL,
+	NO_SHOW,
+	STRTGY_CALL_SHW,
+	LOST,
+	SALE,
+	AVG_VAUE,
+	CASH_COLLECTED
+) as
+
+WITH STRATEGY_CALLS AS (
+    /*
+        One row per deduplicated main Strategy Call.
+
+        We use the Silver business-ready summary because it contains
+        ACTIVITY_ID, which is required for safe event attribution.
+    */
+    SELECT
+        ACTIVITY_ID AS STRATEGY_ACTIVITY_ID,
+        LEAD_ID,
+        ACTIVITY_AT AS STRATEGY_AT,
+        DATE_TRUNC('MONTH', ACTIVITY_AT)::DATE AS CALL_YEAR_MONTH,
+
+        CLOSER_NAME,
+
+        CUSTOM_ACTIVITY_OUTCOME AS STRATEGY_CALL_OUTCOME,
+
+        CASE
+            WHEN CUSTOM_ACTIVITY_OUTCOME IN (
+                '1. Follow Up',
+                '5. Sale',
+                '6. Sale',
+                '7. Lost'
+            )
+            THEN 1
+            ELSE 0
+        END AS SHOW_FLAG
+
+    FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+
+    WHERE CUSTOM_ACTIVITY = '5) Strategy Call'
+),
+
+SALE_EVENTS AS (
+    /*
+        Finalized downstream sale records.
+    */
+    SELECT
+        ACTIVITY_ID AS SALE_ACTIVITY_ID,
+        LEAD_ID,
+
+        COALESCE(
+            DATE_OF_SALE::TIMESTAMP_NTZ,
+            ACTIVITY_AT
+        ) AS SALE_AT,
+
+        TRY_TO_DECIMAL(CONTRACT_VALUE, 18, 2) AS CONTRACTED_VALUE,
+        TRY_TO_DECIMAL(CASH_COLLECTED, 18, 2) AS CASH_COLLECTED
+
+    FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+
+    WHERE CUSTOM_ACTIVITY IN (
+        '7) New Sale',
+        '8) New Sale [Custom Payment Plan]'
+    )
+),
+
+SALE_ATTRIBUTION AS (
+    /*
+        Assign each sale to the most recent attended Strategy Call
+        for the same lead occurring before the sale.
+
+        This prevents one sale from being counted against multiple
+        Strategy Calls or multiple closers.
+    */
+    SELECT
+        sc.STRATEGY_ACTIVITY_ID,
+        sc.LEAD_ID,
+        sc.CALL_YEAR_MONTH,
+        sc.CLOSER_NAME,
+
+        se.SALE_ACTIVITY_ID,
+        se.SALE_AT,
+        se.CONTRACTED_VALUE,
+        se.CASH_COLLECTED
+
+    FROM SALE_EVENTS se
+
+    INNER JOIN STRATEGY_CALLS sc
+        ON se.LEAD_ID = sc.LEAD_ID
+       AND sc.SHOW_FLAG = 1
+       AND se.SALE_AT >= sc.STRATEGY_AT
+
+    QUALIFY ROW_NUMBER() OVER (
+        PARTITION BY se.SALE_ACTIVITY_ID
+        ORDER BY
+            sc.STRATEGY_AT DESC,
+            sc.STRATEGY_ACTIVITY_ID DESC
+    ) = 1
+),
+
+STRATEGY_METRICS AS (
+    SELECT
+        CLOSER_NAME,
+        CALL_YEAR_MONTH,
+
+        COUNT(DISTINCT STRATEGY_ACTIVITY_ID) AS CALL_BOOKED,
+
+        COUNT(DISTINCT CASE
+            WHEN STRATEGY_CALL_OUTCOME = '2. Admin Cancel'
+            THEN STRATEGY_ACTIVITY_ID
+        END) AS ADMIN_CANCEL,
+
+        COUNT(DISTINCT CASE
+            WHEN STRATEGY_CALL_OUTCOME IN (
+                '7. Cancel- Nurture',
+                '8. Cancel- Nurture'
+            )
+            THEN STRATEGY_ACTIVITY_ID
+        END) AS CANCEL_NURTURE,
+
+        COUNT(DISTINCT CASE
+            WHEN STRATEGY_CALL_OUTCOME = '3. Cancel- Not Interested'
+            THEN STRATEGY_ACTIVITY_ID
+        END) AS CANCEL_NOT_INTEREST,
+
+        COUNT(DISTINCT CASE
+            WHEN STRATEGY_CALL_OUTCOME IN (
+                '2. Admin Cancel',
+                '3. Cancel- Not Interested',
+                '7. Cancel- Nurture',
+                '8. Cancel- Nurture'
+            )
+            THEN STRATEGY_ACTIVITY_ID
+        END) AS TOTAL_CANCEL,
+
+        COUNT(DISTINCT CASE
+            WHEN STRATEGY_CALL_OUTCOME IN (
+                '3. No Show',
+                '4. No Show'
+            )
+            THEN STRATEGY_ACTIVITY_ID
+        END) AS NO_SHOW,
+
+        COUNT(DISTINCT CASE
+            WHEN SHOW_FLAG = 1
+            THEN STRATEGY_ACTIVITY_ID
+        END) AS STRTGY_CALL_SHW,
+
+        COUNT(DISTINCT CASE
+            WHEN STRATEGY_CALL_OUTCOME = '7. Lost'
+            THEN STRATEGY_ACTIVITY_ID
+        END) AS LOST
+
+    FROM STRATEGY_CALLS
+
+    GROUP BY
+        CLOSER_NAME,
+        CALL_YEAR_MONTH
+),
+
+SALE_METRICS AS (
+    SELECT
+        CLOSER_NAME,
+        CALL_YEAR_MONTH,
+
+        COUNT(DISTINCT SALE_ACTIVITY_ID) AS SALE,
+
+        AVG(CONTRACTED_VALUE) AS AVG_VAUE,
+
+        SUM(CASH_COLLECTED) AS CASH_COLLECTED
+
+    FROM SALE_ATTRIBUTION
+
+    GROUP BY
+        CLOSER_NAME,
+        CALL_YEAR_MONTH
+)
+
+SELECT
+    sm.CLOSER_NAME,
+    sm.CALL_YEAR_MONTH,
+
+    sm.CALL_BOOKED,
+    sm.ADMIN_CANCEL,
+    sm.CANCEL_NURTURE,
+    sm.CANCEL_NOT_INTEREST,
+    sm.TOTAL_CANCEL,
+    sm.NO_SHOW,
+    sm.STRTGY_CALL_SHW,
+    sm.LOST,
+
+    COALESCE(slm.SALE, 0) AS SALE,
+
+    ROUND(
+        slm.AVG_VAUE,
+        2
+    ) AS AVG_VAUE,
+
+    ROUND(
+        COALESCE(slm.CASH_COLLECTED, 0),
+        2
+    ) AS CASH_COLLECTED
+
+FROM STRATEGY_METRICS sm
+
+LEFT JOIN SALE_METRICS slm
+    ON sm.CALL_YEAR_MONTH = slm.CALL_YEAR_MONTH
+   AND EQUAL_NULL(sm.CLOSER_NAME, slm.CLOSER_NAME);
+create or replace view SALES_ANALYTICS_DB.GOLD.INBOUND_SETTER_REPORT(
+	TRIAGE_DATE,
+	SETTER,
+	INBOUND_BOOKED,
+	INBOUND_TAKEN,
+	SHOW_RATE,
+	TRIAGE_SET_RATE,
+	STRATEGY_CALL_BOOKED,
+	STRATEGY_CALL_TAKEN,
+	OFFER_RATE,
+	TOTAL_SALES,
+	SALE_RATE,
+	AVERAGE_ORDER_VALUE
+) as
+
+WITH TRIAGE AS (
+
+    SELECT
+        LEAD_ID,
+        TRIAGE_CALL_DATE AS TRIAGE_DATE,
+        SETTER_CLOSER_NAME AS SETTER,
+
+        TRIAGE_CALL_OUTCOME,
+
+        CASE
+            WHEN TRIAGE_CALL_OUTCOME NOT IN (
+                '6. No Show',
+                '7. Reschedule',
+                '8. Cancel'
+            )
+            THEN 1
+            ELSE 0
+        END AS INBOUND_TAKEN,
+
+        STRATEGY_CALL_BOOKED
+
+    FROM GOLD.INBOUND_STRATEGIES_BOOKED
+),
+
+STRATEGY AS (
+
+    SELECT
+        LEAD_ID,
+
+        CASE
+            WHEN STRATEGY_CALL_OUTCOME IN (
+                '1. Follow Up',
+                '5. Sale',
+                '6. Sale',
+                '7. Lost'
+            )
+            THEN 1
+            ELSE 0
+        END AS STRATEGY_CALL_TAKEN,
+
+        CASE
+            WHEN OFFER_PRESENTED = 'Yes'
+            THEN 1
+            ELSE 0
+        END AS OFFER_PRESENTED
+
+    FROM GOLD.ALL_STRATEGIES_DETAILS
+),
+
+SALES AS (
+
+    SELECT
+        LEAD_ID,
+
+        1 AS TOTAL_SALE,
+
+        CONTRACTED_VALUE
+
+    FROM GOLD.SALES_DETAILS
+)
+
+SELECT
+
+    t.TRIAGE_DATE,
+
+    t.SETTER,
+
+    COUNT(*) AS INBOUND_BOOKED,
+
+    SUM(t.INBOUND_TAKEN) AS INBOUND_TAKEN,
+
+    ROUND(
+        100 * SUM(t.INBOUND_TAKEN) / NULLIF(COUNT(*),0),
+        2
+    ) AS SHOW_RATE,
+
+    ROUND(
+        100 * SUM(t.STRATEGY_CALL_BOOKED) / NULLIF(COUNT(*),0),
+        2
+    ) AS TRIAGE_SET_RATE,
+
+    SUM(t.STRATEGY_CALL_BOOKED) AS STRATEGY_CALL_BOOKED,
+
+    SUM(COALESCE(s.STRATEGY_CALL_TAKEN,0)) AS STRATEGY_CALL_TAKEN,
+
+    ROUND(
+        100 *
+        SUM(COALESCE(s.OFFER_PRESENTED,0))
+        /
+        NULLIF(SUM(COALESCE(s.STRATEGY_CALL_TAKEN,0)),0),
+        2
+    ) AS OFFER_RATE,
+
+    SUM(COALESCE(sa.TOTAL_SALE,0)) AS TOTAL_SALES,
+
+    ROUND(
+        100 *
+        SUM(COALESCE(sa.TOTAL_SALE,0))
+        /
+        NULLIF(SUM(COALESCE(s.STRATEGY_CALL_TAKEN,0)),0),
+        2
+    ) AS SALE_RATE,
+
+    ROUND(
+        AVG(sa.CONTRACTED_VALUE),
+        2
+    ) AS AVERAGE_ORDER_VALUE
+
+FROM TRIAGE t
+
+LEFT JOIN STRATEGY s
+ON t.LEAD_ID = s.LEAD_ID
+
+LEFT JOIN SALES sa
+ON t.LEAD_ID = sa.LEAD_ID
+
+GROUP BY
+
+    t.TRIAGE_DATE,
+    t.SETTER;
+create or replace view SALES_ANALYTICS_DB.GOLD.INBOUND_STRATEGIES_BOOKED(
+	LEAD_ID,
+	ACTIVITY_LOG_DATE,
+	SETTER_CLOSER_EMAIL,
+	SETTER_CLOSER_NAME,
+	TRIAGE_CALL_OUTCOME,
+	TRIAGE_CALL_DATE,
+	STRATEGY_CALL_BOOKED,
+	SC_YEAR_WEEK
+) as
+SELECT
+    LEAD_ID,
+    ACTIVITY_AT::DATE AS ACTIVITY_LOG_DATE,
+    DEA_INTERNAL_EMAIL AS SETTER_CLOSER_EMAIL,
+    DEA_INTERNAL_NAME AS SETTER_CLOSER_NAME,
+    CUSTOM_ACTIVITY_OUTCOME AS TRIAGE_CALL_OUTCOME,
+    ACTIVITY_AT::DATE AS TRIAGE_CALL_DATE,
+    1 AS STRATEGY_CALL_BOOKED,
+    YEAR(ACTIVITY_AT) || '-' || LPAD(WEEKISO(ACTIVITY_AT), 2, '0') AS SC_YEAR_WEEK
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+WHERE CUSTOM_ACTIVITY = '3) Triage Call'
+  AND CUSTOM_ACTIVITY_OUTCOME = '1. Strategy Call Scheduled';
+create or replace view SALES_ANALYTICS_DB.GOLD.OBJECTIONS_FACED_REPORT(
+	CLOSER_NAME,
+	ACTIVITY_DATE,
+	TOTAL_CALLS,
+	MONEY_COUNT,
+	FEAR_COUNT,
+	HUNG_UP_COUNT,
+	LOGISTICAL_COUNT,
+	NO_OBJ_COUNT,
+	OTHER_COACHES_COUNT,
+	PARTNER_COUNT,
+	THINK_ABT_IT_COUNT,
+	TIME_COUNT,
+	TRUST_COUNT,
+	VALUE_COUNT,
+	NOT_LOOKING_COUNT,
+	""Money%"",
+	""Fear%"",
+	""Hung Up%"",
+	""Logistical%"",
+	""No Obj%"",
+	""Other Coaches%"",
+	""Partner%"",
+	""Think Abt It%"",
+	""Time%"",
+	""Trust%"",
+	""Value%"",
+	""Wsn't Lkng Fr Wht We Offrd%""
+) as
+
+WITH STRATEGY_CALLS_DEDUP AS (
+    /*
+        Keep one row per Strategy Call activity ID.
+
+        The source contains 4,128 rows but 4,121 distinct activity IDs,
+        so this prevents duplicate calls from inflating the report.
+    */
+    SELECT
+        ACTIVITY_ID,
+        LEAD_ID,
+        CLOSER_NAME,
+        ACTIVITY_AT::DATE AS ACTIVITY_DATE,
+        OBJECTIONS_FACED
+
+    FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+
+    WHERE CUSTOM_ACTIVITY = '5) Strategy Call'
+
+    QUALIFY ROW_NUMBER() OVER (
+        PARTITION BY ACTIVITY_ID
+        ORDER BY
+            DATE_UPDATED DESC,
+            UPDATE_DATE DESC,
+            INSERT_DATE DESC
+    ) = 1
+),
+
+CALL_TOTALS AS (
+    /*
+        Total unique Strategy Calls by closer and date.
+
+        Calls remain in TOTAL_CALLS even when no objection was entered,
+        because the SME percentage denominator is total calls evaluated.
+    */
+    SELECT
+        CLOSER_NAME,
+        ACTIVITY_DATE,
+        COUNT(DISTINCT ACTIVITY_ID) AS TOTAL_CALLS
+
+    FROM STRATEGY_CALLS_DEDUP
+
+    GROUP BY
+        CLOSER_NAME,
+        ACTIVITY_DATE
+),
+
+OBJECTION_VALUES AS (
+    /*
+        OBJECTIONS_FACED is a VARCHAR containing a JSON array.
+
+        Example:
+        [""Logistical"",""Partner"",""Trust""]
+
+        TRY_PARSE_JSON converts the text into a JSON array, and FLATTEN
+        produces one row per selected objection.
+    */
+    SELECT
+        sc.ACTIVITY_ID,
+        sc.CLOSER_NAME,
+        sc.ACTIVITY_DATE,
+
+        objection.value::STRING AS OBJECTION_CATEGORY
+
+    FROM STRATEGY_CALLS_DEDUP sc,
+
+    LATERAL FLATTEN(
+        INPUT => TRY_PARSE_JSON(sc.OBJECTIONS_FACED)
+    ) objection
+
+    WHERE sc.OBJECTIONS_FACED IS NOT NULL
+),
+
+OBJECTION_METRICS AS (
+    SELECT
+        CLOSER_NAME,
+        ACTIVITY_DATE,
+
+        COUNT(DISTINCT CASE
+            WHEN OBJECTION_CATEGORY = 'Money'
+            THEN ACTIVITY_ID
+        END) AS MONEY_COUNT,
+
+        COUNT(DISTINCT CASE
+            WHEN OBJECTION_CATEGORY = 'Fear'
+            THEN ACTIVITY_ID
+        END) AS FEAR_COUNT,
+
+        COUNT(DISTINCT CASE
+            WHEN OBJECTION_CATEGORY = 'Hung Up'
+            THEN ACTIVITY_ID
+        END) AS HUNG_UP_COUNT,
+
+        COUNT(DISTINCT CASE
+            WHEN OBJECTION_CATEGORY = 'Logistical'
+            THEN ACTIVITY_ID
+        END) AS LOGISTICAL_COUNT,
+
+        COUNT(DISTINCT CASE
+            WHEN OBJECTION_CATEGORY = 'No Objections'
+            THEN ACTIVITY_ID
+        END) AS NO_OBJ_COUNT,
+
+        COUNT(DISTINCT CASE
+            WHEN OBJECTION_CATEGORY = 'Talking to Other Coaches'
+            THEN ACTIVITY_ID
+        END) AS OTHER_COACHES_COUNT,
+
+        COUNT(DISTINCT CASE
+            WHEN OBJECTION_CATEGORY = 'Partner'
+            THEN ACTIVITY_ID
+        END) AS PARTNER_COUNT,
+
+        COUNT(DISTINCT CASE
+            WHEN OBJECTION_CATEGORY = 'Think About It'
+            THEN ACTIVITY_ID
+        END) AS THINK_ABT_IT_COUNT,
+
+        COUNT(DISTINCT CASE
+            WHEN OBJECTION_CATEGORY = 'Time'
+            THEN ACTIVITY_ID
+        END) AS TIME_COUNT,
+
+        COUNT(DISTINCT CASE
+            WHEN OBJECTION_CATEGORY = 'Trust'
+            THEN ACTIVITY_ID
+        END) AS TRUST_COUNT,
+
+        COUNT(DISTINCT CASE
+            WHEN OBJECTION_CATEGORY = 'Value'
+            THEN ACTIVITY_ID
+        END) AS VALUE_COUNT,
+
+        COUNT(DISTINCT CASE
+            WHEN OBJECTION_CATEGORY =
+                 'Wasn''t Looking For What We Offered'
+            THEN ACTIVITY_ID
+        END) AS NOT_LOOKING_COUNT
+
+    FROM OBJECTION_VALUES
+
+    GROUP BY
+        CLOSER_NAME,
+        ACTIVITY_DATE
+)
+
+SELECT
+    ct.CLOSER_NAME,
+    ct.ACTIVITY_DATE,
+    ct.TOTAL_CALLS,
+
+    COALESCE(om.MONEY_COUNT, 0) AS MONEY_COUNT,
+    COALESCE(om.FEAR_COUNT, 0) AS FEAR_COUNT,
+    COALESCE(om.HUNG_UP_COUNT, 0) AS HUNG_UP_COUNT,
+    COALESCE(om.LOGISTICAL_COUNT, 0) AS LOGISTICAL_COUNT,
+    COALESCE(om.NO_OBJ_COUNT, 0) AS NO_OBJ_COUNT,
+    COALESCE(om.OTHER_COACHES_COUNT, 0) AS OTHER_COACHES_COUNT,
+    COALESCE(om.PARTNER_COUNT, 0) AS PARTNER_COUNT,
+    COALESCE(om.THINK_ABT_IT_COUNT, 0) AS THINK_ABT_IT_COUNT,
+    COALESCE(om.TIME_COUNT, 0) AS TIME_COUNT,
+    COALESCE(om.TRUST_COUNT, 0) AS TRUST_COUNT,
+    COALESCE(om.VALUE_COUNT, 0) AS VALUE_COUNT,
+    COALESCE(om.NOT_LOOKING_COUNT, 0) AS NOT_LOOKING_COUNT,
+
+    ROUND(
+        100.0 * COALESCE(om.MONEY_COUNT, 0)
+        / NULLIF(ct.TOTAL_CALLS, 0),
+        2
+    ) AS ""Money%"",
+
+    ROUND(
+        100.0 * COALESCE(om.FEAR_COUNT, 0)
+        / NULLIF(ct.TOTAL_CALLS, 0),
+        2
+    ) AS ""Fear%"",
+
+    ROUND(
+        100.0 * COALESCE(om.HUNG_UP_COUNT, 0)
+        / NULLIF(ct.TOTAL_CALLS, 0),
+        2
+    ) AS ""Hung Up%"",
+
+    ROUND(
+        100.0 * COALESCE(om.LOGISTICAL_COUNT, 0)
+        / NULLIF(ct.TOTAL_CALLS, 0),
+        2
+    ) AS ""Logistical%"",
+
+    ROUND(
+        100.0 * COALESCE(om.NO_OBJ_COUNT, 0)
+        / NULLIF(ct.TOTAL_CALLS, 0),
+        2
+    ) AS ""No Obj%"",
+
+    ROUND(
+        100.0 * COALESCE(om.OTHER_COACHES_COUNT, 0)
+        / NULLIF(ct.TOTAL_CALLS, 0),
+        2
+    ) AS ""Other Coaches%"",
+
+    ROUND(
+        100.0 * COALESCE(om.PARTNER_COUNT, 0)
+        / NULLIF(ct.TOTAL_CALLS, 0),
+        2
+    ) AS ""Partner%"",
+
+    ROUND(
+        100.0 * COALESCE(om.THINK_ABT_IT_COUNT, 0)
+        / NULLIF(ct.TOTAL_CALLS, 0),
+        2
+    ) AS ""Think Abt It%"",
+
+    ROUND(
+        100.0 * COALESCE(om.TIME_COUNT, 0)
+        / NULLIF(ct.TOTAL_CALLS, 0),
+        2
+    ) AS ""Time%"",
+
+    ROUND(
+        100.0 * COALESCE(om.TRUST_COUNT, 0)
+        / NULLIF(ct.TOTAL_CALLS, 0),
+        2
+    ) AS ""Trust%"",
+
+    ROUND(
+        100.0 * COALESCE(om.VALUE_COUNT, 0)
+        / NULLIF(ct.TOTAL_CALLS, 0),
+        2
+    ) AS ""Value%"",
+
+    ROUND(
+        100.0 * COALESCE(om.NOT_LOOKING_COUNT, 0)
+        / NULLIF(ct.TOTAL_CALLS, 0),
+        2
+    ) AS ""Wsn't Lkng Fr Wht We Offrd%""
+
+FROM CALL_TOTALS ct
+
+LEFT JOIN OBJECTION_METRICS om
+    ON ct.ACTIVITY_DATE = om.ACTIVITY_DATE
+   AND EQUAL_NULL(ct.CLOSER_NAME, om.CLOSER_NAME);
+create or replace view SALES_ANALYTICS_DB.GOLD.OUTBOUND_PROSPECT_DIALS(
+	LEAD_ID,
+	ACTIVITY_LOG_DATE,
+	PROSPECT_YEAR_WEEK,
+	CUSTOM_ACTIVITY,
+	STATUS,
+	CUSTOM_ACTIVITY_OUTCOME_NAME,
+	CUSTOM_ACTIVITY_OUTCOME,
+	SETTER_CLOSER_EMAIL,
+	SETTER_CLOSER_NAME
+) as
+SELECT
+    LEAD_ID,
+
+    ACTIVITY_AT::DATE AS ACTIVITY_LOG_DATE,
+
+    YEAR(ACTIVITY_AT) || '-' ||
+    LPAD(WEEKISO(ACTIVITY_AT), 2, '0') AS PROSPECT_YEAR_WEEK,
+
+    CUSTOM_ACTIVITY,
+
+    -- CRM record lifecycle status, such as published or draft
+    STATUS_CHANGE AS STATUS,
+
+    CUSTOM_ACTIVITY_OUTCOME_NAME,
+    CUSTOM_ACTIVITY_OUTCOME,
+
+    DEA_INTERNAL_EMAIL AS SETTER_CLOSER_EMAIL,
+    DEA_INTERNAL_NAME AS SETTER_CLOSER_NAME
+
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+
+WHERE CUSTOM_ACTIVITY IN (
+    '1) Prospecting Activity',
+    '2) Prospecting Follow Up'
+);
+create or replace view SALES_ANALYTICS_DB.GOLD.OUTBOUND_SETTER_REPORT(
+	DIAL_DATE,
+	SETTER,
+	TOTAL_OUTBOUND_CALLS,
+	TOTAL_LEADS_TOUCHED,
+	OUTBOUND_SET,
+	TOTAL_CLOSER_SHOW,
+	TOTAL_OFFER,
+	TOTAL_SALE,
+	DIAL_TO_SET_RATE,
+	SET_TO_SHOW_RATE,
+	SHOW_TO_SALE_RATE,
+	TOTAL_REVENUE,
+	AVERAGE_ORDER_VALUE
+) as
+
+WITH OUTBOUND_DIALS AS (
+    /*
+        Complete outbound top-of-funnel activity.
+        One row per deduplicated prospecting activity.
+    */
+    SELECT
+        ACTIVITY_ID,
+        LEAD_ID,
+        ACTIVITY_AT,
+        ACTIVITY_AT::DATE AS DIAL_DATE,
+        DEA_INTERNAL_NAME AS SETTER,
+        DEA_INTERNAL_EMAIL AS SETTER_EMAIL,
+        CUSTOM_ACTIVITY,
+        CUSTOM_ACTIVITY_OUTCOME
+    FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+    WHERE CUSTOM_ACTIVITY IN (
+        '1) Prospecting Activity',
+        '2) Prospecting Follow Up'
+    )
+),
+
+OUTBOUND_SETS AS (
+    /*
+        Successful outbound qualification events.
+        Each row represents an outbound activity that scheduled
+        a Strategy Call.
+    */
+    SELECT
+        ACTIVITY_ID AS SET_ACTIVITY_ID,
+        LEAD_ID,
+        ACTIVITY_AT AS SET_AT,
+        ACTIVITY_AT::DATE AS DIAL_DATE,
+        DEA_INTERNAL_NAME AS SETTER,
+        DEA_INTERNAL_EMAIL AS SETTER_EMAIL
+    FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+    WHERE CUSTOM_ACTIVITY IN (
+        '1) Prospecting Activity',
+        '2) Prospecting Follow Up'
+    )
+      AND CUSTOM_ACTIVITY_OUTCOME = '2. Strategy Call Scheduled'
+),
+
+STRATEGY_EVENTS AS (
+    /*
+        Strategy Call activity events.
+
+        Follow-up activities are not included because the validated
+        Strategy Call Outcome is stored on '5) Strategy Call'.
+    */
+    SELECT
+        ACTIVITY_ID AS STRATEGY_ACTIVITY_ID,
+        LEAD_ID,
+        ACTIVITY_AT AS STRATEGY_AT,
+        CUSTOM_ACTIVITY_OUTCOME AS STRATEGY_CALL_OUTCOME,
+        OFFER_PRESENTED
+    FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+    WHERE CUSTOM_ACTIVITY = '5) Strategy Call'
+),
+
+STRATEGY_ATTRIBUTION AS (
+    /*
+        Assign each Strategy Call to the most recent outbound set
+        for the same lead occurring before that Strategy Call.
+
+        This prevents one Strategy Call from being attributed to
+        multiple outbound bookings.
+    */
+    SELECT
+        os.SET_ACTIVITY_ID,
+        os.LEAD_ID,
+        os.DIAL_DATE,
+        os.SETTER,
+        os.SETTER_EMAIL,
+
+        se.STRATEGY_ACTIVITY_ID,
+        se.STRATEGY_AT,
+        se.STRATEGY_CALL_OUTCOME,
+        se.OFFER_PRESENTED,
+
+        CASE
+            WHEN se.STRATEGY_CALL_OUTCOME IN (
+                '1. Follow Up',
+                '5. Sale',
+                '6. Sale',
+                '7. Lost'
+            )
+            THEN 1
+            ELSE 0
+        END AS CLOSER_SHOW,
+
+        CASE
+            WHEN se.STRATEGY_CALL_OUTCOME IN (
+                '1. Follow Up',
+                '5. Sale',
+                '6. Sale',
+                '7. Lost'
+            )
+            AND (
+                   UPPER(TRIM(se.OFFER_PRESENTED)) = 'YES'
+                OR se.STRATEGY_CALL_OUTCOME ILIKE '%offer%'
+            )
+            THEN 1
+            ELSE 0
+        END AS OFFER_FLAG
+
+    FROM STRATEGY_EVENTS se
+
+    INNER JOIN OUTBOUND_SETS os
+        ON se.LEAD_ID = os.LEAD_ID
+       AND se.STRATEGY_AT >= os.SET_AT
+
+    QUALIFY ROW_NUMBER() OVER (
+        PARTITION BY se.STRATEGY_ACTIVITY_ID
+        ORDER BY
+            os.SET_AT DESC,
+            os.SET_ACTIVITY_ID DESC
+    ) = 1
+),
+
+SALE_EVENTS AS (
+    /*
+        Finalized sales activity events.
+    */
+    SELECT
+        ACTIVITY_ID AS SALE_ACTIVITY_ID,
+        LEAD_ID,
+
+        COALESCE(
+            DATE_OF_SALE::TIMESTAMP_NTZ,
+            ACTIVITY_AT
+        ) AS SALE_AT,
+
+        TRY_TO_DECIMAL(CONTRACT_VALUE, 18, 2) AS CONTRACTED_VALUE
+
+    FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+
+    WHERE CUSTOM_ACTIVITY IN (
+        '7) New Sale',
+        '8) New Sale [Custom Payment Plan]'
+    )
+),
+
+SALE_ATTRIBUTION AS (
+    /*
+        A sale is valid only when a documented attended Strategy Call
+        occurred before the sale.
+
+        Each sale is assigned to the most recent attended Strategy Call.
+        That Strategy Call already carries its outbound set attribution.
+    */
+    SELECT
+        sa.SET_ACTIVITY_ID,
+        sa.LEAD_ID,
+        sa.DIAL_DATE,
+        sa.SETTER,
+        sa.SETTER_EMAIL,
+        sa.STRATEGY_ACTIVITY_ID,
+
+        sale.SALE_ACTIVITY_ID,
+        sale.SALE_AT,
+        sale.CONTRACTED_VALUE
+
+    FROM SALE_EVENTS sale
+
+    INNER JOIN STRATEGY_ATTRIBUTION sa
+        ON sale.LEAD_ID = sa.LEAD_ID
+       AND sa.CLOSER_SHOW = 1
+       AND sale.SALE_AT >= sa.STRATEGY_AT
+
+    QUALIFY ROW_NUMBER() OVER (
+        PARTITION BY sale.SALE_ACTIVITY_ID
+        ORDER BY
+            sa.STRATEGY_AT DESC,
+            sa.STRATEGY_ACTIVITY_ID DESC
+    ) = 1
+),
+
+DIAL_METRICS AS (
+    /*
+        Daily activity grain required by the export model:
+        DIAL_DATE + SETTER.
+    */
+    SELECT
+        DIAL_DATE,
+        SETTER,
+
+        COUNT(DISTINCT ACTIVITY_ID) AS TOTAL_OUTBOUND_CALLS,
+        COUNT(DISTINCT LEAD_ID) AS TOTAL_LEADS_TOUCHED
+
+    FROM OUTBOUND_DIALS
+
+    GROUP BY
+        DIAL_DATE,
+        SETTER
+),
+
+SET_METRICS AS (
+    SELECT
+        DIAL_DATE,
+        SETTER,
+
+        COUNT(DISTINCT SET_ACTIVITY_ID) AS OUTBOUND_SET
+
+    FROM OUTBOUND_SETS
+
+    GROUP BY
+        DIAL_DATE,
+        SETTER
+),
+
+STRATEGY_METRICS AS (
+    SELECT
+        DIAL_DATE,
+        SETTER,
+
+        COUNT(DISTINCT CASE
+            WHEN CLOSER_SHOW = 1
+            THEN STRATEGY_ACTIVITY_ID
+        END) AS TOTAL_CLOSER_SHOW,
+
+        COUNT(DISTINCT CASE
+            WHEN OFFER_FLAG = 1
+            THEN STRATEGY_ACTIVITY_ID
+        END) AS TOTAL_OFFER
+
+    FROM STRATEGY_ATTRIBUTION
+
+    GROUP BY
+        DIAL_DATE,
+        SETTER
+),
+
+SALE_METRICS AS (
+    SELECT
+        DIAL_DATE,
+        SETTER,
+
+        COUNT(DISTINCT SALE_ACTIVITY_ID) AS TOTAL_SALE,
+
+        SUM(CONTRACTED_VALUE) AS TOTAL_REVENUE
+
+    FROM SALE_ATTRIBUTION
+
+    GROUP BY
+        DIAL_DATE,
+        SETTER
+)
+
+SELECT
+    d.DIAL_DATE,
+
+    d.SETTER,
+
+    d.TOTAL_OUTBOUND_CALLS,
+
+    d.TOTAL_LEADS_TOUCHED,
+
+    COALESCE(sm.OUTBOUND_SET, 0) AS OUTBOUND_SET,
+
+    COALESCE(stm.TOTAL_CLOSER_SHOW, 0) AS TOTAL_CLOSER_SHOW,
+
+    COALESCE(stm.TOTAL_OFFER, 0) AS TOTAL_OFFER,
+
+    COALESCE(slm.TOTAL_SALE, 0) AS TOTAL_SALE,
+
+    ROUND(
+        100.0 * COALESCE(sm.OUTBOUND_SET, 0)
+        / NULLIF(d.TOTAL_OUTBOUND_CALLS, 0),
+        2
+    ) AS DIAL_TO_SET_RATE,
+
+    ROUND(
+        100.0 * COALESCE(stm.TOTAL_CLOSER_SHOW, 0)
+        / NULLIF(COALESCE(sm.OUTBOUND_SET, 0), 0),
+        2
+    ) AS SET_TO_SHOW_RATE,
+
+    ROUND(
+        100.0 * COALESCE(slm.TOTAL_SALE, 0)
+        / NULLIF(COALESCE(stm.TOTAL_CLOSER_SHOW, 0), 0),
+        2
+    ) AS SHOW_TO_SALE_RATE,
+
+    ROUND(
+        COALESCE(slm.TOTAL_REVENUE, 0),
+        2
+    ) AS TOTAL_REVENUE,
+
+    ROUND(
+        COALESCE(slm.TOTAL_REVENUE, 0)
+        / NULLIF(COALESCE(slm.TOTAL_SALE, 0), 0),
+        2
+    ) AS AVERAGE_ORDER_VALUE
+
+FROM DIAL_METRICS d
+
+LEFT JOIN SET_METRICS sm
+    ON d.DIAL_DATE = sm.DIAL_DATE
+   AND EQUAL_NULL(d.SETTER, sm.SETTER)
+
+LEFT JOIN STRATEGY_METRICS stm
+    ON d.DIAL_DATE = stm.DIAL_DATE
+   AND EQUAL_NULL(d.SETTER, stm.SETTER)
+
+LEFT JOIN SALE_METRICS slm
+    ON d.DIAL_DATE = slm.DIAL_DATE
+   AND EQUAL_NULL(d.SETTER, slm.SETTER);
+create or replace view SALES_ANALYTICS_DB.GOLD.OUTBOUND_STRATEGIES_BOOKED(
+	LEAD_ID,
+	ACTIVITY_LOG_DATE,
+	SETTER_CLOSER_EMAIL,
+	SETTER_CLOSER_NAME,
+	PROSPECT_CALL_DATE,
+	STRATEGY_CALL_BOOKED,
+	SC_YEAR_WEEK
+) as
+SELECT
+    LEAD_ID,
+
+    ACTIVITY_AT::DATE AS ACTIVITY_LOG_DATE,
+
+    DEA_INTERNAL_EMAIL AS SETTER_CLOSER_EMAIL,
+    DEA_INTERNAL_NAME AS SETTER_CLOSER_NAME,
+
+    ACTIVITY_AT::DATE AS PROSPECT_CALL_DATE,
+
+    1 AS STRATEGY_CALL_BOOKED,
+
+    YEAR(ACTIVITY_AT) || '-' ||
+    LPAD(WEEKISO(ACTIVITY_AT), 2, '0') AS SC_YEAR_WEEK
+
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+
+WHERE CUSTOM_ACTIVITY IN (
+    '1) Prospecting Activity',
+    '2) Prospecting Follow Up'
+)
+AND CUSTOM_ACTIVITY_OUTCOME = '2. Strategy Call Scheduled';
+create or replace view SALES_ANALYTICS_DB.GOLD.SALES_DETAILS(
+	LEAD_ID,
+	ACTIVITY_LOG_DATE,
+	SALE_STATUS,
+	SETTER_EMAIL,
+	SETTER_NAME,
+	CLOSER_EMAIL,
+	CLOSER_NAME,
+	CONTRACTED_VALUE,
+	DATE_OF_SALE,
+	PROGRAM,
+	CASH_COLLECTED
+) as
+SELECT
+    LEAD_ID,
+
+    ACTIVITY_AT::DATE AS ACTIVITY_LOG_DATE,
+
+    CUSTOM_ACTIVITY_OUTCOME AS SALE_STATUS,
+
+    SETTER_EMAIL,
+    SETTER_NAME,
+
+    CLOSER_EMAIL,
+    CLOSER_NAME,
+
+    CONTRACT_VALUE AS CONTRACTED_VALUE,
+
+    DATE_OF_SALE,
+
+    PROGRAM,
+
+    CASH_COLLECTED
+
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+WHERE CUSTOM_ACTIVITY IN (
+    '7) New Sale',
+    '8) New Sale [Custom Payment Plan]'
+);
+create or replace schema SALES_ANALYTICS_DB.PUBLIC;
+
+CREATE OR REPLACE FILE FORMAT SALES_ANALYTICS_DB.PUBLIC.BACKUP_CSV_FORMAT
+	FIELD_OPTIONALLY_ENCLOSED_BY = '\""'
+	COMPRESSION = GZIP
+;
+CREATE OR REPLACE FILE FORMAT SALES_ANALYTICS_DB.PUBLIC.BACKUP_PARQUET_FORMAT
+	TYPE = PARQUET
+	NULL_IF = ()
+	COMPRESSION = SNAPPY
+;
+create or replace schema SALES_ANALYTICS_DB.SILVER;
+
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.CLOSE_CRM_USERS_PROCESSED (
+	USER_ID VARCHAR(16777216),
+	EMAIL VARCHAR(16777216),
+	FIRST_NAME VARCHAR(16777216),
+	LAST_NAME VARCHAR(16777216),
+	MD5_HASH VARCHAR(16777216),
+	DATE_CREATED TIMESTAMP_NTZ(9),
+	DATE_UPDATED TIMESTAMP_NTZ(9),
+	INSERT_DATE TIMESTAMP_NTZ(9),
+	UPDATE_DATE TIMESTAMP_NTZ(9)
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.CUSTOM_ACTIVITIES (
+	CUSTOM_ACTIVITY_ID VARCHAR(16777216),
+	CUSTOM_ACTIVITY_NAME VARCHAR(16777216),
+	CUSTOM_ACTIVITY_OUTCOME_ID VARCHAR(16777216),
+	CUSTOM_ACTIVITY_OUTCOME_NAME VARCHAR(16777216),
+	MD5_HASH VARCHAR(16777216),
+	INSERT_DATE TIMESTAMP_NTZ(9),
+	UPDATE_DATE TIMESTAMP_NTZ(9)
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.CUSTOM_ACTIVITIES_ALL_LEADS_DETAILS (
+	LEAD_ID VARCHAR(16777216),
+	ACTIVITY_ID VARCHAR(16777216),
+	ACTIVITY_AT TIMESTAMP_NTZ(9),
+	WRAPPED_ACTIVITIES VARIANT,
+	INSERT_DATE TIMESTAMP_NTZ(9),
+	UPDATE_DATE TIMESTAMP_NTZ(9),
+	MD5_HASH VARCHAR(16777216)
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.CUSTOM_ACTIVITIES_TRANSIENT (
+	JSON_OBJECT VARIANT,
+	INSERT_DATE TIMESTAMP_NTZ(9)
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY (
+	ACTIVITY_ID VARCHAR(16777216),
+	LEAD_ID VARCHAR(16777216),
+	CONTACT_ID VARCHAR(16777216),
+	USER_ID VARCHAR(16777216),
+	TYPE VARCHAR(16777216),
+	TEXT VARCHAR(16777216),
+	STATUS_CHANGE VARCHAR(16777216),
+	CREATED_BY_NAME VARCHAR(16777216),
+	UPDATED_BY_NAME VARCHAR(16777216),
+	ATTENDEES VARIANT,
+	CUSTOM_ACTIVITY_ID VARCHAR(16777216),
+	MEETING_STARTS_AT TIMESTAMP_NTZ(9),
+	MEETING_END_AT TIMESTAMP_NTZ(9),
+	MEETING_STATUS VARCHAR(16777216),
+	ACTIVITY_AT TIMESTAMP_NTZ(9),
+	DATE_CREATED TIMESTAMP_NTZ(9),
+	DATE_UPDATED TIMESTAMP_NTZ(9),
+	CREATED_BY_USER VARCHAR(16777216),
+	UPDATED_BY_USER VARCHAR(16777216),
+	INSERT_DATE TIMESTAMP_NTZ(9),
+	UPDATE_DATE TIMESTAMP_NTZ(9),
+	WRAPPED_ACTIVITIES VARIANT,
+	CUSTOM_ACTIVITY VARCHAR(16777216),
+	CUSTOM_ACTIVITY_OUTCOME_NAME VARCHAR(16777216),
+	CUSTOM_ACTIVITY_OUTCOME VARCHAR(16777216),
+	DEA_INTERNAL_NAME VARCHAR(16777216),
+	DEA_INTERNAL_EMAIL VARCHAR(16777216),
+	SETTER_USER_ID VARCHAR(16777216),
+	SETTER_EMAIL VARCHAR(16777216),
+	SETTER_NAME VARCHAR(16777216),
+	CLOSER_USER_ID VARCHAR(16777216),
+	CLOSER_EMAIL VARCHAR(16777216),
+	CLOSER_NAME VARCHAR(16777216),
+	OFFER_PRESENTED VARCHAR(16777216),
+	PROGRAM VARCHAR(16777216),
+	CONTRACT_VALUE VARCHAR(16777216),
+	CASH_COLLECTED VARCHAR(16777216),
+	OBJECTIONS_FACED VARCHAR(16777216),
+	DATE_OF_SALE DATE
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY_TRANSIENT (
+	ACTIVITY_ID VARCHAR(16777216),
+	LEAD_ID VARCHAR(16777216),
+	CONTACT_ID VARCHAR(16777216),
+	USER_ID VARCHAR(16777216),
+	TYPE VARCHAR(16777216),
+	TEXT VARCHAR(16777216),
+	STATUS_CHANGE VARCHAR(16777216),
+	CREATED_BY_NAME VARCHAR(16777216),
+	UPDATED_BY_NAME VARCHAR(16777216),
+	ATTENDEES VARIANT,
+	CUSTOM_ACTIVITY_ID VARCHAR(16777216),
+	MEETING_STARTS_AT TIMESTAMP_NTZ(9),
+	MEETING_END_AT TIMESTAMP_NTZ(9),
+	MEETING_STATUS VARCHAR(16777216),
+	ACTIVITY_AT TIMESTAMP_NTZ(9),
+	DATE_CREATED TIMESTAMP_NTZ(9),
+	DATE_UPDATED TIMESTAMP_NTZ(9),
+	CREATED_BY_USER VARCHAR(16777216),
+	UPDATED_BY_USER VARCHAR(16777216),
+	INSERT_DATE TIMESTAMP_NTZ(9),
+	UPDATE_DATE TIMESTAMP_NTZ(9),
+	MD5_HASH VARCHAR(16777216)
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_EMAIL (
+	LEAD_ID VARCHAR(16777216),
+	ACTIVITY_AT TIMESTAMP_NTZ(9),
+	ATTACHMENTS_JSON VARIANT,
+	BODY_TEXT VARCHAR(16777216),
+	DATE_CREATED TIMESTAMP_NTZ(9),
+	DATE_UPDATED TIMESTAMP_NTZ(9),
+	DIRECTION VARCHAR(16777216),
+	ENVELOPE_JSON VARIANT,
+	SENDER_JSON VARIANT,
+	ACTIVITY_ID VARCHAR(16777216),
+	OPENS_JSON VARIANT,
+	SENDER VARCHAR(16777216),
+	STATUS VARCHAR(16777216),
+	SUBJECT VARCHAR(16777216),
+	JSON_PAYLOAD VARIANT,
+	USER_ID VARCHAR(16777216),
+	USER_NAME VARCHAR(16777216),
+	TEMPLATE_ID VARCHAR(16777216),
+	TEMPLATE_NAME VARCHAR(16777216),
+	DATE_SENT TIMESTAMP_NTZ(9),
+	HAS_REPLY BOOLEAN,
+	INSERT_DATE TIMESTAMP_NTZ(9),
+	UPDATE_DATE TIMESTAMP_NTZ(9),
+	MD5_HASH VARCHAR(16777216)
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_PROCESSED (
+	ACTIVITY_ID VARCHAR(16777216),
+	LEAD_ID VARCHAR(16777216),
+	CONTACT_ID VARCHAR(16777216),
+	USER_ID VARCHAR(16777216),
+	TYPE VARCHAR(16777216),
+	TEXT VARCHAR(16777216),
+	STATUS_CHANGE VARCHAR(16777216),
+	CREATED_BY_NAME VARCHAR(16777216),
+	UPDATED_BY_NAME VARCHAR(16777216),
+	ATTENDEES VARIANT,
+	CUSTOM_ACTIVITY_ID VARCHAR(16777216),
+	MEETING_STARTS_AT TIMESTAMP_NTZ(9),
+	MEETING_END_AT TIMESTAMP_NTZ(9),
+	MEETING_STATUS VARCHAR(16777216),
+	ACTIVITY_AT TIMESTAMP_NTZ(9),
+	DATE_CREATED TIMESTAMP_NTZ(9),
+	DATE_UPDATED TIMESTAMP_NTZ(9),
+	CREATED_BY_USER VARCHAR(16777216),
+	UPDATED_BY_USER VARCHAR(16777216),
+	INSERT_DATE TIMESTAMP_NTZ(9),
+	UPDATE_DATE TIMESTAMP_NTZ(9),
+	MD5_HASH VARCHAR(16777216)
+);
+create or replace TABLE SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_PROCESSED_TRANSIENT (
+	JSON_OBJECT VARIANT,
+	INSERT_DATE TIMESTAMP_NTZ(9)
+);
+CREATE OR REPLACE FUNCTION SALES_ANALYTICS_DB.SILVER.DEBUG_REPAIR_PYTHON_JSON(""INPUT_STRING"" VARCHAR)
+RETURNS VARCHAR
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.10'
+HANDLER = 'debug_repair'
+AS '
+import ast
+import json
+import re
+
+def debug_repair(input_string):
+    if input_string is None:
+        return ''INPUT IS NULL''
+
+    s = input_string.strip()
+
+    try:
+        s = re.sub(r''\\bfalse\\b'', ''False'', s)
+        s = re.sub(r''\\btrue\\b'', ''True'', s)
+        s = re.sub(r''\\bnull\\b'', ''None'', s)
+
+        obj = ast.literal_eval(s)
+        return ''SUCCESS''
+
+    except Exception as e:
+        return str(type(e)) + '' | '' + str(e)[:500]
+';
+CREATE OR REPLACE FUNCTION SALES_ANALYTICS_DB.SILVER.EXTRACT_CUSTOM_ACTIVITY_MAPPINGS(""INPUT_STRING"" VARCHAR)
+RETURNS VARCHAR
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.10'
+HANDLER = 'extract'
+AS '
+import re
+import json
+
+def extract(input_string):
+    if input_string is None:
+        return json.dumps([])
+
+    s = input_string
+    results = []
+
+    blocks = re.split(r""\\{\\s*''api_create_only''\\s*:"", s)
+
+    for block in blocks:
+        if ""actitype_"" not in block:
+            continue
+
+        activity_id_match = re.search(r""''id''\\s*:\\s*''(actitype_[^'']+)''"", block)
+        activity_name_match = re.search(r""''name''\\s*:\\s*''(.*?)''\\s*,\\s*''organization_id''"", block, re.DOTALL)
+
+        if not activity_id_match or not activity_name_match:
+            continue
+
+        activity_id = activity_id_match.group(1)
+        activity_name = activity_name_match.group(1)
+
+        field_matches = re.findall(
+            r""''id''\\s*:\\s*''(cf_[^'']+)''.*?''name''\\s*:\\s*''(.*?)''\\s*,\\s*''referenced_custom_type_id''"",
+            block,
+            re.DOTALL
+        )
+
+        for field_id, field_name in field_matches:
+            results.append({
+                ""CUSTOM_ACTIVITY_ID"": activity_id,
+                ""CUSTOM_ACTIVITY_NAME"": activity_name,
+                ""CUSTOM_ACTIVITY_OUTCOME_ID"": field_id,
+                ""CUSTOM_ACTIVITY_OUTCOME_NAME"": field_name
+            })
+
+    return json.dumps(results)
+';
+CREATE OR REPLACE FUNCTION SALES_ANALYTICS_DB.SILVER.EXTRACT_CUSTOM_ACTIVITY_MAPPINGS_V2(""INPUT_STRING"" VARCHAR)
+RETURNS VARCHAR
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.10'
+HANDLER = 'extract'
+AS '
+import re
+import json
+
+def extract(input_string):
+    if input_string is None:
+        return json.dumps([])
+
+    s = input_string
+    results = []
+
+    activity_pattern = re.compile(
+        r""''id''\\s*:\\s*''(actitype_[^'']+)''\\s*,\\s*''is_archived''.*?''name''\\s*:\\s*''([^'']+)''"",
+        re.DOTALL
+    )
+
+    field_pattern = re.compile(
+        r""''id''\\s*:\\s*''(cf_[^'']+)''\\s*,\\s*''is_shared''.*?''name''\\s*:\\s*''([^'']+)''"",
+        re.DOTALL
+    )
+
+    activity_matches = list(activity_pattern.finditer(s))
+
+    for i, activity_match in enumerate(activity_matches):
+        activity_id = activity_match.group(1)
+        activity_name = activity_match.group(2)
+
+        start = activity_match.start()
+        end = activity_matches[i + 1].start() if i + 1 < len(activity_matches) else len(s)
+        block = s[start:end]
+
+        for field_match in field_pattern.finditer(block):
+            field_id = field_match.group(1)
+            field_name = field_match.group(2)
+
+            results.append({
+                ""CUSTOM_ACTIVITY_ID"": activity_id,
+                ""CUSTOM_ACTIVITY_NAME"": activity_name,
+                ""CUSTOM_ACTIVITY_OUTCOME_ID"": field_id,
+                ""CUSTOM_ACTIVITY_OUTCOME_NAME"": field_name
+            })
+
+    return json.dumps(results)
+';
+CREATE OR REPLACE FUNCTION SALES_ANALYTICS_DB.SILVER.REPAIR_CUSTOM_ACTIVITY_JSON(""INPUT_STRING"" VARCHAR)
+RETURNS VARCHAR
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.10'
+HANDLER = 'repair'
+AS '
+import re
+
+def repair(input_string):
+    if input_string is None:
+        return None
+
+    s = input_string
+
+    # Remove description fields because they contain unescaped apostrophes
+    s = re.sub(r"",\\s*''description''\\s*:\\s*''.*?''\\s*,"", "","", s)
+    s = re.sub(r""''description''\\s*:\\s*''.*?''\\s*,"", """", s)
+    s = re.sub(r"",\\s*''description''\\s*:\\s*null"", """", s)
+
+    # Convert remaining Python-style JSON to valid JSON
+    s = s.replace(""''"", ''""'')
+    s = s.replace(""False"", ""false"")
+    s = s.replace(""True"", ""true"")
+    s = s.replace(""None"", ""null"")
+
+    return s
+';
+CREATE OR REPLACE FUNCTION SALES_ANALYTICS_DB.SILVER.REPAIR_JSON_STRING(""INPUT_STRING"" VARCHAR)
+RETURNS VARCHAR
+LANGUAGE SQL
+AS '
+    REGEXP_REPLACE(
+        REPLACE(input_string, '''''''', ''""''),
+        ''None|none'',
+        ''null''
+    )
+';
+CREATE OR REPLACE FUNCTION SALES_ANALYTICS_DB.SILVER.REPAIR_PYTHON_JSON(""INPUT_STRING"" VARCHAR)
+RETURNS VARCHAR
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.10'
+HANDLER = 'repair'
+AS '
+import ast
+import json
+import re
+
+def repair(input_string):
+    if input_string is None:
+        return None
+
+    s = input_string.strip()
+
+    try:
+        # Convert JSON-style booleans/null into Python literals
+        s = re.sub(r''\\bfalse\\b'', ''False'', s)
+        s = re.sub(r''\\btrue\\b'', ''True'', s)
+        s = re.sub(r''\\bnull\\b'', ''None'', s)
+        s = re.sub(r''\\bNone\\b'', ''None'', s)
+
+        obj = ast.literal_eval(s)
+        return json.dumps(obj)
+
+    except Exception:
+        return None
+';"
