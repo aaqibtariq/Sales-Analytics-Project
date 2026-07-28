@@ -11,6 +11,8 @@ FROM BRONZE.CUSTOM_ACTIVITIES_RAW;
 
 ```
 
+# if loading above then dont use Load data one as it will add double
+
 # load data
 
 ```
