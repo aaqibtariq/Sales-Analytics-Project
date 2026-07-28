@@ -81,6 +81,19 @@ Now test:
 
 LIST @SALES_ANALYTICS_RAW_STAGE;
 
+    LIST @SALES_ANALYTICS_DB.BRONZE.SALES_ANALYTICS_RAW_STAGE
+    PATTERN = '.*close_crm_users_raw/.*';
+
+LIST @SALES_ANALYTICS_DB.BRONZE.SALES_ANALYTICS_RAW_STAGE
+    PATTERN = '.*custom_activities_raw/.*';
+
+LIST @SALES_ANALYTICS_DB.BRONZE.SALES_ANALYTICS_RAW_STAGE
+    PATTERN = '.*lead_activities_raw/.*';
+
+LIST @SALES_ANALYTICS_DB.BRONZE.SALES_ANALYTICS_RAW_STAGE
+    PATTERN = '.*leads_raw/.*';
+
+
 You should see folders/files like:
 
 close_crm_users_raw/
