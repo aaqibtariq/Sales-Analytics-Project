@@ -1,0 +1,97 @@
+# create table
+
+```
+
+USE DATABASE SALES_ANALYTICS_DB;
+USE SCHEMA GOLD;
+
+CREATE OR REPLACE VIEW GOLD.OUTBOUND_STRATEGIES_BOOKED AS
+SELECT
+    LEAD_ID,
+
+    ACTIVITY_AT::DATE AS ACTIVITY_LOG_DATE,
+
+    DEA_INTERNAL_EMAIL AS SETTER_CLOSER_EMAIL,
+    DEA_INTERNAL_NAME AS SETTER_CLOSER_NAME,
+
+    ACTIVITY_AT::DATE AS PROSPECT_CALL_DATE,
+
+    1 AS STRATEGY_CALL_BOOKED,
+
+    YEAR(ACTIVITY_AT) || '-' ||
+    LPAD(WEEKISO(ACTIVITY_AT), 2, '0') AS SC_YEAR_WEEK
+
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+
+WHERE CUSTOM_ACTIVITY IN (
+    '1) Prospecting Activity',
+    '2) Prospecting Follow Up'
+)
+AND CUSTOM_ACTIVITY_OUTCOME = '2. Strategy Call Scheduled';
+
+
+
+```
+
+# Validate total rows
+```
+SELECT COUNT(*) AS OUTBOUND_STRATEGIES_BOOKED_COUNT
+FROM GOLD.OUTBOUND_STRATEGIES_BOOKED;
+
+Expected:
+2408
+Calculation:
+2,146 Prospecting Activity bookings
++ 262 Prospecting Follow Up bookings
+= 2,408
+
+```
+# Validate unique leads
+
+```
+SELECT
+    COUNT(*) AS TOTAL_ROWS,
+    COUNT(DISTINCT LEAD_ID) AS UNIQUE_LEADS
+FROM GOLD.OUTBOUND_STRATEGIES_BOOKED;
+The total should be 2,408. The unique lead count may be lower because some leads can book more than once.
+
+```
+# Validate source reconciliation
+```
+SELECT
+    CUSTOM_ACTIVITY,
+    COUNT(*) AS SILVER_ROWS
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+WHERE CUSTOM_ACTIVITY IN (
+    '1) Prospecting Activity',
+    '2) Prospecting Follow Up'
+)
+AND CUSTOM_ACTIVITY_OUTCOME = '2. Strategy Call Scheduled'
+GROUP BY CUSTOM_ACTIVITY
+ORDER BY CUSTOM_ACTIVITY;
+
+Expected:
+1) Prospecting Activity     2146
+2) Prospecting Follow Up     262
+```
+# Validate weekly reporting
+```
+SELECT
+    SC_YEAR_WEEK,
+    COUNT(*) AS STRATEGIES_BOOKED
+FROM GOLD.OUTBOUND_STRATEGIES_BOOKED
+GROUP BY SC_YEAR_WEEK
+ORDER BY SC_YEAR_WEEK;
+
+```
+# Validate attribution coverage
+
+```
+SELECT
+    COUNT(*) AS TOTAL_ROWS,
+    COUNT_IF(SETTER_CLOSER_EMAIL IS NOT NULL) AS EMAIL_ROWS,
+    COUNT_IF(SETTER_CLOSER_NAME IS NOT NULL) AS NAME_ROWS
+FROM GOLD.OUTBOUND_STRATEGIES_BOOKED;
+
+```
+
