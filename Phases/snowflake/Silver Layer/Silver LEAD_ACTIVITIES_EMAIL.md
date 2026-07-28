@@ -1,0 +1,222 @@
+# create table 
+
+```
+CREATE OR REPLACE TABLE SILVER.LEAD_ACTIVITIES_EMAIL (
+    LEAD_ID STRING,
+    ACTIVITY_AT TIMESTAMP_NTZ,
+    ATTACHMENTS_JSON VARIANT,
+    BODY_TEXT STRING,
+    DATE_CREATED TIMESTAMP_NTZ,
+    DATE_UPDATED TIMESTAMP_NTZ,
+    DIRECTION STRING,
+    ENVELOPE_JSON VARIANT,
+    SENDER_JSON VARIANT,
+    ACTIVITY_ID STRING,
+    OPENS_JSON VARIANT,
+    SENDER STRING,
+    STATUS STRING,
+    SUBJECT STRING,
+    JSON_PAYLOAD VARIANT,
+    USER_ID STRING,
+    USER_NAME STRING,
+    TEMPLATE_ID STRING,
+    TEMPLATE_NAME STRING,
+    DATE_SENT TIMESTAMP_NTZ,
+    HAS_REPLY BOOLEAN,
+    INSERT_DATE TIMESTAMP_NTZ,
+    UPDATE_DATE TIMESTAMP_NTZ,
+    MD5_HASH STRING
+);
+
+```
+# Merge
+
+```
+
+MERGE INTO
+SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_EMAIL tgt
+
+USING (
+    WITH email_flat AS (
+        SELECT
+            JSON_OBJECT:lead_id::STRING AS LEAD_ID,
+
+            TRY_TO_TIMESTAMP_NTZ(
+                JSON_OBJECT:activity_at::STRING
+            ) AS ACTIVITY_AT,
+
+            JSON_OBJECT:attachments AS ATTACHMENTS_JSON,
+            JSON_OBJECT:body_text::STRING AS BODY_TEXT,
+
+            TRY_TO_TIMESTAMP_NTZ(
+                JSON_OBJECT:date_created::STRING
+            ) AS DATE_CREATED,
+
+            TRY_TO_TIMESTAMP_NTZ(
+                JSON_OBJECT:date_updated::STRING
+            ) AS DATE_UPDATED,
+
+            JSON_OBJECT:direction::STRING AS DIRECTION,
+            JSON_OBJECT:envelope AS ENVELOPE_JSON,
+            JSON_OBJECT:envelope:sender AS SENDER_JSON,
+            JSON_OBJECT:id::STRING AS ACTIVITY_ID,
+            JSON_OBJECT:opens AS OPENS_JSON,
+            JSON_OBJECT:sender::STRING AS SENDER,
+            JSON_OBJECT:status::STRING AS STATUS,
+            JSON_OBJECT:subject::STRING AS SUBJECT,
+            JSON_OBJECT AS JSON_PAYLOAD,
+            JSON_OBJECT:user_id::STRING AS USER_ID,
+            JSON_OBJECT:user_name::STRING AS USER_NAME,
+            JSON_OBJECT:template_id::STRING AS TEMPLATE_ID,
+            JSON_OBJECT:template_name::STRING AS TEMPLATE_NAME,
+
+            TRY_TO_TIMESTAMP_NTZ(
+                JSON_OBJECT:date_sent::STRING
+            ) AS DATE_SENT,
+
+            TRY_TO_BOOLEAN(
+                JSON_OBJECT:has_reply::STRING
+            ) AS HAS_REPLY,
+
+            INSERT_DATE
+
+        FROM SALES_ANALYTICS_DB.SILVER
+            .LEAD_ACTIVITIES_PROCESSED_TRANSIENT
+
+        WHERE JSON_OBJECT:_type::STRING = 'Email'
+          AND JSON_OBJECT:lead_id IS NOT NULL
+          AND JSON_OBJECT:id IS NOT NULL
+    ),
+
+    with_hash AS (
+        SELECT
+            *,
+
+            MD5(
+                COALESCE(LEAD_ID, '') || '|' ||
+                COALESCE(ACTIVITY_ID, '') || '|' ||
+                COALESCE(ACTIVITY_AT::STRING, '') || '|' ||
+                COALESCE(DATE_UPDATED::STRING, '') || '|' ||
+                COALESCE(STATUS, '') || '|' ||
+                COALESCE(SUBJECT, '') || '|' ||
+                COALESCE(BODY_TEXT, '') || '|' ||
+                COALESCE(USER_ID, '')
+            ) AS MD5_HASH
+
+        FROM email_flat
+    ),
+
+    deduped AS (
+        SELECT *
+        FROM with_hash
+
+        QUALIFY ROW_NUMBER() OVER (
+            PARTITION BY LEAD_ID, ACTIVITY_ID
+            ORDER BY
+                ACTIVITY_AT DESC NULLS LAST,
+                DATE_UPDATED DESC NULLS LAST,
+                INSERT_DATE DESC NULLS LAST
+        ) = 1
+    )
+
+    SELECT *
+    FROM deduped
+
+) src
+
+ON tgt.LEAD_ID = src.LEAD_ID
+AND tgt.ACTIVITY_ID = src.ACTIVITY_ID
+
+WHEN MATCHED
+AND COALESCE(tgt.MD5_HASH, '') <> COALESCE(src.MD5_HASH, '')
+THEN UPDATE SET
+    tgt.ACTIVITY_AT = src.ACTIVITY_AT,
+    tgt.ATTACHMENTS_JSON = src.ATTACHMENTS_JSON,
+    tgt.BODY_TEXT = src.BODY_TEXT,
+    tgt.DATE_CREATED = src.DATE_CREATED,
+    tgt.DATE_UPDATED = src.DATE_UPDATED,
+    tgt.DIRECTION = src.DIRECTION,
+    tgt.ENVELOPE_JSON = src.ENVELOPE_JSON,
+    tgt.SENDER_JSON = src.SENDER_JSON,
+    tgt.OPENS_JSON = src.OPENS_JSON,
+    tgt.SENDER = src.SENDER,
+    tgt.STATUS = src.STATUS,
+    tgt.SUBJECT = src.SUBJECT,
+    tgt.JSON_PAYLOAD = src.JSON_PAYLOAD,
+    tgt.USER_ID = src.USER_ID,
+    tgt.USER_NAME = src.USER_NAME,
+    tgt.TEMPLATE_ID = src.TEMPLATE_ID,
+    tgt.TEMPLATE_NAME = src.TEMPLATE_NAME,
+    tgt.DATE_SENT = src.DATE_SENT,
+    tgt.HAS_REPLY = src.HAS_REPLY,
+    tgt.UPDATE_DATE = CURRENT_TIMESTAMP(),
+    tgt.MD5_HASH = src.MD5_HASH
+
+WHEN NOT MATCHED THEN INSERT (
+    LEAD_ID,
+    ACTIVITY_AT,
+    ATTACHMENTS_JSON,
+    BODY_TEXT,
+    DATE_CREATED,
+    DATE_UPDATED,
+    DIRECTION,
+    ENVELOPE_JSON,
+    SENDER_JSON,
+    ACTIVITY_ID,
+    OPENS_JSON,
+    SENDER,
+    STATUS,
+    SUBJECT,
+    JSON_PAYLOAD,
+    USER_ID,
+    USER_NAME,
+    TEMPLATE_ID,
+    TEMPLATE_NAME,
+    DATE_SENT,
+    HAS_REPLY,
+    INSERT_DATE,
+    UPDATE_DATE,
+    MD5_HASH
+)
+VALUES (
+    src.LEAD_ID,
+    src.ACTIVITY_AT,
+    src.ATTACHMENTS_JSON,
+    src.BODY_TEXT,
+    src.DATE_CREATED,
+    src.DATE_UPDATED,
+    src.DIRECTION,
+    src.ENVELOPE_JSON,
+    src.SENDER_JSON,
+    src.ACTIVITY_ID,
+    src.OPENS_JSON,
+    src.SENDER,
+    src.STATUS,
+    src.SUBJECT,
+    src.JSON_PAYLOAD,
+    src.USER_ID,
+    src.USER_NAME,
+    src.TEMPLATE_ID,
+    src.TEMPLATE_NAME,
+    src.DATE_SENT,
+    src.HAS_REPLY,
+    src.INSERT_DATE,
+    CURRENT_TIMESTAMP(),
+    src.MD5_HASH
+);
+
+```
+
+# validate 
+
+```
+
+SELECT LEAD_ID, ACTIVITY_ID, COUNT(*) AS CNT
+FROM SILVER.LEAD_ACTIVITIES_EMAIL
+GROUP BY LEAD_ID, ACTIVITY_ID
+HAVING COUNT(*) > 1;
+
+SELECT COUNT(*)
+FROM SILVER.LEAD_ACTIVITIES_EMAIL;
+
+```
