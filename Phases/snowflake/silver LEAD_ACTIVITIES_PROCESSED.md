@@ -31,7 +31,38 @@ CREATE OR REPLACE TABLE LEAD_ACTIVITIES_PROCESSED (
 );
 
 ```
+# Check the flattened volume
 
+```
+Check the flattened volume
+
+SELECT COUNT(*) AS RAW_FLATTENED_ROWS
+FROM SALES_ANALYTICS_DB.BRONZE.LEAD_ACTIVITIES_RAW r,
+LATERAL FLATTEN(
+    INPUT => r.JSON_OBJECT:raw_data:data
+) activity;
+
+```
+
+# Check the expected unique Silver count
+
+```
+SELECT COUNT(*) AS DISTINCT_ACTIVITY_COUNT
+FROM (
+    SELECT
+        activity.value:lead_id::STRING AS LEAD_ID,
+        activity.value:id::STRING AS ACTIVITY_ID
+    FROM SALES_ANALYTICS_DB.BRONZE.LEAD_ACTIVITIES_RAW r,
+    LATERAL FLATTEN(
+        INPUT => r.JSON_OBJECT:raw_data:data
+    ) activity
+    WHERE activity.value:lead_id IS NOT NULL
+      AND activity.value:id IS NOT NULL
+    GROUP BY
+        activity.value:lead_id::STRING,
+        activity.value:id::STRING
+);
+```
 ## merge
 
 ```
