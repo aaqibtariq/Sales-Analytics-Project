@@ -496,3 +496,90 @@ LEFT JOIN SALES_ANALYTICS_DB.SILVER.CLOSE_CRM_USERS_PROCESSED clu
     ON bcf.CLOSER_USER_ID = clu.USER_ID;
 
 ```
+
+# Add new column for date GOLD.SALES_DETAILS
+
+```
+
+USE DATABASE SALES_ANALYTICS_DB;
+USE SCHEMA SILVER;
+
+ALTER TABLE SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+ADD COLUMN IF NOT EXISTS DATE_OF_SALE DATE;
+
+UPDATE SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY tgt
+
+SET DATE_OF_SALE = src.DATE_OF_SALE
+
+FROM (
+    SELECT
+        activity.value:id::STRING AS ACTIVITY_ID,
+        activity.value:lead_id::STRING AS LEAD_ID,
+
+        TRY_TO_DATE(
+            activity.value:
+                "custom.cf_duzvav8KQ1PjbJLeAjqZna96ndGp3jO5U2JTfIuGFKi"
+                ::STRING
+        ) AS DATE_OF_SALE
+
+    FROM SALES_ANALYTICS_DB.BRONZE.LEAD_ACTIVITIES_RAW r,
+    LATERAL FLATTEN(
+        INPUT => r.JSON_OBJECT:raw_data:data
+    ) activity
+
+    WHERE activity.value:
+        "custom.cf_duzvav8KQ1PjbJLeAjqZna96ndGp3jO5U2JTfIuGFKi"
+        IS NOT NULL
+
+    QUALIFY ROW_NUMBER() OVER (
+        PARTITION BY
+            activity.value:lead_id::STRING,
+            activity.value:id::STRING
+        ORDER BY
+            TRY_TO_TIMESTAMP_NTZ(
+                activity.value:activity_at::STRING
+            ) DESC NULLS LAST,
+            TRY_TO_TIMESTAMP_NTZ(
+                activity.value:date_updated::STRING
+            ) DESC NULLS LAST,
+            COALESCE(
+                TRY_TO_TIMESTAMP_NTZ(
+                    r.JSON_OBJECT:insert_date::STRING
+                ),
+                r.INSERT_DATE
+            ) DESC NULLS LAST
+    ) = 1
+) src
+
+WHERE tgt.LEAD_ID = src.LEAD_ID
+  AND tgt.ACTIVITY_ID = src.ACTIVITY_ID;
+
+  SELECT
+    CUSTOM_ACTIVITY,
+    COUNT(*) AS TOTAL_ROWS,
+    COUNT_IF(DATE_OF_SALE IS NOT NULL) AS DATE_OF_SALE_ROWS,
+    COUNT_IF(CONTRACT_VALUE IS NOT NULL) AS CONTRACT_VALUE_ROWS,
+    COUNT_IF(CASH_COLLECTED IS NOT NULL) AS CASH_COLLECTED_ROWS,
+    COUNT_IF(PROGRAM IS NOT NULL) AS PROGRAM_ROWS
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+WHERE CUSTOM_ACTIVITY IN (
+    '7) New Sale',
+    '8) New Sale [Custom Payment Plan]'
+)
+GROUP BY CUSTOM_ACTIVITY
+ORDER BY CUSTOM_ACTIVITY;
+
+SELECT COUNT(*) AS SUMMARY_ROWS
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY;
+
+SELECT
+    LEAD_ID,
+    ACTIVITY_ID,
+    COUNT(*) AS CNT
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+GROUP BY
+    LEAD_ID,
+    ACTIVITY_ID
+HAVING COUNT(*) > 1;
+
+```
