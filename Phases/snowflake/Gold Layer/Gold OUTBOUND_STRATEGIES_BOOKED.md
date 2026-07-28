@@ -38,12 +38,6 @@ AND CUSTOM_ACTIVITY_OUTCOME = '2. Strategy Call Scheduled';
 SELECT COUNT(*) AS OUTBOUND_STRATEGIES_BOOKED_COUNT
 FROM GOLD.OUTBOUND_STRATEGIES_BOOKED;
 
-Expected:
-2408
-Calculation:
-2,146 Prospecting Activity bookings
-+ 262 Prospecting Follow Up bookings
-= 2,408
 
 ```
 # Validate unique leads
@@ -53,7 +47,6 @@ SELECT
     COUNT(*) AS TOTAL_ROWS,
     COUNT(DISTINCT LEAD_ID) AS UNIQUE_LEADS
 FROM GOLD.OUTBOUND_STRATEGIES_BOOKED;
-The total should be 2,408. The unique lead count may be lower because some leads can book more than once.
 
 ```
 # Validate source reconciliation
@@ -70,10 +63,7 @@ AND CUSTOM_ACTIVITY_OUTCOME = '2. Strategy Call Scheduled'
 GROUP BY CUSTOM_ACTIVITY
 ORDER BY CUSTOM_ACTIVITY;
 
-Expected:
-1) Prospecting Activity     2146
-2) Prospecting Follow Up     262
-```
+
 # Validate weekly reporting
 ```
 SELECT
