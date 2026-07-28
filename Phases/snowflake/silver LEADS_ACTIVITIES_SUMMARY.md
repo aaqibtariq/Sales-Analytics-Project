@@ -583,3 +583,111 @@ GROUP BY
 HAVING COUNT(*) > 1;
 
 ```
+# Populate the Silver outcome columns
+The repository updates the existing CUSTOM_ACTIVITY_OUTCOME_NAME and CUSTOM_ACTIVITY_OUTCOME columns for prospecting activities
+
+```
+UPDATE SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY tgt
+
+SET
+    CUSTOM_ACTIVITY_OUTCOME_NAME = 'Prospecting Call Outcome',
+    CUSTOM_ACTIVITY_OUTCOME = src.PROSPECTING_CALL_OUTCOME,
+    UPDATE_DATE = CURRENT_TIMESTAMP()
+
+FROM (
+    SELECT
+        activity.value:id::STRING AS ACTIVITY_ID,
+        activity.value:lead_id::STRING AS LEAD_ID,
+
+        activity.value:
+            "custom.cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"
+            ::STRING AS PROSPECTING_CALL_OUTCOME
+
+    FROM SALES_ANALYTICS_DB.BRONZE.LEAD_ACTIVITIES_RAW r,
+    LATERAL FLATTEN(
+        INPUT => r.JSON_OBJECT:raw_data:data
+    ) activity
+
+    WHERE activity.value:
+        "custom.cf_Q2fsrD8VpPaunZLtyiy7P3vG6qJTv0w1ESmlhdHU2ra"
+        IS NOT NULL
+
+    QUALIFY ROW_NUMBER() OVER (
+        PARTITION BY
+            activity.value:lead_id::STRING,
+            activity.value:id::STRING
+        ORDER BY
+            TRY_TO_TIMESTAMP_NTZ(
+                activity.value:activity_at::STRING
+            ) DESC NULLS LAST,
+
+            TRY_TO_TIMESTAMP_NTZ(
+                activity.value:date_updated::STRING
+            ) DESC NULLS LAST,
+
+            COALESCE(
+                TRY_TO_TIMESTAMP_NTZ(
+                    r.JSON_OBJECT:insert_date::STRING
+                ),
+                r.INSERT_DATE
+            ) DESC NULLS LAST
+    ) = 1
+) src
+
+WHERE tgt.LEAD_ID = src.LEAD_ID
+  AND tgt.ACTIVITY_ID = src.ACTIVITY_ID
+  AND tgt.CUSTOM_ACTIVITY IN (
+      '1) Prospecting Activity',
+      '2) Prospecting Follow Up'
+  );
+```
+# validation 
+
+```
+  SELECT
+    CUSTOM_ACTIVITY,
+    CUSTOM_ACTIVITY_OUTCOME_NAME,
+    CUSTOM_ACTIVITY_OUTCOME,
+    COUNT(*) AS TOTAL_ROWS
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+WHERE CUSTOM_ACTIVITY IN (
+    '1) Prospecting Activity',
+    '2) Prospecting Follow Up'
+)
+GROUP BY
+    CUSTOM_ACTIVITY,
+    CUSTOM_ACTIVITY_OUTCOME_NAME,
+    CUSTOM_ACTIVITY_OUTCOME
+ORDER BY
+    CUSTOM_ACTIVITY,
+    TOTAL_ROWS DESC;
+
+    `````````
+
+    SELECT
+    CUSTOM_ACTIVITY,
+    COUNT(*) AS STRATEGY_CALL_SCHEDULED_ROWS,
+    COUNT(DISTINCT LEAD_ID) AS UNIQUE_LEADS
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+WHERE CUSTOM_ACTIVITY IN (
+    '1) Prospecting Activity',
+    '2) Prospecting Follow Up'
+)
+  AND CUSTOM_ACTIVITY_OUTCOME = '2. Strategy Call Scheduled'
+GROUP BY CUSTOM_ACTIVITY
+ORDER BY CUSTOM_ACTIVITY;
+
+SELECT COUNT(*) AS SUMMARY_ROWS
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY;
+
+
+SELECT
+    LEAD_ID,
+    ACTIVITY_ID,
+    COUNT(*) AS CNT
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+GROUP BY
+    LEAD_ID,
+    ACTIVITY_ID
+HAVING COUNT(*) > 1;
+```
