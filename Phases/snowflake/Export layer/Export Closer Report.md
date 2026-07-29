@@ -1,6 +1,6 @@
 # create report
 
-````
+```
 USE DATABASE SALES_ANALYTICS_DB;
 USE SCHEMA GOLD;
 
@@ -659,3 +659,530 @@ ORDER BY
 
 
 ```
+
+# Fix the missing
+
+```
+USE DATABASE SALES_ANALYTICS_DB;
+USE SCHEMA GOLD;
+
+CREATE OR REPLACE VIEW
+SALES_ANALYTICS_DB.GOLD.CLOSER_REPORT_SME AS
+
+WITH STRATEGY_CALLS_DEDUP AS (
+
+    /*
+        One latest record per Strategy Call activity.
+
+        Both primary Strategy Calls and Strategy Call Follow Ups
+        are included because the requirements define both as part
+        of the Strategy Call stage.
+    */
+
+    SELECT
+        ACTIVITY_ID AS STRATEGY_ACTIVITY_ID,
+        LEAD_ID,
+
+        COALESCE(
+            NULLIF(TRIM(DEA_INTERNAL_NAME), ''),
+            'UNMAPPED CLOSER'
+        ) AS CLOSER_NAME,
+
+        NULLIF(
+            TRIM(DEA_INTERNAL_EMAIL),
+            ''
+        ) AS CLOSER_EMAIL,
+
+        CUSTOM_ACTIVITY,
+        CUSTOM_ACTIVITY_OUTCOME AS STRATEGY_CALL_OUTCOME,
+
+        ACTIVITY_AT AS STRATEGY_TIMESTAMP,
+        ACTIVITY_AT::DATE AS STRATEGY_DATE,
+
+        DATE_TRUNC(
+            'MONTH',
+            ACTIVITY_AT::DATE
+        ) AS CALL_MONTH_START,
+
+        TO_CHAR(
+            ACTIVITY_AT::DATE,
+            'YYYY-MM'
+        ) AS CALL_YEAR_MONTH
+
+    FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+
+    WHERE CUSTOM_ACTIVITY IN (
+        '5) Strategy Call',
+        '6) Strategy Call Follow Up'
+    )
+
+    QUALIFY ROW_NUMBER() OVER (
+        PARTITION BY ACTIVITY_ID
+        ORDER BY
+            DATE_UPDATED DESC NULLS LAST,
+            UPDATE_DATE DESC NULLS LAST,
+            INSERT_DATE DESC NULLS LAST,
+            ACTIVITY_AT DESC NULLS LAST
+    ) = 1
+),
+
+STRATEGY_CLASSIFIED AS (
+
+    /*
+        Classify each Strategy Call using the SME-approved outcomes.
+    */
+
+    SELECT
+        STRATEGY_ACTIVITY_ID,
+        LEAD_ID,
+        CLOSER_NAME,
+        CLOSER_EMAIL,
+        CUSTOM_ACTIVITY,
+        STRATEGY_CALL_OUTCOME,
+        STRATEGY_TIMESTAMP,
+        STRATEGY_DATE,
+        CALL_MONTH_START,
+        CALL_YEAR_MONTH,
+
+        1 AS CALL_BOOKED,
+
+        CASE
+            WHEN STRATEGY_CALL_OUTCOME = '2. Admin Cancel'
+            THEN 1
+            ELSE 0
+        END AS ADMIN_CANCEL,
+
+        CASE
+            WHEN STRATEGY_CALL_OUTCOME IN (
+                '7. Cancel- Nurture',
+                '8. Cancel- Nurture'
+            )
+            THEN 1
+            ELSE 0
+        END AS CANCEL_NURTURE,
+
+        CASE
+            WHEN STRATEGY_CALL_OUTCOME =
+                 '3. Cancel- Not Interested'
+            THEN 1
+            ELSE 0
+        END AS CANCEL_NOT_INTEREST,
+
+        CASE
+            WHEN STRATEGY_CALL_OUTCOME IN (
+                '4. No Show',
+                '3. No Show'
+            )
+            THEN 1
+            ELSE 0
+        END AS NO_SHOW,
+
+        /*
+            Valid attended Strategy Call outcomes.
+        */
+        CASE
+            WHEN STRATEGY_CALL_OUTCOME IN (
+                '1. Follow Up',
+                '5. Sale',
+                '6. Sale',
+                '7. Lost'
+            )
+            THEN 1
+            ELSE 0
+        END AS STRTGY_CALL_SHW,
+
+        CASE
+            WHEN STRATEGY_CALL_OUTCOME = '7. Lost'
+            THEN 1
+            ELSE 0
+        END AS LOST
+
+    FROM STRATEGY_CALLS_DEDUP
+),
+
+ATTENDED_STRATEGY_CALLS AS (
+
+    /*
+        Only attended Strategy Calls are eligible for downstream
+        sale and revenue attribution.
+    */
+
+    SELECT
+        *
+
+    FROM STRATEGY_CLASSIFIED
+
+    WHERE STRTGY_CALL_SHW = 1
+),
+
+SALES_BASE AS (
+
+    /*
+        One row per sale activity from Silver.
+
+        Silver is used because it retains ACTIVITY_ID and exact
+        timestamps needed for deterministic attribution.
+    */
+
+    SELECT
+        ACTIVITY_ID AS SALE_ACTIVITY_ID,
+        LEAD_ID,
+
+        COALESCE(
+            ACTIVITY_AT,
+            DATE_OF_SALE::TIMESTAMP_NTZ
+        ) AS SALE_TIMESTAMP,
+
+        TRY_TO_DECIMAL(
+            NULLIF(
+                REGEXP_REPLACE(
+                    CONTRACT_VALUE::STRING,
+                    '[^0-9.-]',
+                    ''
+                ),
+                ''
+            ),
+            18,
+            2
+        ) AS CONTRACT_VALUE_NUMERIC,
+
+        TRY_TO_DECIMAL(
+            NULLIF(
+                REGEXP_REPLACE(
+                    CASH_COLLECTED::STRING,
+                    '[^0-9.-]',
+                    ''
+                ),
+                ''
+            ),
+            18,
+            2
+        ) AS CASH_COLLECTED_NUMERIC
+
+    FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+
+    WHERE CUSTOM_ACTIVITY IN (
+        '7) New Sale',
+        '8) New Sale [Custom Payment Plan]'
+    )
+
+    QUALIFY ROW_NUMBER() OVER (
+        PARTITION BY ACTIVITY_ID
+        ORDER BY
+            DATE_UPDATED DESC NULLS LAST,
+            UPDATE_DATE DESC NULLS LAST,
+            INSERT_DATE DESC NULLS LAST,
+            ACTIVITY_AT DESC NULLS LAST
+    ) = 1
+),
+
+SALE_TO_STRATEGY_CANDIDATES AS (
+
+    /*
+        Match each sale only to attended Strategy Calls occurring
+        at or before the sale timestamp for the same lead.
+    */
+
+    SELECT
+        sale.SALE_ACTIVITY_ID,
+        sale.LEAD_ID,
+        sale.SALE_TIMESTAMP,
+        sale.CONTRACT_VALUE_NUMERIC,
+        sale.CASH_COLLECTED_NUMERIC,
+
+        strategy.STRATEGY_ACTIVITY_ID,
+        strategy.STRATEGY_TIMESTAMP,
+
+        ROW_NUMBER() OVER (
+            PARTITION BY sale.SALE_ACTIVITY_ID
+            ORDER BY
+                strategy.STRATEGY_TIMESTAMP DESC,
+                strategy.STRATEGY_ACTIVITY_ID DESC
+        ) AS MATCH_RANK
+
+    FROM SALES_BASE sale
+
+    INNER JOIN ATTENDED_STRATEGY_CALLS strategy
+        ON sale.LEAD_ID = strategy.LEAD_ID
+       AND strategy.STRATEGY_TIMESTAMP <= sale.SALE_TIMESTAMP
+),
+
+SALES_ATTRIBUTED AS (
+
+    /*
+        Aggregate the uniquely attributed sales to one Strategy Call.
+    */
+
+    SELECT
+        STRATEGY_ACTIVITY_ID,
+
+        COUNT(*) AS SALE,
+
+        SUM(
+            COALESCE(
+                CONTRACT_VALUE_NUMERIC,
+                0
+            )
+        ) AS TOTAL_CONTRACT_VALUE,
+
+        SUM(
+            COALESCE(
+                CASH_COLLECTED_NUMERIC,
+                0
+            )
+        ) AS CASH_COLLECTED,
+
+        COUNT(
+            CONTRACT_VALUE_NUMERIC
+        ) AS SALES_WITH_CONTRACT_VALUE
+
+    FROM SALE_TO_STRATEGY_CANDIDATES
+
+    WHERE MATCH_RANK = 1
+
+    GROUP BY
+        STRATEGY_ACTIVITY_ID
+),
+
+STRATEGY_ENRICHED AS (
+
+    /*
+        Join pre-aggregated sale metrics back to one Strategy Call.
+
+        This prevents Strategy Call × Sale multiplication.
+    */
+
+    SELECT
+        strategy.CLOSER_NAME,
+        strategy.CLOSER_EMAIL,
+        strategy.CALL_MONTH_START,
+        strategy.CALL_YEAR_MONTH,
+
+        strategy.CALL_BOOKED,
+        strategy.ADMIN_CANCEL,
+        strategy.CANCEL_NURTURE,
+        strategy.CANCEL_NOT_INTEREST,
+        strategy.NO_SHOW,
+        strategy.STRTGY_CALL_SHW,
+        strategy.LOST,
+
+        COALESCE(
+            sales.SALE,
+            0
+        ) AS SALE,
+
+        COALESCE(
+            sales.TOTAL_CONTRACT_VALUE,
+            0
+        ) AS TOTAL_CONTRACT_VALUE,
+
+        COALESCE(
+            sales.CASH_COLLECTED,
+            0
+        ) AS CASH_COLLECTED,
+
+        COALESCE(
+            sales.SALES_WITH_CONTRACT_VALUE,
+            0
+        ) AS SALES_WITH_CONTRACT_VALUE
+
+    FROM STRATEGY_CLASSIFIED strategy
+
+    LEFT JOIN SALES_ATTRIBUTED sales
+        ON strategy.STRATEGY_ACTIVITY_ID =
+           sales.STRATEGY_ACTIVITY_ID
+)
+
+SELECT
+    CLOSER_NAME,
+    CALL_YEAR_MONTH,
+
+    SUM(CALL_BOOKED)
+        AS CALL_BOOKED,
+
+    SUM(ADMIN_CANCEL)
+        AS ADMIN_CANCEL,
+
+    SUM(CANCEL_NURTURE)
+        AS CANCEL_NURTURE,
+
+    SUM(CANCEL_NOT_INTEREST)
+        AS CANCEL_NOT_INTEREST,
+
+    SUM(ADMIN_CANCEL)
+        + SUM(CANCEL_NURTURE)
+        + SUM(CANCEL_NOT_INTEREST)
+        AS TOTAL_CANCEL,
+
+    SUM(NO_SHOW)
+        AS NO_SHOW,
+
+    SUM(STRTGY_CALL_SHW)
+        AS STRTGY_CALL_SHW,
+
+    SUM(LOST)
+        AS LOST,
+
+    SUM(SALE)
+        AS SALE,
+
+    /*
+        Average contract value for sales where a contract value
+        was available.
+    */
+    ROUND(
+        SUM(TOTAL_CONTRACT_VALUE)
+        / NULLIF(
+            SUM(SALES_WITH_CONTRACT_VALUE),
+            0
+        ),
+        2
+    ) AS AVG_VALUE,
+
+    ROUND(
+        SUM(CASH_COLLECTED),
+        2
+    ) AS CASH_COLLECTED
+
+FROM STRATEGY_ENRICHED
+
+GROUP BY
+    CLOSER_NAME,
+    CALL_YEAR_MONTH,
+    CALL_MONTH_START
+
+ORDER BY
+    CALL_MONTH_START,
+    CLOSER_NAME;
+```
+
+
+# validation 
+
+```
+DESC VIEW SALES_ANALYTICS_DB.GOLD.CLOSER_REPORT_SME;
+
+
+    SELECT
+    (
+        SELECT COUNT(DISTINCT ACTIVITY_ID)
+        FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+        WHERE CUSTOM_ACTIVITY IN (
+            '5) Strategy Call',
+            '6) Strategy Call Follow Up'
+        )
+    ) AS SILVER_UNIQUE_STRATEGY_CALLS,
+
+    (
+        SELECT SUM(CALL_BOOKED)
+        FROM SALES_ANALYTICS_DB.GOLD.CLOSER_REPORT_SME
+    ) AS REPORT_CALL_BOOKED;
+
+
+    SELECT
+    SUM(ADMIN_CANCEL) AS ADMIN_CANCEL,
+    SUM(CANCEL_NURTURE) AS CANCEL_NURTURE,
+    SUM(CANCEL_NOT_INTEREST) AS CANCEL_NOT_INTEREST,
+    SUM(TOTAL_CANCEL) AS TOTAL_CANCEL,
+
+    SUM(ADMIN_CANCEL)
+        + SUM(CANCEL_NURTURE)
+        + SUM(CANCEL_NOT_INTEREST)
+        AS CALCULATED_TOTAL_CANCEL
+
+FROM SALES_ANALYTICS_DB.GOLD.CLOSER_REPORT_SME;
+
+
+SELECT
+    COUNT_IF(
+        CUSTOM_ACTIVITY_OUTCOME = '2. Admin Cancel'
+    ) AS SILVER_ADMIN_CANCEL,
+
+    COUNT_IF(
+        CUSTOM_ACTIVITY_OUTCOME IN (
+            '7. Cancel- Nurture',
+            '8. Cancel- Nurture'
+        )
+    ) AS SILVER_CANCEL_NURTURE,
+
+    COUNT_IF(
+        CUSTOM_ACTIVITY_OUTCOME =
+        '3. Cancel- Not Interested'
+    ) AS SILVER_CANCEL_NOT_INTEREST,
+
+    COUNT_IF(
+        CUSTOM_ACTIVITY_OUTCOME IN (
+            '4. No Show',
+            '3. No Show'
+        )
+    ) AS SILVER_NO_SHOW,
+
+    COUNT_IF(
+        CUSTOM_ACTIVITY_OUTCOME IN (
+            '1. Follow Up',
+            '5. Sale',
+            '6. Sale',
+            '7. Lost'
+        )
+    ) AS SILVER_STRATEGY_SHOW,
+
+    COUNT_IF(
+        CUSTOM_ACTIVITY_OUTCOME = '7. Lost'
+    ) AS SILVER_LOST
+
+FROM (
+    SELECT
+        ACTIVITY_ID,
+        CUSTOM_ACTIVITY_OUTCOME
+
+    FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+
+    WHERE CUSTOM_ACTIVITY IN (
+        '5) Strategy Call',
+        '6) Strategy Call Follow Up'
+    )
+
+    QUALIFY ROW_NUMBER() OVER (
+        PARTITION BY ACTIVITY_ID
+        ORDER BY
+            DATE_UPDATED DESC NULLS LAST,
+            UPDATE_DATE DESC NULLS LAST,
+            INSERT_DATE DESC NULLS LAST,
+            ACTIVITY_AT DESC NULLS LAST
+    ) = 1
+);
+
+SELECT
+    SUM(ADMIN_CANCEL) AS REPORT_ADMIN_CANCEL,
+    SUM(CANCEL_NURTURE) AS REPORT_CANCEL_NURTURE,
+    SUM(CANCEL_NOT_INTEREST) AS REPORT_CANCEL_NOT_INTEREST,
+    SUM(NO_SHOW) AS REPORT_NO_SHOW,
+    SUM(STRTGY_CALL_SHW) AS REPORT_STRATEGY_SHOW,
+    SUM(LOST) AS REPORT_LOST
+
+FROM SALES_ANALYTICS_DB.GOLD.CLOSER_REPORT_SME;
+
+
+SELECT
+    SUM(SALE) AS ATTRIBUTED_SALES,
+    ROUND(SUM(CASH_COLLECTED), 2) AS CASH_COLLECTED,
+
+    ROUND(
+        SUM(AVG_VALUE * SALE)
+        / NULLIF(SUM(SALE), 0),
+        2
+    ) AS APPROX_WEIGHTED_AVG_VALUE
+
+FROM SALES_ANALYTICS_DB.GOLD.CLOSER_REPORT_SME;
+
+
+SELECT *
+FROM SALES_ANALYTICS_DB.GOLD.CLOSER_REPORT_SME
+ORDER BY
+    CALL_YEAR_MONTH DESC,
+    CALL_BOOKED DESC,
+    CLOSER_NAME;
+
+```
+
+
