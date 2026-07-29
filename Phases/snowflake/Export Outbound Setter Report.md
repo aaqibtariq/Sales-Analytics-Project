@@ -70,144 +70,210 @@ FROM GOLD.OUTBOUND_STRATEGIES_BOOKED osb
 # Create report
 
 ```
+
 USE DATABASE SALES_ANALYTICS_DB;
 USE SCHEMA GOLD;
 
-CREATE OR REPLACE VIEW GOLD.OUTBOUND_SETTER_REPORT AS
+CREATE OR REPLACE VIEW
+SALES_ANALYTICS_DB.GOLD.OUTBOUND_SETTER_REPORT AS
 
-WITH OUTBOUND_DIALS AS (
+WITH OUTBOUND_BASE AS (
+
     /*
-        Complete outbound top-of-funnel activity.
-        One row per deduplicated prospecting activity.
+      One row per outbound prospecting activity.
     */
     SELECT
-        ACTIVITY_ID,
         LEAD_ID,
-        ACTIVITY_AT,
-        ACTIVITY_AT::DATE AS DIAL_DATE,
-        DEA_INTERNAL_NAME AS SETTER,
+        ACTIVITY_ID AS OUTBOUND_ACTIVITY_ID,
+        ACTIVITY_AT AS OUTBOUND_TIMESTAMP,
+        ACTIVITY_AT::DATE AS OUTBOUND_DATE,
+
+        YEAROFWEEKISO(ACTIVITY_AT::DATE)
+            || '-'
+            || LPAD(WEEKISO(ACTIVITY_AT::DATE), 2, '0')
+            AS REPORTING_WEEK,
+
+        COALESCE(
+            DEA_INTERNAL_NAME,
+            'UNMAPPED SETTER'
+        ) AS SETTER,
+
         DEA_INTERNAL_EMAIL AS SETTER_EMAIL,
+
         CUSTOM_ACTIVITY,
-        CUSTOM_ACTIVITY_OUTCOME
+        CUSTOM_ACTIVITY_OUTCOME,
+
+        1 AS OUTBOUND_DIALS,
+
+        CASE
+            WHEN CUSTOM_ACTIVITY_OUTCOME IS NOT NULL
+             AND CUSTOM_ACTIVITY_OUTCOME NOT IN (
+                    '6. Not Interested',
+                    '4. Unqualified'
+                 )
+            THEN 1
+            ELSE 0
+        END AS OUTBOUND_TAKEN,
+
+        CASE
+            WHEN CUSTOM_ACTIVITY_OUTCOME =
+                 '2. Strategy Call Scheduled'
+            THEN 1
+            ELSE 0
+        END AS STRATEGY_CALL_BOOKED
+
     FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+
     WHERE CUSTOM_ACTIVITY IN (
         '1) Prospecting Activity',
         '2) Prospecting Follow Up'
     )
 ),
 
-OUTBOUND_SETS AS (
+STRATEGY_BASE AS (
+
     /*
-        Successful outbound qualification events.
-        Each row represents an outbound activity that scheduled
-        a Strategy Call.
+      One row per actual Strategy Call.
     */
     SELECT
-        ACTIVITY_ID AS SET_ACTIVITY_ID,
         LEAD_ID,
-        ACTIVITY_AT AS SET_AT,
-        ACTIVITY_AT::DATE AS DIAL_DATE,
-        DEA_INTERNAL_NAME AS SETTER,
-        DEA_INTERNAL_EMAIL AS SETTER_EMAIL
-    FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
-    WHERE CUSTOM_ACTIVITY IN (
-        '1) Prospecting Activity',
-        '2) Prospecting Follow Up'
-    )
-      AND CUSTOM_ACTIVITY_OUTCOME = '2. Strategy Call Scheduled'
-),
-
-STRATEGY_EVENTS AS (
-    /*
-        Strategy Call activity events.
-
-        Follow-up activities are not included because the validated
-        Strategy Call Outcome is stored on '5) Strategy Call'.
-    */
-    SELECT
         ACTIVITY_ID AS STRATEGY_ACTIVITY_ID,
-        LEAD_ID,
-        ACTIVITY_AT AS STRATEGY_AT,
+        ACTIVITY_AT AS STRATEGY_TIMESTAMP,
+
         CUSTOM_ACTIVITY_OUTCOME AS STRATEGY_CALL_OUTCOME,
-        OFFER_PRESENTED
+        OFFER_PRESENTED,
+
+        CASE
+            WHEN CUSTOM_ACTIVITY_OUTCOME IN (
+                '1. Follow Up',
+                '5. Sale',
+                '6. Sale',
+                '7. Lost'
+            )
+            THEN 1
+            ELSE 0
+        END AS STRATEGY_CALL_TAKEN,
+
+        /*
+          Fixed logic:
+          Count an offer only when the Strategy Call was attended.
+        */
+        CASE
+            WHEN CUSTOM_ACTIVITY_OUTCOME IN (
+                '1. Follow Up',
+                '5. Sale',
+                '6. Sale',
+                '7. Lost'
+            )
+            AND UPPER(TRIM(OFFER_PRESENTED)) IN (
+                'YES',
+                'Y',
+                'TRUE',
+                '1'
+            )
+            THEN 1
+            ELSE 0
+        END AS OFFER_PRESENTED_FLAG
+
     FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+
     WHERE CUSTOM_ACTIVITY = '5) Strategy Call'
 ),
 
-STRATEGY_ATTRIBUTION AS (
-    /*
-        Assign each Strategy Call to the most recent outbound set
-        for the same lead occurring before that Strategy Call.
+STRATEGY_TO_OUTBOUND_CANDIDATES AS (
 
-        This prevents one Strategy Call from being attributed to
-        multiple outbound bookings.
+    /*
+      Match each Strategy Call to all preceding outbound activities
+      for the same lead.
     */
     SELECT
-        os.SET_ACTIVITY_ID,
-        os.LEAD_ID,
-        os.DIAL_DATE,
-        os.SETTER,
-        os.SETTER_EMAIL,
+        s.LEAD_ID,
+        s.STRATEGY_ACTIVITY_ID,
+        s.STRATEGY_TIMESTAMP,
+        s.STRATEGY_CALL_OUTCOME,
+        s.STRATEGY_CALL_TAKEN,
+        s.OFFER_PRESENTED_FLAG,
 
-        se.STRATEGY_ACTIVITY_ID,
-        se.STRATEGY_AT,
-        se.STRATEGY_CALL_OUTCOME,
-        se.OFFER_PRESENTED,
+        o.OUTBOUND_ACTIVITY_ID,
+        o.OUTBOUND_TIMESTAMP,
 
-        CASE
-            WHEN se.STRATEGY_CALL_OUTCOME IN (
-                '1. Follow Up',
-                '5. Sale',
-                '6. Sale',
-                '7. Lost'
-            )
-            THEN 1
-            ELSE 0
-        END AS CLOSER_SHOW,
+        ROW_NUMBER() OVER (
+            PARTITION BY s.STRATEGY_ACTIVITY_ID
+            ORDER BY
+                o.OUTBOUND_TIMESTAMP DESC,
+                o.OUTBOUND_ACTIVITY_ID DESC
+        ) AS MATCH_RANK
 
-        CASE
-            WHEN se.STRATEGY_CALL_OUTCOME IN (
-                '1. Follow Up',
-                '5. Sale',
-                '6. Sale',
-                '7. Lost'
-            )
-            AND (
-                   UPPER(TRIM(se.OFFER_PRESENTED)) = 'YES'
-                OR se.STRATEGY_CALL_OUTCOME ILIKE '%offer%'
-            )
-            THEN 1
-            ELSE 0
-        END AS OFFER_FLAG
+    FROM STRATEGY_BASE s
 
-    FROM STRATEGY_EVENTS se
-
-    INNER JOIN OUTBOUND_SETS os
-        ON se.LEAD_ID = os.LEAD_ID
-       AND se.STRATEGY_AT >= os.SET_AT
-
-    QUALIFY ROW_NUMBER() OVER (
-        PARTITION BY se.STRATEGY_ACTIVITY_ID
-        ORDER BY
-            os.SET_AT DESC,
-            os.SET_ACTIVITY_ID DESC
-    ) = 1
+    INNER JOIN OUTBOUND_BASE o
+        ON s.LEAD_ID = o.LEAD_ID
+       AND o.OUTBOUND_TIMESTAMP <= s.STRATEGY_TIMESTAMP
 ),
 
-SALE_EVENTS AS (
+STRATEGY_ATTRIBUTED AS (
+
     /*
-        Finalized sales activity events.
+      Retain only the nearest preceding outbound activity
+      for each Strategy Call.
     */
     SELECT
-        ACTIVITY_ID AS SALE_ACTIVITY_ID,
+        OUTBOUND_ACTIVITY_ID,
+
+        COUNT(*) AS STRATEGY_CALL_EVENTS,
+
+        SUM(STRATEGY_CALL_TAKEN)
+            AS STRATEGY_CALL_TAKEN,
+
+        SUM(OFFER_PRESENTED_FLAG)
+            AS OFFERS_PRESENTED
+
+    FROM STRATEGY_TO_OUTBOUND_CANDIDATES
+
+    WHERE MATCH_RANK = 1
+
+    GROUP BY OUTBOUND_ACTIVITY_ID
+),
+
+SALES_BASE AS (
+
+    /*
+      One row per sale activity.
+    */
+    SELECT
         LEAD_ID,
+        ACTIVITY_ID AS SALE_ACTIVITY_ID,
 
         COALESCE(
-            DATE_OF_SALE::TIMESTAMP_NTZ,
-            ACTIVITY_AT
-        ) AS SALE_AT,
+            ACTIVITY_AT,
+            DATE_OF_SALE::TIMESTAMP_NTZ
+        ) AS SALE_TIMESTAMP,
 
-        TRY_TO_DECIMAL(CONTRACT_VALUE, 18, 2) AS CONTRACTED_VALUE
+        TRY_TO_DECIMAL(
+            NULLIF(
+                REGEXP_REPLACE(
+                    CONTRACT_VALUE,
+                    '[^0-9.-]',
+                    ''
+                ),
+                ''
+            ),
+            18,
+            2
+        ) AS CONTRACT_VALUE_NUMERIC,
+
+        TRY_TO_DECIMAL(
+            NULLIF(
+                REGEXP_REPLACE(
+                    CASH_COLLECTED,
+                    '[^0-9.-]',
+                    ''
+                ),
+                ''
+            ),
+            18,
+            2
+        ) AS CASH_COLLECTED_NUMERIC
 
     FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
 
@@ -217,176 +283,199 @@ SALE_EVENTS AS (
     )
 ),
 
-SALE_ATTRIBUTION AS (
-    /*
-        A sale is valid only when a documented attended Strategy Call
-        occurred before the sale.
+SALE_TO_OUTBOUND_CANDIDATES AS (
 
-        Each sale is assigned to the most recent attended Strategy Call.
-        That Strategy Call already carries its outbound set attribution.
+    /*
+      Match each sale to all preceding outbound activities
+      for the same lead.
     */
     SELECT
-        sa.SET_ACTIVITY_ID,
         sa.LEAD_ID,
-        sa.DIAL_DATE,
-        sa.SETTER,
-        sa.SETTER_EMAIL,
-        sa.STRATEGY_ACTIVITY_ID,
+        sa.SALE_ACTIVITY_ID,
+        sa.SALE_TIMESTAMP,
+        sa.CONTRACT_VALUE_NUMERIC,
+        sa.CASH_COLLECTED_NUMERIC,
 
-        sale.SALE_ACTIVITY_ID,
-        sale.SALE_AT,
-        sale.CONTRACTED_VALUE
+        o.OUTBOUND_ACTIVITY_ID,
+        o.OUTBOUND_TIMESTAMP,
 
-    FROM SALE_EVENTS sale
+        ROW_NUMBER() OVER (
+            PARTITION BY sa.SALE_ACTIVITY_ID
+            ORDER BY
+                o.OUTBOUND_TIMESTAMP DESC,
+                o.OUTBOUND_ACTIVITY_ID DESC
+        ) AS MATCH_RANK
 
-    INNER JOIN STRATEGY_ATTRIBUTION sa
-        ON sale.LEAD_ID = sa.LEAD_ID
-       AND sa.CLOSER_SHOW = 1
-       AND sale.SALE_AT >= sa.STRATEGY_AT
+    FROM SALES_BASE sa
 
-    QUALIFY ROW_NUMBER() OVER (
-        PARTITION BY sale.SALE_ACTIVITY_ID
-        ORDER BY
-            sa.STRATEGY_AT DESC,
-            sa.STRATEGY_ACTIVITY_ID DESC
-    ) = 1
+    INNER JOIN OUTBOUND_BASE o
+        ON sa.LEAD_ID = o.LEAD_ID
+       AND o.OUTBOUND_TIMESTAMP <= sa.SALE_TIMESTAMP
 ),
 
-DIAL_METRICS AS (
+SALES_ATTRIBUTED AS (
+
     /*
-        Daily activity grain required by the export model:
-        DIAL_DATE + SETTER.
+      Retain only the nearest preceding outbound activity
+      for each sale.
     */
     SELECT
-        DIAL_DATE,
-        SETTER,
+        OUTBOUND_ACTIVITY_ID,
 
-        COUNT(DISTINCT ACTIVITY_ID) AS TOTAL_OUTBOUND_CALLS,
-        COUNT(DISTINCT LEAD_ID) AS TOTAL_LEADS_TOUCHED
+        COUNT(*) AS TOTAL_SALES,
 
-    FROM OUTBOUND_DIALS
+        SUM(CONTRACT_VALUE_NUMERIC)
+            AS TOTAL_CONTRACT_VALUE,
 
-    GROUP BY
-        DIAL_DATE,
-        SETTER
+        SUM(CASH_COLLECTED_NUMERIC)
+            AS TOTAL_CASH_COLLECTED,
+
+        COUNT(CONTRACT_VALUE_NUMERIC)
+            AS SALES_WITH_CONTRACT_VALUE
+
+    FROM SALE_TO_OUTBOUND_CANDIDATES
+
+    WHERE MATCH_RANK = 1
+
+    GROUP BY OUTBOUND_ACTIVITY_ID
 ),
 
-SET_METRICS AS (
+OUTBOUND_ENRICHED AS (
+
+    /*
+      Join one-row-per-outbound aggregated datasets.
+    */
     SELECT
-        DIAL_DATE,
-        SETTER,
+        o.OUTBOUND_DATE,
+        o.REPORTING_WEEK,
+        o.SETTER,
+        o.SETTER_EMAIL,
+        o.OUTBOUND_ACTIVITY_ID,
 
-        COUNT(DISTINCT SET_ACTIVITY_ID) AS OUTBOUND_SET
+        o.OUTBOUND_DIALS,
+        o.OUTBOUND_TAKEN,
+        o.STRATEGY_CALL_BOOKED,
 
-    FROM OUTBOUND_SETS
+        COALESCE(
+            st.STRATEGY_CALL_EVENTS,
+            0
+        ) AS STRATEGY_CALL_EVENTS,
 
-    GROUP BY
-        DIAL_DATE,
-        SETTER
-),
+        COALESCE(
+            st.STRATEGY_CALL_TAKEN,
+            0
+        ) AS STRATEGY_CALL_TAKEN,
 
-STRATEGY_METRICS AS (
-    SELECT
-        DIAL_DATE,
-        SETTER,
+        COALESCE(
+            st.OFFERS_PRESENTED,
+            0
+        ) AS OFFERS_PRESENTED,
 
-        COUNT(DISTINCT CASE
-            WHEN CLOSER_SHOW = 1
-            THEN STRATEGY_ACTIVITY_ID
-        END) AS TOTAL_CLOSER_SHOW,
+        COALESCE(
+            sa.TOTAL_SALES,
+            0
+        ) AS TOTAL_SALES,
 
-        COUNT(DISTINCT CASE
-            WHEN OFFER_FLAG = 1
-            THEN STRATEGY_ACTIVITY_ID
-        END) AS TOTAL_OFFER
+        COALESCE(
+            sa.TOTAL_CONTRACT_VALUE,
+            0
+        ) AS TOTAL_CONTRACT_VALUE,
 
-    FROM STRATEGY_ATTRIBUTION
+        COALESCE(
+            sa.TOTAL_CASH_COLLECTED,
+            0
+        ) AS TOTAL_CASH_COLLECTED,
 
-    GROUP BY
-        DIAL_DATE,
-        SETTER
-),
+        COALESCE(
+            sa.SALES_WITH_CONTRACT_VALUE,
+            0
+        ) AS SALES_WITH_CONTRACT_VALUE
 
-SALE_METRICS AS (
-    SELECT
-        DIAL_DATE,
-        SETTER,
+    FROM OUTBOUND_BASE o
 
-        COUNT(DISTINCT SALE_ACTIVITY_ID) AS TOTAL_SALE,
+    LEFT JOIN STRATEGY_ATTRIBUTED st
+        ON o.OUTBOUND_ACTIVITY_ID =
+           st.OUTBOUND_ACTIVITY_ID
 
-        SUM(CONTRACTED_VALUE) AS TOTAL_REVENUE
-
-    FROM SALE_ATTRIBUTION
-
-    GROUP BY
-        DIAL_DATE,
-        SETTER
+    LEFT JOIN SALES_ATTRIBUTED sa
+        ON o.OUTBOUND_ACTIVITY_ID =
+           sa.OUTBOUND_ACTIVITY_ID
 )
 
 SELECT
-    d.DIAL_DATE,
+    OUTBOUND_DATE,
+    REPORTING_WEEK,
+    SETTER,
+    SETTER_EMAIL,
 
-    d.SETTER,
+    SUM(OUTBOUND_DIALS)
+        AS OUTBOUND_DIALS,
 
-    d.TOTAL_OUTBOUND_CALLS,
-
-    d.TOTAL_LEADS_TOUCHED,
-
-    COALESCE(sm.OUTBOUND_SET, 0) AS OUTBOUND_SET,
-
-    COALESCE(stm.TOTAL_CLOSER_SHOW, 0) AS TOTAL_CLOSER_SHOW,
-
-    COALESCE(stm.TOTAL_OFFER, 0) AS TOTAL_OFFER,
-
-    COALESCE(slm.TOTAL_SALE, 0) AS TOTAL_SALE,
+    SUM(OUTBOUND_TAKEN)
+        AS OUTBOUND_TAKEN,
 
     ROUND(
-        100.0 * COALESCE(sm.OUTBOUND_SET, 0)
-        / NULLIF(d.TOTAL_OUTBOUND_CALLS, 0),
+        100.0 * SUM(OUTBOUND_TAKEN)
+        / NULLIF(SUM(OUTBOUND_DIALS), 0),
         2
-    ) AS DIAL_TO_SET_RATE,
+    ) AS CONNECT_RATE,
+
+    SUM(STRATEGY_CALL_BOOKED)
+        AS STRATEGY_CALL_BOOKED,
 
     ROUND(
-        100.0 * COALESCE(stm.TOTAL_CLOSER_SHOW, 0)
-        / NULLIF(COALESCE(sm.OUTBOUND_SET, 0), 0),
+        100.0 * SUM(STRATEGY_CALL_BOOKED)
+        / NULLIF(SUM(OUTBOUND_DIALS), 0),
         2
-    ) AS SET_TO_SHOW_RATE,
+    ) AS SET_RATE,
+
+    SUM(STRATEGY_CALL_EVENTS)
+        AS STRATEGY_CALL_EVENTS,
+
+    SUM(STRATEGY_CALL_TAKEN)
+        AS STRATEGY_CALL_TAKEN,
+
+    SUM(OFFERS_PRESENTED)
+        AS OFFERS_PRESENTED,
 
     ROUND(
-        100.0 * COALESCE(slm.TOTAL_SALE, 0)
-        / NULLIF(COALESCE(stm.TOTAL_CLOSER_SHOW, 0), 0),
+        100.0 * SUM(OFFERS_PRESENTED)
+        / NULLIF(SUM(STRATEGY_CALL_TAKEN), 0),
         2
-    ) AS SHOW_TO_SALE_RATE,
+    ) AS OFFER_RATE,
+
+    SUM(TOTAL_SALES)
+        AS TOTAL_SALES,
 
     ROUND(
-        COALESCE(slm.TOTAL_REVENUE, 0),
+        100.0 * SUM(TOTAL_SALES)
+        / NULLIF(SUM(STRATEGY_CALL_TAKEN), 0),
         2
-    ) AS TOTAL_REVENUE,
+    ) AS SALE_RATE,
 
     ROUND(
-        COALESCE(slm.TOTAL_REVENUE, 0)
-        / NULLIF(COALESCE(slm.TOTAL_SALE, 0), 0),
+        SUM(TOTAL_CONTRACT_VALUE)
+        / NULLIF(SUM(SALES_WITH_CONTRACT_VALUE), 0),
         2
-    ) AS AVERAGE_ORDER_VALUE
+    ) AS AVERAGE_ORDER_VALUE,
 
-FROM DIAL_METRICS d
+    ROUND(
+        SUM(TOTAL_CONTRACT_VALUE),
+        2
+    ) AS TOTAL_CONTRACT_VALUE,
 
-LEFT JOIN SET_METRICS sm
-    ON d.DIAL_DATE = sm.DIAL_DATE
-   AND EQUAL_NULL(d.SETTER, sm.SETTER)
+    ROUND(
+        SUM(TOTAL_CASH_COLLECTED),
+        2
+    ) AS TOTAL_CASH_COLLECTED
 
-LEFT JOIN STRATEGY_METRICS stm
-    ON d.DIAL_DATE = stm.DIAL_DATE
-   AND EQUAL_NULL(d.SETTER, stm.SETTER)
+FROM OUTBOUND_ENRICHED
 
-LEFT JOIN SALE_METRICS slm
-    ON d.DIAL_DATE = slm.DIAL_DATE
-   AND EQUAL_NULL(d.SETTER, slm.SETTER);
-
-LEFT JOIN GOLD.SALES_DETAILS sd
-    ON osb.LEAD_ID = sd.LEAD_ID
-   AND sd.DATE_OF_SALE >= osb.PROSPECT_CALL_DATE;
-
+GROUP BY
+    OUTBOUND_DATE,
+    REPORTING_WEEK,
+    SETTER,
+    SETTER_EMAIL;
 ```
 
 # Inspect the report
