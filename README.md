@@ -294,6 +294,9 @@ Key Silver objects include:
 
 The source contains repeated activities across daily extracts and malformed stringified JSON, so cleansing and deduplication are essential parts of this layer.
 
+- [Silver Layer](https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/snowflake/Silver%20Layer)
+    - [Silver Ref files](https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/snowflake/Layers%20Ref/Silver%20setup)
+
 ## **10. Gold Layer**
 
 The Gold layer applies sales business logic and creates reusable analytical views.
