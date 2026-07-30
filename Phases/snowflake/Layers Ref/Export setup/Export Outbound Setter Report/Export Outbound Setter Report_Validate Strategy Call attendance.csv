@@ -1,0 +1,16 @@
+STRATEGY_CALL_OUTCOME,STATUS,TOTAL
+,MISSING,7
+4. No Show,NOT_TAKEN,1310
+3. Cancel- Not Interested,NOT_TAKEN,262
+8. Cancel- Nurture,NOT_TAKEN,246
+2. Admin Cancel,NOT_TAKEN,187
+4. No Show,NOT_TAKEN,4
+3. Cancel- Not Interested,NOT_TAKEN,2
+5. Reschedule,RESCHEDULE,367
+5. Reschedule,RESCHEDULE,5
+1. Follow Up,TAKEN,2301
+6. Sale,TAKEN,173
+7. Lost,TAKEN,138
+1. Follow Up,TAKEN,38
+6. Sale,TAKEN,2
+7. Lost,TAKEN,2
