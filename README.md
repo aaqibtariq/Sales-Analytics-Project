@@ -328,6 +328,8 @@ Revenue
 
 The views distinguish inbound and outbound acquisition paths and ensure that downstream KPIs are counted only when the required preceding stages exist.
 
+- [Gold Layer](https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/snowflake/Gold%20Layer)
+  
 ## **11. Reporting Layer**
 
 The reporting layer provides four final business outputs:
@@ -339,6 +341,7 @@ The reporting layer provides four final business outputs:
 
 These reports measure booking volume, show rates, strategy-call progression, sales conversion, revenue, closer performance, and objection categories.
 
+- [Export Layer](https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/snowflake/Export%20layer)
 
 ## **12. Streamlit Dashboard**
 
@@ -356,6 +359,8 @@ It allows users to:
 
 Because Streamlit runs inside Snowflake, the dashboard can query reporting views directly without creating a separate application database.
 
+- [Streamlit Dashboard](https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/Streamlit)
+  
 ## **13. Scheduling and Orchestration**
 
 The production workflow is designed to run daily after the PostgreSQL source refresh.
@@ -393,3 +398,5 @@ The Sales Analytics platform successfully transformed raw CRM data into a centra
 - Developed an interactive Snowflake Streamlit Dashboard for real-time exploration of sales performance and funnel metrics.
 - Eliminated manual reporting by automating daily data processing and KPI generation.
 - Created a scalable architecture that can support additional dashboards, reporting requirements, and future analytics use cases with minimal changes.
+
+  - [Results](https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/Results)
