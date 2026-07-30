@@ -1,0 +1,614 @@
+FILE_NAME,FILE_ROW_NUMBER,RAW_RECORD
+leads_raw/load_type=full/leads_raw_20260707_200659_part_00008.json,1,"{
+  ""insert_date"": ""2026-06-13T11:01:33.993208"",
+  ""raw_data"": {
+    ""addresses"": [],
+    ""contacts"": [
+      {
+        ""created_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""date_created"": ""2025-11-02T08:43:08.795000+00:00"",
+        ""date_updated"": ""2025-11-02T08:43:08.795000+00:00"",
+        ""display_name"": ""user_8b26e811159e3ab6f3af399b625b2a9a"",
+        ""emails"": [
+          {
+            ""email"": ""user_d6db232@masked.com"",
+            ""is_unsubscribed"": false,
+            ""type"": ""direct""
+          }
+        ],
+        ""id"": ""cont_Z6dPU7pOtI6ceDnjL4hHy4fHL18glTzj6dDbefgxDMf"",
+        ""integration_links"": [
+          {
+            ""name"": ""LinkedIn Search"",
+            ""url"": ""https://www.linkedin.com/search/results/people/?keywords=Eloy%20sepeda""
+          }
+        ],
+        ""lead_id"": ""lead_HaEE9hqFsw75Lfu1XRg8THgDNsqoRU7cFMXtDE0QEiH"",
+        ""name"": ""user_8b26e811159e3ab6f3af399b625b2a9a"",
+        ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+        ""phones"": [
+          {
+            ""country"": ""US"",
+            ""phone"": ""+1-use-r_c-9dbb"",
+            ""phone_formatted"": ""+1-use-r_b-dcdb"",
+            ""type"": ""direct""
+          }
+        ],
+        ""timezone"": ""America/New_York"",
+        ""timezone_source"": ""inferred_from_phone_number"",
+        ""title"": null,
+        ""updated_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""urls"": []
+      }
+    ],
+    ""created_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+    ""created_by_name"": ""user_eb1efaee45a59705808492017b599a88"",
+    ""custom"": {
+      ""Avatar"": ""N/A"",
+      ""CALL RECORDS"": ""_______________________"",
+      ""Calendar Source"": ""Data Engineer Academy Breakthrough Session / Daniel |"",
+      ""FU LIST"": ""FUT: Dropped Ball + Positive Intent, Last Comm= Received SMS - ALL Stages"",
+      ""Funnel"": ""DE ACADEMY Direct VSL"",
+      ""Funnel ID"": ""13074380"",
+      ""HADES"": ""2025-12-19"",
+      ""HADES TYPE"": [
+        ""ReActiv"",
+        ""STRAT 30+""
+      ],
+      ""JOURNEY OWNERS"": ""_______________________"",
+      ""LEAD INSIGHT"": ""_______________________"",
+      ""Last Click Date"": ""2025-11-05"",
+      ""Lead Owner"": ""user_lkZRZfQ2kroGFNqf1SMEUZBfypwJz6fF3mbYO1mUUrq"",
+      ""Lead Quality"": ""Highly Technical"",
+      ""Page ID"": ""63640125"",
+      ""Reactivation Campaign"": [
+        ""Jan 2026 Strat N/S + R/S"",
+        ""June 2026 Promo Blast""
+      ],
+      ""Reactivation Owner"": ""user_Nj6wwnzTlRDTnzEQmgFXYO0xlZZrLbXn36qwO2qmtkj"",
+      ""SMS Workflow (Closer First Name)"": ""Daniel"",
+      ""SMS Workflow (Setter First Name)"": ""Olivier"",
+      ""Setter"": ""user_Q0GfMIQyHPTcfe52xd2oVZCXQGJV3o2GpsD0UOP4Ccj"",
+      ""Strategy Call Date & Time"": ""2025-11-06T16:00:00.000000Z"",
+      ""Strategy Call Time (Lead's Timezone)"": ""Thursday, November 6 ⋅ 11:00 AM"",
+      ""Strategy Location"": ""https://zoom.us/j/92165948176?pwd=3ZC9FX4jFg53wmpNwLD419AESYMmSW.1"",
+      ""Time Zone"": ""America/New_York"",
+      ""Triage Call Time (Lead's Timezone)"": ""Sunday, November 3 ⋅ 08:00 AM"",
+      ""Visa Status"": ""US Citizen: Yes"",
+      ""[PF] Estimated Credit Score"": ""532.0""
+    },
+    ""custom.cf_0ZL1b2F0Y2SCZTssSTNZ39sfTkJmezrBLl7dwKElKdY"": ""2025-12-19"",
+    ""custom.cf_3LTjHX0x1lgzHVrTefr08rXC0ysvxaL4oyeJ3kWOv9v"": ""user_Nj6wwnzTlRDTnzEQmgFXYO0xlZZrLbXn36qwO2qmtkj"",
+    ""custom.cf_5puDF6bLDbO0AxYMydnORFpdUf35L58cyBImZfoI6a1"": ""Thursday, November 6 ⋅ 11:00 AM"",
+    ""custom.cf_7JGYSDr5LWvKpyPVNWs5VjZrh5umvZSaE7irREHRSUN"": ""Olivier"",
+    ""custom.cf_7ZGmboNWnq1ziSsV5ab6e8g1unK0jwEiNmDyYYN9tpO"": ""user_lkZRZfQ2kroGFNqf1SMEUZBfypwJz6fF3mbYO1mUUrq"",
+    ""custom.cf_7ZWtXzOYPfLduhXb8fCM0m6L2KawUuubVHq12dKgvI9"": ""_______________________"",
+    ""custom.cf_BVEF2VFSvBiuLfG2erj6uZ94B1l3Pkji9cw6ZxSp7kl"": ""FUT: Dropped Ball + Positive Intent, Last Comm= Received SMS - ALL Stages"",
+    ""custom.cf_DeLLGkRULjyldwA4CA5umg5YrhOT6y0Ex44eycTadS2"": ""13074380"",
+    ""custom.cf_HR0ji6nGFk5vMcsINNzeo3azcmlNtkfXxbbnQPvFfqN"": ""US Citizen: Yes"",
+    ""custom.cf_ITJsAQnXD3Odj1etaqY0dYwVLXPmB1yOtcBZFFv03rD"": ""532.0"",
+    ""custom.cf_IfVBiV0dZiB872GGAZvhaoFrSLhol6B5jwpjTY52jV6"": ""https://zoom.us/j/92165948176?pwd=3ZC9FX4jFg53wmpNwLD419AESYMmSW.1"",
+    ""custom.cf_IrgdpYtm7icLYVgVe2luKRrGI5xXsdBCKL7z5sEtTXJ"": ""Highly Technical"",
+    ""custom.cf_P83hgLlaNWEM7jtAhElMT2NypMQnPE2HuOOw1Bsv5kZ"": ""2025-11-06T16:00:00.000000Z"",
+    ""custom.cf_am3UgCUhyM5iNDtAPL84enDjUrZx1JsyVZ9uD9TbYwG"": ""DE ACADEMY Direct VSL"",
+    ""custom.cf_dfJc8efcDpmwKtIhzKVLJ0Ca78SxHj6CPxH8MJrP7r2"": [
+      ""Jan 2026 Strat N/S + R/S"",
+      ""June 2026 Promo Blast""
+    ],
+    ""custom.cf_gB5BL7B924yq2YG0o42MMmiOA8PDZ3d7QS793NIuUAP"": ""_______________________"",
+    ""custom.cf_jr2d8YqWeVF2GF8UqYTLjnOhCF9N61vUOnTTHrwPcPz"": ""63640125"",
+    ""custom.cf_lKPgrDilrsGSE6BIYwoQsobmUxEs6Cw3fSWmxyUKnPt"": ""Data Engineer Academy Breakthrough Session / Daniel |"",
+    ""custom.cf_lmaKBCRKlwK7rseRTFNdDZdFC0wWldeKauxeKpXXiPr"": ""user_6cdf01d3a75c14db12e3db159222a2a9"",
+    ""custom.cf_qLg4309N9yt4nBLfisgeu7Z9usosWnbzwoVSpLW1VNv"": ""Daniel"",
+    ""custom.cf_qfopqGasPQqqQAqkgZmfJrjxKCEiYKIewjt5FX3vQRQ"": [
+      ""ReActiv"",
+      ""STRAT 30+""
+    ],
+    ""custom.cf_rCyWUZqqs1zp8gS8fk5GTPFgzLBCt6WQhmrSn9tnJMo"": ""America/New_York"",
+    ""custom.cf_sUefo1kdSSE2ed77kW3nLVJN7hFyGt5EWOoyqCnUi1p"": ""_______________________"",
+    ""custom.cf_uph6oRhrkzGk66UtViUrf4PVynL9HP00RBl4gI9GymQ"": ""2025-11-05"",
+    ""custom.cf_v385AJ8HSgepKQ3rvqo4yOA3nn49eGqz39DOqojJG5M"": ""user_Q0GfMIQyHPTcfe52xd2oVZCXQGJV3o2GpsD0UOP4Ccj"",
+    ""custom.cf_wp24VoqhLv6QwwkDkkNCE9XFTchjquWWMIuVM9lGMB5"": ""N/A"",
+    ""date_created"": ""2025-11-02T08:43:08.758000+00:00"",
+    ""date_updated"": ""2026-06-12T21:49:41.896000+00:00"",
+    ""description"": """",
+    ""display_name"": ""user_8b26e811159e3ab6f3af399b625b2a9a"",
+    ""html_url"": ""https://app.close.com/lead/lead_HaEE9hqFsw75Lfu1XRg8THgDNsqoRU7cFMXtDE0QEiH/"",
+    ""id"": ""lead_HaEE9hqFsw75Lfu1XRg8THgDNsqoRU7cFMXtDE0QEiH"",
+    ""integration_links"": [
+      {
+        ""name"": ""Google Search"",
+        ""url"": ""https://google.com/search?q=Eloy%20sepeda""
+      }
+    ],
+    ""name"": """",
+    ""opportunities"": [
+      {
+        ""annualized_expected_value"": 0,
+        ""annualized_value"": 0,
+        ""attachments"": [],
+        ""confidence"": 50,
+        ""contact_id"": ""cont_Z6dPU7pOtI6ceDnjL4hHy4fHL18glTzj6dDbefgxDMf"",
+        ""contact_name"": ""user_8b26e811159e3ab6f3af399b625b2a9a"",
+        ""created_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""created_by_name"": ""user_eb1efaee45a59705808492017b599a88"",
+        ""custom.cf_oPRpL56rIs3TXIM90CdMFen5eCsM0SaJnhALsPs30NS"": ""2025-11-06T16:00:00.000000Z"",
+        ""custom.cf_tHxOwx1Ysk0Xo6sRXhqIHToin8itnyaCHC1vkmHqugh"": ""2025-11-03"",
+        ""date_created"": ""2025-11-02T08:43:09.097000+00:00"",
+        ""date_lost"": null,
+        ""date_updated"": ""2026-03-03T20:18:50.664000+00:00"",
+        ""date_won"": null,
+        ""expected_value"": 0,
+        ""id"": ""oppo_nJVCK9lAYIUFOIEQS74msbfa9YofHa7pwe8QsxBxWT1"",
+        ""integration_links"": [],
+        ""lead_id"": ""lead_HaEE9hqFsw75Lfu1XRg8THgDNsqoRU7cFMXtDE0QEiH"",
+        ""lead_name"": ""user_8b26e811159e3ab6f3af399b625b2a9a"",
+        ""note"": """",
+        ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+        ""pipeline_id"": ""pipe_4vbnk4hNsnNAwvAembff9d"",
+        ""pipeline_name"": ""New Sales"",
+        ""status_display_name"": ""New Sales: 0. Strategy Call Scheduled"",
+        ""status_id"": ""stat_yZrSNKjLg7851Gq6VfU7berxUYRnr1eximKuLlKYj27"",
+        ""status_label"": ""0. Strategy Call Scheduled"",
+        ""status_type"": ""active"",
+        ""updated_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""updated_by_name"": ""user_eb1efaee45a59705808492017b599a88"",
+        ""user_id"": ""user_B8T558DOMhUj9bqaNHV4242vxxCig63uDwtAbJjV6mt"",
+        ""user_name"": ""user_be6b6c4474804ffccfde4c838d0e2167"",
+        ""value"": 0,
+        ""value_currency"": ""USD"",
+        ""value_formatted"": """",
+        ""value_period"": ""one_time""
+      }
+    ],
+    ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+    ""status_id"": ""stat_xouJVysObi1Fa5P59LhuaRSjpfmXTDxS04nnVpH5TSF"",
+    ""status_label"": ""Interested"",
+    ""tasks"": [],
+    ""updated_by"": ""user_Nj6wwnzTlRDTnzEQmgFXYO0xlZZrLbXn36qwO2qmtkj"",
+    ""updated_by_name"": ""user_bb52a3c33d482707c56744320cb9d73e"",
+    ""url"": null
+  }
+}"
+leads_raw/load_type=full/leads_raw_20260707_200659_part_00008.json,2,"{
+  ""insert_date"": ""2026-06-13T11:01:33.993208"",
+  ""raw_data"": {
+    ""addresses"": [],
+    ""contacts"": [
+      {
+        ""created_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""date_created"": ""2026-05-08T21:16:11.801000+00:00"",
+        ""date_updated"": ""2026-05-08T21:16:11.801000+00:00"",
+        ""display_name"": ""user_e075eb044385109b879e0c36095e402f"",
+        ""emails"": [
+          {
+            ""email"": ""user_3816944@masked.com"",
+            ""is_unsubscribed"": false,
+            ""type"": ""direct""
+          }
+        ],
+        ""id"": ""cont_I09TlGGdG2o07NebOGwTyJ84mYzPD6GWFflGSbDt5b3"",
+        ""integration_links"": [
+          {
+            ""name"": ""LinkedIn Search"",
+            ""url"": ""https://www.linkedin.com/search/results/people/?keywords=Felicia%20Lopez""
+          }
+        ],
+        ""lead_id"": ""lead_Hgcp5BKVFyJwXkle5YLo37O6eWixv749S1FRHtNJjrU"",
+        ""name"": ""user_e075eb044385109b879e0c36095e402f"",
+        ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+        ""phones"": [
+          {
+            ""country"": ""US"",
+            ""phone"": ""+1-use-r_b-0062"",
+            ""phone_formatted"": ""+1-use-r_b-daf4"",
+            ""type"": ""direct""
+          }
+        ],
+        ""timezone"": ""America/Denver"",
+        ""timezone_source"": ""inferred_from_phone_number"",
+        ""title"": null,
+        ""updated_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""urls"": []
+      }
+    ],
+    ""created_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+    ""created_by_name"": ""user_eb1efaee45a59705808492017b599a88"",
+    ""custom"": {
+      ""Current Salary"": ""0-70k"",
+      ""Funnel"": ""PT | TikTok | Direct VSL"",
+      ""Funnel ID"": ""13552230"",
+      ""LEAD INSIGHT"": ""_______________________"",
+      ""Lead Intent"": ""WARM"",
+      ""Lead Quality"": ""Full Transitioner"",
+      ""Page ID"": ""63429619"",
+      ""Setter"": ""user_nDycH3d5wn1pmMAhkC8dq4O7E2zExikgamMxXh8FztV"",
+      ""Time Zone"": ""Mountain Time (US & Canada)"",
+      ""Visa Status"": ""US Citizen: Yes"",
+      ""career goal timeline"": ""As soon as possible"",
+      ""handl_utm_campaign"": ""CT | TOF | CBO | Lead (Subscribe) | DE | Creative Testing | Smart+ Campaign | Open Targeting | USA | 17/3/26"",
+      ""handl_utm_medium"": ""paid"",
+      ""handl_utm_source"": ""tiktok"",
+      ""lead_route"": ""2""
+    },
+    ""custom.cf_7ZWtXzOYPfLduhXb8fCM0m6L2KawUuubVHq12dKgvI9"": ""_______________________"",
+    ""custom.cf_DeLLGkRULjyldwA4CA5umg5YrhOT6y0Ex44eycTadS2"": ""13552230"",
+    ""custom.cf_G5r51NdcFqvmiLDwkJLb3hzvDzef1ARfaLDzRbqwwrq"": ""CT | TOF | CBO | Lead (Subscribe) | DE | Creative Testing | Smart+ Campaign | Open Targeting | USA | 17/3/26"",
+    ""custom.cf_HR0ji6nGFk5vMcsINNzeo3azcmlNtkfXxbbnQPvFfqN"": ""US Citizen: Yes"",
+    ""custom.cf_IrgdpYtm7icLYVgVe2luKRrGI5xXsdBCKL7z5sEtTXJ"": ""Full Transitioner"",
+    ""custom.cf_JHukP9d2Q7x9GqAONrvYsyZPRPTB3YVrd8FNrytULm8"": ""As soon as possible"",
+    ""custom.cf_MUEARCFVH2Lgk0iVzJohMpmRcdXaTqVjH9rCzRyJx3I"": ""WARM"",
+    ""custom.cf_O436LOSuO8GhvZymV1ca0HOIO04n0X0EQGGw13HDVde"": ""paid"",
+    ""custom.cf_Wdliv5pLvi89rA68CDtcsHLKeiIuwJp8fpHHaSIm5eJ"": ""2"",
+    ""custom.cf_am3UgCUhyM5iNDtAPL84enDjUrZx1JsyVZ9uD9TbYwG"": ""PT | TikTok | Direct VSL"",
+    ""custom.cf_jr2d8YqWeVF2GF8UqYTLjnOhCF9N61vUOnTTHrwPcPz"": ""63429619"",
+    ""custom.cf_o9EOtES0A8In9L4qeP8a749RrrjvuDyf7m4TIYVAWsK"": ""0-70k"",
+    ""custom.cf_rCyWUZqqs1zp8gS8fk5GTPFgzLBCt6WQhmrSn9tnJMo"": ""Mountain Time (US & Canada)"",
+    ""custom.cf_tTFAjx2TU0Oeo3vgoHFi2UTSk32WS3Dhjrfz0ho3ID4"": ""tiktok"",
+    ""custom.cf_v385AJ8HSgepKQ3rvqo4yOA3nn49eGqz39DOqojJG5M"": ""user_nDycH3d5wn1pmMAhkC8dq4O7E2zExikgamMxXh8FztV"",
+    ""date_created"": ""2026-05-08T21:16:10.506000+00:00"",
+    ""date_updated"": ""2026-06-13T01:43:06.435000+00:00"",
+    ""description"": """",
+    ""display_name"": ""user_e075eb044385109b879e0c36095e402f"",
+    ""html_url"": ""https://app.close.com/lead/lead_Hgcp5BKVFyJwXkle5YLo37O6eWixv749S1FRHtNJjrU/"",
+    ""id"": ""lead_Hgcp5BKVFyJwXkle5YLo37O6eWixv749S1FRHtNJjrU"",
+    ""integration_links"": [
+      {
+        ""name"": ""Google Search"",
+        ""url"": ""https://google.com/search?q=Felicia%20Lopez""
+      }
+    ],
+    ""name"": """",
+    ""opportunities"": [
+      {
+        ""annualized_expected_value"": 0,
+        ""annualized_value"": 0,
+        ""attachments"": [],
+        ""confidence"": 50,
+        ""contact_id"": null,
+        ""contact_name"": null,
+        ""created_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""created_by_name"": ""user_eb1efaee45a59705808492017b599a88"",
+        ""date_created"": ""2026-05-08T21:16:18.570000+00:00"",
+        ""date_lost"": null,
+        ""date_updated"": ""2026-05-08T21:16:18.570000+00:00"",
+        ""date_won"": null,
+        ""expected_value"": 0,
+        ""id"": ""oppo_bYAPB4X17mKJKgxWHd7xoHsNVVWHhNIc0rYa38xdWBC"",
+        ""integration_links"": [],
+        ""lead_id"": ""lead_Hgcp5BKVFyJwXkle5YLo37O6eWixv749S1FRHtNJjrU"",
+        ""lead_name"": ""user_e075eb044385109b879e0c36095e402f"",
+        ""note"": null,
+        ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+        ""pipeline_id"": ""pipe_1kD67pLoR967B9HD6JsI86"",
+        ""pipeline_name"": ""Setter Pipeline"",
+        ""status_display_name"": ""Setter Pipeline: 0. New Opt-Ins"",
+        ""status_id"": ""stat_3kWI7qpACeU410wAwUJ9DqEWv7D2Wdixe9PxXi04yFv"",
+        ""status_label"": ""0. New Opt-Ins"",
+        ""status_type"": ""active"",
+        ""updated_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""updated_by_name"": ""user_eb1efaee45a59705808492017b599a88"",
+        ""user_id"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""user_name"": ""user_eb1efaee45a59705808492017b599a88"",
+        ""value"": 0,
+        ""value_currency"": ""USD"",
+        ""value_formatted"": """",
+        ""value_period"": ""one_time""
+      }
+    ],
+    ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+    ""status_id"": ""stat_O3mQq76o5qFXDpbr4m4h10gVKbOaZOQseR30yXNrXwN"",
+    ""status_label"": ""Contract Expired"",
+    ""tasks"": [],
+    ""updated_by"": ""user_nDycH3d5wn1pmMAhkC8dq4O7E2zExikgamMxXh8FztV"",
+    ""updated_by_name"": ""user_0c3d01cc5b20f94522515f0443750b1a"",
+    ""url"": null
+  }
+}"
+leads_raw/load_type=full/leads_raw_20260707_200659_part_00008.json,3,"{
+  ""insert_date"": ""2026-06-13T11:01:33.993208"",
+  ""raw_data"": {
+    ""addresses"": [
+      {
+        ""address_1"": """",
+        ""address_2"": """",
+        ""city"": """",
+        ""country"": ""US"",
+        ""label"": ""business"",
+        ""state"": """",
+        ""zipcode"": """"
+      }
+    ],
+    ""contacts"": [
+      {
+        ""created_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""custom.cf_5Jc1GPojdjRB44QLcVi4hDomEw5tRe376eCRebacvb5"": ""2-8-2024 12:06 PM (PST)"",
+        ""custom.cf_AZu3SYRCFIifTWlSLFBMFLBgA7f4GaZvfABTfhP2mjF"": ""henry@dataengineeracademy.com"",
+        ""custom.cf_t34OfSvuYUZXmHysj8DsKQxfuaFT8ngiiyYcSqihvKY"": ""qualified"",
+        ""custom.cf_xXsBTGzzxXKHUiAXGxIC3cWDmNpBQnUs73GME1IQ9px"": ""United States"",
+        ""date_created"": ""2024-02-20T21:33:21.883000+00:00"",
+        ""date_updated"": ""2025-05-07T13:25:43.455000+00:00"",
+        ""display_name"": ""user_7b5a73500a618f2448c45e5070339896"",
+        ""emails"": [
+          {
+            ""email"": ""user_72a7fd4@masked.com"",
+            ""is_unsubscribed"": true,
+            ""type"": ""office""
+          },
+          {
+            ""email"": ""user_0ebefe2@masked.com"",
+            ""is_unsubscribed"": false,
+            ""type"": ""office""
+          }
+        ],
+        ""id"": ""cont_PDeDh1ZOycA8S3xeDjO1CSqX4zI4tzk3FaxB9l58Ssj"",
+        ""integration_links"": [
+          {
+            ""name"": ""LinkedIn Search"",
+            ""url"": ""https://www.linkedin.com/search/results/people/?keywords=Pierre%20T%20YESSO""
+          }
+        ],
+        ""lead_id"": ""lead_HhP8tt6G1mXJqCF0OVaAQpPUy9xJAjLwbSTTy8jNeSD"",
+        ""name"": ""user_7b5a73500a618f2448c45e5070339896"",
+        ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+        ""phones"": [
+          {
+            ""country"": ""US"",
+            ""phone"": ""+1-use-r_2-c237"",
+            ""phone_formatted"": ""+1-use-r_a-a2a6"",
+            ""type"": ""office""
+          },
+          {
+            ""country"": ""US"",
+            ""phone"": ""+1-use-r_2-c237"",
+            ""phone_formatted"": ""+1-use-r_a-a2a6"",
+            ""type"": ""direct""
+          }
+        ],
+        ""timezone"": ""America/New_York"",
+        ""timezone_source"": ""inferred_from_phone_number"",
+        ""title"": """",
+        ""updated_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""urls"": []
+      },
+      {
+        ""created_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""date_created"": ""2024-08-22T15:13:46.528000+00:00"",
+        ""date_updated"": ""2025-05-07T13:25:43.485000+00:00"",
+        ""display_name"": ""user_1ee891bd72c23244a7dc245ac7726d9d"",
+        ""emails"": [
+          {
+            ""email"": ""user_72a7fd4@masked.com"",
+            ""is_unsubscribed"": true,
+            ""type"": ""direct""
+          }
+        ],
+        ""id"": ""cont_XB0X9siQTLpXQ5N7os7dGcC3VkwKSzfhx6K7Plnbfd5"",
+        ""integration_links"": [
+          {
+            ""name"": ""LinkedIn Search"",
+            ""url"": ""https://www.linkedin.com/search/results/people/?keywords=Pierre%20YESSO""
+          }
+        ],
+        ""lead_id"": ""lead_HhP8tt6G1mXJqCF0OVaAQpPUy9xJAjLwbSTTy8jNeSD"",
+        ""name"": ""user_1ee891bd72c23244a7dc245ac7726d9d"",
+        ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+        ""phones"": [
+          {
+            ""country"": ""US"",
+            ""phone"": ""+1-use-r_2-c237"",
+            ""phone_formatted"": ""+1-use-r_a-a2a6"",
+            ""type"": ""office""
+          }
+        ],
+        ""timezone"": ""America/New_York"",
+        ""timezone_source"": ""inferred_from_phone_number"",
+        ""title"": """",
+        ""updated_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""urls"": []
+      }
+    ],
+    ""created_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+    ""created_by_name"": ""user_eb1efaee45a59705808492017b599a88"",
+    ""custom"": {
+      ""Aloware_# of Communications"": 6,
+      ""Aloware_Contact Disposition"": ""Call Booked"",
+      ""Aloware_ContactOwner"": ""Peter Kováč"",
+      ""Aloware_DateAdded"": ""2024-02-08T20:06:54+00:00"",
+      ""Aloware_LastEngagement"": ""2024-03-12T02:44:18+00:00"",
+      ""App Grade"": ""3 - Qualified"",
+      ""Calendar Source"": ""Data Engineer Academy Breakthrough Session"",
+      ""Call Center"": ""Sent"",
+      ""Date Sent to Call Center"": ""2024-07-08"",
+      ""Funnel"": ""qualified"",
+      ""HADES"": ""2025-12-18"",
+      ""HADES TYPE"": [
+        ""N/C 45""
+      ],
+      ""Last Click Funnel ID"": ""13074380"",
+      ""Lead Owner"": ""user_ci7gp5InYtoqpNktVZplrgf5Xre7fDzoSAuM9kHuwse"",
+      ""Lead Source"": [
+        ""Stripe (Free Sign Up)"",
+        ""VSL Typeform"",
+        ""VSL Typeform Eboov Funnel""
+      ],
+      ""Ontraport_Assigned"": ""henry@dataengineeracademy.com"",
+      ""Ontraport_Booked Call Status"": ""Y"",
+      ""Ontraport_Date Added"": ""2024-02-08"",
+      ""Page ID"": ""60955620"",
+      ""Reactivation Campaign"": [
+        ""June 2026 Promo Blast"",
+        ""ReActiv- Aug 2025 Old Strat N/S+R/S"",
+        ""Reactivation- OLD Strategy No Show""
+      ],
+      ""Reactivation Owner"": ""user_PoK4TyrqUWKkteWCxRUqSTCqtHqgHFk19K3IMC6D6WR"",
+      ""Setter"": ""user_EwrdgfyxlQhpNYPg7DDuOn1gL39xetrnx7puceOB1UT"",
+      ""Subscription"": ""Free"",
+      ""[PF] Estimated Credit Score"": ""698""
+    },
+    ""custom.cf_0F7b0vaeNB5Z3UZIxCEk0OV42SXrE9ToFkbAxWLnL8F"": ""Peter Kováč"",
+    ""custom.cf_0ZL1b2F0Y2SCZTssSTNZ39sfTkJmezrBLl7dwKElKdY"": ""2025-12-18"",
+    ""custom.cf_2Pptn5Hq41QvwdHkYarJUchrGc3biQhMjTuyxPQNe44"": 6,
+    ""custom.cf_3LTjHX0x1lgzHVrTefr08rXC0ysvxaL4oyeJ3kWOv9v"": ""user_PoK4TyrqUWKkteWCxRUqSTCqtHqgHFk19K3IMC6D6WR"",
+    ""custom.cf_7ZGmboNWnq1ziSsV5ab6e8g1unK0jwEiNmDyYYN9tpO"": ""user_ci7gp5InYtoqpNktVZplrgf5Xre7fDzoSAuM9kHuwse"",
+    ""custom.cf_86qZy93ejT7MxmrTdOvfIeGmidXIEbNtPhxA1SXhKsY"": ""2024-02-08T20:06:54+00:00"",
+    ""custom.cf_Ar8kxvKL6znZGzQzG43Q2KZNJjNQJMBHCM0k2rVmRbV"": ""2024-02-08"",
+    ""custom.cf_ITJsAQnXD3Odj1etaqY0dYwVLXPmB1yOtcBZFFv03rD"": ""698"",
+    ""custom.cf_N6CMPfj0fI4YXhYHYfv812zss0npzxerIQbQfUkha69"": ""13074380"",
+    ""custom.cf_O18YHcuuMar6AK0OI5W6Uq8ITZeByxIgvIwgZe5hswX"": ""2024-03-12T02:44:18+00:00"",
+    ""custom.cf_U1wF1KR9Y2LJgu1TtS0pzCki55TA3StCt5aR5EFwigh"": ""Free"",
+    ""custom.cf_UarLlGlju7BawmZJBrc1RYyxILy64ucuJohEOFcp4my"": ""3 - Qualified"",
+    ""custom.cf_am3UgCUhyM5iNDtAPL84enDjUrZx1JsyVZ9uD9TbYwG"": ""qualified"",
+    ""custom.cf_dfJc8efcDpmwKtIhzKVLJ0Ca78SxHj6CPxH8MJrP7r2"": [
+      ""June 2026 Promo Blast"",
+      ""ReActiv- Aug 2025 Old Strat N/S+R/S"",
+      ""Reactivation- OLD Strategy No Show""
+    ],
+    ""custom.cf_fRApd4VIV9NJz3NQnwJ8TgtAiEpEB4JQCBIkgKbNbAe"": ""henry@dataengineeracademy.com"",
+    ""custom.cf_idruqmE4HLojpd0WrCAZZg6sAtGCf1obe9ppEn9bAyQ"": ""2024-07-08"",
+    ""custom.cf_jr2d8YqWeVF2GF8UqYTLjnOhCF9N61vUOnTTHrwPcPz"": ""60955620"",
+    ""custom.cf_kuccFm9JDCXt0MKmyqBOhOU7QPJnKwSpZyKYsBKWV0d"": ""Call Booked"",
+    ""custom.cf_lKPgrDilrsGSE6BIYwoQsobmUxEs6Cw3fSWmxyUKnPt"": ""Data Engineer Academy Breakthrough Session"",
+    ""custom.cf_mobhUwFwHg9TjvbU1SQuyNYAR3k92MqmGtcY7Bv62aL"": ""Y"",
+    ""custom.cf_qfopqGasPQqqQAqkgZmfJrjxKCEiYKIewjt5FX3vQRQ"": [
+      ""N/C 45""
+    ],
+    ""custom.cf_r0QHY6IbVoodShQZWGJpLtWHKsFPqQjBDdF0QFNVtHS"": [
+      ""Stripe (Free Sign Up)"",
+      ""VSL Typeform"",
+      ""VSL Typeform Eboov Funnel""
+    ],
+    ""custom.cf_v385AJ8HSgepKQ3rvqo4yOA3nn49eGqz39DOqojJG5M"": ""user_EwrdgfyxlQhpNYPg7DDuOn1gL39xetrnx7puceOB1UT"",
+    ""custom.cf_xeQ6I11jHdaBCt3LbGHTXQ0X9aCHL85ORcXHfN2lxVk"": ""Sent"",
+    ""date_created"": ""2024-02-20T21:33:21.872000+00:00"",
+    ""date_updated"": ""2026-06-12T22:03:19.405000+00:00"",
+    ""description"": """",
+    ""display_name"": ""user_7b5a73500a618f2448c45e5070339896"",
+    ""html_url"": ""https://app.close.com/lead/lead_HhP8tt6G1mXJqCF0OVaAQpPUy9xJAjLwbSTTy8jNeSD/"",
+    ""id"": ""lead_HhP8tt6G1mXJqCF0OVaAQpPUy9xJAjLwbSTTy8jNeSD"",
+    ""integration_links"": [
+      {
+        ""name"": ""Google Search"",
+        ""url"": ""https://google.com/search?q=Pierre%20T%20YESSO""
+      }
+    ],
+    ""name"": """",
+    ""opportunities"": [
+      {
+        ""annualized_expected_value"": 0,
+        ""annualized_value"": 0,
+        ""attachments"": [],
+        ""confidence"": 50,
+        ""contact_id"": null,
+        ""contact_name"": null,
+        ""created_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""created_by_name"": ""user_eb1efaee45a59705808492017b599a88"",
+        ""custom.cf_oPRpL56rIs3TXIM90CdMFen5eCsM0SaJnhALsPs30NS"": ""2024-09-30"",
+        ""custom.cf_tHxOwx1Ysk0Xo6sRXhqIHToin8itnyaCHC1vkmHqugh"": ""2024-09-28"",
+        ""date_created"": ""2024-09-28T00:59:05.284000+00:00"",
+        ""date_lost"": null,
+        ""date_updated"": ""2025-01-13T16:01:50.359000+00:00"",
+        ""date_won"": null,
+        ""expected_value"": 0,
+        ""id"": ""oppo_nkyFXPBjj9EQz7lbHF0tjEbhODF3bhM8IPwHNjdWpps"",
+        ""integration_links"": [],
+        ""lead_id"": ""lead_HhP8tt6G1mXJqCF0OVaAQpPUy9xJAjLwbSTTy8jNeSD"",
+        ""lead_name"": ""user_7b5a73500a618f2448c45e5070339896"",
+        ""note"": """",
+        ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+        ""pipeline_id"": ""pipe_4vbnk4hNsnNAwvAembff9d"",
+        ""pipeline_name"": ""New Sales"",
+        ""status_display_name"": ""New Sales: 0. Strategy Call Scheduled"",
+        ""status_id"": ""stat_yZrSNKjLg7851Gq6VfU7berxUYRnr1eximKuLlKYj27"",
+        ""status_label"": ""0. Strategy Call Scheduled"",
+        ""status_type"": ""active"",
+        ""updated_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""updated_by_name"": ""user_eb1efaee45a59705808492017b599a88"",
+        ""user_id"": ""user_mrokNuNoTE6Z44kv7DzHfPrePPQFLe2tMKwJKaY4urL"",
+        ""user_name"": ""user_d71fd42f0d973ea716507bc8a081287e"",
+        ""value"": 0,
+        ""value_currency"": ""USD"",
+        ""value_formatted"": """",
+        ""value_period"": ""one_time""
+      },
+      {
+        ""annualized_expected_value"": 0,
+        ""annualized_value"": 0,
+        ""attachments"": [],
+        ""confidence"": 50,
+        ""contact_id"": null,
+        ""contact_name"": null,
+        ""created_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""created_by_name"": ""user_eb1efaee45a59705808492017b599a88"",
+        ""date_created"": ""2024-09-28T01:23:10.563000+00:00"",
+        ""date_lost"": null,
+        ""date_updated"": ""2024-10-02T23:34:01.904000+00:00"",
+        ""date_won"": null,
+        ""expected_value"": 0,
+        ""id"": ""oppo_ra64dO9VTMQmdMIzBDnjdqv0ddSlzmPewQO0m3V9NOd"",
+        ""integration_links"": [],
+        ""lead_id"": ""lead_HhP8tt6G1mXJqCF0OVaAQpPUy9xJAjLwbSTTy8jNeSD"",
+        ""lead_name"": ""user_7b5a73500a618f2448c45e5070339896"",
+        ""note"": """",
+        ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+        ""pipeline_id"": ""pipe_1kD67pLoR967B9HD6JsI86"",
+        ""pipeline_name"": ""Setter Pipeline"",
+        ""status_display_name"": ""Setter Pipeline: 0. New Opt-Ins"",
+        ""status_id"": ""stat_3kWI7qpACeU410wAwUJ9DqEWv7D2Wdixe9PxXi04yFv"",
+        ""status_label"": ""0. New Opt-Ins"",
+        ""status_type"": ""active"",
+        ""updated_by"": ""user_1x5aaG5n9Tk5VE42qtmbInArqpssoifWhf6MQz8MLYM"",
+        ""updated_by_name"": ""user_75613a3d80a70bc160355cc67df557d0"",
+        ""user_id"": ""user_1x5aaG5n9Tk5VE42qtmbInArqpssoifWhf6MQz8MLYM"",
+        ""user_name"": ""user_75613a3d80a70bc160355cc67df557d0"",
+        ""value"": 0,
+        ""value_currency"": ""USD"",
+        ""value_formatted"": """",
+        ""value_period"": ""one_time""
+      },
+      {
+        ""annualized_expected_value"": 0,
+        ""annualized_value"": 0,
+        ""attachments"": [],
+        ""confidence"": 0,
+        ""contact_id"": null,
+        ""contact_name"": null,
+        ""created_by"": ""user_RoWq89U2oZOlTTfJScR9pTREnX3AAeNdKnw4YOOcYwG"",
+        ""created_by_name"": ""user_eb1efaee45a59705808492017b599a88"",
+        ""custom.cf_tHxOwx1Ysk0Xo6sRXhqIHToin8itnyaCHC1vkmHqugh"": ""2024-08-24"",
+        ""date_created"": ""2024-08-22T15:13:55.561000+00:00"",
+        ""date_lost"": ""2024-08-24T14:53:46.081000+00:00"",
+        ""date_updated"": ""2024-10-02T23:34:01.831000+00:00"",
+        ""date_won"": null,
+        ""expected_value"": 0,
+        ""id"": ""oppo_gVljOob1uF3RtmyWEQ1KccR6SL6LiCEG0aRvAY7tWku"",
+        ""integration_links"": [],
+        ""lead_id"": ""lead_HhP8tt6G1mXJqCF0OVaAQpPUy9xJAjLwbSTTy8jNeSD"",
+        ""lead_name"": ""user_7b5a73500a618f2448c45e5070339896"",
+        ""note"": """",
+        ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+        ""pipeline_id"": ""pipe_4vbnk4hNsnNAwvAembff9d"",
+        ""pipeline_name"": ""New Sales"",
+        ""status_display_name"": ""New Sales: Lost"",
+        ""status_id"": ""stat_HJvfp5JTzLL2JYofl7vsEHeUHSyrQn8XmokLeHyLZw4"",
+        ""status_label"": ""Lost"",
+        ""status_type"": ""lost"",
+        ""updated_by"": ""user_1x5aaG5n9Tk5VE42qtmbInArqpssoifWhf6MQz8MLYM"",
+        ""updated_by_name"": ""user_75613a3d80a70bc160355cc67df557d0"",
+        ""user_id"": ""user_1x5aaG5n9Tk5VE42qtmbInArqpssoifWhf6MQz8MLYM"",
+        ""user_name"": ""user_75613a3d80a70bc160355cc67df557d0"",
+        ""value"": 0,
+        ""value_currency"": ""USD"",
+        ""value_formatted"": """",
+        ""value_period"": ""one_time""
+      }
+    ],
+    ""organization_id"": ""orga_rq7EW7TTwnrAshSzIQ49jJUWzDxtTQUBBrA4VoRWElD"",
+    ""status_id"": ""stat_xouJVysObi1Fa5P59LhuaRSjpfmXTDxS04nnVpH5TSF"",
+    ""status_label"": ""Interested"",
+    ""tasks"": [],
+    ""updated_by"": ""user_PoK4TyrqUWKkteWCxRUqSTCqtHqgHFk19K3IMC6D6WR"",
+    ""updated_by_name"": ""user_2761ec18281ab0e68fe03ee8e82dbbbc"",
+    ""url"": null
+  }
+}"

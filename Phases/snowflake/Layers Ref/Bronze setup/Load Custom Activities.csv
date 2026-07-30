@@ -1,0 +1,2 @@
+file,status,rows_parsed,rows_loaded,error_limit,errors_seen,first_error,first_error_line,first_error_character,first_error_column_name
+s3://sales-analytics-raw-aqib-test/custom_activities_raw/load_type=full/custom_activities_raw_20260707_203636_part_00001.json,LOADED,18,18,18,0,,,,

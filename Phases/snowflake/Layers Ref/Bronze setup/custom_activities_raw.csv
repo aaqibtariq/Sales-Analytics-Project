@@ -1,0 +1,3 @@
+name,size,md5,last_modified
+s3://sales-analytics-raw-aqib-test/custom_activities_raw/load_type=full/custom_activities_raw_20260707_203636_part_00001.json,1782219,05cd5031ebcb63b1649db36e1d87d922,"Tue, 7 Jul 2026 20:36:38 GMT"
+s3://sales-analytics-raw-aqib-test/snowflake_backup/bronze/custom_activities_raw/data_0_0_0.snappy.parquet,292218,bd73cd6794ec87e252e169eaaf631dd3,"Fri, 24 Jul 2026 21:41:31 GMT"
