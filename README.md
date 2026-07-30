@@ -129,3 +129,240 @@ The Sales Analytics platform uses AWS and Snowflake services to create a scalabl
 | **Orchestration**                 | Scheduled AWS Glue and Snowflake jobs                       | Coordinates the daily extraction, ingestion, transformation, validation, and reporting workflow.                                                     |
 | **Monitoring and Validation**     | Glue logs, Snowflake query history, and data-quality checks | Tracks execution status, row counts, duplicates, nulls, funnel consistency, and pipeline failures.                                                   |
 
+
+## **1. PostgreSQL Source Database**
+
+The source system is a PostgreSQL CRM database containing four main datasets:
+
+- raw.leads_raw
+- raw.lead_activities_raw
+- raw.custom_activities_raw
+- raw.close_crm_users_raw
+
+These datasets contain the lead lifecycle, sales activities, custom CRM outcome mappings, and user information required for setter and closer reporting. The source refresh is available daily by approximately 7:30 AM EST.
+
+## **2. AWS Glue Python Shell**
+
+AWS Glue Python Shell is used as the extraction engine. It connects to PostgreSQL using Python and psycopg2, reads 
+source records in batches, serializes the results as JSON, and writes the files to Amazon S3.
+
+The extraction process supports both initial full loads and recurring incremental loads.
+A Python Shell job was selected because the pipeline does not require Spark and the project specifically excludes Spark, PySpark, Databricks, and dbt.
+
+## **3. Watermark-Based Incremental Processing**
+
+A watermark file stored in Amazon S3 records the latest successfully processed source timestamp for each table.
+
+During each daily execution, the Glue job:
+
+- Reads the previous watermark.
+- Queries records newer than that watermark.
+- Writes the extracted data to S3.
+- Updates the watermark only after a successful load.
+
+This prevents repeated full-table extraction and allows the process to recover safely after failures.
+
+
+## **4. Amazon S3 Raw Landing Zone**
+
+Amazon S3 serves as the raw-data landing zone between PostgreSQL and Snowflake.
+
+The files are organized by source and extraction date, for example:
+
+s3://sales-analytics-raw-bucket/
+├── leads_raw/
+│   └── load_date=YYYY-MM-DD/
+├── lead_activities_raw/
+│   └── load_date=YYYY-MM-DD/
+├── custom_activities_raw/
+│   └── load_date=YYYY-MM-DD/
+└── close_crm_users_raw/
+    └── load_date=YYYY-MM-DD/
+
+This folder structure supports traceability, incremental processing, file-level auditing, and historical reprocessing.
+
+## **5. AWS IAM**
+
+AWS IAM roles and policies secure access across the AWS portion of the pipeline.
+
+IAM permissions allow the Glue job to:
+
+- Read PostgreSQL credentials from AWS Secrets Manager.
+- Write raw files and watermarks to Amazon S3.
+- Publish execution logs.
+- Access only the buckets and objects required for the pipeline.
+
+Snowflake also assumes a dedicated AWS IAM role through the Snowflake storage integration.
+
+    
+## **6. AWS Secrets Manager**
+
+AWS Secrets Manager stores sensitive PostgreSQL connection information, including:
+
+- Host
+- Port
+- Database
+- Username
+- Password
+
+The Glue script retrieves the credentials at runtime, avoiding hard-coded credentials in the extraction code.
+
+## **7. Snowflake Storage Integration and External Stage**
+
+
+A Snowflake storage integration creates a secure trust relationship between Snowflake and AWS.
+
+The external stage points to the S3 raw-data location and is used by COPY INTO commands to load incoming files into the Bronze layer.
+
+This design separates cloud authentication from SQL code and avoids storing AWS access keys inside Snowflake scripts.
+
+## **8. Bronze Layer**
+
+The Bronze layer stores source records in their original JSON form.
+
+The core Bronze tables are:
+
+- CUSTOM_ACTIVITIES_RAW
+- LEAD_ACTIVITIES_RAW
+- CLOSE_CRM_USERS_RAW
+
+Each table contains:
+
+- JSON_OBJECT
+- INSERT_DATE
+
+The Bronze layer provides:
+
+- Raw-data preservation
+- Auditability
+- eprocessing support
+- Failure recovery
+- Separation between ingestion and transformation
+
+The data model identifies these as raw JSON ingestion tables.
+
+
+## **9. Silver Layer**
+
+The Silver layer converts raw CRM JSON into structured and validated relational data.
+
+Its responsibilities include:
+
+- Repairing malformed JSON.
+- Flattening nested arrays and objects.
+- Extracting CRM attributes.
+- Converting internal IDs into readable activity outcomes.
+- Mapping user IDs to setter and closer information.
+- Deduplicating records by LEAD_ID and ACTIVITY_ID.
+- Retaining the latest activity version.
+- Generating MD5 hashes for change detection.
+- Applying MERGE statements for inserts and updates.
+- Maintaining INSERT_DATE and UPDATE_DATE audit columns.
+
+Key Silver objects include:
+
+- CLOSE_CRM_USERS_PROCESSED
+- CUSTOM_ACTIVITIES
+- LEAD_ACTIVITIES_PROCESSED
+- LEAD_ACTIVITIES_EMAIL
+- CUSTOM_ACTIVITIES_ALL_LEADS_DETAILS
+- LEADS_ACTIVITIES_SUMMARY
+
+The source contains repeated activities across daily extracts and malformed stringified JSON, so cleansing and deduplication are essential parts of this layer.
+
+## **10. Gold Layer**
+
+The Gold layer applies sales business logic and creates reusable analytical views.
+
+Core Gold views include:
+
+- INBOUND_STRATEGIES_BOOKED
+- OUTBOUND_STRATEGIES_BOOKED
+- ALL_STRATEGIES_DETAILS
+- SALES_DETAILS
+- OUTBOUND_PROSPECT_DIALS
+
+These views model the required activity sequence:
+
+```
+Initial Contact
+      ↓
+Strategy Call Booked
+      ↓
+Strategy Call Attended
+      ↓
+Offer Presented
+      ↓
+Sale
+      ↓
+Revenue
+
+```
+
+The views distinguish inbound and outbound acquisition paths and ensure that downstream KPIs are counted only when the required preceding stages exist.
+
+## **11. Reporting Layer**
+
+The reporting layer provides four final business outputs:
+
+- Inbound Setter Report
+- Outbound Setter Report
+- Closer Report
+- Objections Faced Report
+
+These reports measure booking volume, show rates, strategy-call progression, sales conversion, revenue, closer performance, and objection categories.
+
+
+## **12. Streamlit Dashboard**
+
+The Snowflake Streamlit application is the presentation layer of the platform.
+
+It allows users to:
+
+- Review overall sales KPIs.
+- Filter results by date and employee.
+- Compare inbound and outbound performance.
+- Analyze setter and closer results.
+- Review objections faced during strategy calls.
+- View detailed report records.
+- Monitor data-quality results.
+
+Because Streamlit runs inside Snowflake, the dashboard can query reporting views directly without creating a separate application database.
+
+## **13. Scheduling and Orchestration**
+
+The production workflow is designed to run daily after the PostgreSQL source refresh.
+
+The scheduled execution order is:
+
+- 1. Extract incremental PostgreSQL data
+- 2. Write JSON files to Amazon S3
+- 3. Load new files into Snowflake Bronze
+- 4. Run Silver transformations and MERGE operations
+- 5. Refresh Gold business views
+- 6. Refresh reporting views
+- 7. Execute validation queries
+- 8. Make updated data available to Streamlit
+
+The project requirement specifies scheduled daily execution and a seven-day production simulation.
+
+
+## **14. Results**
+
+The Sales Analytics platform successfully transformed raw CRM data into a centralized, automated reporting solution capable of supporting daily operational and executive decision-making.
+
+### Key Achievements
+
+- Successfully built an end-to-end sales analytics pipeline using AWS, Snowflake, and Streamlit.
+- Automated the daily ingestion and processing of CRM data from PostgreSQL into Snowflake using an incremental loading strategy.
+- Standardized complex nested CRM JSON into analytics-ready relational datasets using a Medallion Architecture (Bronze, Silver, Gold).
+- Implemented data quality checks, JSON repair, deduplication, and business-rule validation to ensure accurate reporting.
+- Built reusable Gold-layer business views that model the complete sales funnel from initial contact through revenue generation.
+- Delivered four production-ready KPI reports:
+        - Inbound Setter Performance
+        - Outbound Setter Performance
+        - Closer Performance
+        - Objections Faced Analysis
+- Developed an interactive Snowflake Streamlit Dashboard for real-time exploration of sales performance and funnel metrics.
+- Eliminated manual reporting by automating daily data processing and KPI generation.
+- Created a scalable architecture that can support additional dashboards, reporting requirements, and future analytics use cases with minimal changes.
