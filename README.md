@@ -35,3 +35,76 @@ This project provides a centralized sales analytics solution that enables leader
 - Better understanding of conversion bottlenecks and customer drop-off reasons.
 - Revenue tracking through contracted value and cash collected.
 - A scalable data platform capable of supporting additional dashboards, machine learning models, and business intelligence tools in the future.
+
+# Core Flow
+
+The Sales Analytics platform follows a Medallion Architecture that progressively transforms raw CRM data into business-ready analytics.
+
+```
+
+PostgreSQL CRM
+        │
+        ▼
+AWS Glue Python Shell
+(Daily Incremental Extraction)
+        │
+        ▼
+Amazon S3
+(Raw JSON Files)
+        │
+        ▼
+Snowflake Bronze
+(Raw JSON Storage)
+        │
+        ▼
+Snowflake Silver
+Data Cleansing
+JSON Parsing
+Deduplication
+Business Mapping
+Activity Normalization
+        │
+        ▼
+Snowflake Gold
+Business Views
+Sales Funnel Logic
+Revenue Attribution
+Performance Metrics
+        │
+        ▼
+Report Layer
+• Inbound Setter Report
+• Outbound Setter Report
+• Closer Report
+• Objections Report
+        │
+        ▼
+Snowflake Streamlit Dashboard
+Interactive Business Analytics
+
+
+```
+The pipeline executes daily by extracting new CRM data, loading it into Amazon S3, processing it through the Bronze, Silver, and Gold layers in Snowflake, and 
+publishing curated datasets for reporting and interactive dashboards. The architecture ensures scalable processing, standardized business logic, and consistent KPI calculations.
+
+
+# Source Systems
+
+The pipeline integrates multiple CRM datasets stored in a PostgreSQL database. Each dataset contributes a different aspect of the sales process.
+
+```
+| Source Table                  | Description                                                                                | Purpose                                                      |
+| ----------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
+| **raw.leads_raw**             | Lead, contact, opportunity, and pipeline information                                       | Tracks lead lifecycle and ownership                          |
+| **raw.lead_activities_raw**   | Customer interactions including calls, meetings, notes, emails, SMS, and custom activities | Captures every sales activity performed on a lead            |
+| **raw.custom_activities_raw** | Metadata describing CRM custom activities and outcome mappings                             | Converts internal activity IDs into business-friendly values |
+| **raw.close_crm_users_raw**   | CRM user profiles including setters, closers, and sales representatives                    | Enables user attribution and performance reporting           |
+
+
+```
+
+The source data is refreshed daily and contains nested JSON structures that require parsing, cleansing, and 
+normalization before analytical processing. Because every daily extract includes historical activities, the 
+pipeline performs deduplication and incremental processing to ensure only the latest activity version is retained for reporting.
+
+
