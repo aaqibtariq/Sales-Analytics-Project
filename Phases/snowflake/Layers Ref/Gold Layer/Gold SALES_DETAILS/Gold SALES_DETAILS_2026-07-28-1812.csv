@@ -1,0 +1,26 @@
+LEAD_ID,ACTIVITY_LOG_DATE,SALE_STATUS,SETTER_EMAIL,SETTER_NAME,CLOSER_EMAIL,CLOSER_NAME,CONTRACTED_VALUE,DATE_OF_SALE,PROGRAM,CASH_COLLECTED
+lead_AejNDTawmhjuvUDHy3IYDLYNCD6eMaWVUrNZwvakCwK,2026-06-05,,,,jordon@dataengineeracademy.com,Jordon Eggleston,,2026-06-04,Emerald,
+lead_BJ72cIpB3gg7lcVnBnkGuH2s1ISDAKUlVX3sPXHhOKo,2026-06-07,,,,irtaza@dataengineeracademy.com,Irtaza Hussain,20000,2026-06-07,Gold,16000
+lead_BQcViwqzG3HqJ1l8GMYYfGskUxkq6g35LV380fgFUAz,2026-05-14,,,,,,22000,2026-05-14,Bronze,1000
+lead_BTo9Lp3QsmvZQxpeLXelnzJg1uFvb9x5WcUzwq8w9Yt,2026-05-25,,,,mahmoud@dataengineeracademy.com,Mahmoud Toblany,24997,2026-05-25,Gold,500
+lead_Baf8Fe1Y9QZB7zaj10CZfVWdBq8A6pMIw6G5hucdbxa,2026-06-17,,miguelromero@dataengineeracademy.com,Miguel Romero,,,22000,2026-06-16,Gold,17600
+lead_BbnK5d2JagzJV4mw2gp50f2ukjPHQrhrQAZnIWyzhkb,2026-05-01,,,,,,20000,2026-05-01,Gold,5000
+lead_CP8EGV16vsYRmjqDfZz64vGNgBJxuUu4ezJbx3R3R7p,2026-04-21,,michael@dataengineeracademy.com,Michael Mkrtichyan,,,28000,2026-04-19,Gold,0
+lead_CZDEexEPQGq1t3hA5d6dbG87C5SRTNBCbibhE1CjpL4,2026-06-06,,,,chris@dataengineeracademy.com,Christopher Garzon,,2026-06-05,Gold,
+lead_CZDEexEPQGq1t3hA5d6dbG87C5SRTNBCbibhE1CjpL4,2026-06-06,,,,chris@dataengineeracademy.com,Christopher Garzon,,2026-06-05,Gold,
+lead_CedwPPGYK5c2AoSogxklyJaCVCyS7EodnSboJcCRU4h,2026-04-27,,lucija@dataengineeracademy.com,Lucija Bitunjac,,,13000,2026-04-27,Silver,1000
+lead_D4k63AIwgAGc6PAY8idEEMVJUxkQkO4AAU0PpSRPVsW,2026-07-06,,michael@dataengineeracademy.com,Michael Mkrtichyan,diana@dataengineeracademy.com,Diana Kazumyan,20000,2026-07-06,Gold,5000
+lead_DFUQocqAHFDIA9bFrZbtZLEZXM0aaLAB0gTCQdZo5Yf,2026-06-26,,,,,,19000,2026-06-26,Gold,19000
+lead_joxwLJ75MoZFnftVSJKdHqdsS6DF3GhJA4UxysQnuus,2026-04-03,,,,,,19000,2026-04-03,Gold,15200
+lead_jsl6572vuUsny6rxQENDzBmVnELFF3Dm99BIjYKdlJD,2026-04-06,,michael@dataengineeracademy.com,Michael Mkrtichyan,,,20000,2026-04-01,Gold,8000
+lead_juuElCbaaPTg5G7IxbUgL0TypCCj6T43Qki7MXoL9bb,2026-06-29,,,,chris@dataengineeracademy.com,Christopher Garzon,,2026-01-27,Silver,
+lead_k2EsMHqNmcLMrw9q8OV6i7fX8TFK4Agdf1DE1V176Jj,2026-04-30,,,,peter@dataengineeracademy.com,Peter Kovac,10000,2026-04-30,Silver,10000
+lead_kI3eNCviEIsk3sxx5AFV4fXcciIVjYGzjsuwxOkGSD5,2026-03-30,,alejandro@dataengineeracademy.com,Alejandro Sanchez,,,14000,2026-03-28,Silver,11120
+lead_kcd0QzbNBRTocDsYLfPYFyLI6MOEU9xOLKaAL4rmK4R,2026-03-20,,,,,,20000,2026-03-19,Gold,10400
+lead_kxu9Qzn5olkts0QLlcpeiOlqYf3NAmBQyeelsvI4M7I,2026-04-11,,,,,,22000,2026-04-10,Gold,250
+lead_l21Vzl4lyN3CxltSsFP5sIxV9jA1SQGc1vXIUVrIQRV,2026-04-01,,alejandro@dataengineeracademy.com,Alejandro Sanchez,,,22000,2026-03-31,Gold,17600
+lead_l9rOX4jGGMHwsW4EzJcF92zIvtditZjzv3htsSpzShB,2026-03-23,,,,aly@dataengineeracademy.com,Aly Samaha,22500,2026-03-23,Gold,1000
+lead_lvmz9xJ3U62ORQXHkMnMmHksO6FVwhbGVF6c84F10pS,2026-05-27,,,,diana@dataengineeracademy.com,Diana Kazumyan,15000,2026-05-27,Emerald,350
+lead_m0quj0FlMUEselyJaqKAThxOltsKlfHXIuFmpi8dPCu,2026-04-09,,lucija@dataengineeracademy.com,Lucija Bitunjac,peter@dataengineeracademy.com,Peter Kovac,27500,2026-04-09,Gold,3000
+lead_m53lIqmv7tS3PvYQBWpweC8zcQnqyi3U89cYhHuZIfy,2026-05-27,,miguelromero@dataengineeracademy.com,Miguel Romero,,,10500,2026-05-27,Silver,3000
+lead_mEI3zCAB0rXgoBAyzrftKXgT7NmAIsSPXMSwYATSgEb,2026-06-22,,,,,,40000,2026-06-19,Gold,18700
