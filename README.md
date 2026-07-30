@@ -92,7 +92,7 @@ publishing curated datasets for reporting and interactive dashboards. The archit
 
 The pipeline integrates multiple CRM datasets stored in a PostgreSQL database. Each dataset contributes a different aspect of the sales process.
 
-```
+
 | Source Table                  | Description                                                                                | Purpose                                                      |
 | ----------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
 | **raw.leads_raw**             | Lead, contact, opportunity, and pipeline information                                       | Tracks lead lifecycle and ownership                          |
@@ -101,7 +101,6 @@ The pipeline integrates multiple CRM datasets stored in a PostgreSQL database. E
 | **raw.close_crm_users_raw**   | CRM user profiles including setters, closers, and sales representatives                    | Enables user attribution and performance reporting           |
 
 
-```
 
 The source data is refreshed daily and contains nested JSON structures that require parsing, cleansing, and 
 normalization before analytical processing. Because every daily extract includes historical activities, the 
