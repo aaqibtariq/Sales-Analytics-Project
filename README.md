@@ -329,6 +329,7 @@ Revenue
 The views distinguish inbound and outbound acquisition paths and ensure that downstream KPIs are counted only when the required preceding stages exist.
 
 - [Gold Layer](https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/snowflake/Gold%20Layer)
+    - [Gold Layer Setup](https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/snowflake/Layers%20Ref/Gold%20Layer)
   
 ## **11. Reporting Layer**
 
@@ -342,6 +343,7 @@ The reporting layer provides four final business outputs:
 These reports measure booking volume, show rates, strategy-call progression, sales conversion, revenue, closer performance, and objection categories.
 
 - [Export Layer](https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/snowflake/Export%20layer)
+    - [Export Layer Setup](https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/snowflake/Layers%20Ref/Export%20setup)
 
 ## **12. Streamlit Dashboard**
 
