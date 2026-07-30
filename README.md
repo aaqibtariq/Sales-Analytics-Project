@@ -108,3 +108,25 @@ normalization before analytical processing. Because every daily extract includes
 pipeline performs deduplication and incremental processing to ensure only the latest activity version is retained for reporting.
 
 
+# Architecture Components
+
+The Sales Analytics platform uses AWS and Snowflake services to create a scalable daily data pipeline from PostgreSQL CRM data to business-ready dashboards.
+
+| Component                         | Technology                                                  | Role in the Architecture                                                                                                                             |
+| --------------------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Source Database**               | PostgreSQL on Amazon RDS                                    | Stores raw CRM data, including leads, lead activities, custom activity definitions, and CRM users.                                                   |
+| **Data Extraction**               | AWS Glue Python Shell                                       | Connects to PostgreSQL, extracts new and updated records, and processes the source data in manageable batches.                                       |
+| **Incremental Load Control**      | Watermark file in Amazon S3                                 | Stores the latest successful extraction timestamp so each run retrieves only newly inserted or updated data.                                         |
+| **Raw Data Storage**              | Amazon S3                                                   | Stores extracted CRM records as raw JSON files and provides a durable landing zone between PostgreSQL and Snowflake.                                 |
+| **AWS Security**                  | AWS IAM                                                     | Controls access between AWS Glue, Amazon S3, and other AWS resources using roles and permission policies.                                            |
+| **Credential Management**         | AWS Secrets Manager                                         | Securely stores PostgreSQL credentials used by the Glue extraction job.                                                                              |
+| **Snowflake Storage Integration** | Snowflake Storage Integration                               | Establishes secure access between Snowflake and the S3 bucket without embedding permanent AWS credentials in SQL scripts.                            |
+| **External Stage**                | Snowflake External Stage                                    | References the S3 raw-data location and allows files to be loaded into Snowflake.                                                                    |
+| **Bronze Layer**                  | Snowflake Tables                                            | Preserves raw JSON records with ingestion timestamps for traceability, replay, and recovery.                                                         |
+| **Silver Layer**                  | Snowflake Tables and Transient Tables                       | Repairs malformed JSON, flattens nested structures, standardizes fields, maps activity IDs, removes duplicates, and applies incremental MERGE logic. |
+| **Gold Layer**                    | Snowflake Views                                             | Applies business hierarchy and funnel rules for inbound calls, outbound prospecting, strategy calls, offers, sales, and revenue attribution.         |
+| **Reporting Layer**               | Snowflake Report Views                                      | Produces the Inbound Setter, Outbound Setter, Closer, and Objections Faced reports.                                                                  |
+| **Dashboard Layer**               | Streamlit in Snowflake                                      | Presents interactive KPI dashboards, performance summaries, filters, and detailed report tables.                                                     |
+| **Orchestration**                 | Scheduled AWS Glue and Snowflake jobs                       | Coordinates the daily extraction, ingestion, transformation, validation, and reporting workflow.                                                     |
+| **Monitoring and Validation**     | Glue logs, Snowflake query history, and data-quality checks | Tracks execution status, row counts, duplicates, nulls, funnel consistency, and pipeline failures.                                                   |
+
