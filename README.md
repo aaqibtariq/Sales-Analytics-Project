@@ -169,6 +169,8 @@ Amazon S3 serves as the raw-data landing zone between PostgreSQL and Snowflake.
 
 The files are organized by source and extraction date, for example:
 
+```
+
 s3://sales-analytics-raw-bucket/
 ├── leads_raw/
 │   └── load_date=YYYY-MM-DD/
@@ -178,6 +180,8 @@ s3://sales-analytics-raw-bucket/
 │   └── load_date=YYYY-MM-DD/
 └── close_crm_users_raw/
     └── load_date=YYYY-MM-DD/
+
+```
 
 This folder structure supports traceability, incremental processing, file-level auditing, and historical reprocessing.
 
@@ -335,14 +339,14 @@ The production workflow is designed to run daily after the PostgreSQL source ref
 
 The scheduled execution order is:
 
-- 1. Extract incremental PostgreSQL data
-- 2. Write JSON files to Amazon S3
-- 3. Load new files into Snowflake Bronze
-- 4. Run Silver transformations and MERGE operations
-- 5. Refresh Gold business views
-- 6. Refresh reporting views
-- 7. Execute validation queries
-- 8. Make updated data available to Streamlit
+1. Extract incremental PostgreSQL data
+2. Write JSON files to Amazon S3
+3. Load new files into Snowflake Bronze
+4. Run Silver transformations and MERGE operations
+5. Refresh Gold business views
+6. Refresh reporting views
+7. Execute validation queries
+8. Make updated data available to Streamlit
 
 The project requirement specifies scheduled daily execution and a seven-day production simulation.
 
