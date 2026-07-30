@@ -147,6 +147,8 @@ The source system is a PostgreSQL CRM database containing four main datasets:
 
 These datasets contain the lead lifecycle, sales activities, custom CRM outcome mappings, and user information required for setter and closer reporting. The source refresh is available daily by approximately 7:30 AM EST.
 
+- [PostgreSQL](https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/PostgreSQL)
+
 ## **2. AWS Glue Python Shell**
 
 AWS Glue Python Shell is used as the extraction engine. It connects to PostgreSQL using Python and psycopg2, reads 
@@ -155,6 +157,9 @@ source records in batches, serializes the results as JSON, and writes the files 
 The extraction process supports both initial full loads and recurring incremental loads.
 A Python Shell job was selected because the pipeline does not require Spark and the project specifically excludes Spark, PySpark, Databricks, and dbt.
 
+- [Project Information](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/AWS/info.md)
+- [AWS Glue Python Shell](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/AWS/AWS%20Glue%20Python%20Shell.md)
+  
 ## **3. Watermark-Based Incremental Processing**
 
 A watermark file stored in Amazon S3 records the latest successfully processed source timestamp for each table.
@@ -191,6 +196,8 @@ s3://sales-analytics-raw-bucket/
 
 This folder structure supports traceability, incremental processing, file-level auditing, and historical reprocessing.
 
+- [S3](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/AWS/S3.md)
+
 ## **5. AWS IAM**
 
 AWS IAM roles and policies secure access across the AWS portion of the pipeline.
@@ -204,6 +211,7 @@ IAM permissions allow the Glue job to:
 
 Snowflake also assumes a dedicated AWS IAM role through the Snowflake storage integration.
 
+- [IAM](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/AWS/IAM.md)
     
 ## **6. AWS Secrets Manager**
 
@@ -217,6 +225,8 @@ AWS Secrets Manager stores sensitive PostgreSQL connection information, includin
 
 The Glue script retrieves the credentials at runtime, avoiding hard-coded credentials in the extraction code.
 
+- [AWS Secrets Manager Secret](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/AWS/AWS%20Secrets%20Manager%20Secret.md)
+
 ## **7. Snowflake Storage Integration and External Stage**
 
 
@@ -225,6 +235,8 @@ A Snowflake storage integration creates a secure trust relationship between Snow
 The external stage points to the S3 raw-data location and is used by COPY INTO commands to load incoming files into the Bronze layer.
 
 This design separates cloud authentication from SQL code and avoids storing AWS access keys inside Snowflake scripts.
+
+- [Test Connection](https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/snowflake/Ref%20files/test%20connection)
 
 ## **8. Bronze Layer**
 
@@ -251,6 +263,8 @@ The Bronze layer provides:
 
 The data model identifies these as raw JSON ingestion tables.
 
+- [Bronze Layer](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/snowflake/bronze.md)
+  - [Bronze Ref files](https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/snowflake/Layers%20Ref/Bronze%20setup)
 
 ## **9. Silver Layer**
 
