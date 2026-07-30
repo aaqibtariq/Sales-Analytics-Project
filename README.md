@@ -36,6 +36,12 @@ This project provides a centralized sales analytics solution that enables leader
 - Revenue tracking through contracted value and cash collected.
 - A scalable data platform capable of supporting additional dashboards, machine learning models, and business intelligence tools in the future.
 
+## System Architecture
+
+<p align="center">
+  <img src="https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Sales%20pipeline%20SD.png" width="100%">
+</p>
+
 # Core Flow
 
 The Sales Analytics platform follows a Medallion Architecture that progressively transforms raw CRM data into business-ready analytics.
