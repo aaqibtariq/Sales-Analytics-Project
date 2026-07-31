@@ -380,7 +380,7 @@ The scheduled execution order is:
 
 The project requirement specifies scheduled daily execution and a seven-day production simulation.
 
-- [Load the new S3 files into Snowflake Bronze](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/Load%20the%20new%20S3%20files%20into%20Snowflake%20Bronze)
+- [Load the new S3 files into Snowflake Bronze](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/Load%20the%20new%20S3%20files%20into%20Snowflake%20Bronze.md)
 
 ## **14. Results**
 
