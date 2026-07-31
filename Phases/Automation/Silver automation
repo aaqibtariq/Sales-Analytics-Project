@@ -1,0 +1,1219 @@
+
+# Grant Silver automation permissions
+
+```sql
+USE ROLE ACCOUNTADMIN;
+
+GRANT USAGE
+ON DATABASE SALES_ANALYTICS_DB
+TO ROLE ACCOUNTADMIN;
+
+GRANT USAGE, CREATE TABLE, CREATE PROCEDURE
+ON SCHEMA SALES_ANALYTICS_DB.SILVER
+TO ROLE ACCOUNTADMIN;
+
+GRANT SELECT
+ON ALL TABLES IN SCHEMA SALES_ANALYTICS_DB.BRONZE
+TO ROLE ACCOUNTADMIN;
+
+GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE
+ON ALL TABLES IN SCHEMA SALES_ANALYTICS_DB.SILVER
+TO ROLE ACCOUNTADMIN;
+
+GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE
+ON FUTURE TABLES IN SCHEMA SALES_ANALYTICS_DB.SILVER
+TO ROLE ACCOUNTADMIN;
+
+GRANT USAGE
+ON WAREHOUSE COMPUTE_WH
+TO ROLE ACCOUNTADMIN;
+
+```
+# Create the automated Silver refresh
+
+```sql
+
+USE ROLE ACCOUNTADMIN;
+USE WAREHOUSE COMPUTE_WH;
+USE DATABASE SALES_ANALYTICS_DB;
+USE SCHEMA AUTOMATION;
+
+
+CREATE OR REPLACE PROCEDURE
+SALES_ANALYTICS_DB.AUTOMATION.REFRESH_SILVER()
+RETURNS VARIANT
+LANGUAGE SQL
+EXECUTE AS OWNER
+AS
+$$
+DECLARE
+    V_RUN_ID STRING DEFAULT UUID_STRING();
+    V_STARTED_AT TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP();
+    V_COMPLETED_AT TIMESTAMP_LTZ;
+    V_DURATION_SECONDS NUMBER(18,3);
+
+    V_EXECUTED_BY STRING DEFAULT CURRENT_USER();
+    V_WAREHOUSE_NAME STRING DEFAULT CURRENT_WAREHOUSE();
+    V_ERROR_MESSAGE STRING DEFAULT NULL;
+
+    V_USERS_BEFORE NUMBER DEFAULT 0;
+    V_USERS_AFTER NUMBER DEFAULT 0;
+
+    V_ACTIVITIES_BEFORE NUMBER DEFAULT 0;
+    V_ACTIVITIES_AFTER NUMBER DEFAULT 0;
+
+    V_EMAIL_BEFORE NUMBER DEFAULT 0;
+    V_EMAIL_AFTER NUMBER DEFAULT 0;
+
+    V_CUSTOM_COUNT NUMBER DEFAULT 0;
+    V_DETAILS_COUNT NUMBER DEFAULT 0;
+    V_SUMMARY_COUNT NUMBER DEFAULT 0;
+
+    V_DUP_USERS NUMBER DEFAULT 0;
+    V_DUP_ACTIVITIES NUMBER DEFAULT 0;
+    V_DUP_EMAILS NUMBER DEFAULT 0;
+    V_DUP_SUMMARY NUMBER DEFAULT 0;
+    V_NULL_KEYS NUMBER DEFAULT 0;
+
+    E_SILVER_VALIDATION_FAILED EXCEPTION
+        (-20002, 'Silver data-quality validation failed.');
+
+BEGIN
+
+    /*==============================================================
+      1. CAPTURE CURRENT COUNTS
+    ==============================================================*/
+
+    SELECT COUNT(*)
+    INTO :V_USERS_BEFORE
+    FROM SALES_ANALYTICS_DB.SILVER.CLOSE_CRM_USERS_PROCESSED;
+
+    SELECT COUNT(*)
+    INTO :V_ACTIVITIES_BEFORE
+    FROM SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_PROCESSED;
+
+    SELECT COUNT(*)
+    INTO :V_EMAIL_BEFORE
+    FROM SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_EMAIL;
+
+
+    /*==============================================================
+      2. REFRESH CLOSE_CRM_USERS_PROCESSED
+
+      Bronze JSON_OBJECT contains:
+          JSON_OBJECT = {
+              "JSON_OBJECT": { "data": [...] }
+          }
+
+      The procedure supports both:
+          - an already parsed object
+          - a legacy stringified object
+    ==============================================================*/
+
+    MERGE INTO
+        SALES_ANALYTICS_DB.SILVER.CLOSE_CRM_USERS_PROCESSED tgt
+
+    USING
+    (
+        WITH SOURCE_ROWS AS
+        (
+            SELECT
+                USER_OBJ.VALUE:id::STRING AS USER_ID,
+                USER_OBJ.VALUE:email::STRING AS EMAIL,
+                USER_OBJ.VALUE:first_name::STRING AS FIRST_NAME,
+                USER_OBJ.VALUE:last_name::STRING AS LAST_NAME,
+
+                TRY_TO_TIMESTAMP_NTZ(
+                    USER_OBJ.VALUE:date_created::STRING
+                ) AS DATE_CREATED,
+
+                TRY_TO_TIMESTAMP_NTZ(
+                    USER_OBJ.VALUE:date_updated::STRING
+                ) AS DATE_UPDATED,
+
+                R.INSERT_DATE
+
+            FROM SALES_ANALYTICS_DB.BRONZE.CLOSE_CRM_USERS_RAW R,
+
+            LATERAL FLATTEN
+            (
+                INPUT =>
+                    IFF
+                    (
+                        TYPEOF(R.JSON_OBJECT:JSON_OBJECT) = 'OBJECT',
+
+                        R.JSON_OBJECT:JSON_OBJECT:data,
+
+                        TRY_PARSE_JSON
+                        (
+                            REPLACE
+                            (
+                                R.JSON_OBJECT:JSON_OBJECT::STRING,
+                                '''',
+                                '"'
+                            )
+                        ):data
+                    )
+            ) USER_OBJ
+        ),
+
+        WITH_HASH AS
+        (
+            SELECT
+                *,
+
+                MD5
+                (
+                    COALESCE(USER_ID, '') || '|' ||
+                    COALESCE(EMAIL, '') || '|' ||
+                    COALESCE(FIRST_NAME, '') || '|' ||
+                    COALESCE(LAST_NAME, '') || '|' ||
+                    COALESCE(DATE_UPDATED::STRING, '')
+                ) AS MD5_HASH
+
+            FROM SOURCE_ROWS
+            WHERE USER_ID IS NOT NULL
+        ),
+
+        DEDUPED AS
+        (
+            SELECT *
+            FROM WITH_HASH
+
+            QUALIFY ROW_NUMBER() OVER
+            (
+                PARTITION BY USER_ID
+                ORDER BY
+                    DATE_UPDATED DESC NULLS LAST,
+                    INSERT_DATE DESC NULLS LAST
+            ) = 1
+        )
+
+        SELECT *
+        FROM DEDUPED
+
+    ) src
+
+        ON tgt.USER_ID = src.USER_ID
+
+    WHEN MATCHED
+         AND COALESCE(tgt.MD5_HASH, '') <>
+             COALESCE(src.MD5_HASH, '')
+
+    THEN UPDATE SET
+        tgt.EMAIL = src.EMAIL,
+        tgt.FIRST_NAME = src.FIRST_NAME,
+        tgt.LAST_NAME = src.LAST_NAME,
+        tgt.DATE_CREATED = src.DATE_CREATED,
+        tgt.DATE_UPDATED = src.DATE_UPDATED,
+        tgt.UPDATE_DATE = CURRENT_TIMESTAMP(),
+        tgt.MD5_HASH = src.MD5_HASH
+
+    WHEN NOT MATCHED THEN INSERT
+    (
+        USER_ID,
+        EMAIL,
+        FIRST_NAME,
+        LAST_NAME,
+        MD5_HASH,
+        DATE_CREATED,
+        DATE_UPDATED,
+        INSERT_DATE,
+        UPDATE_DATE
+    )
+    VALUES
+    (
+        src.USER_ID,
+        src.EMAIL,
+        src.FIRST_NAME,
+        src.LAST_NAME,
+        src.MD5_HASH,
+        src.DATE_CREATED,
+        src.DATE_UPDATED,
+        src.INSERT_DATE,
+        CURRENT_TIMESTAMP()
+    );
+
+
+    /*==============================================================
+      3. REFRESH CUSTOM_ACTIVITIES_TRANSIENT
+    ==============================================================*/
+
+    CREATE OR REPLACE TRANSIENT TABLE
+    SALES_ANALYTICS_DB.SILVER.CUSTOM_ACTIVITIES_TRANSIENT
+    AS
+    SELECT
+        JSON_OBJECT,
+        INSERT_DATE
+    FROM SALES_ANALYTICS_DB.BRONZE.CUSTOM_ACTIVITIES_RAW;
+
+
+    /*==============================================================
+      4. REBUILD CUSTOM_ACTIVITIES
+
+      This remains a derived dictionary table. Rebuilding it avoids
+      duplicate outcome mappings and reflects the latest metadata
+      snapshot.
+    ==============================================================*/
+
+    CREATE OR REPLACE TABLE
+    SALES_ANALYTICS_DB.SILVER.CUSTOM_ACTIVITIES
+    COPY GRANTS
+    AS
+
+    WITH LATEST_SNAPSHOT AS
+    (
+        SELECT
+            JSON_OBJECT,
+            INSERT_DATE
+
+        FROM SALES_ANALYTICS_DB.SILVER.CUSTOM_ACTIVITIES_TRANSIENT
+
+        QUALIFY ROW_NUMBER() OVER
+        (
+            ORDER BY INSERT_DATE DESC
+        ) = 1
+    )
+
+    SELECT
+        ACTIVITY.VALUE:id::STRING
+            AS CUSTOM_ACTIVITY_ID,
+
+        ACTIVITY.VALUE:name::STRING
+            AS CUSTOM_ACTIVITY_NAME,
+
+        OUTCOME.VALUE:id::STRING
+            AS CUSTOM_ACTIVITY_OUTCOME_ID,
+
+        OUTCOME.VALUE:name::STRING
+            AS CUSTOM_ACTIVITY_OUTCOME_NAME,
+
+        MD5
+        (
+            COALESCE(ACTIVITY.VALUE:id::STRING, '') || '|' ||
+            COALESCE(ACTIVITY.VALUE:name::STRING, '') || '|' ||
+            COALESCE(OUTCOME.VALUE:id::STRING, '') || '|' ||
+            COALESCE(OUTCOME.VALUE:name::STRING, '')
+        ) AS MD5_HASH,
+
+        CURRENT_TIMESTAMP()::TIMESTAMP_NTZ
+            AS INSERT_DATE,
+
+        CURRENT_TIMESTAMP()::TIMESTAMP_NTZ
+            AS UPDATE_DATE
+
+    FROM LATEST_SNAPSHOT T,
+
+    LATERAL FLATTEN
+    (
+        INPUT =>
+            IFF
+            (
+                TYPEOF(T.JSON_OBJECT:JSON_OBJECT) = 'OBJECT',
+
+                T.JSON_OBJECT:JSON_OBJECT:data,
+
+                TRY_PARSE_JSON
+                (
+                    REPLACE
+                    (
+                        T.JSON_OBJECT:JSON_OBJECT::STRING,
+                        '''',
+                        '"'
+                    )
+                ):data
+            )
+    ) ACTIVITY,
+
+    LATERAL FLATTEN
+    (
+        INPUT => ACTIVITY.VALUE:outcomes,
+        OUTER => TRUE
+    ) OUTCOME;
+
+
+    /*==============================================================
+      5. REFRESH LEAD_ACTIVITIES_PROCESSED_TRANSIENT
+
+      Corrected Bronze path:
+          R.JSON_OBJECT:data
+    ==============================================================*/
+
+    CREATE OR REPLACE TRANSIENT TABLE
+    SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_PROCESSED_TRANSIENT
+    AS
+    SELECT
+        ACTIVITY.VALUE AS JSON_OBJECT,
+        R.INSERT_DATE AS INSERT_DATE
+
+    FROM SALES_ANALYTICS_DB.BRONZE.LEAD_ACTIVITIES_RAW R,
+
+    LATERAL FLATTEN
+    (
+        INPUT => R.JSON_OBJECT:data
+    ) ACTIVITY;
+
+
+    /*==============================================================
+      6. MERGE LEAD_ACTIVITIES_PROCESSED
+    ==============================================================*/
+
+    MERGE INTO
+        SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_PROCESSED tgt
+
+    USING
+    (
+        WITH FLATTENED AS
+        (
+            SELECT
+                JSON_OBJECT:id::STRING AS ACTIVITY_ID,
+                JSON_OBJECT:lead_id::STRING AS LEAD_ID,
+                JSON_OBJECT:contact_id::STRING AS CONTACT_ID,
+                JSON_OBJECT:user_id::STRING AS USER_ID,
+                JSON_OBJECT:_type::STRING AS TYPE,
+                JSON_OBJECT:text::STRING AS TEXT,
+                JSON_OBJECT:status::STRING AS STATUS_CHANGE,
+
+                JSON_OBJECT:created_by_name::STRING
+                    AS CREATED_BY_NAME,
+
+                JSON_OBJECT:updated_by_name::STRING
+                    AS UPDATED_BY_NAME,
+
+                JSON_OBJECT:attendees AS ATTENDEES,
+
+                JSON_OBJECT:custom_activity_type_id::STRING
+                    AS CUSTOM_ACTIVITY_ID,
+
+                TRY_TO_TIMESTAMP_NTZ(
+                    JSON_OBJECT:meeting_starts_at::STRING
+                ) AS MEETING_STARTS_AT,
+
+                TRY_TO_TIMESTAMP_NTZ(
+                    JSON_OBJECT:meeting_ends_at::STRING
+                ) AS MEETING_END_AT,
+
+                JSON_OBJECT:meeting_status::STRING
+                    AS MEETING_STATUS,
+
+                TRY_TO_TIMESTAMP_NTZ(
+                    JSON_OBJECT:activity_at::STRING
+                ) AS ACTIVITY_AT,
+
+                TRY_TO_TIMESTAMP_NTZ(
+                    JSON_OBJECT:date_created::STRING
+                ) AS DATE_CREATED,
+
+                TRY_TO_TIMESTAMP_NTZ(
+                    JSON_OBJECT:date_updated::STRING
+                ) AS DATE_UPDATED,
+
+                JSON_OBJECT:created_by::STRING
+                    AS CREATED_BY_USER,
+
+                JSON_OBJECT:updated_by::STRING
+                    AS UPDATED_BY_USER,
+
+                INSERT_DATE
+
+            FROM SALES_ANALYTICS_DB.SILVER
+                .LEAD_ACTIVITIES_PROCESSED_TRANSIENT
+
+            WHERE JSON_OBJECT:id IS NOT NULL
+              AND JSON_OBJECT:lead_id IS NOT NULL
+        ),
+
+        WITH_HASH AS
+        (
+            SELECT
+                *,
+
+                MD5
+                (
+                    COALESCE(ACTIVITY_ID, '') || '|' ||
+                    COALESCE(LEAD_ID, '') || '|' ||
+                    COALESCE(CONTACT_ID, '') || '|' ||
+                    COALESCE(USER_ID, '') || '|' ||
+                    COALESCE(TYPE, '') || '|' ||
+                    COALESCE(TEXT, '') || '|' ||
+                    COALESCE(STATUS_CHANGE, '') || '|' ||
+                    COALESCE(CUSTOM_ACTIVITY_ID, '') || '|' ||
+                    COALESCE(ACTIVITY_AT::STRING, '') || '|' ||
+                    COALESCE(DATE_UPDATED::STRING, '')
+                ) AS MD5_HASH
+
+            FROM FLATTENED
+        ),
+
+        DEDUPED AS
+        (
+            SELECT *
+            FROM WITH_HASH
+
+            QUALIFY ROW_NUMBER() OVER
+            (
+                PARTITION BY LEAD_ID, ACTIVITY_ID
+                ORDER BY
+                    ACTIVITY_AT DESC NULLS LAST,
+                    DATE_UPDATED DESC NULLS LAST,
+                    INSERT_DATE DESC NULLS LAST
+            ) = 1
+        )
+
+        SELECT *
+        FROM DEDUPED
+
+    ) src
+
+        ON tgt.LEAD_ID = src.LEAD_ID
+       AND tgt.ACTIVITY_ID = src.ACTIVITY_ID
+
+    WHEN MATCHED
+         AND COALESCE(tgt.MD5_HASH, '') <>
+             COALESCE(src.MD5_HASH, '')
+
+    THEN UPDATE SET
+        tgt.CONTACT_ID = src.CONTACT_ID,
+        tgt.USER_ID = src.USER_ID,
+        tgt.TYPE = src.TYPE,
+        tgt.TEXT = src.TEXT,
+        tgt.STATUS_CHANGE = src.STATUS_CHANGE,
+        tgt.CREATED_BY_NAME = src.CREATED_BY_NAME,
+        tgt.UPDATED_BY_NAME = src.UPDATED_BY_NAME,
+        tgt.ATTENDEES = src.ATTENDEES,
+        tgt.CUSTOM_ACTIVITY_ID = src.CUSTOM_ACTIVITY_ID,
+        tgt.MEETING_STARTS_AT = src.MEETING_STARTS_AT,
+        tgt.MEETING_END_AT = src.MEETING_END_AT,
+        tgt.MEETING_STATUS = src.MEETING_STATUS,
+        tgt.ACTIVITY_AT = src.ACTIVITY_AT,
+        tgt.DATE_CREATED = src.DATE_CREATED,
+        tgt.DATE_UPDATED = src.DATE_UPDATED,
+        tgt.CREATED_BY_USER = src.CREATED_BY_USER,
+        tgt.UPDATED_BY_USER = src.UPDATED_BY_USER,
+        tgt.UPDATE_DATE = CURRENT_TIMESTAMP(),
+        tgt.MD5_HASH = src.MD5_HASH
+
+    WHEN NOT MATCHED THEN INSERT
+    (
+        ACTIVITY_ID,
+        LEAD_ID,
+        CONTACT_ID,
+        USER_ID,
+        TYPE,
+        TEXT,
+        STATUS_CHANGE,
+        CREATED_BY_NAME,
+        UPDATED_BY_NAME,
+        ATTENDEES,
+        CUSTOM_ACTIVITY_ID,
+        MEETING_STARTS_AT,
+        MEETING_END_AT,
+        MEETING_STATUS,
+        ACTIVITY_AT,
+        DATE_CREATED,
+        DATE_UPDATED,
+        CREATED_BY_USER,
+        UPDATED_BY_USER,
+        INSERT_DATE,
+        UPDATE_DATE,
+        MD5_HASH
+    )
+    VALUES
+    (
+        src.ACTIVITY_ID,
+        src.LEAD_ID,
+        src.CONTACT_ID,
+        src.USER_ID,
+        src.TYPE,
+        src.TEXT,
+        src.STATUS_CHANGE,
+        src.CREATED_BY_NAME,
+        src.UPDATED_BY_NAME,
+        src.ATTENDEES,
+        src.CUSTOM_ACTIVITY_ID,
+        src.MEETING_STARTS_AT,
+        src.MEETING_END_AT,
+        src.MEETING_STATUS,
+        src.ACTIVITY_AT,
+        src.DATE_CREATED,
+        src.DATE_UPDATED,
+        src.CREATED_BY_USER,
+        src.UPDATED_BY_USER,
+        src.INSERT_DATE,
+        CURRENT_TIMESTAMP(),
+        src.MD5_HASH
+    );
+
+
+    /*==============================================================
+      7. MERGE EMAIL ACTIVITIES
+
+      This preserves your existing email extraction logic.
+    ==============================================================*/
+
+    MERGE INTO
+        SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_EMAIL tgt
+
+    USING
+    (
+        WITH EMAIL_FLAT AS
+        (
+            SELECT
+                JSON_OBJECT:lead_id::STRING AS LEAD_ID,
+
+                TRY_TO_TIMESTAMP_NTZ(
+                    JSON_OBJECT:activity_at::STRING
+                ) AS ACTIVITY_AT,
+
+                JSON_OBJECT:attachments AS ATTACHMENTS_JSON,
+                JSON_OBJECT:body_text::STRING AS BODY_TEXT,
+
+                TRY_TO_TIMESTAMP_NTZ(
+                    JSON_OBJECT:date_created::STRING
+                ) AS DATE_CREATED,
+
+                TRY_TO_TIMESTAMP_NTZ(
+                    JSON_OBJECT:date_updated::STRING
+                ) AS DATE_UPDATED,
+
+                JSON_OBJECT:direction::STRING AS DIRECTION,
+                JSON_OBJECT:envelope AS ENVELOPE_JSON,
+                JSON_OBJECT:envelope:sender AS SENDER_JSON,
+                JSON_OBJECT:id::STRING AS ACTIVITY_ID,
+                JSON_OBJECT:opens AS OPENS_JSON,
+                JSON_OBJECT:sender::STRING AS SENDER,
+                JSON_OBJECT:status::STRING AS STATUS,
+                JSON_OBJECT:subject::STRING AS SUBJECT,
+                JSON_OBJECT AS JSON_PAYLOAD,
+                JSON_OBJECT:user_id::STRING AS USER_ID,
+                JSON_OBJECT:user_name::STRING AS USER_NAME,
+                JSON_OBJECT:template_id::STRING AS TEMPLATE_ID,
+                JSON_OBJECT:template_name::STRING AS TEMPLATE_NAME,
+
+                TRY_TO_TIMESTAMP_NTZ(
+                    JSON_OBJECT:date_sent::STRING
+                ) AS DATE_SENT,
+
+                TRY_TO_BOOLEAN(
+                    JSON_OBJECT:has_reply::STRING
+                ) AS HAS_REPLY,
+
+                INSERT_DATE
+
+            FROM SALES_ANALYTICS_DB.SILVER
+                .LEAD_ACTIVITIES_PROCESSED_TRANSIENT
+
+            WHERE JSON_OBJECT:_type::STRING = 'Email'
+              AND JSON_OBJECT:lead_id IS NOT NULL
+              AND JSON_OBJECT:id IS NOT NULL
+        ),
+
+        WITH_HASH AS
+        (
+            SELECT
+                *,
+
+                MD5
+                (
+                    COALESCE(LEAD_ID, '') || '|' ||
+                    COALESCE(ACTIVITY_ID, '') || '|' ||
+                    COALESCE(ACTIVITY_AT::STRING, '') || '|' ||
+                    COALESCE(DATE_UPDATED::STRING, '') || '|' ||
+                    COALESCE(STATUS, '') || '|' ||
+                    COALESCE(SUBJECT, '') || '|' ||
+                    COALESCE(BODY_TEXT, '') || '|' ||
+                    COALESCE(USER_ID, '')
+                ) AS MD5_HASH
+
+            FROM EMAIL_FLAT
+        ),
+
+        DEDUPED AS
+        (
+            SELECT *
+            FROM WITH_HASH
+
+            QUALIFY ROW_NUMBER() OVER
+            (
+                PARTITION BY LEAD_ID, ACTIVITY_ID
+                ORDER BY
+                    ACTIVITY_AT DESC NULLS LAST,
+                    DATE_UPDATED DESC NULLS LAST,
+                    INSERT_DATE DESC NULLS LAST
+            ) = 1
+        )
+
+        SELECT *
+        FROM DEDUPED
+
+    ) src
+
+        ON tgt.LEAD_ID = src.LEAD_ID
+       AND tgt.ACTIVITY_ID = src.ACTIVITY_ID
+
+    WHEN MATCHED
+         AND COALESCE(tgt.MD5_HASH, '') <>
+             COALESCE(src.MD5_HASH, '')
+
+    THEN UPDATE SET
+        tgt.ACTIVITY_AT = src.ACTIVITY_AT,
+        tgt.ATTACHMENTS_JSON = src.ATTACHMENTS_JSON,
+        tgt.BODY_TEXT = src.BODY_TEXT,
+        tgt.DATE_CREATED = src.DATE_CREATED,
+        tgt.DATE_UPDATED = src.DATE_UPDATED,
+        tgt.DIRECTION = src.DIRECTION,
+        tgt.ENVELOPE_JSON = src.ENVELOPE_JSON,
+        tgt.SENDER_JSON = src.SENDER_JSON,
+        tgt.OPENS_JSON = src.OPENS_JSON,
+        tgt.SENDER = src.SENDER,
+        tgt.STATUS = src.STATUS,
+        tgt.SUBJECT = src.SUBJECT,
+        tgt.JSON_PAYLOAD = src.JSON_PAYLOAD,
+        tgt.USER_ID = src.USER_ID,
+        tgt.USER_NAME = src.USER_NAME,
+        tgt.TEMPLATE_ID = src.TEMPLATE_ID,
+        tgt.TEMPLATE_NAME = src.TEMPLATE_NAME,
+        tgt.DATE_SENT = src.DATE_SENT,
+        tgt.HAS_REPLY = src.HAS_REPLY,
+        tgt.UPDATE_DATE = CURRENT_TIMESTAMP(),
+        tgt.MD5_HASH = src.MD5_HASH
+
+    WHEN NOT MATCHED THEN INSERT
+    (
+        LEAD_ID,
+        ACTIVITY_AT,
+        ATTACHMENTS_JSON,
+        BODY_TEXT,
+        DATE_CREATED,
+        DATE_UPDATED,
+        DIRECTION,
+        ENVELOPE_JSON,
+        SENDER_JSON,
+        ACTIVITY_ID,
+        OPENS_JSON,
+        SENDER,
+        STATUS,
+        SUBJECT,
+        JSON_PAYLOAD,
+        USER_ID,
+        USER_NAME,
+        TEMPLATE_ID,
+        TEMPLATE_NAME,
+        DATE_SENT,
+        HAS_REPLY,
+        INSERT_DATE,
+        UPDATE_DATE,
+        MD5_HASH
+    )
+    VALUES
+    (
+        src.LEAD_ID,
+        src.ACTIVITY_AT,
+        src.ATTACHMENTS_JSON,
+        src.BODY_TEXT,
+        src.DATE_CREATED,
+        src.DATE_UPDATED,
+        src.DIRECTION,
+        src.ENVELOPE_JSON,
+        src.SENDER_JSON,
+        src.ACTIVITY_ID,
+        src.OPENS_JSON,
+        src.SENDER,
+        src.STATUS,
+        src.SUBJECT,
+        src.JSON_PAYLOAD,
+        src.USER_ID,
+        src.USER_NAME,
+        src.TEMPLATE_ID,
+        src.TEMPLATE_NAME,
+        src.DATE_SENT,
+        src.HAS_REPLY,
+        src.INSERT_DATE,
+        CURRENT_TIMESTAMP(),
+        src.MD5_HASH
+    );
+
+
+    /*==============================================================
+      8. REBUILD CUSTOM_ACTIVITIES_ALL_LEADS_DETAILS
+
+      The previous script used INSERT and would duplicate rows on
+      repeated runs. This derived table is rebuilt idempotently.
+    ==============================================================*/
+
+    CREATE OR REPLACE TABLE
+    SALES_ANALYTICS_DB.SILVER.CUSTOM_ACTIVITIES_ALL_LEADS_DETAILS
+    COPY GRANTS
+    AS
+
+    SELECT
+        LEAD_ID,
+        ACTIVITY_ID,
+        ACTIVITY_AT,
+
+        OBJECT_CONSTRUCT_KEEP_NULL
+        (
+            'CUSTOM_ACTIVITY_ID', CUSTOM_ACTIVITY_ID,
+            'TYPE', TYPE,
+            'TEXT', TEXT,
+            'STATUS_CHANGE', STATUS_CHANGE,
+            'CREATED_BY_NAME', CREATED_BY_NAME,
+            'UPDATED_BY_NAME', UPDATED_BY_NAME,
+            'ATTENDEES', ATTENDEES,
+            'MEETING_STARTS_AT', MEETING_STARTS_AT,
+            'MEETING_END_AT', MEETING_END_AT,
+            'MEETING_STATUS', MEETING_STATUS,
+            'DATE_CREATED', DATE_CREATED,
+            'DATE_UPDATED', DATE_UPDATED,
+            'CREATED_BY_USER', CREATED_BY_USER,
+            'UPDATED_BY_USER', UPDATED_BY_USER
+        ) AS WRAPPED_ACTIVITIES,
+
+        INSERT_DATE,
+        CURRENT_TIMESTAMP()::TIMESTAMP_NTZ AS UPDATE_DATE,
+
+        MD5
+        (
+            COALESCE(LEAD_ID, '') || '|' ||
+            COALESCE(ACTIVITY_ID, '') || '|' ||
+            COALESCE(CUSTOM_ACTIVITY_ID, '') || '|' ||
+            COALESCE(ACTIVITY_AT::STRING, '')
+        ) AS MD5_HASH
+
+    FROM SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_PROCESSED
+
+    WHERE CUSTOM_ACTIVITY_ID IS NOT NULL;
+
+
+    /*==============================================================
+      9. REFRESH LEADS_ACTIVITIES_SUMMARY_TRANSIENT
+    ==============================================================*/
+
+    CREATE OR REPLACE TRANSIENT TABLE
+    SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY_TRANSIENT
+    AS
+    SELECT
+        *
+    FROM SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_PROCESSED;
+
+
+    /*==============================================================
+      10. REBUILD LEADS_ACTIVITIES_SUMMARY
+
+      Corrected Bronze path:
+          R.JSON_OBJECT:data
+    ==============================================================*/
+
+    CREATE OR REPLACE TABLE
+    SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+    COPY GRANTS
+    AS
+
+    WITH CAD_DEDUP AS
+    (
+        SELECT *
+        FROM SALES_ANALYTICS_DB.SILVER
+            .CUSTOM_ACTIVITIES_ALL_LEADS_DETAILS
+
+        QUALIFY ROW_NUMBER() OVER
+        (
+            PARTITION BY LEAD_ID, ACTIVITY_ID
+            ORDER BY
+                UPDATE_DATE DESC NULLS LAST,
+                INSERT_DATE DESC NULLS LAST
+        ) = 1
+    ),
+
+    BRONZE_CUSTOM_FIELDS AS
+    (
+        SELECT
+            ACTIVITY.VALUE:id::STRING AS ACTIVITY_ID,
+            ACTIVITY.VALUE:lead_id::STRING AS LEAD_ID,
+
+            ACTIVITY.VALUE:
+            "custom.cf_h3tYb9J6yPK7J4PMExDGsEqPCf8kBGBrRNIur2Dm5aN"
+            ::STRING AS TRIAGE_CALL_OUTCOME,
+
+            ACTIVITY.VALUE:
+            "custom.cf_dhJR4N7Rm6czuJthYGJP6KqUcuOzi7fqApGI7puWnMo"
+            ::STRING AS STRATEGY_CALL_OUTCOME
+
+        FROM SALES_ANALYTICS_DB.BRONZE.LEAD_ACTIVITIES_RAW R,
+
+        LATERAL FLATTEN
+        (
+            INPUT => R.JSON_OBJECT:data
+        ) ACTIVITY
+
+        QUALIFY ROW_NUMBER() OVER
+        (
+            PARTITION BY
+                ACTIVITY.VALUE:lead_id::STRING,
+                ACTIVITY.VALUE:id::STRING
+
+            ORDER BY
+                TRY_TO_TIMESTAMP_NTZ(
+                    ACTIVITY.VALUE:activity_at::STRING
+                ) DESC NULLS LAST,
+
+                TRY_TO_TIMESTAMP_NTZ(
+                    ACTIVITY.VALUE:date_updated::STRING
+                ) DESC NULLS LAST,
+
+                R.INSERT_DATE DESC NULLS LAST
+        ) = 1
+    )
+
+    SELECT
+        LAP.ACTIVITY_ID,
+        LAP.LEAD_ID,
+        LAP.CONTACT_ID,
+        LAP.USER_ID,
+        LAP.TYPE,
+        LAP.TEXT,
+        LAP.STATUS_CHANGE,
+        LAP.CREATED_BY_NAME,
+        LAP.UPDATED_BY_NAME,
+        LAP.ATTENDEES,
+        LAP.CUSTOM_ACTIVITY_ID,
+        LAP.MEETING_STARTS_AT,
+        LAP.MEETING_END_AT,
+        LAP.MEETING_STATUS,
+        LAP.ACTIVITY_AT,
+        LAP.DATE_CREATED,
+        LAP.DATE_UPDATED,
+        LAP.CREATED_BY_USER,
+        LAP.UPDATED_BY_USER,
+        LAP.INSERT_DATE,
+        CURRENT_TIMESTAMP()::TIMESTAMP_NTZ AS UPDATE_DATE,
+
+        CAD.WRAPPED_ACTIVITIES,
+
+        CA.CUSTOM_ACTIVITY_NAME AS CUSTOM_ACTIVITY,
+
+        CASE
+            WHEN CA.CUSTOM_ACTIVITY_NAME = '3) Triage Call'
+                THEN 'Triage Call Outcome'
+
+            WHEN CA.CUSTOM_ACTIVITY_NAME = '5) Strategy Call'
+                THEN 'Strategy Call Outcome'
+
+            ELSE CA.CUSTOM_ACTIVITY_OUTCOME_NAME
+        END AS CUSTOM_ACTIVITY_OUTCOME_NAME,
+
+        CASE
+            WHEN CA.CUSTOM_ACTIVITY_NAME = '3) Triage Call'
+                THEN BCF.TRIAGE_CALL_OUTCOME
+
+            WHEN CA.CUSTOM_ACTIVITY_NAME = '5) Strategy Call'
+                THEN BCF.STRATEGY_CALL_OUTCOME
+
+            ELSE CA.CUSTOM_ACTIVITY_OUTCOME_ID
+        END AS CUSTOM_ACTIVITY_OUTCOME,
+
+        NULLIF(
+            TRIM(
+                COALESCE(CU.FIRST_NAME, '') || ' ' ||
+                COALESCE(CU.LAST_NAME, '')
+            ),
+            ''
+        ) AS DEA_INTERNAL_NAME,
+
+        CU.EMAIL AS DEA_INTERNAL_EMAIL
+
+    FROM SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_PROCESSED LAP
+
+    LEFT JOIN CAD_DEDUP CAD
+        ON LAP.LEAD_ID = CAD.LEAD_ID
+       AND LAP.ACTIVITY_ID = CAD.ACTIVITY_ID
+
+    LEFT JOIN BRONZE_CUSTOM_FIELDS BCF
+        ON LAP.ACTIVITY_ID = BCF.ACTIVITY_ID
+       AND LAP.LEAD_ID = BCF.LEAD_ID
+
+    LEFT JOIN SALES_ANALYTICS_DB.SILVER.CUSTOM_ACTIVITIES CA
+        ON LAP.CUSTOM_ACTIVITY_ID = CA.CUSTOM_ACTIVITY_ID
+
+    LEFT JOIN
+        SALES_ANALYTICS_DB.SILVER.CLOSE_CRM_USERS_PROCESSED CU
+        ON LAP.USER_ID = CU.USER_ID;
+
+
+    /*==============================================================
+      11. CAPTURE FINAL COUNTS
+    ==============================================================*/
+
+    SELECT COUNT(*)
+    INTO :V_USERS_AFTER
+    FROM SALES_ANALYTICS_DB.SILVER.CLOSE_CRM_USERS_PROCESSED;
+
+    SELECT COUNT(*)
+    INTO :V_ACTIVITIES_AFTER
+    FROM SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_PROCESSED;
+
+    SELECT COUNT(*)
+    INTO :V_EMAIL_AFTER
+    FROM SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_EMAIL;
+
+    SELECT COUNT(*)
+    INTO :V_CUSTOM_COUNT
+    FROM SALES_ANALYTICS_DB.SILVER.CUSTOM_ACTIVITIES;
+
+    SELECT COUNT(*)
+    INTO :V_DETAILS_COUNT
+    FROM SALES_ANALYTICS_DB.SILVER
+        .CUSTOM_ACTIVITIES_ALL_LEADS_DETAILS;
+
+    SELECT COUNT(*)
+    INTO :V_SUMMARY_COUNT
+    FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY;
+
+
+    /*==============================================================
+      12. AUTOMATED SILVER QUALITY GATES
+    ==============================================================*/
+
+    SELECT COUNT(*)
+    INTO :V_DUP_USERS
+    FROM
+    (
+        SELECT USER_ID
+        FROM SALES_ANALYTICS_DB.SILVER.CLOSE_CRM_USERS_PROCESSED
+        GROUP BY USER_ID
+        HAVING COUNT(*) > 1
+    );
+
+
+    SELECT COUNT(*)
+    INTO :V_DUP_ACTIVITIES
+    FROM
+    (
+        SELECT LEAD_ID, ACTIVITY_ID
+        FROM SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_PROCESSED
+        GROUP BY LEAD_ID, ACTIVITY_ID
+        HAVING COUNT(*) > 1
+    );
+
+
+    SELECT COUNT(*)
+    INTO :V_DUP_EMAILS
+    FROM
+    (
+        SELECT LEAD_ID, ACTIVITY_ID
+        FROM SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_EMAIL
+        GROUP BY LEAD_ID, ACTIVITY_ID
+        HAVING COUNT(*) > 1
+    );
+
+
+    SELECT COUNT(*)
+    INTO :V_DUP_SUMMARY
+    FROM
+    (
+        SELECT LEAD_ID, ACTIVITY_ID
+        FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+        GROUP BY LEAD_ID, ACTIVITY_ID
+        HAVING COUNT(*) > 1
+    );
+
+
+    SELECT
+        COUNT_IF(LEAD_ID IS NULL OR ACTIVITY_ID IS NULL)
+    INTO :V_NULL_KEYS
+    FROM SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_PROCESSED;
+
+
+    IF
+    (
+        V_DUP_USERS > 0
+        OR V_DUP_ACTIVITIES > 0
+        OR V_DUP_EMAILS > 0
+        OR V_DUP_SUMMARY > 0
+        OR V_NULL_KEYS > 0
+        OR V_SUMMARY_COUNT <> V_ACTIVITIES_AFTER
+    )
+    THEN
+
+        V_ERROR_MESSAGE :=
+              'Silver validation failed. Duplicate users='
+            || V_DUP_USERS
+            || ', duplicate activities='
+            || V_DUP_ACTIVITIES
+            || ', duplicate emails='
+            || V_DUP_EMAILS
+            || ', duplicate summary rows='
+            || V_DUP_SUMMARY
+            || ', null activity keys='
+            || V_NULL_KEYS
+            || ', processed rows='
+            || V_ACTIVITIES_AFTER
+            || ', summary rows='
+            || V_SUMMARY_COUNT;
+
+        RAISE E_SILVER_VALIDATION_FAILED;
+
+    END IF;
+
+
+    /*==============================================================
+      13. LOG SUCCESS
+    ==============================================================*/
+
+    V_COMPLETED_AT := CURRENT_TIMESTAMP();
+
+    V_DURATION_SECONDS :=
+        ABS(
+            DATEDIFF(
+                'MILLISECOND',
+                V_STARTED_AT,
+                V_COMPLETED_AT
+            )
+        ) / 1000.0;
+
+
+    INSERT INTO
+    SALES_ANALYTICS_DB.AUTOMATION.PIPELINE_RUN_LOG
+    (
+        RUN_ID,
+        PIPELINE_NAME,
+        STEP_NAME,
+        STATUS,
+        STARTED_AT,
+        COMPLETED_AT,
+        DURATION_SECONDS,
+        LEADS_ROWS_ADDED,
+        ACTIVITIES_ROWS_ADDED,
+        USERS_ROWS_ADDED,
+        CUSTOM_ROWS_ADDED,
+        ERROR_MESSAGE,
+        EXECUTED_BY,
+        WAREHOUSE_NAME
+    )
+    VALUES
+    (
+        :V_RUN_ID,
+        'SALES_ANALYTICS_DAILY_PIPELINE',
+        'SILVER_REFRESH',
+        'SUCCESS',
+        :V_STARTED_AT,
+        :V_COMPLETED_AT,
+        :V_DURATION_SECONDS,
+        NULL,
+        :V_ACTIVITIES_AFTER - :V_ACTIVITIES_BEFORE,
+        :V_USERS_AFTER - :V_USERS_BEFORE,
+        :V_CUSTOM_COUNT,
+        NULL,
+        :V_EXECUTED_BY,
+        :V_WAREHOUSE_NAME
+    );
+
+
+    RETURN OBJECT_CONSTRUCT
+    (
+        'run_id', V_RUN_ID,
+        'status', 'SUCCESS',
+        'step', 'SILVER_REFRESH',
+
+        'crm_users_before', V_USERS_BEFORE,
+        'crm_users_after', V_USERS_AFTER,
+
+        'activities_before', V_ACTIVITIES_BEFORE,
+        'activities_after', V_ACTIVITIES_AFTER,
+
+        'email_before', V_EMAIL_BEFORE,
+        'email_after', V_EMAIL_AFTER,
+
+        'custom_activity_mappings', V_CUSTOM_COUNT,
+        'custom_activity_details', V_DETAILS_COUNT,
+        'summary_rows', V_SUMMARY_COUNT,
+
+        'duplicate_users', V_DUP_USERS,
+        'duplicate_activities', V_DUP_ACTIVITIES,
+        'duplicate_emails', V_DUP_EMAILS,
+        'duplicate_summary_rows', V_DUP_SUMMARY,
+        'null_activity_keys', V_NULL_KEYS,
+
+        'duration_seconds', V_DURATION_SECONDS
+    );
+
+
+EXCEPTION
+    WHEN OTHER THEN
+
+        V_ERROR_MESSAGE :=
+            COALESCE(V_ERROR_MESSAGE, SQLERRM);
+
+        V_COMPLETED_AT := CURRENT_TIMESTAMP();
+
+        V_DURATION_SECONDS :=
+            ABS(
+                DATEDIFF(
+                    'MILLISECOND',
+                    V_STARTED_AT,
+                    V_COMPLETED_AT
+                )
+            ) / 1000.0;
+
+
+        INSERT INTO
+        SALES_ANALYTICS_DB.AUTOMATION.PIPELINE_RUN_LOG
+        (
+            RUN_ID,
+            PIPELINE_NAME,
+            STEP_NAME,
+            STATUS,
+            STARTED_AT,
+            COMPLETED_AT,
+            DURATION_SECONDS,
+            LEADS_ROWS_ADDED,
+            ACTIVITIES_ROWS_ADDED,
+            USERS_ROWS_ADDED,
+            CUSTOM_ROWS_ADDED,
+            ERROR_MESSAGE,
+            EXECUTED_BY,
+            WAREHOUSE_NAME
+        )
+        VALUES
+        (
+            :V_RUN_ID,
+            'SALES_ANALYTICS_DAILY_PIPELINE',
+            'SILVER_REFRESH',
+            'FAILED',
+            :V_STARTED_AT,
+            :V_COMPLETED_AT,
+            :V_DURATION_SECONDS,
+            NULL,
+            NULL,
+            NULL,
+            NULL,
+            :V_ERROR_MESSAGE,
+            :V_EXECUTED_BY,
+            :V_WAREHOUSE_NAME
+        );
+
+        RAISE;
+
+END;
+$$;
+
+```
+
+
+# Confirm procedure ownership
+
+```sql
+
+GRANT OWNERSHIP
+ON PROCEDURE SALES_ANALYTICS_DB.AUTOMATION.REFRESH_SILVER()
+TO ROLE ACCOUNTADMIN
+COPY CURRENT GRANTS;
+
+```
+
+# Run the automated Silver refresh
+
+```sql
+
+CALL SALES_ANALYTICS_DB.AUTOMATION.REFRESH_SILVER();
+
+```
