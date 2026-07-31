@@ -493,3 +493,37 @@ $$;
 
 ```
 
+# Test the automated Bronze procedure
+
+```
+CALL SALES_ANALYTICS_DB.AUTOMATION.LOAD_BRONZE_INCREMENTAL();
+
+```
+
+
+# Result 
+
+```
+Expected result:
+
+{
+  "status": "SUCCESS",
+  "step": "BRONZE_INCREMENTAL_LOAD",
+  "leads_rows_added": 0,
+  "lead_activities_rows_added": 0,
+  "crm_users_rows_added": 0,
+  "custom_activities_rows_added": 0
+}
+
+```
+
+# Check the automated log
+
+```
+
+SELECT *
+FROM SALES_ANALYTICS_DB.AUTOMATION.PIPELINE_RUN_LOG
+ORDER BY STARTED_AT DESC;
+
+```
+
