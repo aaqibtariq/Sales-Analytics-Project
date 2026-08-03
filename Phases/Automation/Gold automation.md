@@ -1,3 +1,50 @@
+# Gold Automation
+
+## Purpose
+
+This deployment creates the production `REFRESH_GOLD()` procedure for the Sales Analytics pipeline.
+
+The procedure redeploys the five approved Gold business views, validates their results, logs success or failure, and returns a structured execution summary.
+
+## Gold objects
+
+```text
+ALL_STRATEGIES_DETAILS
+INBOUND_STRATEGIES_BOOKED
+OUTBOUND_STRATEGIES_BOOKED
+SALES_DETAILS
+OUTBOUND_PROSPECT_DIALS
+```
+
+## Processing behavior
+
+```text
+Silver refresh
+    ↓
+Redeploy five Gold view definitions
+    ↓
+Reconcile direct-filter views to Silver
+    ↓
+Validate sequential outbound attribution
+    ↓
+Write GOLD_REFRESH result to PIPELINE_RUN_LOG
+```
+
+## Important business rules
+
+- Outbound activity names use the values present in Silver:
+  - `1) Prospecting Activity`
+  - `2) Prospecting Follow Up`
+- Outbound bookings are derived by linking each Strategy Call to the nearest preceding outbound activity for the same `LEAD_ID`.
+- `DATE_OF_SALE` is derived in Gold from `ACTIVITY_AT::DATE`.
+- The procedure does not reference a nonexistent Silver `DATE_OF_SALE` column.
+- Gold objects are views; this procedure refreshes their approved definitions and validates their current results.
+
+---
+
+# 1. Full Gold deployment script
+
+```sql
 /*====================================================================
   SALES ANALYTICS PROJECT
   FULL CORRECTED GOLD REFRESH
@@ -991,3 +1038,149 @@ FROM SALES_ANALYTICS_DB.AUTOMATION.PIPELINE_RUN_LOG
 WHERE STEP_NAME = 'GOLD_REFRESH'
 
 ORDER BY STARTED_AT DESC;
+```
+
+---
+
+# 2. Test the procedure
+
+Run this separately after the procedure and ownership grant complete successfully:
+
+```sql
+CALL SALES_ANALYTICS_DB.AUTOMATION.REFRESH_GOLD();
+```
+
+---
+
+# 3. Verify Gold inventory
+
+```sql
+SELECT
+    'ALL_STRATEGIES_DETAILS' AS VIEW_NAME,
+    COUNT(*) AS ROW_COUNT
+FROM SALES_ANALYTICS_DB.GOLD.ALL_STRATEGIES_DETAILS
+
+UNION ALL
+
+SELECT
+    'INBOUND_STRATEGIES_BOOKED',
+    COUNT(*)
+FROM SALES_ANALYTICS_DB.GOLD.INBOUND_STRATEGIES_BOOKED
+
+UNION ALL
+
+SELECT
+    'OUTBOUND_STRATEGIES_BOOKED',
+    COUNT(*)
+FROM SALES_ANALYTICS_DB.GOLD.OUTBOUND_STRATEGIES_BOOKED
+
+UNION ALL
+
+SELECT
+    'SALES_DETAILS',
+    COUNT(*)
+FROM SALES_ANALYTICS_DB.GOLD.SALES_DETAILS
+
+UNION ALL
+
+SELECT
+    'OUTBOUND_PROSPECT_DIALS',
+    COUNT(*)
+FROM SALES_ANALYTICS_DB.GOLD.OUTBOUND_PROSPECT_DIALS
+
+ORDER BY VIEW_NAME;
+```
+
+---
+
+# 4. Verify the outbound funnel
+
+```sql
+SELECT
+    (SELECT COUNT(*)
+     FROM SALES_ANALYTICS_DB.GOLD.OUTBOUND_PROSPECT_DIALS)
+        AS TOTAL_OUTBOUND_DIAL_ROWS,
+
+    (SELECT COUNT(*)
+     FROM SALES_ANALYTICS_DB.GOLD.OUTBOUND_STRATEGIES_BOOKED)
+        AS ATTRIBUTED_STRATEGY_CALL_ROWS,
+
+    CASE
+        WHEN
+            (SELECT COUNT(*)
+             FROM SALES_ANALYTICS_DB.GOLD.OUTBOUND_STRATEGIES_BOOKED)
+            <=
+            (SELECT COUNT(*)
+             FROM SALES_ANALYTICS_DB.GOLD.OUTBOUND_PROSPECT_DIALS)
+        THEN 'PASS'
+        ELSE 'FAIL'
+    END AS BOOKED_NOT_GREATER_THAN_DIALS;
+```
+
+---
+
+# 5. Verify the pipeline log
+
+```sql
+SELECT
+    RUN_ID,
+    PIPELINE_NAME,
+    STEP_NAME,
+    STATUS,
+    STARTED_AT,
+    COMPLETED_AT,
+    DURATION_SECONDS,
+    LEADS_ROWS_ADDED AS INBOUND_BOOKED_ROWS,
+    ACTIVITIES_ROWS_ADDED AS ALL_STRATEGY_ROWS,
+    USERS_ROWS_ADDED AS OUTBOUND_BOOKED_ROWS,
+    CUSTOM_ROWS_ADDED AS SALES_ROWS,
+    ERROR_MESSAGE,
+    EXECUTED_BY,
+    WAREHOUSE_NAME
+
+FROM SALES_ANALYTICS_DB.AUTOMATION.PIPELINE_RUN_LOG
+
+WHERE STEP_NAME = 'GOLD_REFRESH'
+
+ORDER BY STARTED_AT DESC;
+```
+
+---
+
+# 6. Expected success conditions
+
+```text
+GOLD_REFRESH status = SUCCESS
+
+ALL_STRATEGIES_DETAILS reconciliation difference = 0
+INBOUND_STRATEGIES_BOOKED reconciliation difference = 0
+SALES_DETAILS reconciliation difference = 0
+OUTBOUND_PROSPECT_DIALS reconciliation difference = 0
+
+Invalid strategy rows = 0
+Invalid inbound rows = 0
+Invalid outbound rows = 0
+Invalid sales rows = 0
+Invalid dial rows = 0
+```
+
+The specific row counts may increase after future incremental loads.
+
+---
+
+# 7. Failure and retry behavior
+
+- The procedure stops when a Gold definition or validation step fails.
+- A failure record is written to `PIPELINE_RUN_LOG`.
+- Since Gold objects are views, rerunning the procedure safely redeploys the approved definitions.
+- Reports must run only after `REFRESH_GOLD()` returns `SUCCESS`.
+
+---
+
+# 8. Performance note
+
+The procedure evaluates several `COUNT(*)` validations and the outbound sequential-attribution view.
+
+On an X-Small warehouse, the first uncached execution may take longer. Later executions can be faster due to compilation and result caching.
+
+The final daily pipeline should call this tested procedure once and should not duplicate the same Gold reconciliation scans elsewhere.
