@@ -29,7 +29,7 @@ ON WAREHOUSE COMPUTE_WH
 TO ROLE ACCOUNTADMIN;
 
 ```
-# Create the automated Silver refresh
+# 2. Create the automated Silver refresh
 
 ```sql
 
@@ -48,9 +48,11 @@ AS
 $$
 DECLARE
     V_RUN_ID STRING DEFAULT UUID_STRING();
-    V_STARTED_AT TIMESTAMP_LTZ DEFAULT CURRENT_TIMESTAMP();
-    V_COMPLETED_AT TIMESTAMP_LTZ;
-    V_DURATION_SECONDS NUMBER(18,3);
+    V_STARTED_AT TIMESTAMP_NTZ
+        DEFAULT CURRENT_TIMESTAMP()::TIMESTAMP_NTZ;
+
+    V_COMPLETED_AT TIMESTAMP_NTZ;
+    V_DURATION_SECONDS NUMBER(18,3) DEFAULT 0;
 
     V_EXECUTED_BY STRING DEFAULT CURRENT_USER();
     V_WAREHOUSE_NAME STRING DEFAULT CURRENT_WAREHOUSE();
@@ -802,6 +804,15 @@ BEGIN
 
       Corrected Bronze path:
           R.JSON_OBJECT:data
+          R.INSERT_DATE
+
+      This rebuild preserves all Gold/report business fields:
+          setter and closer attribution,
+          offer presented,
+          program,
+          contract value,
+          cash collected,
+          objections faced.
     ==============================================================*/
 
     CREATE OR REPLACE TABLE
@@ -827,16 +838,67 @@ BEGIN
     BRONZE_CUSTOM_FIELDS AS
     (
         SELECT
-            ACTIVITY.VALUE:id::STRING AS ACTIVITY_ID,
-            ACTIVITY.VALUE:lead_id::STRING AS LEAD_ID,
+            ACTIVITY.VALUE:id::STRING
+                AS ACTIVITY_ID,
+
+            ACTIVITY.VALUE:lead_id::STRING
+                AS LEAD_ID,
 
             ACTIVITY.VALUE:
-            "custom.cf_h3tYb9J6yPK7J4PMExDGsEqPCf8kBGBrRNIur2Dm5aN"
-            ::STRING AS TRIAGE_CALL_OUTCOME,
+                "custom.cf_h3tYb9J6yPK7J4PMExDGsEqPCf8kBGBrRNIur2Dm5aN"
+                ::STRING
+                AS TRIAGE_CALL_OUTCOME,
 
             ACTIVITY.VALUE:
-            "custom.cf_dhJR4N7Rm6czuJthYGJP6KqUcuOzi7fqApGI7puWnMo"
-            ::STRING AS STRATEGY_CALL_OUTCOME
+                "custom.cf_dhJR4N7Rm6czuJthYGJP6KqUcuOzi7fqApGI7puWnMo"
+                ::STRING
+                AS STRATEGY_CALL_OUTCOME,
+
+            ACTIVITY.VALUE:
+                "custom.cf_LGyzSTMPy37y87rDOUmFXlZA42HPSIpbipeT2OsQNHW"
+                ::STRING
+                AS OFFER_PRESENTED,
+
+            ACTIVITY.VALUE:
+                "custom.cf_mXqKxcmjnlEW223wM4lgb04XyYwDm0GJ9v99xWHPWO2"
+                ::STRING
+                AS PROGRAM,
+
+            ACTIVITY.VALUE:
+                "custom.cf_vIanPjPEit6ssajmWkcprF2V1nO1itfes8hOSnjmhfT"
+                ::STRING
+                AS CONTRACT_VALUE,
+
+            ACTIVITY.VALUE:
+                "custom.cf_eyLbGJm9DYY7cuJk2otnCxhUEzK9ayEARiE81xPG5uY"
+                ::STRING
+                AS CASH_COLLECTED,
+
+            ACTIVITY.VALUE:
+                "custom.cf_aIN5Gtqq33tUCCBxFTW63FY6d3mofnKIfFqfWPkvNla"
+                ::STRING
+                AS OBJECTIONS_FACED,
+
+            ACTIVITY.VALUE:
+                "custom.cf_v385AJ8HSgepKQ3rvqo4yOA3nn49eGqz39DOqojJG5M"
+                ::STRING
+                AS SETTER_USER_ID,
+
+            ACTIVITY.VALUE:
+                "custom.cf_Lv5lSqLOZwLrNhe5M7kWx2mF8Ge2Z23aw5NUNhbXvVS"
+                ::STRING
+                AS CLOSER_USER_ID,
+
+            TRY_TO_TIMESTAMP_NTZ(
+                ACTIVITY.VALUE:activity_at::STRING
+            ) AS SOURCE_ACTIVITY_AT,
+
+            TRY_TO_TIMESTAMP_NTZ(
+                ACTIVITY.VALUE:date_updated::STRING
+            ) AS SOURCE_DATE_UPDATED,
+
+            R.INSERT_DATE
+                AS SOURCE_INSERT_DATE
 
         FROM SALES_ANALYTICS_DB.BRONZE.LEAD_ACTIVITIES_RAW R,
 
@@ -845,6 +907,9 @@ BEGIN
             INPUT => R.JSON_OBJECT:data
         ) ACTIVITY
 
+        WHERE ACTIVITY.VALUE:id IS NOT NULL
+          AND ACTIVITY.VALUE:lead_id IS NOT NULL
+
         QUALIFY ROW_NUMBER() OVER
         (
             PARTITION BY
@@ -852,15 +917,9 @@ BEGIN
                 ACTIVITY.VALUE:id::STRING
 
             ORDER BY
-                TRY_TO_TIMESTAMP_NTZ(
-                    ACTIVITY.VALUE:activity_at::STRING
-                ) DESC NULLS LAST,
-
-                TRY_TO_TIMESTAMP_NTZ(
-                    ACTIVITY.VALUE:date_updated::STRING
-                ) DESC NULLS LAST,
-
-                R.INSERT_DATE DESC NULLS LAST
+                SOURCE_ACTIVITY_AT DESC NULLS LAST,
+                SOURCE_DATE_UPDATED DESC NULLS LAST,
+                SOURCE_INSERT_DATE DESC NULLS LAST
         ) = 1
     )
 
@@ -884,12 +943,16 @@ BEGIN
         LAP.DATE_UPDATED,
         LAP.CREATED_BY_USER,
         LAP.UPDATED_BY_USER,
+
         LAP.INSERT_DATE,
-        CURRENT_TIMESTAMP()::TIMESTAMP_NTZ AS UPDATE_DATE,
+
+        CURRENT_TIMESTAMP()::TIMESTAMP_NTZ
+            AS UPDATE_DATE,
 
         CAD.WRAPPED_ACTIVITIES,
 
-        CA.CUSTOM_ACTIVITY_NAME AS CUSTOM_ACTIVITY,
+        CA.CUSTOM_ACTIVITY_NAME
+            AS CUSTOM_ACTIVITY,
 
         CASE
             WHEN CA.CUSTOM_ACTIVITY_NAME = '3) Triage Call'
@@ -913,13 +976,49 @@ BEGIN
 
         NULLIF(
             TRIM(
-                COALESCE(CU.FIRST_NAME, '') || ' ' ||
-                COALESCE(CU.LAST_NAME, '')
+                COALESCE(CU.FIRST_NAME, '')
+                || ' '
+                || COALESCE(CU.LAST_NAME, '')
             ),
             ''
         ) AS DEA_INTERNAL_NAME,
 
-        CU.EMAIL AS DEA_INTERNAL_EMAIL
+        CU.EMAIL
+            AS DEA_INTERNAL_EMAIL,
+
+        BCF.SETTER_USER_ID,
+
+        SU.EMAIL
+            AS SETTER_EMAIL,
+
+        NULLIF(
+            TRIM(
+                COALESCE(SU.FIRST_NAME, '')
+                || ' '
+                || COALESCE(SU.LAST_NAME, '')
+            ),
+            ''
+        ) AS SETTER_NAME,
+
+        BCF.CLOSER_USER_ID,
+
+        CLU.EMAIL
+            AS CLOSER_EMAIL,
+
+        NULLIF(
+            TRIM(
+                COALESCE(CLU.FIRST_NAME, '')
+                || ' '
+                || COALESCE(CLU.LAST_NAME, '')
+            ),
+            ''
+        ) AS CLOSER_NAME,
+
+        BCF.OFFER_PRESENTED,
+        BCF.PROGRAM,
+        BCF.CONTRACT_VALUE,
+        BCF.CASH_COLLECTED,
+        BCF.OBJECTIONS_FACED
 
     FROM SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_PROCESSED LAP
 
@@ -928,15 +1027,23 @@ BEGIN
        AND LAP.ACTIVITY_ID = CAD.ACTIVITY_ID
 
     LEFT JOIN BRONZE_CUSTOM_FIELDS BCF
-        ON LAP.ACTIVITY_ID = BCF.ACTIVITY_ID
-       AND LAP.LEAD_ID = BCF.LEAD_ID
+        ON LAP.LEAD_ID = BCF.LEAD_ID
+       AND LAP.ACTIVITY_ID = BCF.ACTIVITY_ID
 
     LEFT JOIN SALES_ANALYTICS_DB.SILVER.CUSTOM_ACTIVITIES CA
         ON LAP.CUSTOM_ACTIVITY_ID = CA.CUSTOM_ACTIVITY_ID
 
     LEFT JOIN
         SALES_ANALYTICS_DB.SILVER.CLOSE_CRM_USERS_PROCESSED CU
-        ON LAP.USER_ID = CU.USER_ID;
+        ON LAP.USER_ID = CU.USER_ID
+
+    LEFT JOIN
+        SALES_ANALYTICS_DB.SILVER.CLOSE_CRM_USERS_PROCESSED SU
+        ON BCF.SETTER_USER_ID = SU.USER_ID
+
+    LEFT JOIN
+        SALES_ANALYTICS_DB.SILVER.CLOSE_CRM_USERS_PROCESSED CLU
+        ON BCF.CLOSER_USER_ID = CLU.USER_ID;
 
 
     /*==============================================================
@@ -967,6 +1074,45 @@ BEGIN
     SELECT COUNT(*)
     INTO :V_SUMMARY_COUNT
     FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY;
+
+
+    /*==============================================================
+      11A. REQUIRED BUSINESS-FIELD STRUCTURE CHECK
+
+      The table must expose all columns required by Gold and reports.
+    ==============================================================*/
+
+    IF
+    (
+        (
+            SELECT COUNT(*)
+            FROM SALES_ANALYTICS_DB.INFORMATION_SCHEMA.COLUMNS
+            WHERE TABLE_SCHEMA = 'SILVER'
+              AND TABLE_NAME = 'LEADS_ACTIVITIES_SUMMARY'
+              AND COLUMN_NAME IN
+              (
+                  'SETTER_USER_ID',
+                  'SETTER_EMAIL',
+                  'SETTER_NAME',
+                  'CLOSER_USER_ID',
+                  'CLOSER_EMAIL',
+                  'CLOSER_NAME',
+                  'OFFER_PRESENTED',
+                  'PROGRAM',
+                  'CONTRACT_VALUE',
+                  'CASH_COLLECTED',
+                  'OBJECTIONS_FACED'
+              )
+        ) <> 11
+    )
+    THEN
+
+        V_ERROR_MESSAGE :=
+            'Silver validation failed. Required Gold/report business columns are missing from LEADS_ACTIVITIES_SUMMARY.';
+
+        RAISE E_SILVER_VALIDATION_FAILED;
+
+    END IF;
 
 
     /*==============================================================
@@ -1059,7 +1205,8 @@ BEGIN
       13. LOG SUCCESS
     ==============================================================*/
 
-    V_COMPLETED_AT := CURRENT_TIMESTAMP();
+    V_COMPLETED_AT :=
+        CURRENT_TIMESTAMP()::TIMESTAMP_NTZ;
 
     V_DURATION_SECONDS :=
         ABS(
@@ -1143,7 +1290,8 @@ EXCEPTION
         V_ERROR_MESSAGE :=
             COALESCE(V_ERROR_MESSAGE, SQLERRM);
 
-        V_COMPLETED_AT := CURRENT_TIMESTAMP();
+        V_COMPLETED_AT :=
+        CURRENT_TIMESTAMP()::TIMESTAMP_NTZ;
 
         V_DURATION_SECONDS :=
             ABS(
@@ -1199,7 +1347,7 @@ $$;
 ```
 
 
-# Confirm procedure ownership
+# 3. Confirm procedure ownership
 
 ```sql
 
@@ -1210,10 +1358,114 @@ COPY CURRENT GRANTS;
 
 ```
 
-# Run the automated Silver refresh
+# 4. Run the automated Silver refresh
 
 ```sql
 
 CALL SALES_ANALYTICS_DB.AUTOMATION.REFRESH_SILVER();
 
 ```
+
+# 5. Verify the Silver refresh
+
+```sql
+SELECT
+    'CLOSE_CRM_USERS_PROCESSED' AS OBJECT_NAME,
+    COUNT(*) AS ROW_COUNT
+FROM SALES_ANALYTICS_DB.SILVER.CLOSE_CRM_USERS_PROCESSED
+
+UNION ALL
+
+SELECT
+    'LEAD_ACTIVITIES_PROCESSED',
+    COUNT(*)
+FROM SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_PROCESSED
+
+UNION ALL
+
+SELECT
+    'LEAD_ACTIVITIES_EMAIL',
+    COUNT(*)
+FROM SALES_ANALYTICS_DB.SILVER.LEAD_ACTIVITIES_EMAIL
+
+UNION ALL
+
+SELECT
+    'CUSTOM_ACTIVITIES',
+    COUNT(*)
+FROM SALES_ANALYTICS_DB.SILVER.CUSTOM_ACTIVITIES
+
+UNION ALL
+
+SELECT
+    'CUSTOM_ACTIVITIES_ALL_LEADS_DETAILS',
+    COUNT(*)
+FROM SALES_ANALYTICS_DB.SILVER.CUSTOM_ACTIVITIES_ALL_LEADS_DETAILS
+
+UNION ALL
+
+SELECT
+    'LEADS_ACTIVITIES_SUMMARY',
+    COUNT(*)
+FROM SALES_ANALYTICS_DB.SILVER.LEADS_ACTIVITIES_SUMMARY
+
+ORDER BY OBJECT_NAME;
+```
+
+Check the latest log:
+
+```sql
+SELECT
+    RUN_ID,
+    STEP_NAME,
+    STATUS,
+    STARTED_AT,
+    COMPLETED_AT,
+    DURATION_SECONDS,
+    ACTIVITIES_ROWS_ADDED,
+    USERS_ROWS_ADDED,
+    CUSTOM_ROWS_ADDED,
+    ERROR_MESSAGE
+FROM SALES_ANALYTICS_DB.AUTOMATION.PIPELINE_RUN_LOG
+WHERE STEP_NAME = 'SILVER_REFRESH'
+ORDER BY STARTED_AT DESC;
+```
+
+# 6. Processing behavior
+
+```text
+Bronze ingestion:
+File-incremental through COPY history
+
+Silver transformation:
+Full-history transient rebuild
+        ↓
+Latest-record deduplication
+        ↓
+MD5-based MERGE into persistent tables
+        ↓
+Idempotent derived-table rebuild
+        ↓
+Final summary rebuild with full business fields
+```
+
+This design is intentional because each source refresh contains historical activities with new events appended.
+
+# 7. Failure and retry behavior
+
+- The procedure stops when a SQL statement or quality gate fails.
+- A failure record is written to `PIPELINE_RUN_LOG`.
+- Persistent Silver tables use idempotent `MERGE` logic.
+- Derived tables are rebuilt with `CREATE OR REPLACE`.
+- Rerunning the procedure is safe after the underlying issue is corrected.
+- Gold must run only after `REFRESH_SILVER()` returns `SUCCESS`.
+
+# 8. Production rules
+
+1. Do not remove the setter, closer, offer, revenue, or objection fields from `LEADS_ACTIVITIES_SUMMARY`.
+2. Keep lead-activity deduplication on `LEAD_ID + ACTIVITY_ID`.
+3. Keep the latest record by `ACTIVITY_AT`, then `DATE_UPDATED`, then `INSERT_DATE`.
+4. Keep persistent tables on MD5-based `MERGE`.
+5. Keep derived detail and summary tables idempotent.
+6. Do not run Gold after a failed Silver refresh.
+
