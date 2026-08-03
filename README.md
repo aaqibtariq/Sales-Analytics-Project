@@ -380,7 +380,15 @@ The scheduled execution order is:
 
 The project requirement specifies scheduled daily execution and a seven-day production simulation.
 
-- [Load the new S3 files into Snowflake Bronze](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/Load%20the%20new%20S3%20files%20into%20Snowflake%20Bronze.md)
+| Automation | Documentation |
+|------------|---------------|
+| Load New S3 Files into Bronze | [Open](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/Load%20the%20new%20S3%20files%20into%20Snowflake%20Bronze.md) |
+| Bronze Automation | [Open](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/Bronze%20automation.md) |
+| Silver Automation | [Open](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/Silver%20automation.md) |
+| Gold Automation | [Open](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/Gold%20automation.md) |
+| Reports Automation | [Open](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/Reports%20automation.md) |
+| Daily Pipeline Automation | [Open](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/daily%20pipeline%20automation.md) |
+
 
 ## **14. Results**
 
