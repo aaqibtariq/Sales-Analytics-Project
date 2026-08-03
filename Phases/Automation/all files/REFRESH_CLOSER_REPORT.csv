@@ -1,0 +1,17 @@
+REFRESH_CLOSER_REPORT
+"{
+  ""invalid_negative_rows"": 0,
+  ""offer_rate"": 79.31,
+  ""offer_to_sale_rate"": 19.52,
+  ""offers_presented"": 1388,
+  ""report"": ""CLOSER_REPORT"",
+  ""row_count"": 503,
+  ""sale_rate"": 15.49,
+  ""show_rate"": 29.76,
+  ""status"": ""SUCCESS"",
+  ""strategy_call_taken"": 1750,
+  ""strategy_calls"": 5880,
+  ""total_cash_collected"": 1057779.7,
+  ""total_contract_value"": 2264991,
+  ""total_sales"": 271
+}"

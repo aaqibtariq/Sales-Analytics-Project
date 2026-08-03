@@ -1,0 +1,16 @@
+REFRESH_OUTBOUND_REPORT
+"{
+  ""dial_to_set_rate"": 22.47,
+  ""outbound_set"": 3568,
+  ""report"": ""OUTBOUND_SETTER_REPORT"",
+  ""row_count"": 520,
+  ""set_to_show_rate"": 22.51,
+  ""show_to_sale_rate"": 17.81,
+  ""status"": ""SUCCESS"",
+  ""total_closer_show"": 803,
+  ""total_leads_touched"": 15653,
+  ""total_offer"": 677,
+  ""total_outbound_calls"": 15880,
+  ""total_revenue"": 1303495,
+  ""total_sale"": 143
+}"

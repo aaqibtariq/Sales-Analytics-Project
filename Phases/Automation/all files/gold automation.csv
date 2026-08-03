@@ -1,0 +1,21 @@
+REFRESH_GOLD
+"{
+  ""all_strategies_details_rows"": 6949,
+  ""all_strategies_reconciliation_difference"": 0,
+  ""duration_seconds"": 6.385,
+  ""inbound_reconciliation_difference"": 0,
+  ""inbound_strategies_booked_rows"": 977,
+  ""invalid_dial_rows"": 0,
+  ""invalid_inbound_rows"": 0,
+  ""invalid_outbound_rows"": 0,
+  ""invalid_sales_rows"": 0,
+  ""invalid_strategy_rows"": 0,
+  ""outbound_dials_reconciliation_difference"": 0,
+  ""outbound_prospect_dials_rows"": 15899,
+  ""outbound_strategies_booked_rows"": 3568,
+  ""run_id"": ""94eb5ca9-f2bd-4651-97eb-f57d309301d5"",
+  ""sales_details_rows"": 375,
+  ""sales_reconciliation_difference"": 0,
+  ""status"": ""SUCCESS"",
+  ""step"": ""GOLD_REFRESH""
+}"

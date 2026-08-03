@@ -1,0 +1,17 @@
+REFRESH_INBOUND_REPORT
+"{
+  ""inbound_booked"": 5344,
+  ""inbound_show_rate"": 31.77,
+  ""inbound_taken"": 1698,
+  ""offer_rate"": 94.71,
+  ""offers_presented"": 680,
+  ""report"": ""INBOUND_SETTER_REPORT"",
+  ""row_count"": 730,
+  ""sale_rate"": 20.89,
+  ""status"": ""SUCCESS"",
+  ""strategy_call_booked"": 977,
+  ""strategy_call_taken"": 718,
+  ""strategy_show_rate"": 73.49,
+  ""total_sales"": 150,
+  ""triage_set_rate"": 57.54
+}"

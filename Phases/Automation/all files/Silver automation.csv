@@ -1,0 +1,21 @@
+REFRESH_SILVER
+"{
+  ""activities_after"": 1462691,
+  ""activities_before"": 1172793,
+  ""crm_users_after"": 100,
+  ""crm_users_before"": 100,
+  ""custom_activity_details"": 47501,
+  ""custom_activity_mappings"": 28,
+  ""duplicate_activities"": 0,
+  ""duplicate_emails"": 0,
+  ""duplicate_summary_rows"": 0,
+  ""duplicate_users"": 0,
+  ""duration_seconds"": 25109.96,
+  ""email_after"": 248023,
+  ""email_before"": 193975,
+  ""null_activity_keys"": 0,
+  ""run_id"": ""8ced05f9-36c5-4cd2-9a31-92129273c379"",
+  ""status"": ""SUCCESS"",
+  ""step"": ""SILVER_REFRESH"",
+  ""summary_rows"": 1462691
+}"

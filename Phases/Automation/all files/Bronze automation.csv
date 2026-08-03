@@ -1,0 +1,16 @@
+LOAD_BRONZE_INCREMENTAL
+"{
+  ""completed_at"": ""2026-07-31 09:05:42.680 -0700"",
+  ""crm_users_rows_added"": 0,
+  ""custom_activities_rows_added"": 0,
+  ""duration_seconds"": -25185.224,
+  ""lead_activities_rows_added"": 0,
+  ""leads_rows_added"": 0,
+  ""non_object_json_rows"": 0,
+  ""null_insert_date_rows"": 0,
+  ""null_json_rows"": 0,
+  ""run_id"": ""3bf571e8-eca1-4c47-9212-e7444624eacc"",
+  ""started_at"": ""2026-07-31 16:05:27.904 -0700"",
+  ""status"": ""SUCCESS"",
+  ""step"": ""BRONZE_INCREMENTAL_LOAD""
+}"

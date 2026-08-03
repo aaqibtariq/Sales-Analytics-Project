@@ -1,0 +1,20 @@
+REFRESH_OBJECTIONS_REPORT
+"{
+  ""fear_count"": 95,
+  ""hung_up_count"": 11,
+  ""invalid_count_rows"": 0,
+  ""logistical_count"": 218,
+  ""money_count"": 955,
+  ""no_objection_count"": 349,
+  ""not_looking_count"": 83,
+  ""other_coaches_count"": 23,
+  ""partner_count"": 200,
+  ""report"": ""OBJECTIONS_FACED_REPORT"",
+  ""row_count"": 503,
+  ""status"": ""SUCCESS"",
+  ""think_about_it_count"": 398,
+  ""time_count"": 189,
+  ""total_calls"": 5871,
+  ""trust_count"": 167,
+  ""value_count"": 125
+}"
