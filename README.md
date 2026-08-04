@@ -380,15 +380,7 @@ The scheduled execution order is:
 
 The project requirement specifies scheduled daily execution and a seven-day production simulation.
 
-| Automation | Documentation |
-|------------|---------------|
-| PostgreSQL to Amazon S3 (AWS Glue Python Shell) | [Open](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/postgres-to-s3-sales-analytics.py) |
-| Load New S3 Files into Bronze | [Open](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/Load%20the%20new%20S3%20files%20into%20Snowflake%20Bronze.md) |
-| Bronze Automation | [Open](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/Bronze%20automation.md) |
-| Silver Automation | [Open](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/Silver%20automation.md) |
-| Gold Automation | [Open](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/Gold%20automation.md) |
-| Reports Automation | [Open](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/Reports%20automation.md) |
-| Daily Pipeline Automation | [Open](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/daily%20pipeline%20automation.md) |
+[Automation Documentation](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Automation/README.md)
 
 ## **14. Results**
 
