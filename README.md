@@ -402,5 +402,5 @@ The Sales Analytics platform successfully transformed raw CRM data into a centra
 - Eliminated manual reporting by automating daily data processing and KPI generation.
 - Created a scalable architecture that can support additional dashboards, reporting requirements, and future analytics use cases with minimal changes.
 
-- [Results Documentation](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Results/readme.md)
-  - [Results](https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/Results)
+- [Results Documentation](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Result/readme.md)
+  - [Results](https://github.com/aaqibtariq/Sales-Analytics-Project/tree/main/Phases/Result)
