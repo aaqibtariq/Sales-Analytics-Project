@@ -1,0 +1,29 @@
+CLOSER_NAME,CLOSER_EMAIL,TOTAL_CALLS,MONEY_COUNT,FEAR_COUNT,HUNG_UP_COUNT,LOGISTICAL_COUNT,NO_OBJ_COUNT,OTHER_COACHES_COUNT,PARTNER_COUNT,THINK_ABT_IT_COUNT,TIME_COUNT,TRUST_COUNT,VALUE_COUNT,NOT_LOOKING_COUNT,MONEY_PCT,FEAR_PCT,HUNG UP_PCT,LOGISTICAL_PCT,NO OBJECTION_PCT,OTHER COACHES_PCT,PARTNER_PCT,THINK ABOUT IT_PCT,TIME_PCT,TRUST_PCT,VALUE_PCT,NOT LOOKING_PCT
+Afnan Saeed,afnan@dataengineeracademy.com,13,3,1,0,1,1,0,0,0,2,1,0,1,23.08,7.69,0.0,7.69,7.69,0.0,0.0,0.0,15.38,7.69,0.0,7.69
+Aly Samaha,aly@dataengineeracademy.com,10,5,0,0,2,0,0,2,2,1,0,0,1,50.0,0.0,0.0,20.0,0.0,0.0,20.0,20.0,10.0,0.0,0.0,10.0
+Bret Mavrich,bret@dataengineeracademy.com,56,10,1,0,6,12,0,1,2,3,2,1,1,17.86,1.79,0.0,10.71,21.43,0.0,1.79,3.57,5.36,3.57,1.79,1.79
+Bron Novak,bron@dataengineeracademy.com,24,2,0,0,5,5,0,1,12,0,0,0,0,8.33,0.0,0.0,20.83,20.83,0.0,4.17,50.0,0.0,0.0,0.0,0.0
+Christopher Garzon,chris@dataengineeracademy.com,102,47,7,2,18,6,0,10,10,8,13,15,5,46.08,6.86,1.96,17.65,5.88,0.0,9.8,9.8,7.84,12.75,14.71,4.9
+Cristian Mamota,cristian@dataengineeracademy.com,4,1,0,0,0,0,0,0,0,0,0,0,0,25.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Darrell Holliday,darrell@dataengineeracademy.com,2,1,0,0,0,0,0,0,0,0,1,0,0,50.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,50.0,0.0,0.0
+Diana Kazumyan,diana@dataengineeracademy.com,36,8,0,1,1,2,0,2,5,2,1,0,0,22.22,0.0,2.78,2.78,5.56,0.0,5.56,13.89,5.56,2.78,0.0,0.0
+Frances Cruz,frances@dataengineeracademy.com,1,1,0,0,0,0,0,1,1,0,0,0,0,100.0,0.0,0.0,0.0,0.0,0.0,100.0,100.0,0.0,0.0,0.0,0.0
+Imran Ahmed,imran@dataengineeracademy.com,7,4,0,0,1,0,0,0,2,0,0,0,0,57.14,0.0,0.0,14.29,0.0,0.0,0.0,28.57,0.0,0.0,0.0,0.0
+Irtaza Hussain,irtaza@dataengineeracademy.com,246,89,4,0,13,23,0,18,32,14,15,9,6,36.18,1.63,0.0,5.28,9.35,0.0,7.32,13.01,5.69,6.1,3.66,2.44
+Jordon Eggleston,jordon@dataengineeracademy.com,292,85,8,0,1,25,0,22,38,15,13,6,2,29.11,2.74,0.0,0.34,8.56,0.0,7.53,13.01,5.14,4.45,2.05,0.68
+Kaisher von Wahl,kaisher@dataengineeracademy.com,16,6,0,0,9,0,1,2,4,2,0,0,1,37.5,0.0,0.0,56.25,0.0,6.25,12.5,25.0,12.5,0.0,0.0,6.25
+Lucija Bitunjac,lucija@dataengineeracademy.com,36,15,1,1,1,5,0,2,5,4,0,1,2,41.67,2.78,2.78,2.78,13.89,0.0,5.56,13.89,11.11,0.0,2.78,5.56
+Mahmoud Toblany,mahmoud@dataengineeracademy.com,290,90,8,0,8,18,1,8,77,11,14,26,3,31.03,2.76,0.0,2.76,6.21,0.34,2.76,26.55,3.79,4.83,8.97,1.03
+Mike Paz,mike@dataengineeracademy.com,2,0,0,0,1,0,0,0,1,0,0,0,0,0.0,0.0,0.0,50.0,0.0,0.0,0.0,50.0,0.0,0.0,0.0,0.0
+Milada Ivanovic,milada@dataengineeracademy.com,2,0,0,0,0,1,0,0,0,0,0,0,0,0.0,0.0,0.0,0.0,50.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Nathan Spears,nathan@dataengineeracademy.com,2,0,1,0,0,0,0,0,0,0,0,0,0,0.0,50.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Ninad Magdum,ninad@dataengineeracademy.com,4,0,0,0,0,2,0,0,0,0,1,0,0,0.0,0.0,0.0,0.0,50.0,0.0,0.0,0.0,0.0,25.0,0.0,0.0
+Nur Hashmi,nur@dataengineeracademy.com,2,1,0,0,0,1,0,0,0,0,0,0,0,50.0,0.0,0.0,0.0,50.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Olivier Auguste,olivier@dataengineeracademy.com,200,63,12,0,10,11,2,21,14,8,19,9,8,31.5,6.0,0.0,5.0,5.5,1.0,10.5,7.0,4.0,9.5,4.5,4.0
+Om Gaikhe,om@dataengineeracademy.com,12,0,1,0,2,3,0,0,0,2,0,0,0,0.0,8.33,0.0,16.67,25.0,0.0,0.0,0.0,16.67,0.0,0.0,0.0
+Osaki Pokima,osaki@dataengineeracademy.com,7,1,0,0,2,1,0,0,0,2,1,0,0,14.29,0.0,0.0,28.57,14.29,0.0,0.0,0.0,28.57,14.29,0.0,0.0
+Peter Kovac,peter@dataengineeracademy.com,143,39,1,2,4,12,2,9,13,7,6,2,4,27.27,0.7,1.4,2.8,8.39,1.4,6.29,9.09,4.9,4.2,1.4,2.8
+Pooja Jain,pooja_jain@dataengineeracademy.com,1,0,0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Rachel Droege,rachel@dataengineeracademy.com,5,3,0,0,0,0,0,0,0,1,0,0,0,60.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,20.0,0.0,0.0,0.0
+Ryan Rivera,ryan@dataengineeracademy.com,2,0,0,0,0,1,0,0,0,0,0,0,0,0.0,0.0,0.0,0.0,50.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+UNMAPPED CLOSER,,4390,504,52,7,140,222,17,104,187,111,85,58,55,11.48,1.18,0.16,3.19,5.06,0.39,2.37,4.26,2.53,1.94,1.32,1.25

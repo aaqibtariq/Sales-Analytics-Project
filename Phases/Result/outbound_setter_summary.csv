@@ -1,0 +1,16 @@
+SETTER,SETTER_EMAIL,OUTBOUND_DIALS,TOTAL_LEADS_TOUCHED,OUTBOUND_TAKEN,STRATEGY_CALL_BOOKED,STRATEGY_CALL_TAKEN,OFFERS_PRESENTED,TOTAL_SALES,TOTAL_CONTRACT_VALUE,TOTAL_CASH_COLLECTED,CONNECT_RATE,SET_RATE,OFFER_RATE,SALE_RATE,AVERAGE_ORDER_VALUE
+Alejandro Sanchez,alejandro@dataengineeracademy.com,32,31,8,14,2,2,0,0.0,0.0,25.0,175.0,100.0,0.0,0.0
+Bret Mavrich,bret@dataengineeracademy.com,54,54,13,23,2,1,2,12000.0,11700.0,24.07,176.92,50.0,100.0,6000.0
+Bron Novak,bron@dataengineeracademy.com,213,210,33,59,18,16,2,33000.0,20000.0,15.49,178.79,88.89,11.11,16500.0
+Christopher Garzon,chris@dataengineeracademy.com,1,1,0,0,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Irtaza Hussain,irtaza@dataengineeracademy.com,1,1,1,1,0,0,0,0.0,0.0,100.0,100.0,0.0,0.0,0.0
+Jordon Eggleston,jordon@dataengineeracademy.com,3,3,0,0,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Kaisher von Wahl,kaisher@dataengineeracademy.com,806,789,124,179,57,50,7,102998.0,31780.0,15.38,144.35,87.72,12.28,14714.0
+Lucija Bitunjac,lucija@dataengineeracademy.com,84,83,15,19,11,10,2,20000.0,20000.0,17.86,126.67,90.91,18.18,10000.0
+Mahmoud Toblany,mahmoud@dataengineeracademy.com,5,5,2,2,0,0,0,0.0,0.0,40.0,100.0,0.0,0.0,0.0
+Michael Mkrtichyan,michael@dataengineeracademy.com,114,114,16,20,2,1,1,0.0,0.0,14.04,125.0,50.0,50.0,0.0
+Miguel Romero,miguelromero@dataengineeracademy.com,56,56,12,19,8,7,0,0.0,0.0,21.43,158.33,87.5,0.0,0.0
+Mike Paz,mike@dataengineeracademy.com,121,121,18,21,0,0,1,0.0,0.0,14.88,116.67,0.0,0.0,0.0
+Olivier Auguste,olivier@dataengineeracademy.com,16,16,10,11,1,1,1,0.0,0.0,62.5,110.0,100.0,100.0,0.0
+Peter Kovac,peter@dataengineeracademy.com,6,6,5,5,2,2,0,0.0,0.0,83.33,100.0,100.0,0.0,0.0
+UNMAPPED SETTER,,14510,14304,2495,3223,714,598,127,1135497.0,468200.0,17.2,129.18,83.75,17.79,8940.92
