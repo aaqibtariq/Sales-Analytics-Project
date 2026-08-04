@@ -1,20 +1,25 @@
-
 # Dashboard Results
 
 ## Executive Overview
-[Executive Overview Dashboard](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Result/Executive%20overview.png)
 
-## Inbound Setter Dashboard
-[Inbound Setter Dashboard](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Result/inbound%20setter.png)
+![Executive Overview](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Result/Executive%20overview.png?raw=true)
 
-## Outbound Setter Dashboard
-[Outbound Setter Dashboard](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Result/outbound%20setter.png)
+## Inbound Setter
 
-## Closer Performance Dashboard
-[Closer Performance Dashboard](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Result/closer%20performance.png)
+![Inbound Setter](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Result/inbound%20setter.png?raw=true)
 
-## Objections Faced Dashboard
-[Objections Faced Dashboard](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Result/objection%20faced.png)
+## Outbound Setter
 
-## Data Quality Dashboard
-[Data Quality Dashboard](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Result/data%20quality%20.png)
+![Outbound Setter](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Result/outbound%20setter.png?raw=true)
+
+## Closer Performance
+
+![Closer Performance](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Result/closer%20performance.png?raw=true)
+
+## Objections Faced
+
+![Objections Faced](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Result/objection%20faced.png?raw=true)
+
+## Data Quality
+
+![Data Quality](https://github.com/aaqibtariq/Sales-Analytics-Project/blob/main/Phases/Result/data%20quality%20.png?raw=true)
