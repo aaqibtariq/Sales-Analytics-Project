@@ -1,0 +1,526 @@
+OUTBOUND_DATE,REPORTING_WEEK,SETTER,SETTER_EMAIL,OUTBOUND_DIALS,TOTAL_LEADS_TOUCHED,OUTBOUND_TAKEN,CONNECT_RATE,STRATEGY_CALL_BOOKED,SET_RATE,STRATEGY_CALL_TAKEN,OFFERS_PRESENTED,OFFER_RATE,TOTAL_SALES,SALE_RATE,AVERAGE_ORDER_VALUE,TOTAL_CONTRACT_VALUE,TOTAL_CASH_COLLECTED
+2026-07-31,2026-31,Kaisher von Wahl,kaisher@dataengineeracademy.com,6,6,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-31,2026-31,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-31,2026-31,UNMAPPED SETTER,,21,21,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-30,2026-31,Alejandro Sanchez,alejandro@dataengineeracademy.com,4,4,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-30,2026-31,Bron Novak,bron@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-30,2026-31,Kaisher von Wahl,kaisher@dataengineeracademy.com,11,11,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-30,2026-31,UNMAPPED SETTER,,116,115,2,1.72,2,1.72,2,1,50.00,0,0.00,,0.00,0.00
+2026-07-29,2026-31,Alejandro Sanchez,alejandro@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-29,2026-31,Bron Novak,bron@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-29,2026-31,Kaisher von Wahl,kaisher@dataengineeracademy.com,27,27,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-29,2026-31,Michael Mkrtichyan,michael@dataengineeracademy.com,5,5,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-29,2026-31,Miguel Romero,miguelromero@dataengineeracademy.com,5,5,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-29,2026-31,UNMAPPED SETTER,,140,139,6,4.29,6,4.29,3,2,66.67,0,0.00,,0.00,0.00
+2026-07-28,2026-31,Alejandro Sanchez,alejandro@dataengineeracademy.com,6,6,1,16.67,1,16.67,0,0,,0,,,0.00,0.00
+2026-07-28,2026-31,Bron Novak,bron@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-28,2026-31,Kaisher von Wahl,kaisher@dataengineeracademy.com,14,13,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-28,2026-31,Michael Mkrtichyan,michael@dataengineeracademy.com,4,4,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-28,2026-31,Miguel Romero,miguelromero@dataengineeracademy.com,2,2,1,50.00,2,100.00,2,2,100.00,0,0.00,,0.00,0.00
+2026-07-28,2026-31,UNMAPPED SETTER,,108,104,24,22.22,26,24.07,14,13,92.86,1,7.14,23000.00,23000.00,1000.00
+2026-07-27,2026-31,Alejandro Sanchez,alejandro@dataengineeracademy.com,3,3,3,100.00,3,100.00,2,2,100.00,0,0.00,,0.00,0.00
+2026-07-27,2026-31,Bron Novak,bron@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-27,2026-31,Kaisher von Wahl,kaisher@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-27,2026-31,Michael Mkrtichyan,michael@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-27,2026-31,Miguel Romero,miguelromero@dataengineeracademy.com,6,6,1,16.67,1,16.67,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-27,2026-31,UNMAPPED SETTER,,148,145,30,20.27,31,20.95,18,16,88.89,1,5.56,,0.00,0.00
+2026-07-26,2026-30,Kaisher von Wahl,kaisher@dataengineeracademy.com,7,6,1,14.29,1,14.29,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-26,2026-30,UNMAPPED SETTER,,21,21,6,28.57,6,28.57,4,4,100.00,0,0.00,,0.00,0.00
+2026-07-25,2026-30,Kaisher von Wahl,kaisher@dataengineeracademy.com,7,7,3,42.86,3,42.86,2,2,100.00,0,0.00,,0.00,0.00
+2026-07-25,2026-30,UNMAPPED SETTER,,62,61,13,20.97,14,22.58,13,13,100.00,0,0.00,,0.00,0.00
+2026-07-24,2026-30,Bron Novak,bron@dataengineeracademy.com,2,2,1,50.00,1,50.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-24,2026-30,Kaisher von Wahl,kaisher@dataengineeracademy.com,12,12,2,16.67,2,16.67,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-24,2026-30,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-24,2026-30,Peter Kovac,peter@dataengineeracademy.com,2,2,1,50.00,1,50.00,0,0,,0,,,0.00,0.00
+2026-07-24,2026-30,UNMAPPED SETTER,,99,97,20,20.20,23,23.23,14,13,92.86,1,7.14,20000.00,20000.00,14980.00
+2026-07-23,2026-30,Bron Novak,bron@dataengineeracademy.com,3,3,1,33.33,1,33.33,0,0,,0,,,0.00,0.00
+2026-07-23,2026-30,Kaisher von Wahl,kaisher@dataengineeracademy.com,7,7,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-23,2026-30,Michael Mkrtichyan,michael@dataengineeracademy.com,9,9,2,22.22,2,22.22,1,0,0.00,0,0.00,,0.00,0.00
+2026-07-23,2026-30,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-23,2026-30,UNMAPPED SETTER,,80,79,16,20.00,16,20.00,9,8,88.89,1,11.11,12000.00,12000.00,9600.00
+2026-07-22,2026-30,Bron Novak,bron@dataengineeracademy.com,3,3,2,66.67,2,66.67,2,2,100.00,0,0.00,,0.00,0.00
+2026-07-22,2026-30,Kaisher von Wahl,kaisher@dataengineeracademy.com,19,18,3,15.79,3,15.79,2,2,100.00,0,0.00,,0.00,0.00
+2026-07-22,2026-30,Michael Mkrtichyan,michael@dataengineeracademy.com,5,5,1,20.00,1,20.00,0,0,,0,,,0.00,0.00
+2026-07-22,2026-30,Miguel Romero,miguelromero@dataengineeracademy.com,4,4,1,25.00,1,25.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-22,2026-30,UNMAPPED SETTER,,128,126,20,15.63,21,16.41,12,8,66.67,2,16.67,12000.00,12000.00,5000.00
+2026-07-21,2026-30,Bron Novak,bron@dataengineeracademy.com,6,6,1,16.67,1,16.67,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-21,2026-30,Kaisher von Wahl,kaisher@dataengineeracademy.com,12,11,1,8.33,1,8.33,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-21,2026-30,Michael Mkrtichyan,michael@dataengineeracademy.com,9,9,1,11.11,1,11.11,0,0,,0,,,0.00,0.00
+2026-07-21,2026-30,Miguel Romero,miguelromero@dataengineeracademy.com,5,5,2,40.00,2,40.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-21,2026-30,UNMAPPED SETTER,,130,125,25,19.23,27,20.77,17,16,94.12,1,5.88,15000.00,15000.00,200.00
+2026-07-20,2026-30,Bron Novak,bron@dataengineeracademy.com,3,3,1,33.33,1,33.33,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-20,2026-30,Kaisher von Wahl,kaisher@dataengineeracademy.com,8,8,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-20,2026-30,Peter Kovac,peter@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-07-20,2026-30,UNMAPPED SETTER,,85,84,17,20.00,18,21.18,9,7,77.78,0,0.00,,0.00,0.00
+2026-07-19,2026-29,UNMAPPED SETTER,,45,44,6,13.33,6,13.33,3,3,100.00,0,0.00,,0.00,0.00
+2026-07-18,2026-29,Kaisher von Wahl,kaisher@dataengineeracademy.com,4,4,1,25.00,1,25.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-18,2026-29,UNMAPPED SETTER,,46,46,7,15.22,7,15.22,4,3,75.00,0,0.00,,0.00,0.00
+2026-07-17,2026-29,Bron Novak,bron@dataengineeracademy.com,2,2,1,50.00,1,50.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-17,2026-29,Kaisher von Wahl,kaisher@dataengineeracademy.com,7,7,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-17,2026-29,Lucija Bitunjac,lucija@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-17,2026-29,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-17,2026-29,UNMAPPED SETTER,,114,112,18,15.79,18,15.79,8,8,100.00,2,25.00,22000.00,22000.00,17600.00
+2026-07-16,2026-29,Kaisher von Wahl,kaisher@dataengineeracademy.com,10,10,3,30.00,4,40.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-16,2026-29,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-16,2026-29,UNMAPPED SETTER,,110,110,18,16.36,19,17.27,7,5,71.43,0,0.00,,0.00,0.00
+2026-07-15,2026-29,Bron Novak,bron@dataengineeracademy.com,4,4,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-15,2026-29,Kaisher von Wahl,kaisher@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-15,2026-29,Lucija Bitunjac,lucija@dataengineeracademy.com,6,6,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-15,2026-29,UNMAPPED SETTER,,130,126,17,13.08,18,13.85,7,7,100.00,1,14.29,,0.00,0.00
+2026-07-14,2026-29,Bron Novak,bron@dataengineeracademy.com,5,5,1,20.00,1,20.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-14,2026-29,Kaisher von Wahl,kaisher@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-14,2026-29,Lucija Bitunjac,lucija@dataengineeracademy.com,11,11,1,9.09,1,9.09,0,0,,0,,,0.00,0.00
+2026-07-14,2026-29,UNMAPPED SETTER,,117,117,12,10.26,15,12.82,7,6,85.71,2,28.57,25000.00,25000.00,13000.00
+2026-07-13,2026-29,Kaisher von Wahl,kaisher@dataengineeracademy.com,15,15,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-13,2026-29,Lucija Bitunjac,lucija@dataengineeracademy.com,10,10,1,10.00,1,10.00,0,0,,0,,,0.00,0.00
+2026-07-13,2026-29,Miguel Romero,miguelromero@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-13,2026-29,UNMAPPED SETTER,,147,147,20,13.61,21,14.29,11,9,81.82,0,0.00,,0.00,0.00
+2026-07-12,2026-28,Kaisher von Wahl,kaisher@dataengineeracademy.com,8,8,1,12.50,1,12.50,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-12,2026-28,UNMAPPED SETTER,,44,43,10,22.73,13,29.55,5,4,80.00,0,0.00,,0.00,0.00
+2026-07-11,2026-28,Kaisher von Wahl,kaisher@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-11,2026-28,UNMAPPED SETTER,,59,59,12,20.34,14,23.73,7,4,57.14,0,0.00,,0.00,0.00
+2026-07-10,2026-28,Bron Novak,bron@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-10,2026-28,Kaisher von Wahl,kaisher@dataengineeracademy.com,6,6,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-10,2026-28,Lucija Bitunjac,lucija@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-07-10,2026-28,UNMAPPED SETTER,,141,140,18,12.77,22,15.60,4,4,100.00,0,0.00,,0.00,0.00
+2026-07-09,2026-28,Bron Novak,bron@dataengineeracademy.com,6,6,1,16.67,2,33.33,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-09,2026-28,Kaisher von Wahl,kaisher@dataengineeracademy.com,15,15,1,6.67,1,6.67,0,0,,0,,,0.00,0.00
+2026-07-09,2026-28,Lucija Bitunjac,lucija@dataengineeracademy.com,4,4,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-09,2026-28,UNMAPPED SETTER,,177,175,27,15.25,35,19.77,11,8,72.73,1,9.09,,0.00,0.00
+2026-07-08,2026-28,Bron Novak,bron@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-08,2026-28,Kaisher von Wahl,kaisher@dataengineeracademy.com,5,5,2,40.00,3,60.00,1,0,0.00,0,0.00,,0.00,0.00
+2026-07-08,2026-28,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-08,2026-28,UNMAPPED SETTER,,159,157,26,16.35,31,19.50,13,11,84.62,0,0.00,,0.00,0.00
+2026-07-07,2026-28,Bron Novak,bron@dataengineeracademy.com,2,2,1,50.00,1,50.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-07,2026-28,Kaisher von Wahl,kaisher@dataengineeracademy.com,7,7,3,42.86,5,71.43,0,0,,0,,,0.00,0.00
+2026-07-07,2026-28,Miguel Romero,miguelromero@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-07,2026-28,UNMAPPED SETTER,,196,195,26,13.27,32,16.33,13,12,92.31,3,23.08,14500.00,29000.00,14850.00
+2026-07-06,2026-28,Bron Novak,bron@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-06,2026-28,Christopher Garzon,chris@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-06,2026-28,Kaisher von Wahl,kaisher@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-06,2026-28,Michael Mkrtichyan,michael@dataengineeracademy.com,4,4,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-06,2026-28,Miguel Romero,miguelromero@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-06,2026-28,UNMAPPED SETTER,,169,167,27,15.98,43,25.44,13,11,84.62,1,7.69,20000.00,20000.00,20000.00
+2026-07-05,2026-27,Kaisher von Wahl,kaisher@dataengineeracademy.com,7,7,2,28.57,4,57.14,2,2,100.00,0,0.00,,0.00,0.00
+2026-07-05,2026-27,UNMAPPED SETTER,,44,43,11,25.00,12,27.27,5,4,80.00,0,0.00,,0.00,0.00
+2026-07-04,2026-27,Kaisher von Wahl,kaisher@dataengineeracademy.com,12,11,2,16.67,2,16.67,1,1,100.00,1,100.00,24000.00,24000.00,12980.00
+2026-07-04,2026-27,UNMAPPED SETTER,,48,47,11,22.92,13,27.08,6,6,100.00,0,0.00,,0.00,0.00
+2026-07-03,2026-27,Kaisher von Wahl,kaisher@dataengineeracademy.com,11,11,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-03,2026-27,UNMAPPED SETTER,,129,125,14,10.85,18,13.95,5,5,100.00,0,0.00,,0.00,0.00
+2026-07-02,2026-27,Kaisher von Wahl,kaisher@dataengineeracademy.com,6,6,1,16.67,3,50.00,2,1,50.00,0,0.00,,0.00,0.00
+2026-07-02,2026-27,Lucija Bitunjac,lucija@dataengineeracademy.com,5,5,1,20.00,1,20.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-07-02,2026-27,UNMAPPED SETTER,,152,149,23,15.13,25,16.45,10,8,80.00,0,0.00,,0.00,0.00
+2026-07-01,2026-27,Kaisher von Wahl,kaisher@dataengineeracademy.com,5,5,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-01,2026-27,Lucija Bitunjac,lucija@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-07-01,2026-27,UNMAPPED SETTER,,176,175,19,10.80,23,13.07,11,9,81.82,2,18.18,20000.00,40000.00,500.00
+2026-06-30,2026-27,Kaisher von Wahl,kaisher@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-30,2026-27,Lucija Bitunjac,lucija@dataengineeracademy.com,5,5,1,20.00,2,40.00,2,1,50.00,0,0.00,,0.00,0.00
+2026-06-30,2026-27,UNMAPPED SETTER,,203,200,13,6.40,15,7.39,4,3,75.00,0,0.00,,0.00,0.00
+2026-06-29,2026-27,Kaisher von Wahl,kaisher@dataengineeracademy.com,6,6,1,16.67,4,66.67,1,1,100.00,0,0.00,,0.00,0.00
+2026-06-29,2026-27,Lucija Bitunjac,lucija@dataengineeracademy.com,3,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-29,2026-27,UNMAPPED SETTER,,138,136,22,15.94,24,17.39,8,8,100.00,1,12.50,22500.00,22500.00,11700.00
+2026-06-28,2026-26,UNMAPPED SETTER,,38,38,8,21.05,10,26.32,5,4,80.00,1,20.00,22000.00,22000.00,11440.00
+2026-06-27,2026-26,UNMAPPED SETTER,,53,51,6,11.32,10,18.87,4,4,100.00,1,25.00,,0.00,0.00
+2026-06-26,2026-26,Bron Novak,bron@dataengineeracademy.com,4,4,2,50.00,4,100.00,1,0,0.00,0,0.00,,0.00,0.00
+2026-06-26,2026-26,Lucija Bitunjac,lucija@dataengineeracademy.com,3,3,1,33.33,1,33.33,1,1,100.00,1,100.00,20000.00,20000.00,20000.00
+2026-06-26,2026-26,UNMAPPED SETTER,,138,136,13,9.42,15,10.87,3,3,100.00,1,33.33,22000.00,22000.00,17700.00
+2026-06-25,2026-26,Bron Novak,bron@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-25,2026-26,Kaisher von Wahl,kaisher@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-25,2026-26,Lucija Bitunjac,lucija@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-25,2026-26,UNMAPPED SETTER,,159,157,25,15.72,34,21.38,9,8,88.89,1,11.11,13000.00,13000.00,6760.00
+2026-06-24,2026-26,Bron Novak,bron@dataengineeracademy.com,5,5,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-24,2026-26,UNMAPPED SETTER,,163,163,24,14.72,34,20.86,7,7,100.00,2,28.57,13000.00,13000.00,1000.00
+2026-06-23,2026-26,Bron Novak,bron@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-23,2026-26,UNMAPPED SETTER,,204,202,19,9.31,27,13.24,4,4,100.00,0,0.00,,0.00,0.00
+2026-06-22,2026-26,Bron Novak,bron@dataengineeracademy.com,12,12,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-22,2026-26,UNMAPPED SETTER,,178,173,19,10.67,29,16.29,9,8,88.89,2,22.22,,0.00,0.00
+2026-06-21,2026-25,Kaisher von Wahl,kaisher@dataengineeracademy.com,3,3,1,33.33,3,100.00,1,0,0.00,0,0.00,,0.00,0.00
+2026-06-21,2026-25,UNMAPPED SETTER,,18,18,2,11.11,2,11.11,0,0,,0,,,0.00,0.00
+2026-06-20,2026-25,Kaisher von Wahl,kaisher@dataengineeracademy.com,9,9,1,11.11,2,22.22,1,1,100.00,0,0.00,,0.00,0.00
+2026-06-20,2026-25,UNMAPPED SETTER,,64,64,4,6.25,5,7.81,0,0,,0,,,0.00,0.00
+2026-06-19,2026-25,Kaisher von Wahl,kaisher@dataengineeracademy.com,8,8,2,25.00,3,37.50,1,1,100.00,0,0.00,,0.00,0.00
+2026-06-19,2026-25,Michael Mkrtichyan,michael@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-19,2026-25,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-19,2026-25,UNMAPPED SETTER,,166,163,22,13.25,32,19.28,10,9,90.00,1,10.00,20000.00,20000.00,10640.00
+2026-06-18,2026-25,Bret Mavrich,bret@dataengineeracademy.com,9,9,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-18,2026-25,Bron Novak,bron@dataengineeracademy.com,4,4,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-18,2026-25,Kaisher von Wahl,kaisher@dataengineeracademy.com,9,9,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-18,2026-25,Peter Kovac,peter@dataengineeracademy.com,1,1,1,100.00,1,100.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-06-18,2026-25,UNMAPPED SETTER,,188,184,25,13.30,36,19.15,11,10,90.91,1,9.09,20000.00,20000.00,1000.00
+2026-06-17,2026-25,Bret Mavrich,bret@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-06-17,2026-25,Bron Novak,bron@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-17,2026-25,Kaisher von Wahl,kaisher@dataengineeracademy.com,17,16,1,5.88,1,5.88,1,1,100.00,0,0.00,,0.00,0.00
+2026-06-17,2026-25,Lucija Bitunjac,lucija@dataengineeracademy.com,3,3,2,66.67,2,66.67,1,1,100.00,0,0.00,,0.00,0.00
+2026-06-17,2026-25,UNMAPPED SETTER,,182,178,18,9.89,24,13.19,5,3,60.00,2,40.00,,0.00,0.00
+2026-06-16,2026-25,Bret Mavrich,bret@dataengineeracademy.com,5,5,1,20.00,1,20.00,0,0,,0,,,0.00,0.00
+2026-06-16,2026-25,Bron Novak,bron@dataengineeracademy.com,8,8,1,12.50,1,12.50,0,0,,0,,,0.00,0.00
+2026-06-16,2026-25,Kaisher von Wahl,kaisher@dataengineeracademy.com,7,7,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-16,2026-25,UNMAPPED SETTER,,166,165,31,18.67,76,45.78,24,11,45.83,0,0.00,,0.00,0.00
+2026-06-15,2026-25,Bron Novak,bron@dataengineeracademy.com,4,4,1,25.00,8,200.00,2,2,100.00,0,0.00,,0.00,0.00
+2026-06-15,2026-25,Kaisher von Wahl,kaisher@dataengineeracademy.com,5,5,2,40.00,2,40.00,2,1,50.00,0,0.00,,0.00,0.00
+2026-06-15,2026-25,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-15,2026-25,UNMAPPED SETTER,,157,156,30,19.11,55,35.03,12,8,66.67,0,0.00,,0.00,0.00
+2026-06-14,2026-24,Kaisher von Wahl,kaisher@dataengineeracademy.com,13,13,3,23.08,3,23.08,1,1,100.00,0,0.00,,0.00,0.00
+2026-06-14,2026-24,UNMAPPED SETTER,,33,33,8,24.24,16,48.48,7,5,71.43,1,14.29,40000.00,40000.00,18700.00
+2026-06-13,2026-24,Kaisher von Wahl,kaisher@dataengineeracademy.com,10,10,1,10.00,3,30.00,2,2,100.00,0,0.00,,0.00,0.00
+2026-06-13,2026-24,UNMAPPED SETTER,,41,40,10,24.39,10,24.39,4,1,25.00,0,0.00,,0.00,0.00
+2026-06-12,2026-24,Bret Mavrich,bret@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-12,2026-24,Kaisher von Wahl,kaisher@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-12,2026-24,Michael Mkrtichyan,michael@dataengineeracademy.com,3,3,1,33.33,2,66.67,1,1,100.00,0,0.00,,0.00,0.00
+2026-06-12,2026-24,UNMAPPED SETTER,,129,127,16,12.40,28,21.71,12,12,100.00,0,0.00,,0.00,0.00
+2026-06-11,2026-24,Bret Mavrich,bret@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-11,2026-24,Bron Novak,bron@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-06-11,2026-24,Kaisher von Wahl,kaisher@dataengineeracademy.com,16,15,2,12.50,2,12.50,1,1,100.00,0,0.00,,0.00,0.00
+2026-06-11,2026-24,Michael Mkrtichyan,michael@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-11,2026-24,UNMAPPED SETTER,,161,159,17,10.56,18,11.18,5,3,60.00,0,0.00,,0.00,0.00
+2026-06-10,2026-24,Bret Mavrich,bret@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-10,2026-24,Bron Novak,bron@dataengineeracademy.com,3,3,2,66.67,2,66.67,2,2,100.00,0,0.00,,0.00,0.00
+2026-06-10,2026-24,Kaisher von Wahl,kaisher@dataengineeracademy.com,14,14,4,28.57,5,35.71,2,2,100.00,0,0.00,,0.00,0.00
+2026-06-10,2026-24,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-10,2026-24,UNMAPPED SETTER,,180,179,35,19.44,45,25.00,14,13,92.86,1,7.14,,0.00,0.00
+2026-06-09,2026-24,Kaisher von Wahl,kaisher@dataengineeracademy.com,6,6,2,33.33,2,33.33,1,1,100.00,0,0.00,,0.00,0.00
+2026-06-09,2026-24,Lucija Bitunjac,lucija@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-09,2026-24,Michael Mkrtichyan,michael@dataengineeracademy.com,8,8,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-09,2026-24,UNMAPPED SETTER,,209,200,31,14.83,37,17.70,15,13,86.67,2,13.33,16500.00,33000.00,17160.00
+2026-06-08,2026-24,Bron Novak,bron@dataengineeracademy.com,2,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-08,2026-24,Kaisher von Wahl,kaisher@dataengineeracademy.com,15,14,2,13.33,2,13.33,2,2,100.00,0,0.00,,0.00,0.00
+2026-06-08,2026-24,Lucija Bitunjac,lucija@dataengineeracademy.com,2,2,1,50.00,1,50.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-06-08,2026-24,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-08,2026-24,UNMAPPED SETTER,,171,167,21,12.28,28,16.37,10,7,70.00,1,10.00,30000.00,30000.00,500.00
+2026-06-07,2026-23,Alejandro Sanchez,alejandro@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-07,2026-23,Bron Novak,bron@dataengineeracademy.com,5,5,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-07,2026-23,Kaisher von Wahl,kaisher@dataengineeracademy.com,6,6,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-07,2026-23,UNMAPPED SETTER,,19,19,3,15.79,4,21.05,1,1,100.00,0,0.00,,0.00,0.00
+2026-06-06,2026-23,Kaisher von Wahl,kaisher@dataengineeracademy.com,2,2,1,50.00,1,50.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-06-06,2026-23,UNMAPPED SETTER,,58,57,6,10.34,11,18.97,7,6,85.71,0,0.00,,0.00,0.00
+2026-06-05,2026-23,Alejandro Sanchez,alejandro@dataengineeracademy.com,3,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-05,2026-23,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-05,2026-23,Peter Kovac,peter@dataengineeracademy.com,1,1,1,100.00,1,100.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-06-05,2026-23,UNMAPPED SETTER,,132,130,18,13.64,24,18.18,10,6,60.00,0,0.00,,0.00,0.00
+2026-06-04,2026-23,UNMAPPED SETTER,,177,174,24,13.56,37,20.90,22,14,63.64,1,4.55,10000.00,10000.00,5440.00
+2026-06-03,2026-23,Bron Novak,bron@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-03,2026-23,Michael Mkrtichyan,michael@dataengineeracademy.com,3,3,1,33.33,1,33.33,0,0,,0,,,0.00,0.00
+2026-06-03,2026-23,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-03,2026-23,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-03,2026-23,UNMAPPED SETTER,,143,142,17,11.89,24,16.78,7,6,85.71,1,14.29,,0.00,0.00
+2026-06-02,2026-23,Bron Novak,bron@dataengineeracademy.com,5,5,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-02,2026-23,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,1,100.00,2,200.00,2,2,100.00,0,0.00,,0.00,0.00
+2026-06-02,2026-23,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-02,2026-23,UNMAPPED SETTER,,198,196,18,9.09,31,15.66,12,9,75.00,1,8.33,20000.00,20000.00,8000.00
+2026-06-01,2026-23,Kaisher von Wahl,kaisher@dataengineeracademy.com,1,1,1,100.00,2,200.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-06-01,2026-23,Lucija Bitunjac,lucija@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-01,2026-23,Mike Paz,mike@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-06-01,2026-23,UNMAPPED SETTER,,182,180,27,14.84,33,18.13,15,15,100.00,1,6.67,8000.00,8000.00,8000.00
+2026-05-31,2026-22,Kaisher von Wahl,kaisher@dataengineeracademy.com,11,11,4,36.36,6,54.55,2,1,50.00,0,0.00,,0.00,0.00
+2026-05-31,2026-22,UNMAPPED SETTER,,23,22,3,13.04,4,17.39,2,2,100.00,0,0.00,,0.00,0.00
+2026-05-30,2026-22,Kaisher von Wahl,kaisher@dataengineeracademy.com,16,16,1,6.25,2,12.50,1,1,100.00,0,0.00,,0.00,0.00
+2026-05-30,2026-22,UNMAPPED SETTER,,28,28,5,17.86,5,17.86,1,1,100.00,0,0.00,,0.00,0.00
+2026-05-29,2026-22,Kaisher von Wahl,kaisher@dataengineeracademy.com,5,5,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-29,2026-22,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-29,2026-22,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-29,2026-22,UNMAPPED SETTER,,183,181,19,10.38,22,12.02,5,5,100.00,3,60.00,18000.00,18000.00,18000.00
+2026-05-28,2026-22,Bron Novak,bron@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-28,2026-22,Kaisher von Wahl,kaisher@dataengineeracademy.com,5,5,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-28,2026-22,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-28,2026-22,Mike Paz,mike@dataengineeracademy.com,5,5,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-28,2026-22,UNMAPPED SETTER,,172,171,23,13.37,29,16.86,11,9,81.82,1,9.09,20000.00,20000.00,16000.00
+2026-05-27,2026-22,Bret Mavrich,bret@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-27,2026-22,Bron Novak,bron@dataengineeracademy.com,5,5,1,20.00,1,20.00,0,0,,0,,,0.00,0.00
+2026-05-27,2026-22,Kaisher von Wahl,kaisher@dataengineeracademy.com,1,1,1,100.00,1,100.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-05-27,2026-22,Michael Mkrtichyan,michael@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-27,2026-22,Mike Paz,mike@dataengineeracademy.com,5,5,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-27,2026-22,UNMAPPED SETTER,,120,119,15,12.50,17,14.17,4,3,75.00,1,25.00,20000.00,20000.00,10400.00
+2026-05-26,2026-22,Bron Novak,bron@dataengineeracademy.com,8,8,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-26,2026-22,Kaisher von Wahl,kaisher@dataengineeracademy.com,8,8,2,25.00,6,75.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-05-26,2026-22,Michael Mkrtichyan,michael@dataengineeracademy.com,4,4,1,25.00,1,25.00,0,0,,0,,,0.00,0.00
+2026-05-26,2026-22,Mike Paz,mike@dataengineeracademy.com,4,4,1,25.00,1,25.00,0,0,,0,,,0.00,0.00
+2026-05-26,2026-22,UNMAPPED SETTER,,125,123,22,17.60,29,23.20,11,8,72.73,5,45.45,21000.00,42000.00,6500.00
+2026-05-25,2026-22,Bron Novak,bron@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-25,2026-22,Kaisher von Wahl,kaisher@dataengineeracademy.com,27,27,2,7.41,2,7.41,0,0,,0,,,0.00,0.00
+2026-05-25,2026-22,Lucija Bitunjac,lucija@dataengineeracademy.com,1,1,1,100.00,3,300.00,2,2,100.00,0,0.00,,0.00,0.00
+2026-05-25,2026-22,Michael Mkrtichyan,michael@dataengineeracademy.com,4,4,1,25.00,1,25.00,0,0,,0,,,0.00,0.00
+2026-05-25,2026-22,UNMAPPED SETTER,,109,107,15,13.76,20,18.35,6,4,66.67,0,0.00,,0.00,0.00
+2026-05-24,2026-21,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-24,2026-21,UNMAPPED SETTER,,16,16,4,25.00,4,25.00,2,2,100.00,1,50.00,20000.00,20000.00,20000.00
+2026-05-23,2026-21,UNMAPPED SETTER,,93,93,5,5.38,6,6.45,5,5,100.00,0,0.00,,0.00,0.00
+2026-05-22,2026-21,Kaisher von Wahl,kaisher@dataengineeracademy.com,4,4,3,75.00,5,125.00,2,2,100.00,0,0.00,,0.00,0.00
+2026-05-22,2026-21,Lucija Bitunjac,lucija@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-22,2026-21,UNMAPPED SETTER,,130,127,25,19.23,28,21.54,5,3,60.00,0,0.00,,0.00,0.00
+2026-05-21,2026-21,Bron Novak,bron@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-21,2026-21,Kaisher von Wahl,kaisher@dataengineeracademy.com,7,7,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-21,2026-21,Michael Mkrtichyan,michael@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-21,2026-21,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-21,2026-21,UNMAPPED SETTER,,179,176,25,13.97,26,14.53,6,6,100.00,1,16.67,25000.00,25000.00,10600.00
+2026-05-20,2026-21,Bron Novak,bron@dataengineeracademy.com,4,4,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-20,2026-21,Kaisher von Wahl,kaisher@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-20,2026-21,Lucija Bitunjac,lucija@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-20,2026-21,Mike Paz,mike@dataengineeracademy.com,10,10,1,10.00,1,10.00,0,0,,1,,,0.00,0.00
+2026-05-20,2026-21,Olivier Auguste,olivier@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-20,2026-21,UNMAPPED SETTER,,200,195,29,14.50,34,17.00,7,6,85.71,3,42.86,17333.33,52000.00,10700.00
+2026-05-19,2026-21,Alejandro Sanchez,alejandro@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-19,2026-21,Bron Novak,bron@dataengineeracademy.com,6,6,1,16.67,1,16.67,0,0,,0,,,0.00,0.00
+2026-05-19,2026-21,Kaisher von Wahl,kaisher@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-19,2026-21,Lucija Bitunjac,lucija@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-19,2026-21,Mike Paz,mike@dataengineeracademy.com,4,4,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-19,2026-21,UNMAPPED SETTER,,204,201,17,8.33,24,11.76,7,5,71.43,1,14.29,20000.00,20000.00,500.00
+2026-05-18,2026-21,Bron Novak,bron@dataengineeracademy.com,11,11,1,9.09,2,18.18,1,1,100.00,0,0.00,,0.00,0.00
+2026-05-18,2026-21,Kaisher von Wahl,kaisher@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-18,2026-21,Lucija Bitunjac,lucija@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-18,2026-21,Michael Mkrtichyan,michael@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-18,2026-21,Mike Paz,mike@dataengineeracademy.com,8,8,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-18,2026-21,Olivier Auguste,olivier@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-18,2026-21,UNMAPPED SETTER,,187,185,34,18.18,40,21.39,9,8,88.89,1,11.11,,0.00,0.00
+2026-05-17,2026-20,Kaisher von Wahl,kaisher@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-17,2026-20,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-17,2026-20,UNMAPPED SETTER,,26,26,6,23.08,8,30.77,1,1,100.00,0,0.00,,0.00,0.00
+2026-05-16,2026-20,Bret Mavrich,bret@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-16,2026-20,Kaisher von Wahl,kaisher@dataengineeracademy.com,12,11,3,25.00,7,58.33,1,1,100.00,0,0.00,,0.00,0.00
+2026-05-16,2026-20,UNMAPPED SETTER,,71,70,10,14.08,11,15.49,3,2,66.67,1,33.33,9000.00,9000.00,500.00
+2026-05-15,2026-20,Bron Novak,bron@dataengineeracademy.com,2,2,1,50.00,2,100.00,0,0,,0,,,0.00,0.00
+2026-05-15,2026-20,Kaisher von Wahl,kaisher@dataengineeracademy.com,14,14,1,7.14,3,21.43,3,3,100.00,0,0.00,,0.00,0.00
+2026-05-15,2026-20,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-05-15,2026-20,UNMAPPED SETTER,,183,181,23,12.57,33,18.03,7,6,85.71,2,28.57,19000.00,38000.00,2150.00
+2026-05-14,2026-20,Alejandro Sanchez,alejandro@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-14,2026-20,Bron Novak,bron@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-14,2026-20,Kaisher von Wahl,kaisher@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-14,2026-20,Lucija Bitunjac,lucija@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-14,2026-20,UNMAPPED SETTER,,114,112,29,25.44,35,30.70,9,9,100.00,5,55.56,16833.33,50500.00,14600.00
+2026-05-13,2026-20,Alejandro Sanchez,alejandro@dataengineeracademy.com,2,2,1,50.00,2,100.00,0,0,,0,,,0.00,0.00
+2026-05-13,2026-20,Bron Novak,bron@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-13,2026-20,Kaisher von Wahl,kaisher@dataengineeracademy.com,10,9,3,30.00,5,50.00,2,2,100.00,1,50.00,22000.00,22000.00,100.00
+2026-05-13,2026-20,Lucija Bitunjac,lucija@dataengineeracademy.com,4,4,1,25.00,1,25.00,0,0,,0,,,0.00,0.00
+2026-05-13,2026-20,Michael Mkrtichyan,michael@dataengineeracademy.com,2,2,1,50.00,1,50.00,0,0,,0,,,0.00,0.00
+2026-05-13,2026-20,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-13,2026-20,Olivier Auguste,olivier@dataengineeracademy.com,3,3,3,100.00,4,133.33,1,1,100.00,0,0.00,,0.00,0.00
+2026-05-13,2026-20,UNMAPPED SETTER,,130,127,29,22.31,34,26.15,8,7,87.50,1,12.50,10000.00,10000.00,10000.00
+2026-05-12,2026-20,Alejandro Sanchez,alejandro@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-12,2026-20,Kaisher von Wahl,kaisher@dataengineeracademy.com,8,8,1,12.50,1,12.50,0,0,,0,,,0.00,0.00
+2026-05-12,2026-20,Lucija Bitunjac,lucija@dataengineeracademy.com,4,4,3,75.00,4,100.00,2,2,100.00,0,0.00,,0.00,0.00
+2026-05-12,2026-20,Miguel Romero,miguelromero@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-12,2026-20,Mike Paz,mike@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-12,2026-20,Olivier Auguste,olivier@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-05-12,2026-20,UNMAPPED SETTER,,154,151,27,17.53,30,19.48,7,7,100.00,1,14.29,22500.00,22500.00,100.00
+2026-05-11,2026-20,Bron Novak,bron@dataengineeracademy.com,3,3,2,66.67,2,66.67,1,1,100.00,1,100.00,15000.00,15000.00,15000.00
+2026-05-11,2026-20,Kaisher von Wahl,kaisher@dataengineeracademy.com,4,4,2,50.00,3,75.00,1,1,100.00,1,100.00,21998.00,21998.00,200.00
+2026-05-11,2026-20,Lucija Bitunjac,lucija@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-11,2026-20,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-11,2026-20,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-05-11,2026-20,Mike Paz,mike@dataengineeracademy.com,4,4,1,25.00,1,25.00,0,0,,0,,,0.00,0.00
+2026-05-11,2026-20,UNMAPPED SETTER,,141,139,25,17.73,27,19.15,6,6,100.00,1,16.67,27000.00,27000.00,1000.00
+2026-05-10,2026-19,Kaisher von Wahl,kaisher@dataengineeracademy.com,9,9,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-10,2026-19,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-10,2026-19,UNMAPPED SETTER,,19,19,3,15.79,3,15.79,1,1,100.00,0,0.00,,0.00,0.00
+2026-05-09,2026-19,Kaisher von Wahl,kaisher@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-09,2026-19,Mahmoud Toblany,mahmoud@dataengineeracademy.com,5,5,2,40.00,2,40.00,0,0,,0,,,0.00,0.00
+2026-05-09,2026-19,UNMAPPED SETTER,,49,49,11,22.45,14,28.57,1,0,0.00,1,100.00,,0.00,0.00
+2026-05-08,2026-19,Kaisher von Wahl,kaisher@dataengineeracademy.com,5,5,1,20.00,2,40.00,0,0,,0,,,0.00,0.00
+2026-05-08,2026-19,Michael Mkrtichyan,michael@dataengineeracademy.com,7,7,1,14.29,2,28.57,0,0,,0,,,0.00,0.00
+2026-05-08,2026-19,Mike Paz,mike@dataengineeracademy.com,4,4,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-08,2026-19,UNMAPPED SETTER,,104,102,16,15.38,20,19.23,3,3,100.00,0,0.00,,0.00,0.00
+2026-05-07,2026-19,Bron Novak,bron@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-07,2026-19,Kaisher von Wahl,kaisher@dataengineeracademy.com,4,4,1,25.00,1,25.00,0,0,,0,,,0.00,0.00
+2026-05-07,2026-19,Lucija Bitunjac,lucija@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-07,2026-19,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-07,2026-19,UNMAPPED SETTER,,152,149,23,15.13,30,19.74,7,6,85.71,0,0.00,,0.00,0.00
+2026-05-06,2026-19,Alejandro Sanchez,alejandro@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-05-06,2026-19,Bron Novak,bron@dataengineeracademy.com,5,5,2,40.00,3,60.00,1,0,0.00,0,0.00,,0.00,0.00
+2026-05-06,2026-19,Irtaza Hussain,irtaza@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-05-06,2026-19,Kaisher von Wahl,kaisher@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-06,2026-19,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-05-06,2026-19,Mike Paz,mike@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-06,2026-19,UNMAPPED SETTER,,152,149,44,28.95,63,41.45,15,15,100.00,4,26.67,19000.00,19000.00,5000.00
+2026-05-05,2026-19,Bret Mavrich,bret@dataengineeracademy.com,4,4,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-05,2026-19,Bron Novak,bron@dataengineeracademy.com,9,9,3,33.33,14,155.56,1,1,100.00,1,100.00,18000.00,18000.00,5000.00
+2026-05-05,2026-19,Kaisher von Wahl,kaisher@dataengineeracademy.com,5,5,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-05,2026-19,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-05,2026-19,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-05,2026-19,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-05,2026-19,UNMAPPED SETTER,,128,125,27,21.09,31,24.22,2,2,100.00,1,50.00,,0.00,0.00
+2026-05-04,2026-19,Bron Novak,bron@dataengineeracademy.com,6,6,1,16.67,1,16.67,0,0,,0,,,0.00,0.00
+2026-05-04,2026-19,Kaisher von Wahl,kaisher@dataengineeracademy.com,3,3,2,66.67,3,100.00,1,1,100.00,0,0.00,,0.00,0.00
+2026-05-04,2026-19,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-04,2026-19,Mike Paz,mike@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-04,2026-19,Olivier Auguste,olivier@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-04,2026-19,UNMAPPED SETTER,,152,150,33,21.71,43,28.29,4,3,75.00,5,125.00,20000.00,40000.00,27620.00
+2026-05-03,2026-18,Bret Mavrich,bret@dataengineeracademy.com,4,4,1,25.00,1,25.00,1,0,0.00,0,0.00,,0.00,0.00
+2026-05-03,2026-18,Kaisher von Wahl,kaisher@dataengineeracademy.com,3,3,1,33.33,1,33.33,0,0,,0,,,0.00,0.00
+2026-05-03,2026-18,Miguel Romero,miguelromero@dataengineeracademy.com,3,3,1,33.33,2,66.67,1,0,0.00,0,0.00,,0.00,0.00
+2026-05-03,2026-18,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-03,2026-18,UNMAPPED SETTER,,44,44,15,34.09,15,34.09,0,0,,0,,,0.00,0.00
+2026-05-02,2026-18,Bret Mavrich,bret@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-02,2026-18,Miguel Romero,miguelromero@dataengineeracademy.com,2,2,2,100.00,5,250.00,0,0,,0,,,0.00,0.00
+2026-05-02,2026-18,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-02,2026-18,UNMAPPED SETTER,,31,31,9,29.03,19,61.29,1,1,100.00,2,200.00,30000.00,30000.00,3000.00
+2026-05-01,2026-18,Kaisher von Wahl,kaisher@dataengineeracademy.com,3,3,2,66.67,2,66.67,0,0,,0,,,0.00,0.00
+2026-05-01,2026-18,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-05-01,2026-18,UNMAPPED SETTER,,123,121,21,17.07,30,24.39,3,3,100.00,2,66.67,20000.00,20000.00,16000.00
+2026-04-30,2026-18,Bret Mavrich,bret@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-30,2026-18,Bron Novak,bron@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-30,2026-18,Kaisher von Wahl,kaisher@dataengineeracademy.com,11,11,2,18.18,4,36.36,3,3,100.00,0,0.00,,0.00,0.00
+2026-04-30,2026-18,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-30,2026-18,Miguel Romero,miguelromero@dataengineeracademy.com,2,2,1,50.00,2,100.00,0,0,,0,,,0.00,0.00
+2026-04-30,2026-18,Mike Paz,mike@dataengineeracademy.com,4,4,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-30,2026-18,UNMAPPED SETTER,,101,101,19,18.81,25,24.75,2,2,100.00,3,150.00,,0.00,0.00
+2026-04-29,2026-18,Kaisher von Wahl,kaisher@dataengineeracademy.com,3,3,1,33.33,2,66.67,0,0,,0,,,0.00,0.00
+2026-04-29,2026-18,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-29,2026-18,Olivier Auguste,olivier@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-04-29,2026-18,UNMAPPED SETTER,,104,103,29,27.88,38,36.54,1,0,0.00,1,100.00,9000.00,9000.00,1000.00
+2026-04-28,2026-18,Bron Novak,bron@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-28,2026-18,Kaisher von Wahl,kaisher@dataengineeracademy.com,6,6,1,16.67,3,50.00,0,0,,0,,,0.00,0.00
+2026-04-28,2026-18,Mike Paz,mike@dataengineeracademy.com,4,4,1,25.00,1,25.00,0,0,,0,,,0.00,0.00
+2026-04-28,2026-18,UNMAPPED SETTER,,122,120,24,19.67,30,24.59,0,0,,1,,16000.00,16000.00,8320.00
+2026-04-27,2026-18,Bret Mavrich,bret@dataengineeracademy.com,2,2,2,100.00,3,150.00,0,0,,0,,,0.00,0.00
+2026-04-27,2026-18,Bron Novak,bron@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-27,2026-18,Olivier Auguste,olivier@dataengineeracademy.com,2,2,1,50.00,1,50.00,0,0,,1,,,0.00,0.00
+2026-04-27,2026-18,UNMAPPED SETTER,,124,123,38,30.65,58,46.77,2,2,100.00,2,100.00,,0.00,0.00
+2026-04-26,2026-17,Kaisher von Wahl,kaisher@dataengineeracademy.com,3,3,2,66.67,4,133.33,0,0,,0,,,0.00,0.00
+2026-04-26,2026-17,UNMAPPED SETTER,,20,19,5,25.00,5,25.00,1,1,100.00,2,200.00,,0.00,0.00
+2026-04-25,2026-17,Kaisher von Wahl,kaisher@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-25,2026-17,UNMAPPED SETTER,,39,39,13,33.33,14,35.90,0,0,,0,,,0.00,0.00
+2026-04-24,2026-17,Bret Mavrich,bret@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-04-24,2026-17,Kaisher von Wahl,kaisher@dataengineeracademy.com,5,5,3,60.00,4,80.00,0,0,,0,,,0.00,0.00
+2026-04-24,2026-17,Mike Paz,mike@dataengineeracademy.com,1,1,1,100.00,3,300.00,0,0,,0,,,0.00,0.00
+2026-04-24,2026-17,Peter Kovac,peter@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-04-24,2026-17,UNMAPPED SETTER,,96,95,26,27.08,30,31.25,1,0,0.00,1,100.00,,0.00,0.00
+2026-04-23,2026-17,Alejandro Sanchez,alejandro@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-23,2026-17,Bron Novak,bron@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-23,2026-17,Kaisher von Wahl,kaisher@dataengineeracademy.com,7,6,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-23,2026-17,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-23,2026-17,Olivier Auguste,olivier@dataengineeracademy.com,2,2,1,50.00,1,50.00,0,0,,0,,,0.00,0.00
+2026-04-23,2026-17,UNMAPPED SETTER,,136,134,29,21.32,33,24.26,1,1,100.00,0,0.00,,0.00,0.00
+2026-04-22,2026-17,Bron Novak,bron@dataengineeracademy.com,5,5,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-22,2026-17,Jordon Eggleston,jordon@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-22,2026-17,Kaisher von Wahl,kaisher@dataengineeracademy.com,5,5,1,20.00,1,20.00,0,0,,0,,,0.00,0.00
+2026-04-22,2026-17,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-22,2026-17,Olivier Auguste,olivier@dataengineeracademy.com,2,2,2,100.00,2,100.00,0,0,,0,,,0.00,0.00
+2026-04-22,2026-17,UNMAPPED SETTER,,130,130,34,26.15,53,40.77,5,5,100.00,0,0.00,,0.00,0.00
+2026-04-21,2026-17,Bron Novak,bron@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-21,2026-17,Kaisher von Wahl,kaisher@dataengineeracademy.com,5,5,3,60.00,5,100.00,1,0,0.00,1,100.00,,0.00,0.00
+2026-04-21,2026-17,Mike Paz,mike@dataengineeracademy.com,2,2,1,50.00,1,50.00,0,0,,0,,,0.00,0.00
+2026-04-21,2026-17,Olivier Auguste,olivier@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-04-21,2026-17,UNMAPPED SETTER,,140,137,29,20.71,37,26.43,3,2,66.67,3,100.00,24997.00,24997.00,500.00
+2026-04-20,2026-17,Bret Mavrich,bret@dataengineeracademy.com,1,1,1,100.00,2,200.00,0,0,,0,,,0.00,0.00
+2026-04-20,2026-17,Jordon Eggleston,jordon@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-20,2026-17,Kaisher von Wahl,kaisher@dataengineeracademy.com,2,2,1,50.00,3,150.00,0,0,,1,,15000.00,15000.00,8000.00
+2026-04-20,2026-17,Lucija Bitunjac,lucija@dataengineeracademy.com,2,2,1,50.00,1,50.00,1,1,100.00,1,100.00,,0.00,0.00
+2026-04-20,2026-17,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-20,2026-17,UNMAPPED SETTER,,111,110,17,15.32,18,16.22,1,1,100.00,0,0.00,,0.00,0.00
+2026-04-19,2026-16,UNMAPPED SETTER,,17,17,4,23.53,4,23.53,0,0,,0,,,0.00,0.00
+2026-04-18,2026-16,Kaisher von Wahl,kaisher@dataengineeracademy.com,2,2,2,100.00,2,100.00,1,0,0.00,0,0.00,,0.00,0.00
+2026-04-18,2026-16,UNMAPPED SETTER,,26,26,11,42.31,12,46.15,1,1,100.00,1,100.00,,0.00,0.00
+2026-04-17,2026-16,Bret Mavrich,bret@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-17,2026-16,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-17,2026-16,UNMAPPED SETTER,,96,95,26,27.08,34,35.42,0,0,,1,,17000.00,17000.00,8840.00
+2026-04-16,2026-16,Bret Mavrich,bret@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-16,2026-16,Bron Novak,bron@dataengineeracademy.com,2,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-16,2026-16,Kaisher von Wahl,kaisher@dataengineeracademy.com,11,11,3,27.27,4,36.36,0,0,,0,,,0.00,0.00
+2026-04-16,2026-16,Mike Paz,mike@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-16,2026-16,UNMAPPED SETTER,,154,154,37,24.03,52,33.77,5,4,80.00,2,40.00,,0.00,0.00
+2026-04-15,2026-16,Bret Mavrich,bret@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-04-15,2026-16,Bron Novak,bron@dataengineeracademy.com,3,2,1,33.33,2,66.67,0,0,,0,,,0.00,0.00
+2026-04-15,2026-16,Kaisher von Wahl,kaisher@dataengineeracademy.com,3,3,1,33.33,1,33.33,1,1,100.00,0,0.00,,0.00,0.00
+2026-04-15,2026-16,UNMAPPED SETTER,,149,148,27,18.12,29,19.46,0,0,,1,,,0.00,0.00
+2026-04-14,2026-16,Bret Mavrich,bret@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-14,2026-16,Kaisher von Wahl,kaisher@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-14,2026-16,Mike Paz,mike@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-14,2026-16,UNMAPPED SETTER,,123,122,34,27.64,45,36.59,0,0,,0,,,0.00,0.00
+2026-04-13,2026-16,Lucija Bitunjac,lucija@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-13,2026-16,Mike Paz,mike@dataengineeracademy.com,4,4,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-13,2026-16,UNMAPPED SETTER,,121,120,26,21.49,38,31.40,1,1,100.00,1,100.00,,0.00,0.00
+2026-04-12,2026-15,Kaisher von Wahl,kaisher@dataengineeracademy.com,6,6,1,16.67,1,16.67,0,0,,0,,,0.00,0.00
+2026-04-12,2026-15,UNMAPPED SETTER,,20,20,7,35.00,9,45.00,0,0,,0,,,0.00,0.00
+2026-04-11,2026-15,Kaisher von Wahl,kaisher@dataengineeracademy.com,10,9,1,10.00,1,10.00,0,0,,0,,,0.00,0.00
+2026-04-11,2026-15,Mike Paz,mike@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-11,2026-15,UNMAPPED SETTER,,48,47,13,27.08,16,33.33,0,0,,0,,,0.00,0.00
+2026-04-10,2026-15,Bret Mavrich,bret@dataengineeracademy.com,5,5,3,60.00,9,180.00,1,1,100.00,1,100.00,12000.00,12000.00,11700.00
+2026-04-10,2026-15,Bron Novak,bron@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-10,2026-15,Kaisher von Wahl,kaisher@dataengineeracademy.com,7,6,1,14.29,1,14.29,0,0,,1,,20000.00,20000.00,10500.00
+2026-04-10,2026-15,Mike Paz,mike@dataengineeracademy.com,5,5,2,40.00,2,40.00,0,0,,0,,,0.00,0.00
+2026-04-10,2026-15,UNMAPPED SETTER,,102,98,20,19.61,26,25.49,0,0,,0,,,0.00,0.00
+2026-04-09,2026-15,Bron Novak,bron@dataengineeracademy.com,1,1,1,100.00,2,200.00,0,0,,0,,,0.00,0.00
+2026-04-09,2026-15,Kaisher von Wahl,kaisher@dataengineeracademy.com,15,15,1,6.67,1,6.67,1,1,100.00,0,0.00,,0.00,0.00
+2026-04-09,2026-15,Michael Mkrtichyan,michael@dataengineeracademy.com,6,6,1,16.67,1,16.67,0,0,,0,,,0.00,0.00
+2026-04-09,2026-15,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-09,2026-15,UNMAPPED SETTER,,135,133,43,31.85,70,51.85,1,1,100.00,4,400.00,22000.00,22000.00,1000.00
+2026-04-08,2026-15,Alejandro Sanchez,alejandro@dataengineeracademy.com,1,1,1,100.00,6,600.00,0,0,,0,,,0.00,0.00
+2026-04-08,2026-15,Bret Mavrich,bret@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-08,2026-15,Bron Novak,bron@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-08,2026-15,Kaisher von Wahl,kaisher@dataengineeracademy.com,6,6,1,16.67,1,16.67,0,0,,0,,,0.00,0.00
+2026-04-08,2026-15,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-08,2026-15,Mike Paz,mike@dataengineeracademy.com,5,5,2,40.00,3,60.00,0,0,,0,,,0.00,0.00
+2026-04-08,2026-15,UNMAPPED SETTER,,138,135,31,22.46,44,31.88,0,0,,1,,,0.00,0.00
+2026-04-07,2026-15,Bron Novak,bron@dataengineeracademy.com,3,3,2,66.67,2,66.67,0,0,,0,,,0.00,0.00
+2026-04-07,2026-15,Kaisher von Wahl,kaisher@dataengineeracademy.com,5,5,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-07,2026-15,Lucija Bitunjac,lucija@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-07,2026-15,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-07,2026-15,UNMAPPED SETTER,,117,115,21,17.95,22,18.80,1,1,100.00,2,200.00,6000.00,6000.00,6000.00
+2026-04-06,2026-15,Alejandro Sanchez,alejandro@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-04-06,2026-15,Bret Mavrich,bret@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-06,2026-15,Bron Novak,bron@dataengineeracademy.com,6,6,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-06,2026-15,Kaisher von Wahl,kaisher@dataengineeracademy.com,9,8,1,11.11,1,11.11,0,0,,0,,,0.00,0.00
+2026-04-06,2026-15,UNMAPPED SETTER,,128,126,23,17.97,32,25.00,0,0,,2,,13750.00,27500.00,16600.00
+2026-04-05,2026-14,Kaisher von Wahl,kaisher@dataengineeracademy.com,11,11,4,36.36,4,36.36,0,0,,0,,,0.00,0.00
+2026-04-05,2026-14,UNMAPPED SETTER,,8,8,1,12.50,2,25.00,0,0,,0,,,0.00,0.00
+2026-04-04,2026-14,Kaisher von Wahl,kaisher@dataengineeracademy.com,7,6,4,57.14,5,71.43,0,0,,0,,,0.00,0.00
+2026-04-04,2026-14,UNMAPPED SETTER,,33,33,13,39.39,15,45.45,0,0,,0,,,0.00,0.00
+2026-04-03,2026-14,Bret Mavrich,bret@dataengineeracademy.com,2,2,1,50.00,3,150.00,0,0,,1,,,0.00,0.00
+2026-04-03,2026-14,Kaisher von Wahl,kaisher@dataengineeracademy.com,18,18,2,11.11,2,11.11,0,0,,0,,,0.00,0.00
+2026-04-03,2026-14,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-03,2026-14,Mike Paz,mike@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-03,2026-14,UNMAPPED SETTER,,110,109,23,20.91,27,24.55,1,1,100.00,1,100.00,,0.00,0.00
+2026-04-02,2026-14,Kaisher von Wahl,kaisher@dataengineeracademy.com,8,6,3,37.50,3,37.50,1,1,100.00,1,100.00,,0.00,0.00
+2026-04-02,2026-14,Lucija Bitunjac,lucija@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-02,2026-14,Mike Paz,mike@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-04-02,2026-14,UNMAPPED SETTER,,89,89,21,23.60,25,28.09,1,1,100.00,0,0.00,,0.00,0.00
+2026-04-01,2026-14,Kaisher von Wahl,kaisher@dataengineeracademy.com,8,8,1,12.50,1,12.50,0,0,,0,,,0.00,0.00
+2026-04-01,2026-14,Michael Mkrtichyan,michael@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-01,2026-14,Mike Paz,mike@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-04-01,2026-14,UNMAPPED SETTER,,152,150,21,13.82,30,19.74,1,1,100.00,1,100.00,18500.00,18500.00,18500.00
+2026-03-31,2026-14,Kaisher von Wahl,kaisher@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-31,2026-14,Michael Mkrtichyan,michael@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-31,2026-14,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-31,2026-14,UNMAPPED SETTER,,93,93,28,30.11,33,35.48,3,3,100.00,0,0.00,,0.00,0.00
+2026-03-30,2026-14,Kaisher von Wahl,kaisher@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-30,2026-14,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-30,2026-14,Mike Paz,mike@dataengineeracademy.com,2,2,1,50.00,1,50.00,0,0,,0,,,0.00,0.00
+2026-03-30,2026-14,UNMAPPED SETTER,,111,110,22,19.82,26,23.42,0,0,,1,,,0.00,0.00
+2026-03-29,2026-13,Kaisher von Wahl,kaisher@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-29,2026-13,UNMAPPED SETTER,,4,4,2,50.00,2,50.00,0,0,,0,,,0.00,0.00
+2026-03-28,2026-13,Kaisher von Wahl,kaisher@dataengineeracademy.com,5,5,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-28,2026-13,Mike Paz,mike@dataengineeracademy.com,3,3,2,66.67,2,66.67,0,0,,0,,,0.00,0.00
+2026-03-28,2026-13,UNMAPPED SETTER,,25,25,8,32.00,9,36.00,0,0,,0,,,0.00,0.00
+2026-03-27,2026-13,Kaisher von Wahl,kaisher@dataengineeracademy.com,4,4,1,25.00,1,25.00,0,0,,0,,,0.00,0.00
+2026-03-27,2026-13,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-03-27,2026-13,Mike Paz,mike@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-27,2026-13,UNMAPPED SETTER,,74,73,18,24.32,22,29.73,1,1,100.00,0,0.00,,0.00,0.00
+2026-03-26,2026-13,Kaisher von Wahl,kaisher@dataengineeracademy.com,3,3,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-26,2026-13,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,1,,,0.00,0.00
+2026-03-26,2026-13,Mike Paz,mike@dataengineeracademy.com,2,2,1,50.00,1,50.00,0,0,,0,,,0.00,0.00
+2026-03-26,2026-13,UNMAPPED SETTER,,66,63,16,24.24,27,40.91,1,1,100.00,1,100.00,20000.00,20000.00,20000.00
+2026-03-25,2026-13,Kaisher von Wahl,kaisher@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-25,2026-13,Michael Mkrtichyan,michael@dataengineeracademy.com,2,2,1,50.00,3,150.00,0,0,,0,,,0.00,0.00
+2026-03-25,2026-13,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,1,100.00,1,100.00,0,0,,0,,,0.00,0.00
+2026-03-25,2026-13,Mike Paz,mike@dataengineeracademy.com,2,2,1,50.00,1,50.00,0,0,,0,,,0.00,0.00
+2026-03-25,2026-13,UNMAPPED SETTER,,48,47,18,37.50,25,52.08,0,0,,1,,,0.00,0.00
+2026-03-24,2026-13,Bret Mavrich,bret@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-24,2026-13,Kaisher von Wahl,kaisher@dataengineeracademy.com,5,5,1,20.00,1,20.00,0,0,,0,,,0.00,0.00
+2026-03-24,2026-13,Michael Mkrtichyan,michael@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-24,2026-13,Miguel Romero,miguelromero@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-24,2026-13,UNMAPPED SETTER,,47,47,17,36.17,27,57.45,0,0,,2,,,0.00,0.00
+2026-03-23,2026-13,Kaisher von Wahl,kaisher@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-23,2026-13,Lucija Bitunjac,lucija@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-23,2026-13,Mike Paz,mike@dataengineeracademy.com,3,3,2,66.67,2,66.67,0,0,,0,,,0.00,0.00
+2026-03-23,2026-13,UNMAPPED SETTER,,64,63,21,32.81,29,45.31,0,0,,2,,,0.00,0.00
+2026-03-22,2026-12,UNMAPPED SETTER,,15,15,3,20.00,6,40.00,0,0,,0,,,0.00,0.00
+2026-03-21,2026-12,Kaisher von Wahl,kaisher@dataengineeracademy.com,7,7,2,28.57,4,57.14,0,0,,0,,,0.00,0.00
+2026-03-21,2026-12,UNMAPPED SETTER,,28,27,6,21.43,8,28.57,0,0,,1,,,0.00,0.00
+2026-03-20,2026-12,Bret Mavrich,bret@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-20,2026-12,Kaisher von Wahl,kaisher@dataengineeracademy.com,4,4,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-20,2026-12,UNMAPPED SETTER,,33,31,13,39.39,15,45.45,0,0,,2,,,0.00,0.00
+2026-03-19,2026-12,Kaisher von Wahl,kaisher@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-19,2026-12,Mike Paz,mike@dataengineeracademy.com,2,2,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-19,2026-12,UNMAPPED SETTER,,49,47,15,30.61,19,38.78,0,0,,1,,,0.00,0.00
+2026-03-18,2026-12,Bret Mavrich,bret@dataengineeracademy.com,2,2,1,50.00,1,50.00,0,0,,0,,,0.00,0.00
+2026-03-18,2026-12,Kaisher von Wahl,kaisher@dataengineeracademy.com,1,1,0,0.00,0,0.00,0,0,,0,,,0.00,0.00
+2026-03-18,2026-12,UNMAPPED SETTER,,20,20,11,55.00,12,60.00,0,0,,2,,,0.00,0.00
+2026-03-17,2026-12,UNMAPPED SETTER,,13,13,7,53.85,7,53.85,0,0,,0,,,0.00,0.00
